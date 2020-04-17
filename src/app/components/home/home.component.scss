@@ -1,0 +1,422 @@
+/*
+Create circles or rounded rectangles
+border-radius: 100%;
+
+button
+<br/><button> Button </button>
+*/
+body {
+    /*min-width: 1519px;*/
+    margin: auto;
+}
+
+#bg {
+    float: right;
+    margin-top: -14%;
+    height: auto;
+}
+
+#main {
+    width: 50%;
+    /*max-width: 50%;*/
+    margin-right: 60%;
+    margin-top: 18%;
+    margin-left: 18%;
+}
+
+#footer_container{
+    border-top: none;
+}
+
+#intro h1 {
+    font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+    font-weight: bold;
+    font-size: 65px;
+    line-height: 70%;
+}
+
+#intro h2 {
+    font-size: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+    font-weight: 300;
+    line-height: 70%;
+}
+
+#intro h4 {
+    margin-top: -1%;
+    font-size: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+    font-weight: normal;
+}
+
+#intro a:visited, #intro a:link {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#intro a:hover {
+    text-decoration: underline;
+}
+
+._center {
+    text-align: center;
+}
+
+#footer {
+    margin: 2% 0;
+    /*use to be 32%*/
+}
+
+#social_media {
+    margin-top: 3%;
+    margin-left: -7%;
+
+}
+
+#social_media a {
+    padding: 0 1.68%;
+}
+
+#social_media a:hover {
+    /*opacity:0.7;*/
+}
+
+#contents {
+    background-color: rgba(0, 0, 0, 0.04);
+    margin-top: 31%;
+    text-align: center;
+    padding: 3% 0;
+}
+
+#contents h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+    color: black;
+    font-weight: 300;
+    font-size: 45px;
+    line-height: 70%;
+}
+
+#contents #images #first {
+    /*padding-left: 3%;*/
+    padding-top: -2%;
+}
+
+#contents a {
+    padding-top: 2%;
+    /*padding-right: 3%;*/
+    display: block;
+    /*display used to be inline*/
+}
+
+#contents #images {
+    padding-top: .7%;
+    padding-bottom: 2%;
+    /*could be 7% or 2%*/
+}
+
+#gfx {
+    padding: 22% 0;
+    background-image: url("~src/assets/images/home/indexbg1x.jpg");
+    background-size: 150% auto;
+    text-align: center;
+    background-position: 50% 18%;
+    margin-right: 5px;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#proj {
+    padding: 22% 0;
+    /*background-image: url("../images/FRC.jpg");*/
+    background-image: url("~src/assets/images/apps/AppFolioBg.svg");
+    background-size: 250%;
+    text-align: center;
+    background-position: 20% 100%;
+    margin-right: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+#resume {
+    padding: 22% 0;
+    background-image: url("~src/assets/images/home/indexbg2.jpg");
+    background-size: 130%;
+    text-align: center;
+    background-position: 50% 18%;
+    transition: all 0.3s ease-in-out;
+}
+
+#wrapper a {
+    transition: all .1s ease-in;
+    color: white;
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    text-shadow: 3px 3px 2px black;
+}
+
+#wrapper a:link {
+    color: white
+}
+
+#wrapper a:visited {
+    color: white
+}
+
+#wrapper a:hover {
+    color: orangered;
+}
+
+#wrapper {
+    /*use to be margin top 17.14*/
+    margin-top: 17.48%;
+    display: flex;
+}
+
+#quad1, #quad2{
+    width:100%;
+    display: flex;
+
+}
+
+#col1 {
+    /*width: 33.4%;*/
+    width: 50%;
+}
+
+#col2 {
+    /*width: 33.4%;*/
+    width: 50%;
+}
+
+#col3 {
+    /*width: 33.4%;*/
+    width: 50%;
+}
+
+#col0{
+    width: 50%;
+}
+
+#yt {
+    padding: 22% 0;
+    background-image: url("~src/assets/images/beatslytics/Beatslytics-intro2.jpg");
+    background-position-x: -45px;
+    background-size: 140%;
+    text-align: center;
+    margin-right: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (min-width: 551px){
+    /*not available for mobile*/
+    #proj:hover {
+        transition: all 0.3s ease-in-out;
+        /*background-size: 140%;*/
+        /*above method is one approach that doesn't always work*/
+        transform:scale(1.1,1.1);
+    }
+
+    #yt:hover{
+        transition: all .3s ease-in-out;
+        /*background-size: 220%;*/
+        transform:scale(1.1,1.1);
+    }
+
+    #resume:hover{
+        transition: all 0.3s ease-in-out;
+        /*background-size: 110%;*/
+        transform:scale(1.1,1.1);
+    }
+
+    #gfx:hover{
+        transition: all .3s ease-in-out;
+        /*background-size: 160%;*/
+        transform:scale(1.1,1.1);
+    }
+}
+
+.center_img  {
+    /*THE AMAZING CODE THAT CENTERS THE GODDAMN IMAGE*/
+}
+
+.center_img img  {
+    display: block;
+    margin: 0 auto;
+}
+
+/*for larger monitors*/
+@media only screen and (min-width: 1800px){
+    /*to be continued*/
+}
+
+@media only screen and (max-width: 1517px) {
+    #bg img {
+        margin-top: 7%;
+        width: 570px;
+    }
+
+    #wrapper {
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    #wrapper {
+        margin-top: 13%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #main {
+        margin-left: 14%;
+    }
+
+    #bg img {
+        width: 520px;
+    }
+    #gfx, #proj, #resume, #yt {
+        padding: 14% 0;
+    }
+
+    #gfx{
+        margin-right: 0;
+    }
+
+    #yt, #gfx{
+        margin-bottom: 5px;
+    }
+
+    #wrapper {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    #wrapper {
+        margin-top: 8%;
+    }
+
+    #bg img {
+        width: 450px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #main {
+        margin-left: 11%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    #bg {
+        float: none;
+        /*!*margin-left: 25%;*!*/
+        /*width: 300px;*/
+        margin-top: 5%;
+        margin-bottom: 30%;
+    }
+
+    #main {
+        margin-top: -20%;
+        text-align: center;
+        max-width: 90%;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    #wrapper a {
+        font-size: 25px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    #social_media {
+        margin-top: 15%;
+    }
+
+    #bg img {
+        width: 350px;
+        /*margin-left: -5%;*/
+    }
+
+    #main img {
+        margin-top: -5%;
+        margin-bottom: 12%;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    #quad1, #quad2{
+        width:100%;
+        display: block;
+
+    }
+    #col1, #col2, #col3, #col0 {
+        width: 100%;
+    }
+
+    #yt, #gfx, #proj, #resume{
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #bg img {
+        display: block;
+        margin: 0 auto;
+        width: 300px;
+        /*margin-left: 25%;*/
+    }
+
+    #intro h1 {
+        font-size: 50px;
+    }
+
+    #intro h2 {
+        font-size: 35px;
+    }
+}
+
+/*FOR iPhone 7 Plus*/
+@media only screen and (max-width: 414px) {
+    #social_media{
+        margin-left: -10%;
+    }
+}
+
+/*iphone 7 regular*/
+@media only screen and (max-width:  375px){
+    #social_media{
+        margin-left: -15%;
+    }
+}
+
+@media only screen and (max-width: 374px) {
+    /*for the iphone se and other 4 inch phones*/
+    #social_media img {
+        width: 42px;
+        height: 42px;
+    }
+
+    #intro h1 {
+        font-size: 45px;
+    }
+
+    #intro h2 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 330px){
+    #bg img {
+        width: 250px;
+    }
+}
+
+

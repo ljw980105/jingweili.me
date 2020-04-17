@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import "fonts";
+
+/*For selection color*/
+::-moz-selection { /* Code for Firefox */
+    color: white;
+    background: orange;
+}
+
+::selection {
+    color: white;
+    background: orange;
+}

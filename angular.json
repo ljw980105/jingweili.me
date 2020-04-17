@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "jingweili-me": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "jingweili-me"
+    }
+  },
+  "defaultProject": "jingweili-me",
+  "cli": {
+    "analytics": "e6c30df6-e9fb-474d-a9a5-6175571b52f4"
+  }
 }
