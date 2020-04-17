@@ -1,4 +1,6 @@
-<div id="footer_container" [ngStyle]="{'border-top': topBorderStyle}">
+<div id="footer_container"
+     [ngStyle]="{'border-top': topBorderStyle}"
+>
     <div id="footerx">
         <div id="personal_logo" (click)="navigateToHome()">
             <img style="margin-top: 18px" src="assets/images/footer/PersonalLogoBlack.png">
@@ -6,8 +8,8 @@
         <div id="section1">
             <div id="navigation">
                 <ul>
-                    <li><h4>Pages</h4></li>
-                    <div class="slideContents">
+                    <li (click)="toggle(1)"><h4>{{plugMinusFromBool(pagesExpanded)}}Pages</h4></li>
+                    <div class="slideContents" [@shrinkOrExpand]="pagesExpanded ? 'expanded' : 'shrinked'">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="Bio.html">About</a></li>
                         <li><a href="Resume.html">Resume</a></li>
@@ -19,8 +21,8 @@
             </div>
             <div id="projects_footer">
                 <ul>
-                    <li><h4>Projects</h4></li>
-                    <div class="slideContents">
+                    <li (click)="toggle(2)"><h4>{{plugMinusFromBool(projectsExpanded)}}Projects</h4></li>
+                    <div class="slideContents" [@shrinkOrExpand]="projectsExpanded ? 'expanded' : 'shrinked'">
                         <li><a href="Projects.html">All Projects</a></li>
                         <li><a href="Games.html">2048 Game</a></li>
                         <li><a href="AppFolio.html">Apps</a></li>
@@ -34,8 +36,8 @@
         <div id="section2">
             <div id="graphics_footer">
                 <ul>
-                    <li><h4>Designs</h4></li>
-                    <div class="slideContents">
+                    <li (click)="toggle(3)"><h4>{{plugMinusFromBool(designsExpanded)}}Designs</h4></li>
+                    <div class="slideContents" [@shrinkOrExpand]="designsExpanded? 'expanded' : 'shrinked'">
                         <li><a href="https://www.behance.net/gallery/47281675/2026-Time-Capsule">Time Capsule</a></li>
                         <li><a href="https://www.behance.net/gallery/52343049/RPI-Class-of-2021-Sticker-Design">2021 Stickers</a></li>
                         <li><a href="Regular_Art.html">Regular Art</a></li>
@@ -47,8 +49,8 @@
             </div>
             <div id="social_media_footer">
                 <ul>
-                    <li><h4>Social</h4></li>
-                    <div class="slideContents">
+                    <li (click)="toggle(4)"><h4>{{plugMinusFromBool(socialsExpanded)}}Social</h4></li>
+                    <div class="slideContents" [@shrinkOrExpand]="socialsExpanded ? 'expanded' : 'shrinked'">
                         <li><a href="https://www.facebook.com/li.jingwei.94">Facebook</a></li>
                         <li><a href="https://www.instagram.com/ljw980105">Instagram</a></li>
                         <li><a href="https://www.linkedin.com/in/jingweili2/">LinkedIn</a></li>

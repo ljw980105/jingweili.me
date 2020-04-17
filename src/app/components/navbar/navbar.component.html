@@ -22,10 +22,10 @@
 </div>
 
 <div id="top_mobile_nav">
-    <img id="navicon" src="assets/images/navbar/navicon.png" height="50px" width="50px">
+    <img id="navicon" src="assets/images/navbar/navicon.png" height="50px" width="50px" (click)="toggleExpansion()">
 </div>
 
-<header>
+<header style="height: 50%" [@shrinkOrExpand]="expanded ? 'expanded' : 'shrinked'">
     <nav id="mobile_nav">
         <div class="horizScrollDiv" style="margin-left: 20px">
             <a href="index.html"><img src="assets/images/navbar/home.png" height="70" width="70"></a>
