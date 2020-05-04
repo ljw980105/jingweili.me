@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {shrinkOrExpand} from '../../Animations';
+import {shrinkOrExpand} from '../../models/Animations';
 
 @Component({
     selector: 'app-navbar',

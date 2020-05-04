@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {shrinkOrExpand} from '../../Animations';
+import {shrinkOrExpand} from '../../models/Animations';
 import {fromEvent} from 'rxjs';
 import {filter, map, share} from 'rxjs/operators';
 
