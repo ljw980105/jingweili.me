@@ -12,7 +12,31 @@
 }
 
 html, body {
-    margin: 0 0 5px 0;
+    margin: 0 0 0 0;
     padding: 0;
     height: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.clear-text-paddings {
+    padding: 0;
+    margin: 0;
+}
+
+.round-corner {
+    border-radius: 10px 10px 10px 10px;
+    overflow:hidden;
+}
+
+.center_div {
+    margin: auto;
+    width: 50%;
+}
+
+.center-div-horizontally {
+    width: 50%;
+    margin: 0 auto;
 }

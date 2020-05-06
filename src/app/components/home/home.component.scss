@@ -1,12 +1,16 @@
-/*
-Create circles or rounded rectangles
-border-radius: 100%;
+$typical-margin: 11px;
+$card-half-height: 4%;
+$card-single-height: 20%;
+$card-double-height: 40%;
+$custom-grey: rgb(242, 242, 242);
+$card-top: 30px;
 
-button
-<br/><button> Button </button>
-*/
+@mixin round-corner {
+    border-radius: 10px 10px 10px 10px;
+    overflow:hidden;
+}
+
 body {
-    /*min-width: 1519px;*/
     margin: auto;
 }
 
@@ -20,8 +24,18 @@ body {
     width: 50%;
     /*max-width: 50%;*/
     margin-right: 60%;
-    margin-top: 18%;
+    margin-top: 8%;
     margin-left: 18%;
+
+    h1, h2, h4 {
+        color: white;
+    }
+}
+
+#main-wrapper {
+    padding: 10% 0;
+    background-image: url("~src/assets/images/home/website-bg.jpg");
+    background-size: 100%;
 }
 
 #footer_container{
@@ -49,37 +63,32 @@ body {
     font-weight: normal;
 }
 
-#intro a:visited, #intro a:link {
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#intro a:hover {
-    text-decoration: underline;
+#intro {
+    & a:visited, & a:link {
+        color: white;
+        font-weight: bolder;
+        text-decoration: none;
+    }
+    & a:hover {
+        text-decoration: underline;
+    }
 }
 
 ._center {
     text-align: center;
 }
 
-#footer {
-    margin: 2% 0;
-    /*use to be 32%*/
-}
-
 #social_media {
     margin-top: 3%;
     margin-left: -7%;
 
-}
+    & a {
+        padding: 0 1.68%;
+        & img {
+            filter: invert(100);
+        }
+    }
 
-#social_media a {
-    padding: 0 1.68%;
-}
-
-#social_media a:hover {
-    /*opacity:0.7;*/
 }
 
 #contents {
@@ -121,20 +130,19 @@ body {
     background-size: 150% auto;
     text-align: center;
     background-position: 50% 18%;
-    margin-right: 5px;
     transition: all 0.3s ease-in-out;
-
+    @include round-corner();
 }
 
-#proj {
-    padding: 22% 0;
-    /*background-image: url("../images/FRC.jpg");*/
+#apps {
+    padding: $card-single-height 0;
     background-image: url("~src/assets/images/apps/AppFolioBg.svg");
     background-size: 250%;
     text-align: center;
     background-position: 20% 100%;
-    margin-right: 5px;
+    margin-bottom: $typical-margin;
     transition: all 0.3s ease-in-out;
+    @include round-corner();
 }
 
 #resume {
@@ -146,79 +154,106 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-#wrapper a {
+#wrapper {
+    display: flex;
+    margin: $card-top 10% 0 10%;
+    max-width: 1350px;
+}
+
+.orange-hover-fx {
     transition: all .1s ease-in;
+    &:link, &:visited {
+        color: white;
+    }
+    &:hover {
+        color: orangered;
+    }
+}
+
+#wrapper a {
     color: white;
     font-size: 30px;
     font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-    font-weight: 300;
+    font-weight: bold;
     text-decoration: none;
     text-shadow: 3px 3px 2px black;
 }
 
-#wrapper a:link {
-    color: white
-}
-
-#wrapper a:visited {
-    color: white
-}
-
-#wrapper a:hover {
-    color: orangered;
-}
-
-#wrapper {
-    /*use to be margin top 17.14*/
-    margin-top: 17.48%;
-    display: flex;
-}
-
-#quad1, #quad2{
-    width:100%;
-    display: flex;
-
-}
-
-#col1 {
-    /*width: 33.4%;*/
-    width: 50%;
-}
-
-#col2 {
-    /*width: 33.4%;*/
-    width: 50%;
-}
-
-#col3 {
-    /*width: 33.4%;*/
-    width: 50%;
-}
-
-#col0{
-    width: 50%;
-}
-
-#yt {
-    padding: 22% 0;
+#beatslytics {
+    padding: 20% 0;
     background-image: url("~src/assets/images/beatslytics/Beatslytics-intro2.jpg");
     background-position-x: -45px;
     background-size: 140%;
     text-align: center;
-    margin-right: 5px;
+    margin-bottom: $typical-margin;
     transition: all 0.3s ease-in-out;
+    @include round-corner();
 }
+
+#adc {
+    height: $card-double-height;
+    outline: 1px solid red;
+    background-color: red;
+    @include round-corner();
+}
+
+.middle-card-padding {
+    margin-top: $typical-margin;
+    margin-bottom: $typical-margin;
+}
+
+.neutral-card {
+    padding: $card-half-height 0;
+    background-color: $custom-grey;
+    margin: $typical-margin 0 0 0;
+    text-align: left;
+    display: flex;
+    @include round-corner();
+
+    h1 { margin-right: 10px }
+
+    p {
+        clear: both;
+        margin-top: 50px;
+        cursor: pointer;
+    }
+}
+
+.emoji {
+    font-size: 70px;
+}
+
+.font-for-emoji {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#col-1 {
+    width: 32.67%;
+    margin-right: 1%;
+}
+
+#col-2 {
+    width: 32.67%;
+    margin-right: 1%;
+}
+
+#col-3 {
+    width: 32.67%;
+}
+
 
 @media only screen and (min-width: 551px){
     /*not available for mobile*/
-    #proj:hover {
+    #apps:hover {
         transition: all 0.3s ease-in-out;
         /*background-size: 140%;*/
         /*above method is one approach that doesn't always work*/
         transform:scale(1.1,1.1);
     }
 
-    #yt:hover{
+    #beatslytics:hover{
         transition: all .3s ease-in-out;
         /*background-size: 220%;*/
         transform:scale(1.1,1.1);
@@ -257,26 +292,17 @@ body {
         width: 570px;
     }
 
-    #wrapper {
-        margin-top: 10%;
-    }
-}
-
-@media only screen and (max-width: 1350px) {
-    #wrapper {
-        margin-top: 13%;
-    }
 }
 
 @media only screen and (max-width: 1200px) {
     #main {
-        margin-left: 14%;
+        margin-top: $typical-margin;
     }
 
     #bg img {
         width: 520px;
     }
-    #gfx, #proj, #resume, #yt {
+    #gfx, #apps, #resume, #beatslytics {
         padding: 14% 0;
     }
 
@@ -284,7 +310,7 @@ body {
         margin-right: 0;
     }
 
-    #yt, #gfx{
+    #beatslytics, #gfx{
         margin-bottom: 5px;
     }
 
@@ -294,10 +320,6 @@ body {
 }
 
 @media only screen and (max-width: 1100px) {
-    #wrapper {
-        margin-top: 8%;
-    }
-
     #bg img {
         width: 450px;
     }
@@ -305,7 +327,7 @@ body {
 
 @media only screen and (max-width: 1000px) {
     #main {
-        margin-left: 11%;
+        margin-top: $typical-margin;
     }
 }
 
@@ -314,7 +336,7 @@ body {
         float: none;
         /*!*margin-left: 25%;*!*/
         /*width: 300px;*/
-        margin-top: 5%;
+        margin-top: $typical-margin;
         margin-bottom: 30%;
     }
 
@@ -335,7 +357,7 @@ body {
 
 @media only screen and (max-width: 600px) {
     #social_media {
-        margin-top: 15%;
+        margin-top: $typical-margin;
     }
 
     #bg img {
@@ -359,7 +381,7 @@ body {
         width: 100%;
     }
 
-    #yt, #gfx, #proj, #resume{
+    #beatslytics, #gfx, #apps, #resume{
         margin-left: 0;
         margin-right: 0;
         margin-bottom: 0;
