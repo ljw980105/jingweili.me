@@ -3,6 +3,7 @@ $card-half-height: 4%;
 $card-single-height: 20%;
 $card-double-height: 40%;
 $custom-grey: rgb(242, 242, 242);
+$adc-red: rgb(245, 58, 41);
 $card-top: 30px;
 
 @mixin round-corner {
@@ -75,6 +76,7 @@ body {
 }
 
 ._center {
+    width: 100%;
     text-align: center;
 }
 
@@ -156,7 +158,7 @@ body {
 
 #wrapper {
     display: flex;
-    margin: $card-top 10% 0 10%;
+    margin: $card-top auto 0 auto;
     max-width: 1350px;
 }
 
@@ -170,13 +172,20 @@ body {
     }
 }
 
-#wrapper a {
+.large-anchor {
     color: white;
     font-size: 30px;
     font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
     font-weight: bold;
     text-decoration: none;
     text-shadow: 3px 3px 2px black;
+    transition: all .1s ease-in;
+    &:link, &:visited {
+        color: white;
+    }
+    &:hover {
+        color: orangered;
+    }
 }
 
 #beatslytics {
@@ -191,10 +200,53 @@ body {
 }
 
 #adc {
-    height: $card-double-height;
-    outline: 1px solid red;
-    background-color: red;
+    height: 480px;
+    background-color: $adc-red;
     @include round-corner();
+    background-image: url("~src/assets/images/home/adc.png");
+    background-size: 90%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-bottom: $typical-margin;
+
+    & a {
+        text-align: center;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+        text-decoration: none;
+        &:hover, &:visited {
+           text-decoration: underline;
+        }
+    }
+}
+
+#adc-icons {
+    width: 80%;
+    padding: 0 10%;
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+
+    div {
+        width: 30%;
+    }
+}
+
+#bio {
+    height: 493px;
+    background-position: center bottom;
+    background-image: url("~src/assets/images/home/jing-frc2017.jpg");
+    background-size: 180%;
+    @include round-corner();
+    position: relative;
+
+    a {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 70px;
+    }
 }
 
 .middle-card-padding {
