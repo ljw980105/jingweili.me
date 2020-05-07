@@ -38,7 +38,7 @@
 
 </div>
 
-<div id="wrapper">
+<div id="wrapper" class="width-container">
     <div id="col-1">
         <div id="beatslytics">
             <a class="large-anchor" href="Beatslytics.html">iOS App <br/>Beatslytics</a>
@@ -47,7 +47,7 @@
         <div class="neutral-card middle-card-padding">
             <div class="flex center_div">
                 <h1 class="emoji">🖥</h1>
-                <p class="font-for-emoji clear-text-paddings orange-hover-fx">My PC <br> Specs</p>
+                <p (click)="togglePCSetup()" class="font-for-emoji clear-text-paddings orange-hover-fx">My PC <br> Specs</p>
             </div>
         </div>
 
@@ -97,7 +97,7 @@
         </div>
 
         <div id="bio">
-            <a class="large-anchor">About Me</a>
+            <p (click)="toggleAboutPage()" class="large-anchor">About Me</p>
         </div>
 
     </div>
@@ -123,5 +123,9 @@
         </div>
     </div>
 </div>
+
+<app-pc-setup id="pc-setup" *ngIf="showPCSetup"></app-pc-setup>
+
+<app-about id="about" *ngIf="showAboutPage"></app-about>
 
 <app-footer [showTopBorder]="false"></app-footer>

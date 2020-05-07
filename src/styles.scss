@@ -1,4 +1,5 @@
 @import "fonts";
+@import "width-container";
 
 /*For selection color*/
 ::-moz-selection { /* Code for Firefox */
@@ -28,7 +29,7 @@ html, body {
 
 .round-corner {
     border-radius: 10px 10px 10px 10px;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .center_div {
@@ -44,4 +45,8 @@ html, body {
 .center-text-absolute {
     width: 100%;
     text-align: center;
+}
+
+.helvetica {
+    font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }

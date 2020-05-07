@@ -1,0 +1,17 @@
+<div class="additional-components round-corner width-container">
+    <h1 class="helvetica">My PC Setup</h1>
+
+    <table class="helvetica">
+        <tr>
+            <th>Component</th>
+            <th>Name</th>
+            <th>Buy</th>
+        </tr>
+        <tr *ngFor="let entry of pcSetupEntries">
+            <th>{{entry.partName}}</th>
+            <th>{{entry.partDetail}}</th>
+            <th><a href="{{entry.partPurchaseLink}}" target="_blank">Link</a></th>
+        </tr>
+    </table>
+
+</div>
