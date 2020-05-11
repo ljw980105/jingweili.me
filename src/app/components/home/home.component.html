@@ -58,7 +58,7 @@
         <div class="neutral-card middle-card-padding">
             <div class="flex center_div">
                 <h1 class="emoji">📞</h1>
-                <p class="font-for-emoji clear-text-paddings orange-hover-fx">Contact <br> Me</p>
+                <p (click)="toggleContactsPage()" class="font-for-emoji clear-text-paddings orange-hover-fx">Contact <br> Me</p>
             </div>
         </div>
     </div>
@@ -127,5 +127,7 @@
 <app-pc-setup id="pc-setup" *ngIf="showPCSetup"></app-pc-setup>
 
 <app-about id="about" *ngIf="showAboutPage"></app-about>
+
+<app-contacts id="contacts" *ngIf="showContacts"></app-contacts>
 
 <app-footer [showTopBorder]="false"></app-footer>

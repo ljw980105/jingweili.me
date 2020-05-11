@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {addAnimation} from '../../models/Animations';
 
 @Component({
     selector: 'app-about',
+    animations: [addAnimation],
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss']
 })

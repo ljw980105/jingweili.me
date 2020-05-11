@@ -50,3 +50,15 @@ html, body {
 .helvetica {
     font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
+
+.orange-underline-anchor {
+    text-decoration: underline;
+    transition: all .1s ease-in;
+    &:visited, &:link {
+        color: black;
+    }
+    &:hover {
+        color: orangered;
+    }
+}
+

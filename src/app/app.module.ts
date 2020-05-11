@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PcSetupComponent } from './minor-components/pc-setup/pc-setup.component';
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import { AboutComponent } from './minor-components/about/about.component';
+import { ContactsComponent } from './minor-components/contacts/contacts.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { AboutComponent } from './minor-components/about/about.component';
         FooterComponent,
         HomeComponent,
         PcSetupComponent,
-        AboutComponent
+        AboutComponent,
+        ContactsComponent
     ],
     imports: [
         BrowserModule,

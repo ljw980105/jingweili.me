@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {addAnimation, popupAnimation} from '../../models/Animations';
 import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
 import {Subject} from 'rxjs';
 import {delay, filter} from 'rxjs/operators';
 
 @Component({
     selector: 'app-home',
-    animations: [popupAnimation],
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
@@ -17,6 +15,7 @@ export class HomeComponent implements OnInit {
 
     showPCSetup = false;
     showAboutPage = false;
+    showContacts = false;
 
     constructor(private scrollToService: ScrollToService) {
     }
@@ -30,14 +29,20 @@ export class HomeComponent implements OnInit {
 
     togglePCSetup() {
         this.showPCSetup = !this.showPCSetup;
-        this.showAboutPage= false;
+        this.showAboutPage = this.showContacts = false;
         this.scrollToSubject.next([this.showPCSetup, 'pc-setup']);
     }
 
     toggleAboutPage() {
         this.showAboutPage = !this.showAboutPage;
-        this.showPCSetup = false;
+        this.showPCSetup = this.showContacts = false;
         this.scrollToSubject.next([this.showAboutPage, 'about']);
+    }
+
+    toggleContactsPage() {
+        this.showContacts = !this.showContacts;
+        this.showAboutPage = this.showPCSetup = false;
+        this.scrollToSubject.next([this.showContacts, 'contacts']);
     }
 
     scrollTo(id: string) {

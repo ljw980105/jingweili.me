@@ -1,4 +1,4 @@
-<div class="additional-components round-corner width-container">
+<div class="additional-components round-corner width-container" @addAnimation>
     <h1 class="helvetica">My PC Setup</h1>
 
     <table class="helvetica">
@@ -10,7 +10,7 @@
         <tr *ngFor="let entry of pcSetupEntries">
             <th>{{entry.partName}}</th>
             <th>{{entry.partDetail}}</th>
-            <th><a href="{{entry.partPurchaseLink}}" target="_blank">Link</a></th>
+            <th><a class="orange-underline-anchor" href="{{entry.partPurchaseLink}}" target="_blank">Link</a></th>
         </tr>
     </table>
 
