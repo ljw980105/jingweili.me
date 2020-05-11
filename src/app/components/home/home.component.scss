@@ -265,12 +265,11 @@ body {
     }
 }
 
-@media only screen and (max-width: 1517px) {
-    #bg img {
-        margin-top: 7%;
-        width: 570px;
-    }
+@media only screen and (max-width: 1450px) {
+    #bio {
+        background-size: 200%;
 
+    }
 }
 
 @media only screen and (max-width: 1200px) {
