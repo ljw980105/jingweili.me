@@ -51,6 +51,13 @@ html, body {
     font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
 
+.center_img  { /*THE AMAZING CODE THAT CENTERS THE GODDAMN IMAGE*/ }
+
+.center_img img  {
+    display: block;
+    margin: 0 auto;
+}
+
 .orange-underline-anchor {
     text-decoration: underline;
     transition: all .1s ease-in;
