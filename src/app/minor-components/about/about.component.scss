@@ -8,7 +8,6 @@
 }
 
 #profile-image {
-
     margin-left: auto;
     width: 20%;
     margin-right: 2.5%;
@@ -24,3 +23,34 @@
         line-height: 1.4;
     }
 }
+
+@media screen and (max-width: 1450px) {
+    #profile-image {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #profile-image {
+        margin-top: 5%;
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #about-main {
+        display: block;
+        padding: 2% 10%;
+    }
+    #profile-image, #intro-text {
+        width: 100%;
+    }
+    #intro-text h1 {
+        text-align: center;
+    }
+    #profile-image img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+

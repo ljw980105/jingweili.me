@@ -10,12 +10,12 @@
                 <ul>
                     <li (click)="toggle(1)"><h4>{{plugMinusFromBool(pagesExpanded)}}Pages</h4></li>
                     <div class="slideContents" [@shrinkOrExpand]="pagesExpanded ? 'expanded' : 'shrinked'">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="Bio.html">About</a></li>
+                        <li><a [routerLink]="['/']">Home</a></li>
+                        <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">About</a></li>
                         <li><a href="Resume.html">Resume</a></li>
                         <li><a href="Graphic%20Design.html">Graphic Design </a></li>
                         <li><a href="Games.html">Games</a></li>
-                        <li><a href="Contacts.html">Contact Me</a></li>
+                        <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'contacts'}">Contact Me</a></li>
                     </div>
                 </ul>
             </div>

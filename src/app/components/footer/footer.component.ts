@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {shrinkOrExpand} from '../../models/Animations';
-import {fromEvent} from 'rxjs';
-import {filter, map, share} from 'rxjs/operators';
+import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 
 @Component({
     selector: 'app-footer',
@@ -21,42 +20,32 @@ export class FooterComponent implements OnInit {
     designsExpanded = true;
     socialsExpanded = true;
     minimizedVersionShown = false;
+    widthObservable: WidthBreakpointObserver;
 
-    constructor(private router: Router) {
+    constructor() {
         this.year = `${(new Date()).getFullYear()}`;
     }
 
     ngOnInit(): void {
         this.topBorderStyle = this.showTopBorder ? '1px solid #888888' : 'none';
+        this.widthObservable = new WidthBreakpointObserver(500);
 
         if (window.innerWidth < 500) {
             this.minimizedVersionShown = true;
             this.expandEverything(false);
         }
 
-        const widthObservable = fromEvent(window, 'resize')
-            .pipe(map(() => window.innerWidth))
-            .pipe(share());
-
-        widthObservable
-            .pipe(filter((w) => w < 500)) // less than cutoff, collapse all menus
-            .pipe(filter(() => !this.minimizedVersionShown))
+        this.widthObservable.lessThanWidth
             .subscribe(() => {
                 this.minimizedVersionShown = true;
                 this.expandEverything(false);
             });
 
-        widthObservable
-            .pipe(filter((w) => w > 500)) // more than cutoff, expand everything
-            .pipe(filter(() => this.minimizedVersionShown))
+        this.widthObservable.moreThanWidth
             .subscribe(() => {
                 this.minimizedVersionShown = false;
                 this.expandEverything(true);
             });
-    }
-
-    navigateToHome() {
-        this.router.navigateByUrl('/');
     }
 
     toggle(index: number) {
