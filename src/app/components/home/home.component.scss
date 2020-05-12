@@ -6,19 +6,21 @@ $custom-grey: rgb(242, 242, 242);
 $adc-red: rgb(245, 58, 41);
 $card-top: 30px;
 
+$single-height-mini: 200px;
+$double-height-mini: $single-height-mini * 2 + $typical-margin;
+
 @mixin round-corner {
     border-radius: 10px 10px 10px 10px;
     overflow:hidden;
 }
 
-body {
-    margin: auto;
+@mixin zoom-fx($amount) {
+    transition: all 0.3s ease-in-out;
+    transform:scale($amount, $amount);
 }
 
-#bg {
-    float: right;
-    margin-top: -14%;
-    height: auto;
+body {
+    margin: auto;
 }
 
 #main {
@@ -84,12 +86,15 @@ body {
         padding: 0 1.68%;
         & img {
             filter: invert(100);
+
+            &:hover {
+                @include zoom-fx(1.25);
+            }
         }
     }
 }
 
 #gfx {
-    height: $single-height;
     background-image: url("~src/assets/images/home/indexbg1x.jpg");
     background-size: 150% auto;
     text-align: center;
@@ -99,7 +104,6 @@ body {
 }
 
 #apps {
-    height: $single-height;
     background-image: url("~src/assets/images/apps/AppFolioBg.svg");
     background-size: 250%;
     text-align: center;
@@ -141,7 +145,6 @@ body {
 }
 
 #beatslytics {
-    height: $single-height;
     background-image: url("~src/assets/images/beatslytics/Beatslytics-intro2.jpg");
     background-position-x: -45px;
     background-size: 140%;
@@ -182,6 +185,10 @@ body {
 
     div {
         width: 30%;
+    }
+    img {
+        width: 70px;
+        height: 70px;
     }
 }
 
@@ -224,12 +231,16 @@ body {
     display: flex;
     @include round-corner();
 
-    h1 { margin-right: 10px }
+    h1 {
+        margin-right: 10px;
+        margin-left: auto;
+    }
 
     p {
         clear: both;
         margin-top: 50px;
         cursor: pointer;
+        margin-right: auto;
     }
 }
 
@@ -277,10 +288,6 @@ body {
         margin-top: $typical-margin;
     }
 
-    #bg img {
-        width: 520px;
-    }
-
     #gfx{
         margin-right: 0;
     }
@@ -288,17 +295,50 @@ body {
     #beatslytics, #gfx{
         margin-bottom: 5px;
     }
+
+    .background-card, .neutral-card {
+        height: $single-height-mini;
+    }
+
+    #adc, #bio {
+        height: $double-height-mini;
+    }
 }
 
 @media only screen and (max-width: 1100px) {
-    #bg img {
-        width: 450px;
+    .background-card a, .neutral-card p {
+        font-size: 25px;
+    }
+
+    .neutral-card h1 {
+        margin-top: 50px;
+        font-size: 45px;
+    }
+
+    #main-wrapper {
+        background-size: 110%;
+    }
+
+    #adc-icons {
+        img {
+            width: 50px;
+            height: 50px;
+        }
+        a {
+           font-size: 12px;
+        }
+    }
+    #social_media {
+        margin-left: -15%;
     }
 }
 
 @media only screen and (max-width: 1000px) {
     #main {
         margin-top: $typical-margin;
+    }
+    #bio {
+        background-size: 260%;
     }
 }
 
@@ -308,7 +348,24 @@ body {
         margin-top: $typical-margin;
         margin-bottom: 30%;
     }
+    #gfx, #beatslytics {
+        background-size: auto 100%;
+    }
+    #main-wrapper {
+        padding: 7% 0;
+    }
 
+}
+
+@media only screen and (max-width: 850px) {
+    #adc-icons {
+        width: 90%;
+        padding: 0 5%;
+    }
+    #main-wrapper { background-size: 118%; }
+}
+
+@media only screen and (max-width: 750px) {
     #main {
         margin-top: -20%;
         text-align: center;
@@ -317,14 +374,6 @@ body {
         margin-left: 5%;
         margin-right: 5%;
     }
-
-    #wrapper a {
-        font-size: 25px;
-    }
-
-}
-
-@media only screen and (max-width: 700px) {
     #social_media {
         margin-top: $typical-margin;
     }
@@ -337,29 +386,36 @@ body {
         width: 100%;
         margin-right: 0;
     }
-
-
-    #bg img {
-        width: 350px;
-        /*margin-left: -5%;*/
+    #gfx, #beatslytics {
+        background-size: 140%;
     }
-
-    #main img {
-        margin-top: -5%;
-        margin-bottom: 12%;
+    #col-1, #col-2 {
+        margin-bottom: $typical-margin;
+    }
+    #adc {
+        background-size: 60%;
+    }
+    #bio {
+        background-size: 180%;
+    }
+    #adc-icons {
+        width: 80%;
+        padding: 0 10%;
+    }
+    #main-wrapper {
+        background-image: url("~src/assets/images/home/website-bg-mobile.jpg");
+        background-size: 100%;
+        background-position: top center;
+        padding: 30% 0 5% 0;
+        background-repeat: no-repeat;
+        background-color: rgb(20, 20, 20);
+    }
+    #intro {
+        margin-top: 80%;
     }
 }
 
 @media only screen and (max-width: 550px){
-    #quad1, #quad2{
-        width:100%;
-        display: block;
-
-    }
-    #col1, #col2, #col3, #col0 {
-        width: 100%;
-    }
-
     #beatslytics, #gfx, #apps, #resume{
         margin-left: 0;
         margin-right: 0;
@@ -382,29 +438,16 @@ body {
     #intro h2 {
         font-size: 35px;
     }
-}
-
-/*FOR iPhone 7 Plus*/
-@media only screen and (max-width: 414px) {
-    #social_media{
-        margin-left: -10%;
+    #adc {
+        background-size: 90%;
     }
-}
-
-/*iphone 7 regular*/
-@media only screen and (max-width:  375px){
-    #social_media{
-        margin-left: -15%;
+    #social_media img {
+        width: 40px;
+        height: 40px;
     }
 }
 
 @media only screen and (max-width: 374px) {
-    /*for the iphone se and other 4 inch phones*/
-    #social_media img {
-        width: 42px;
-        height: 42px;
-    }
-
     #intro h1 {
         font-size: 45px;
     }
@@ -413,11 +456,4 @@ body {
         font-size: 30px;
     }
 }
-
-@media only screen and (max-width: 330px){
-    #bg img {
-        width: 250px;
-    }
-}
-
 
