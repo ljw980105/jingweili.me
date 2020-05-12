@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
 import {Subject} from 'rxjs';
 import {delay, filter} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -17,7 +18,10 @@ export class HomeComponent implements OnInit {
     showAboutPage = false;
     showContacts = false;
 
-    constructor(private scrollToService: ScrollToService) {
+    constructor(
+        private scrollToService: ScrollToService,
+        private router: ActivatedRoute) {
+
     }
 
     ngOnInit(): void {
@@ -25,6 +29,14 @@ export class HomeComponent implements OnInit {
             .pipe(filter(([scroll, id]) => scroll))
             .pipe(delay(50)) // need to delay to make sure components are added to DOM
             .subscribe(([scroll, id]) => this.scrollTo(id));
+
+        this.router.queryParams
+            .pipe(filter(params => params.scrollToId === 'contacts'))
+            .subscribe(() => this.toggleContactsPage());
+
+        this.router.queryParams
+            .pipe(filter(params => params.scrollToId === 'about'))
+            .subscribe(() => this.toggleAboutPage());
     }
 
     togglePCSetup() {
