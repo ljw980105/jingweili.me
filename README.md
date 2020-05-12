@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ljw980105/jingweili.me.svg?branch=master)](https://travis-ci.org/ljw980105/jingweili.me)
+
 # Personal Website
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
