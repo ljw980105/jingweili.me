@@ -11,6 +11,7 @@ import { PcSetupComponent } from './minor-components/pc-setup/pc-setup.component
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import { AboutComponent } from './minor-components/about/about.component';
 import { ContactsComponent } from './minor-components/contacts/contacts.component';
+import { AppsComponent } from './components/apps/apps.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { ContactsComponent } from './minor-components/contacts/contacts.componen
         HomeComponent,
         PcSetupComponent,
         AboutComponent,
-        ContactsComponent
+        ContactsComponent,
+        AppsComponent
     ],
     imports: [
         BrowserModule,
