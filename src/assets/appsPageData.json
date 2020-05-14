@@ -1,0 +1,109 @@
+{
+    "apps": [
+        {
+            "imageLink": "assets/images/apps/BeatslyticsIcon.png",
+            "name": "BEATSLYTICS",
+            "description":"A kick-ass iOS music analytics app that produces analytics data based on the user's listening habits. <br/> <strong>Currently published on the App Store.</strong>",
+            "description2": "Frameworks: MediaPlayer & CoreData",
+            "linkTitle": "View App >",
+            "link": "Beatslytics.html"
+        },
+        {
+            "imageLink": "assets/images/apps/ADCIcon.png",
+            "name": "AUTOMATIC DOOR CONTROL",
+            "description":"An open source iOS app that enables students with disability to open accessible doors. It uses BLE to communicate with hardware attached to the door to open it. <br> <strong>Currently published on the App Store.</strong>",
+            "description2": "Frameworks: CoreBluetooth, MapKit, Lottie & Alamofire",
+            "linkTitle": "View App >",
+            "link": "https://apps.apple.com/us/app/automatic-door-control/id1500529300"
+        },
+        {
+            "imageLink": "assets/images/apps/3DVisualizerIcon.png",
+            "name": "3D VISUALIZER",
+            "description":"An app for viewing CAD models on iOS devices, with options to adjust lighting effects, execute animations and project models into the real world with <strong>Augmented Reality.</strong>",
+            "description2": "Frameworks: ARKit",
+            "linkTitle": "View App >",
+            "link": "https://github.com/CSDTs/3D_Visualizer/tree/3D-Visualizer-iOS"
+        },
+        {
+            "imageLink": "assets/images/apps/SmoreIcon.png",
+            "name": "S'MORE",
+            "description":"A one of a kind mixed-service iOS music streaming app that combines Apple Music, Spotify and YouTube into one app, so you don't have to switch between apps to listen to music. ",
+            "description2": "Frameworks: RxSwift, Apple Music API, Alamofire & CoreData",
+            "linkTitle": "View App >",
+            "link": "https://github.com/s-more/Smore"
+        },
+        {
+            "imageLink": "assets/images/apps/SmartDeskIcon.png",
+            "name": "SMARTDESK",
+            "description":"An innovative smart home iOS app that harnesses the power of Bluetooth Low Energy (BLE) to remote control a smart desk.",
+            "description2": "Frameworks: ARKit",
+            "linkTitle": "View App >",
+            "link": "https://github.com/ljw980105/SmartDesk"
+        }
+    ],
+    "skills": [
+        {
+            "imageLink": "assets/images/apps/AppleTechIcon.png",
+            "name": "iOS Development",
+            "description":"I am a proficient iOS & watchOS developer, having made 5 apps and successfully completed an iOS internship. I am also proficient in Xcode, Swift & Objective C."
+        },
+        {
+            "imageLink": "assets/images/apps/AndroidTechIcon.png",
+            "name": "Android Development",
+            "description":"While Android Development is not where my focus is, I do have a good understanding of making Android apps with Java and Kotlin."
+        },
+        {
+            "imageLink": "assets/images/apps/xdIcon.png",
+            "name": "UI / UX Design",
+            "description":"I'm both a designer and an engineer. As a graphic designer of the RPI Union, I have 2.5+ years of graphic design experience. That leads to my ability in UI/UX design with Adobe XD."
+        },
+        {
+            "imageLink": "assets/images/apps/RxIcon.png",
+            "name": "Reactive Programming",
+            "description":"After reading an RxSwift book by Ray Wenderlich, I gained knowledge in Reactive Programming in the form of RxSwift, and was able to apply this skill in building the S'more App."
+        },
+        {
+            "imageLink": "assets/images/apps/ARIcon.png",
+            "name": "Augmented Reality",
+            "description":"Through the production of the 3D Visualizer app, I've gained experience producing Augmented Reality applications in iOS with the iOS framework ARKit and SceneKit."
+        },
+        {
+            "imageLink": "assets/images/apps/AlamofireIcon.png",
+            "name": "Networking",
+            "description":"I have experience in iOS Networking through the uses of frameworks including Alamofire and NSURLSession. With them, I've produced apps that interact with the Internet via REST APIs."
+        },
+        {
+            "imageLink": "assets/images/apps/BluetoothIcon.png",
+            "name": "Bluetooth",
+            "description":"I have built Arduino hardware that establishes a Bluetooth Low Energy signal and produced apps to send and receive information from the hardware."
+        },
+        {
+            "imageLink": "assets/images/apps/musicIcon.png",
+            "name": "Music Streaming",
+            "description":"I've built two music streaming apps that either access the user's music library to play music or pull data from the Apple Music API to browse and play the latest addition from any artists."
+        }
+    ],
+    "experiences": [
+        {
+            "imageLink": "assets/images/apps/DkIcon.png",
+            "position": "Software Engineering Intern",
+            "time": "Summer 2019",
+            "company": "DraftKings, Inc",
+            "accomplishments": [
+                "Developed iOS & Android frameworks to scan the barcodes in driver’s licenses to report metadata for identification purposes.",
+                "Combined the above Android & iOS frameworks into a Xamarin.Forms library and developed tutorials on doing such, which enabled DraftKings’ Xamarin team to leverage the power of native mobile libraries.",
+                "Added new features to DraftKings’ iOS app’s login flow using the VIPER architecture to improve user experiences. "
+            ]
+        },
+        {
+            "imageLink": "assets/images/apps/ModMedIcon.png",
+            "position": "Mobile Software Engineering Intern",
+            "time": "Summer 2018",
+            "company": "Modernizing Medicine",
+            "accomplishments": [
+                "Worked as an iOS developer to maintain three apps from Modernizing Medicine: PocketEMA, Telehealth and Kiosk, with Swift and Objective-C. These apps directly improve the lives of more than 160 million patients.",
+                "Designed and implemented new features, new UI elements and carried out bug fixes while collaborating closely with a full-scale Scrum team."
+            ]
+        }
+    ]
+}

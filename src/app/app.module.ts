@@ -11,6 +11,9 @@ import { PcSetupComponent } from './minor-components/pc-setup/pc-setup.component
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import { AboutComponent } from './minor-components/about/about.component';
 import { ContactsComponent } from './minor-components/contacts/contacts.component';
+import { AppsComponent } from './components/apps/apps.component';
+import { DualAppComponent } from './minor-components/dual-app/dual-app.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -20,10 +23,13 @@ import { ContactsComponent } from './minor-components/contacts/contacts.componen
         HomeComponent,
         PcSetupComponent,
         AboutComponent,
-        ContactsComponent
+        ContactsComponent,
+        AppsComponent,
+        DualAppComponent
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         ScrollToModule.forRoot()

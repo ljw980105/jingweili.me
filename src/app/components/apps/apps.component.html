@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<div id="appFolio_bg"></div>
+
+<div id="title" class="title width-container">
+    <h1>The Definitive App Portfolio</h1>
+    <p>App development is in my genes. Here's why.</p>
+    <h1> <br/> Apps I've Made<br/></h1>
+</div>
+
+<div id="apps" *ngFor="let dualApps of apps" class="width-container">
+    <app-dual-app [app1]="dualApps[0]" [app2]="dualApps[1]"></app-dual-app>
+</div>
+
+<h1 class="title">Work Experience</h1>
+
+<div id="experience" class="width-container">
+    <div class="experience-style" *ngFor="let exp of experiences">
+        <img width="200" height="200" src="{{exp.imageLink}}">
+        <div>
+            <h2> {{exp.position}}</h2>
+            <h3> {{exp.time}}&nbsp;@&nbsp;{{exp.company}}</h3>
+            <h4 *ngFor="let accomplishment of exp.accomplishments">{{accomplishment}}</h4>
+        </div>
+    </div>
+</div>
+
+<h1 style="margin-top: 3%" class="title">Tech Stack</h1>
+
+<div id="tech_stack" *ngFor="let dualSkills of skills" class="width-container">
+    <app-dual-app [app1]="dualSkills[0]" [app2]="dualSkills[1]"></app-dual-app>
+</div>
+
+<app-footer [showTopBorder]="true" [theme]="'dark'"></app-footer>

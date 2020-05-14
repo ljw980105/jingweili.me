@@ -3,12 +3,18 @@
 >
     <div id="footerx">
         <div id="personal_logo" [routerLink]="['/']">
-            <img style="margin-top: 18px" src="assets/images/footer/PersonalLogoBlack.png">
+            <img
+                style="margin-top: 18px"
+                src="assets/images/footer/PersonalLogoBlack.png"
+                [ngStyle]="{'filter': logoInvertAmount}"
+            >
         </div>
         <div id="section1">
             <div id="navigation">
                 <ul>
-                    <li (click)="toggle(1)"><h4>{{plugMinusFromBool(pagesExpanded)}}Pages</h4></li>
+                    <li (click)="toggle(1)" [ngStyle]="{'color': primaryFontColor}">
+                        <h4>{{plugMinusFromBool(pagesExpanded)}}Pages</h4>
+                    </li>
                     <div class="slideContents" [@shrinkOrExpand]="pagesExpanded ? 'expanded' : 'shrinked'">
                         <li><a [routerLink]="['/']">Home</a></li>
                         <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">About</a></li>
@@ -21,11 +27,13 @@
             </div>
             <div id="projects_footer">
                 <ul>
-                    <li (click)="toggle(2)"><h4>{{plugMinusFromBool(projectsExpanded)}}Projects</h4></li>
+                    <li (click)="toggle(2)" [ngStyle]="{'color': primaryFontColor}">
+                        <h4>{{plugMinusFromBool(projectsExpanded)}}Projects</h4>
+                    </li>
                     <div class="slideContents" [@shrinkOrExpand]="projectsExpanded ? 'expanded' : 'shrinked'">
                         <li><a href="Projects.html">All Projects</a></li>
                         <li><a href="Games.html">2048 Game</a></li>
-                        <li><a href="AppFolio.html">Apps</a></li>
+                        <li><a [routerLink]="['/apps']">Apps</a></li>
                         <li><a href="Beatslytics.html">Beatslytics</a></li>
                         <li><a href="Litec.html">Embedded Control</a></li>
                         <li><a href="https://github.com/CSDTs/3D_Visualizer/tree/3D-Visualizer-iOS">3D Visualizer</a></li>
@@ -36,7 +44,9 @@
         <div id="section2">
             <div id="graphics_footer">
                 <ul>
-                    <li (click)="toggle(3)"><h4>{{plugMinusFromBool(designsExpanded)}}Designs</h4></li>
+                    <li (click)="toggle(3)" [ngStyle]="{'color': primaryFontColor}">
+                        <h4>{{plugMinusFromBool(designsExpanded)}}Designs</h4>
+                    </li>
                     <div class="slideContents" [@shrinkOrExpand]="designsExpanded? 'expanded' : 'shrinked'">
                         <li><a href="https://www.behance.net/gallery/47281675/2026-Time-Capsule">Time Capsule</a></li>
                         <li><a href="https://www.behance.net/gallery/52343049/RPI-Class-of-2021-Sticker-Design">2021 Stickers</a></li>
@@ -49,7 +59,9 @@
             </div>
             <div id="social_media_footer">
                 <ul>
-                    <li (click)="toggle(4)"><h4>{{plugMinusFromBool(socialsExpanded)}}Social</h4></li>
+                    <li (click)="toggle(4)" [ngStyle]="{'color': primaryFontColor}">
+                        <h4>{{plugMinusFromBool(socialsExpanded)}}Social</h4>
+                    </li>
                     <div class="slideContents" [@shrinkOrExpand]="socialsExpanded ? 'expanded' : 'shrinked'">
                         <li><a href="https://www.facebook.com/li.jingwei.94">Facebook</a></li>
                         <li><a href="https://www.instagram.com/ljw980105">Instagram</a></li>
@@ -64,10 +76,12 @@
     </div>
 
     <div id="mobile_logo">
-        <img src="assets/images/footer/PersonalLogo.png">
+        <img [ngStyle]="{'filter': logoInvertAmount}" src="assets/images/footer/PersonalLogo.png">
     </div>
 </div>
+
 <h4
     id="standalone_footer"
     style="text-align: center"
-> &copy; JING WEI LI 2017-{{year}}. Proudly Created from Scratch</h4>
+    [ngStyle]="{'color': primaryFontColor}"
+> &copy; JING WEI LI 2017-{{year}}. Proudly Created with Angular</h4>

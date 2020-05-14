@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {AfterViewInit, Component, ElementRef, Input, OnInit} from '@angular/core';
 import {shrinkOrExpand} from '../../models/Animations';
 import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 
@@ -10,11 +9,11 @@ import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
     styleUrls: ['./footer.component.scss']
 })
 
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, AfterViewInit {
     @Input() showTopBorder: boolean;
+    @Input() theme = 'light';
 
     year: string;
-    topBorderStyle: string;
     pagesExpanded = true;
     projectsExpanded = true;
     designsExpanded = true;
@@ -22,12 +21,29 @@ export class FooterComponent implements OnInit {
     minimizedVersionShown = false;
     widthObservable: WidthBreakpointObserver;
 
-    constructor() {
+    // color theme
+    topBorderStyle: string;
+    bgColor: string;
+    logoInvertAmount: string;
+    primaryFontColor: string;
+
+    constructor(private elementRef: ElementRef) {
         this.year = `${(new Date()).getFullYear()}`;
     }
 
     ngOnInit(): void {
         this.topBorderStyle = this.showTopBorder ? '1px solid #888888' : 'none';
+        if (this.theme === 'light') {
+            this.bgColor = 'white';
+            this.primaryFontColor = 'black';
+            this.logoInvertAmount = 'invert(0)';
+        } else {
+            this.bgColor = 'black';
+            this.primaryFontColor = 'white';
+            this.logoInvertAmount = 'invert(100)';
+        }
+
+
         this.widthObservable = new WidthBreakpointObserver(500);
 
         if (window.innerWidth < 500) {
@@ -46,6 +62,10 @@ export class FooterComponent implements OnInit {
                 this.minimizedVersionShown = false;
                 this.expandEverything(true);
             });
+    }
+
+    ngAfterViewInit() {
+        this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = this.bgColor;
     }
 
     toggle(index: number) {
