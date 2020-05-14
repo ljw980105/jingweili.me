@@ -1,46 +1,11 @@
 $base-padding: 0 15% 5% 15%;
-$narrow-padding: 0 10% 5% 10%;
-$experience-paddding: 0 20%;
-$experience-paddding-medium: 0 15%;
-$experience-paddding-small: 0 10%;
-
-@mixin anchor-style {
-    a {
-        text-decoration: none;
-        font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-        font-size: 20px;
-
-        &:link, &:visited {
-            color: white;
-        }
-        &:hover {
-            color: white;
-            text-decoration: underline;
-        }
-    }
-}
-
-.anchor-tag-alignment {
-    text-align: center;
-}
+$narrow-padding: 0 8% 5% 8%;
+$experience-padding: 0 20%;
+$experience-padding-medium: 0 15%;
+$experience-padding-small: 0 5%;
 
 body {
     background-color: black;
-}
-
-.app {
-    h2 {
-        text-align: center;
-        font-size: 35px;
-        font-family: Mohave, sans-serif;
-        color: white;
-
-    }
-    img {
-        display: block;
-        margin: 0 auto;
-    }
-    margin-bottom: 15%;
 }
 
 p {
@@ -65,35 +30,12 @@ h1 {
     font-size: 45px;
 }
 
-.col1 {}
-.col2 {}
-.title {}
-
-.dual_columns {
-    display: flex;
-    padding: $base-padding;
-    background-size: 100% auto;
-    @include anchor-style;
-
-    .col1 {
-        width: 80%;
-        margin-right: 15%;
-    }
-
-    .col2 {
-        width: 80%;
-    }
-}
-
-#modmed {
-    padding: $experience-paddding;
-}
-
-#dk {
-    padding: $experience-paddding;
+.title {
+    padding: 0 5%;
 }
 
 .experience-style {
+    padding: $experience-padding-medium;
     margin-top: 4%;
     display: flex;
     div {
@@ -121,64 +63,27 @@ h1 {
     }
 }
 
-@media only screen and (max-width: 1200px) {
-    .dual_columns {
-        padding: 0 10% 5% 10%;
-
-        .col1 {
-            margin-right: 10%;
-        }
-    }
-}
-
 @media only screen and (max-width: 1000px) {
-    .dual_columns {
-        padding: 0 5% 2% 5%;
-
-        .col1 {
-            margin-right: 5%;
-        }
+    .experience-style {
+        padding: $experience-padding-medium;
     }
-    #modmed { padding: $experience-paddding-medium; }
-    #dk { padding: $experience-paddding-medium; }
 }
 
 @media only screen and (max-width: 900px) {
-    .dual_columns {
-        padding: 0 15% 5% 15%;
-        display: block;
-        .col1 {
-            width: 100%;
-            margin-right: 0;
-        }
-        .col2 {
-            width: 100%;
-        }
-    }
 
     .app img { display: initial; }
 
     h1, h2, p { text-align: left; }
 
     h1 { font-size: 35px; }
-    .app h2 { text-align: left; }
 
-    .title { padding: $base-padding; }
+    .title { padding: $narrow-padding; }
 
     .anchor-tag-alignment { text-align: left; }
 
     .experience-style {
+        padding: $experience-padding-small;
         display: block;
         div { padding: 0 0; }
     }
-    #modmed { padding: $experience-paddding-medium; }
-    #dk { padding: $experience-paddding-medium; }
-
-}
-
-@media only screen and (max-width: 650px) {
-    .dual_columns { padding: $narrow-padding; }
-    .title { padding:  $narrow-padding; }
-    #modmed { padding: $experience-paddding-small; }
-    #dk { padding: $experience-paddding-small; }
 }

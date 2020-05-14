@@ -1,158 +1,34 @@
-<div style="background-color: black">
-
 <app-navbar></app-navbar>
 
 <div id="appFolio_bg"></div>
 
-<div id="title" class="title">
+<div id="title" class="title width-container">
     <h1>The Definitive App Portfolio</h1>
     <p>App development is in my genes. Here's why.</p>
-    <h1> <br/>  Apps I've Made<br/></h1>
+    <h1> <br/> Apps I've Made<br/></h1>
 </div>
 
-<div id="apps" class="dual_columns">
-
-    <div class="col1">
-        <div id="app1" class="app">
-            <img width="200px" height="200px" src="assets/images/apps/BeatslyticsIcon.png">
-            <h2>BEATSLYTICS</h2>
-            <p> A kick-ass iOS music analytics app that produces analytics data based on the user's listening
-                habits. <br/> <strong>Currently published on the App Store.</strong></p>
-            <p><strong>Frameworks: MediaPlayer & CoreData</strong></p>
-            <div class="anchor-tag-alignment"><a href="Beatslytics.html">View App ></a></div>
-        </div>
-
-        <div id="app3" class="app">
-            <img width="200px" height="200px" src="assets/images/apps/3DVisualizerIcon.png">
-            <h2>3D VISUALIZER</h2>
-            <p> An app for viewing CAD models on iOS devices, with options to adjust lighting effects,
-                execute animations and project models into the real world with <strong>Augmented Reality.</strong></p>
-            <p><strong>Frameworks: ARKit</strong></p>
-            <div class="anchor-tag-alignment"><a href="https://github.com/CSDTs/3D_Visualizer/tree/3D-Visualizer-iOS">View App ></a></div>
-        </div>
-
-        <div id="app5" class="app">
-            <img width="200px" height="200px" src="assets/images/apps/SmoreIcon.png">
-            <h2>S'MORE</h2>
-            <p> A one of a kind mixed-service iOS music streaming app that combines Apple Music, Spotify and YouTube into one
-                app, so you don't have to switch between apps to listen to music. </p>
-            <p><strong>Frameworks: RxSwift, Apple Music API, Alamofire & CoreData</strong></p>
-            <div class="anchor-tag-alignment"><a href="https://github.com/s-more/Smore">View App ></a></div>
-        </div>
-    </div>
-
-    <div class="col2">
-        <div id="app2" class="app">
-            <img width="200px" height="200px" src="assets/images/apps/SmartDeskIcon.png">
-            <h2>SMARTDESK</h2>
-            <p>An innovative smart home iOS app that harnesses the power of Bluetooth Low Energy (BLE) to remote control
-                a smart desk.</p>
-            <p><strong>Frameworks: CoreBluetooth & Lottie</strong></p>
-            <div class="anchor-tag-alignment"><a href="https://github.com/ljw980105/SmartDesk">View App ></a></div>
-        </div>
-
-        <div id="app4" class="app">
-            <img width="200px" height="200px" src="assets/images/apps/ADCIcon.png">
-            <h2>AUTOMATIC DOOR CONTROL</h2>
-            <p>An open source iOS app that enables students with disability to open accessible doors.
-                It uses BLE to communicate with hardware attached to the door to open it.
-                <br> <strong>Currently published on the App Store.</strong>
-            </p>
-            <p><strong>Frameworks: CoreBluetooth, Lottie & Alamofire</strong></p>
-            <div class="anchor-tag-alignment"><a href="https://apps.apple.com/us/app/automatic-door-control/id1500529300">View App ></a></div>
-        </div>
-    </div>
+<div id="apps" *ngFor="let dualApps of apps" class="width-container">
+    <app-dual-app [app1]="dualApps[0]" [app2]="dualApps[1]"></app-dual-app>
 </div>
 
-<h1 style="margin-top: -4%" class="title">Work Experience</h1>
+<h1 class="title">Work Experience</h1>
 
-<div id="experience">
-    <div id="dk" class="experience-style">
-        <img width="200px" height="200px" src="assets/images/apps/DkIcon.png">
+<div id="experience" class="width-container">
+    <div class="experience-style" *ngFor="let exp of experiences">
+        <img width="200" height="200" src="{{exp.imageLink}}">
         <div>
-            <h2> Software Engineering Intern</h2>
-            <h3> Summer 2019 @ DraftKings</h3>
-            <h4> Developed iOS & Android frameworks to scan the barcodes in driver’s licenses to report metadata
-                for identification purposes.
-            </h4>
-            <h4> Combined the above Android & iOS frameworks into a Xamarin.Forms library and developed tutorials on doing
-                such, which enabled DraftKings’ Xamarin team to leverage the power of native mobile libraries.
-            </h4>
-            <h4>Added new features to DraftKings’ iOS app’s login flow using the VIPER architecture to improve user experiences. </h4>
-        </div>
-    </div>
-    <div id="modmed" class="experience-style">
-        <img width="200px" height="200px" src="assets/images/apps/ModMedIcon.png">
-        <div>
-            <h2> Mobile Software Engineering Intern</h2>
-            <h3> Summer 2018 @ Modernizing Medicine</h3>
-            <h4> Worked as an iOS developer to maintain three apps from Modernizing Medicine: PocketEMA, Telehealth and Kiosk,
-                with Swift and Objective-C. These apps directly improve the lives of more than 160 million patients.
-            </h4>
-            <h4> Designed and implemented new features, new UI elements and carried out bug fixes while collaborating
-                closely with a full-scale Scrum team.
-            </h4>
+            <h2> {{exp.position}}</h2>
+            <h3> {{exp.time}}&nbsp;@&nbsp;{{exp.company}}</h3>
+            <h4 *ngFor="let accomplishment of exp.accomplishments">{{accomplishment}}</h4>
         </div>
     </div>
 </div>
 
 <h1 style="margin-top: 3%" class="title">Tech Stack</h1>
 
-<div id="tech_stack" class="dual_columns">
-    <div class="col1">
-        <div class="app">
-            <img width="300px" height="300px" src="assets/images/apps/AppleTechIcon.png">
-            <h2>iOS Development</h2>
-            <p> I am a proficient iOS & watchOS developer, having made 5 apps and successfully completed an iOS internship.
-                I am also proficient in Xcode, Swift & Objective C. </p>
-        </div>
-        <div class="app">
-            <img width="200px" height="200px" src="assets/images/apps/xdIcon.png">
-            <h2>UI / UX Design</h2>
-            <p> I'm both a designer and an engineer. As a graphic designer of the RPI Union, I have 2.5+ years of graphic design experience.
-                That leads to my ability in UI/UX design with Adobe XD. </p>
-        </div>
-        <div class="app">
-            <img width="200px" height="200px" src="assets/images/apps/ARIcon.png">
-            <h2>Augmented Reality</h2>
-            <p> Through the production of the 3D Visualizer app, I've gained experience producing Augmented Reality applications
-                in iOS with the iOS framework ARKit and SceneKit. </p>
-        </div>
-        <div class="app">
-            <img width="200px" height="200px" src="assets/images/apps/BluetoothIcon.png">
-            <h2>Bluetooth</h2>
-            <p> I have built Arduino hardware that establishes a Bluetooth Low Energy signal and produced apps to send and receive
-                information from the hardware. </p>
-        </div>
-    </div>
-    <div class="col2">
-        <div class="app">
-            <img width="300px" height="300px" src="assets/images/apps/AndroidTechIcon.png">
-            <h2>Android Development</h2>
-            <p> While Android Development is not where my focus is, I do have a good understanding of making Android apps with
-                Java and Kotlin.</p>
-        </div>
-        <div class="app">
-            <img width="200px" height="200px" src="assets/images/apps/RxIcon.png">
-            <h2>Reactive Programming</h2>
-            <p> After reading an RxSwift book by Ray Wenderlich, I gained knowledge in Reactive Programming in the form of
-                RxSwift, and was able to apply this skill in building the S'more App.</p>
-        </div>
-        <div class="app">
-            <img width="200px" height="200px" src="assets/images/apps/AlamofireIcon.png">
-            <h2>Networking</h2>
-            <p> I have experience in iOS Networking through the uses of frameworks including Alamofire and NSURLSession. With them,
-                I've produced apps that interact with the Internet via REST APIs.</p>
-        </div>
-        <div class="app">
-            <img width="200px" height="200px" src="assets/images/apps/musicIcon.png">
-            <h2>Music Streaming</h2>
-            <p> I've built two music streaming apps that either access the user's music library to play music or pull data from
-                the Apple Music API to browse and play the latest addition from any artists. </p>
-        </div>
-    </div>
-</div>
-
+<div id="tech_stack" *ngFor="let dualSkills of skills" class="width-container">
+    <app-dual-app [app1]="dualSkills[0]" [app2]="dualSkills[1]"></app-dual-app>
 </div>
 
 <app-footer [showTopBorder]="true" [theme]="'dark'"></app-footer>

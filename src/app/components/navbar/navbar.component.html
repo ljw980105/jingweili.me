@@ -28,20 +28,22 @@
 <header style="height: 50%" [@shrinkOrExpand]="expanded ? 'expanded' : 'shrinked'">
     <nav id="mobile_nav">
         <div class="horizScrollDiv" style="margin-left: 20px">
-            <a href="index.html"><img src="assets/images/navbar/home.png" height="70" width="70"></a>
-            <li><a href="index.html">HOME</a></li>
+            <a [routerLink]="['/']"><img src="assets/images/navbar/home.png" height="70" width="70"></a>
+            <li><a [routerLink]="['/']">HOME</a></li>
         </div>
         <div class="horizScrollDiv">
-            <a href="Bio.html"><img src="assets/images/navbar/aboutIcon.png" height="70" width="70"></a>
-            <li><a href="Bio.html">ABOUT</a></li>
+            <a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">
+                <img src="assets/images/navbar/aboutIcon.png" height="70" width="70">
+            </a>
+            <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">ABOUT</a></li>
         </div>
         <div class="horizScrollDiv">
             <a href="Resume.html"><img src="assets/images/navbar/resumelogo.png" height="70" width="70"></a>
             <li><a href="Resume.html">RESUME</a></li>
         </div>
         <div class="horizScrollDiv">
-            <a href="AppFolio.html"><img src="assets/images/navbar/apps.png" height="70" width="70"></a>
-            <li><a href="AppFolio.html">APPS</a></li>
+            <a [routerLink]="['/apps']"><img src="assets/images/navbar/apps.png" height="70" width="70"></a>
+            <li><a [routerLink]="['/apps']">APPS</a></li>
         </div>
         <div class="horizScrollDiv">
             <a href="Graphic Design.html"><img src="assets/images/navbar/splashIcon.png" height="70" width="70"></a>
@@ -52,8 +54,10 @@
             <li><a href="Projects.html">PROJECTS</a></li>
         </div>
         <div class="horizScrollDiv" style="margin-right: 20px">
-            <a href="Contacts.html"><img src="assets/images/navbar/phone.png" height="70" width="70"></a>
-            <li><a href="Contacts.html">CONTACT</a></li>
+            <a [routerLink]="['/']" [queryParams]="{scrollToId: 'contacts'}">
+                <img src="assets/images/navbar/phone.png" height="70" width="70">
+            </a>
+            <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'contacts'}">CONTACT</a></li>
         </div>
     </nav>
 </header>

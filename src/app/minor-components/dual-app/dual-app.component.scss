@@ -1,0 +1,94 @@
+@mixin anchor-style {
+    a {
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        font-size: 20px;
+
+        &:link, &:visited {
+            color: white;
+        }
+        &:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+}
+
+#dual-app-wrapper {
+    display: flex;
+    margin-bottom: 3%;
+}
+
+#item-1 {
+    width: 45%;
+    margin-right: 10%;
+}
+
+#item-2 {
+    width: 45%;
+}
+
+.anchor-tag-alignment {
+    text-align: center;
+}
+
+.app {
+    h2 {
+        text-align: center;
+        font-size: 35px;
+        font-family: Mohave, sans-serif;
+        color: white;
+
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+    @include anchor-style();
+}
+
+p {
+    font-size: 17px;
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    color: #888888;
+}
+@media only screen and (max-width: 1200px) {
+    #dual-app-wrapper {
+        padding: 0 10% 5% 10%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #dual-app-wrapper {
+        padding: 0 5% 2% 5%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    #dual-app-wrapper {
+        display: block;
+        margin-bottom: 8%;
+        padding: 0 15% 5% 15%;
+    }
+
+    #item-1, #item-2 {
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    #item-1 {
+        margin-bottom: 8%;
+    }
+    .anchor-tag-alignment { text-align: left; }
+
+    .app img { display: initial; }
+
+    .app h2 { text-align: left; }
+
+    h1, h2, p { text-align: left; }
+
+    #dual-app-wrapper {
+        padding: 0 0;
+    }
+}
