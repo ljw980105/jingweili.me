@@ -19,6 +19,31 @@ $double-height-mini: $single-height-mini * 2 + $typical-margin;
     transform:scale($amount, $amount);
 }
 
+@mixin underline($color , $top-bottom) {
+    position: relative;
+    text-decoration: none;
+    display: inline-block; // note this will make entire link wrap to new line.
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: $top-bottom;
+        left: 0;
+        background-color: rgba($color, 0);
+        transform: scaleX(0);
+        transition: all .3s ease-in-out;
+    }
+
+    &:hover {
+        &:after {
+            transform: scaleX(1);
+            background-color: $color;
+        }
+    }
+}
+
 body {
     margin: auto;
 }
@@ -42,13 +67,11 @@ body {
 }
 
 #intro {
-    & a:visited, & a:link {
+    & a {
         color: white;
         font-weight: bolder;
         text-decoration: none;
-    }
-    & a:hover {
-        text-decoration: underline;
+        @include underline(white, 35px);
     }
 
     & h1 {

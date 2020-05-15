@@ -14,6 +14,7 @@ import { ContactsComponent } from './minor-components/contacts/contacts.componen
 import { AppsComponent } from './components/apps/apps.component';
 import { DualAppComponent } from './minor-components/dual-app/dual-app.component';
 import {HttpClientModule} from '@angular/common/http';
+import { BeatslyticsComponent } from './components/beatslytics/beatslytics.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
         AboutComponent,
         ContactsComponent,
         AppsComponent,
-        DualAppComponent
+        DualAppComponent,
+        BeatslyticsComponent
     ],
     imports: [
         BrowserModule,
