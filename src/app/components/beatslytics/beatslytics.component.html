@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<div id="title">
+    <div class="center_img">
+        <img id="beatslytics-logo" src="assets/images/beatslytics/appIcon.png" width="300px" height="300px">
+    </div>
+
+    <h1>Beatslytics</h1>
+    <h2>{{data.headline}}</h2>
+
+    <div class="center_img" style="padding-top: 2%">
+        <a href="{{data.appStore}}">
+            <img id="appStore" src="assets/images/beatslytics/DownloadOnAppStore.png" width="169px" height="50px">
+        </a>
+    </div>
+</div>
+
+<div id="beatslytics-contents">
+    <h3> Introduction </h3>
+    <p> {{data.intro}} </p>
+    <h3>Features</h3>
+    <div *ngFor="let feature of data.features">
+        <h4> {{feature.name}} </h4>
+        <ul>
+            <li *ngFor="let detail of feature.details">{{detail}}</li>
+        </ul>
+    </div>
+
+    <h3 id="support"> Support</h3>
+    <p [innerHTML]="data.support"></p>
+
+    <h3>More</h3>
+    <h4>Policies & Agreements :</h4>
+    <div id="policies">
+        <div><a href="{{data.license_agreement_url}}">License Agreement</a></div>
+        <div><a href="{{data.privacy_policy_url}}">Privacy Policy</a></div>
+    </div>
+
+    <h4>Credits :</h4>
+    <p>{{data.credits.name}}</p>
+    <ul>
+        <li *ngFor="let creditEntry of data.credits.details" [innerHTML]="creditEntry"></li>
+    </ul>
+</div>
+
+<app-footer [showTopBorder]="true" [theme]="'light'"></app-footer>

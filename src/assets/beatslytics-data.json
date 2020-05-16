@@ -1,0 +1,42 @@
+{
+    "metaAppStoreName": "apple-itunes-app",
+    "metaAppStoreContent": "app-id=1403202526",
+    "headline": "An iOS App for Music Analytics and Discovery.",
+    "intro": "Have you ever wondered what is the most listened song on your phone? An answer has arrived. Beatslytics is a music player made for you to rediscover the music in your local music library (music in iOS' music app). This app includes powerful analytics information and detailed metadata about each song. Happy discovering the hidden secrets in your music library!",
+    "appStore": "https://itunes.apple.com/us/app/beatslytics/id1403202526?mt=8",
+    "features": [
+        {
+            "name": "Music Player :",
+            "details": [
+                "Super-detailed metadata for each song: playcount, skipcount, date added, date last listened, beats per minute (if available) and much more",
+                "Full-sized album artwork",
+                "All the features you’d expect in a modern music player",
+                "Works seamlessly with Apple Music"
+            ]
+        }, {
+            "name": "Music Analytics and Discovery :",
+            "details": [
+                "Discover your daily listening trends: number of songs listened, minutes listened, number of different albums listened, number of different albums listened, most-listened artist & genre",
+                "Track your listening trends over time with detailed charts",
+                "Discover your most listened songs and most skipped songs",
+                "Find the songs you’ve never listened to with a list of least listened songs",
+                "Discover the longest songs & oldest songs in your music library",
+                "Recently added/played songs",
+                "Most-listened songs for an album/artist"
+            ]
+        }
+    ],
+    "support": "If you have a business inquiry or any questions/concerns about Beatslytics, please don't hesitate to contact me at <a href=\"mailto:ljw9801055@gmail.com\"> ljw9801055@gmail.com. </a>",
+    "license_agreement_url": "assets/files/Beatslytics%20License%20Agreement.pdf",
+    "privacy_policy_url": "assets/files/Beatslytics%20Privacy%20Policy.pdf",
+    "credits": {
+        "name": "Beatslytics makes use of many third party images:",
+        "details": [
+            "Emoji artwork provided by EmojiOne <a href=\"http://emojione.com\">http://emojione.com</a>",
+            "Artist Icon provided by <a href=\"https://www.freepngimg.com/\">https://www.freepngimg.com/</a>",
+            "Album/Division icon made by Freepik from <a href=\" https://www.flaticon.com\"> https://www.flaticon.com</a>",
+            "Plus icon provided by vectors market from <a href=\"https://www.flaticon.com\"> https://www.flaticon.com</a>",
+            "Ruler/Song icon provided by <a href=\"https://icons8.com/\">https://icons8.com/</a>"
+        ]
+    }
+}

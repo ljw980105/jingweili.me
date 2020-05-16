@@ -6,7 +6,7 @@
         <p [innerHTML]="app1.description"></p>
         <p><strong>{{app1.description2}}</strong></p>
         <div class="anchor-tag-alignment" *ngIf="app1.link != null">
-            <a href="{{app1.link}}">{{app1.linkTitle}}&nbsp;</a>
+            <a target="_blank" href="{{app1.link}}">{{app1.linkTitle}}&nbsp;</a>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         <p [innerHTML]="app2.description"></p>
         <p><strong>{{app2.description2}}</strong></p>
         <div class="anchor-tag-alignment" *ngIf="app2.link != null">
-            <a href="{{app2.link}}"> {{app2.linkTitle}}&nbsp;</a>
+            <a target="_blank" href="{{app2.link}}"> {{app2.linkTitle}}&nbsp;</a>
         </div>
     </div>
 
