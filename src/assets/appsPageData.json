@@ -36,7 +36,7 @@
             "imageLink": "assets/images/apps/SmartDeskIcon.png",
             "name": "SMARTDESK",
             "description":"An innovative smart home iOS app that harnesses the power of Bluetooth Low Energy (BLE) to remote control a smart desk.",
-            "description2": "Frameworks: ARKit",
+            "description2": "Frameworks: Core Bluetooth & Lottie",
             "linkTitle": "View App >",
             "link": "https://github.com/ljw980105/SmartDesk"
         }

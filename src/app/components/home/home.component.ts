@@ -3,6 +3,7 @@ import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-
 import {Subject} from 'rxjs';
 import {delay, filter} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-home',
@@ -20,8 +21,9 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private scrollToService: ScrollToService,
-        private router: ActivatedRoute) {
-
+        private router: ActivatedRoute,
+        private titleService: Title) {
+        titleService.setTitle('Hi, I\'m Jing');
     }
 
     ngOnInit(): void {
