@@ -1,0 +1,47 @@
+$resume-orange: rgb(255, 157, 0);
+
+.large-text {
+    font-size: 80px;
+}
+
+.medium-large-text {
+    font-size: 60px;
+}
+
+.medium-text {
+    font-size: 30px;
+}
+
+.theme-color {
+    color: $resume-orange;
+}
+
+#logo-meaning {
+    padding: 20% 0;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center top;
+    background-image: url("~src/assets/images/resume/website-intro.jpg");
+}
+
+#ios-showoff {
+    padding: 3% 0;
+}
+
+#stats-col-1, #stats-col-2 {
+    width: 30%;
+    margin-right: 5%;
+}
+
+#stats-col-3 {
+    width: 30%;
+}
+
+#stats-col-3, #stats-col-1, #stats-col-2 {
+    h1 {
+        margin-right: 5%;
+    }
+    h3 {
+        margin-top: 15%;
+    }
+}

@@ -15,6 +15,7 @@ import { AppsComponent } from './components/apps/apps.component';
 import { DualAppComponent } from './minor-components/dual-app/dual-app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BeatslyticsComponent } from './components/beatslytics/beatslytics.component';
+import { ResumeComponent } from './components/resume/resume.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { BeatslyticsComponent } from './components/beatslytics/beatslytics.compo
         ContactsComponent,
         AppsComponent,
         DualAppComponent,
-        BeatslyticsComponent
+        BeatslyticsComponent,
+        ResumeComponent
     ],
     imports: [
         BrowserModule,

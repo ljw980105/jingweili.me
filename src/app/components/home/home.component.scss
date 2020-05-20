@@ -417,7 +417,7 @@ body {
         background-repeat: no-repeat;
         background-color: rgb(20, 20, 20);
     }
-    #intro {
+    #logo-meaning {
         margin-top: 80%;
     }
     #twitter-wrapper {
@@ -441,11 +441,11 @@ body {
         /*margin-left: 25%;*/
     }
 
-    #intro h1 {
+    #logo-meaning h1 {
         font-size: 50px;
     }
 
-    #intro h2 {
+    #logo-meaning h2 {
         font-size: 35px;
     }
     #adc {
@@ -458,11 +458,11 @@ body {
 }
 
 @media only screen and (max-width: 374px) {
-    #intro h1 {
+    #logo-meaning h1 {
         font-size: 45px;
     }
 
-    #intro h2 {
+    #logo-meaning h2 {
         font-size: 30px;
     }
 }

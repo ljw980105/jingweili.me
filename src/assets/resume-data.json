@@ -1,0 +1,44 @@
+{
+    "appsWorkedOn": 11,
+    "commercialAppsWorkedOn": 4,
+    "appsPublished": 2,
+    "iosSkills": [
+        {
+            "name": "\uD83D\uDCF1 User Interface",
+            "details": ["UIKit", "SnapKit"]
+        }, {
+            "name": "\uD83D\uDCA5 Animations",
+            "details": ["Core Animation", "Lottie"]
+        }, {
+            "name": "\uD83D\uDCF6 Networking",
+            "details": ["Alamofire", "URLSession", "AFNetworking"]
+        }, {
+            "name": "\uD83E\uDDCA 3D & AR",
+            "details": ["Model I/O", "SceneKit", "ARKit"]
+        }, {
+            "name": "\uD83C\uDFB8 Music",
+            "details": ["MediaPlayer", "Apple Music API", "Music Kit"]
+        }, {
+            "name": "\uD83D\uDD29 Hardware",
+            "details": ["Core Bluetooth"]
+        }, {
+            "name": "\uD83D\uDD2E Async Programming",
+            "details": ["RxSwift", "Combine", "PromiseKit"]
+        }, {
+            "name": "\uD83D\uDCCD Maps",
+            "details": ["MapKit", "MapKit-JS", "Core Location"]
+        }, {
+            "name": "\uD83D\uDEE2️ Databases",
+            "details": ["Core Data"]
+        }, {
+            "name": "⌚ Apple Watch",
+            "details": ["WatchKit", "WatchConnectivity"]
+        }, {
+            "name": "\uD83D\uDCE6 Package Management",
+            "details": ["CocoaPods", "Carthage", "Swift PM"]
+        } ,{
+            "name": "\uD83E\uDD37 Other",
+            "details": ["LocalAuthentication", "Core Motion"]
+        }
+    ]
+}
