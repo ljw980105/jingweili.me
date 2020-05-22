@@ -5,12 +5,21 @@ $resume-orange: rgb(255, 157, 0);
 }
 
 .medium-large-text {
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .medium-text {
     font-size: 30px;
 }
+
+.small-text {
+    font-size: 25px;
+}
+
+.extra-small-text {
+    font-size: 18px;
+}
+
 
 .theme-color {
     color: $resume-orange;
@@ -44,4 +53,42 @@ $resume-orange: rgb(255, 157, 0);
     h3 {
         margin-top: 15%;
     }
+}
+
+#ios-skills {
+    display: flex;
+    padding-bottom: 3%;
+}
+
+#ios-graphic {
+    background-image: url("~src/assets/images/resume/ios-graphic.png");
+    background-size: 110%;
+    background-repeat: no-repeat;
+    width: 25%;
+    margin-right: 8%;
+}
+
+#ios-content {
+    width: 67%;
+}
+
+#web-skills {
+    padding: 3% 0;
+    background-color: rgb(244, 244, 244);
+}
+
+.web-skills-scroll {
+    display: inline-block;
+    overflow: auto;
+    white-space: nowrap;
+    margin-right: 60px;
+    div {
+        display: inline-block;
+        margin-right: 30px;
+    }
+}
+
+#web-scroll-master {
+    overflow: auto;
+    white-space: nowrap;
 }

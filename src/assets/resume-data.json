@@ -40,5 +40,48 @@
             "name": "\uD83E\uDD37 Other",
             "details": ["LocalAuthentication", "Core Motion"]
         }
+    ],
+
+    "webSkillsFrontend": [
+        {
+            "imageUrl": "assets/images/resume/htmlIcon.png",
+            "text": "HTML"
+        }, {
+            "imageUrl": "assets/images/resume/cssIcon.png",
+            "text": "CSS"
+        }, {
+            "imageUrl": "assets/images/resume/sassIcon.png",
+            "text": "Sass"
+        }, {
+            "imageUrl": "assets/images/resume/jqueryIcon.png",
+            "text": "jQuery"
+        }, {
+            "imageUrl": "assets/images/resume/angularIcon.png",
+            "text": "Angular"
+        },  {
+            "imageUrl": "assets/images/resume/bootstrapIcon.png",
+            "text": "Bootstrap"
+        }
+    ],
+    "webSkillsBackend": [
+        {
+            "imageUrl": "assets/images/resume/nodeIcon.png",
+            "text": "NodeJS"
+        }, {
+            "imageUrl": "assets/images/resume/vaporIcon.png",
+            "text": "Vapor"
+        }
+    ],
+    "webSkillsGeneral": [
+        {
+            "imageUrl": "assets/images/resume/jsIcon.png",
+            "text": "Javascript"
+        }, {
+            "imageUrl": "assets/images/resume/tsIcon.png",
+            "text": "TypeScript"
+        }, {
+            "imageUrl": "assets/images/apps/RxIcon.png",
+            "text": "RxJS"
+        }
     ]
 }

@@ -22,18 +22,40 @@
 </div>
 
 <div id="ios-skills" class="width-container">
-    <h3 class="medium-text helvetica">And I have knowledge in these areas of iOS Dev: </h3>
-    <h1 class="medium-large-text helvetica" style="margin-bottom: 5px">Languages:
-        <span class="theme-color">Swift&nbsp;</span>
-        <span style="color: dodgerblue">Objective-C</span>
+    <div id="ios-graphic" ></div>
+    <div id="ios-content">
+        <h3 class="medium-text helvetica">And I'm experienced in these areas of iOS Dev: </h3>
+        <h1 class="medium-text helvetica" style="margin-bottom: 5px">Languages:
+            <span class="theme-color">Swift&nbsp;</span>
+            <span style="color: dodgerblue">Objective-C</span>
         </h1>
-    <h3 class="helvetica medium-text" *ngFor="let skill of data.iosSkills" style="padding: 0; margin: 0.2%">
-        <span>{{skill.name}}&nbsp;&nbsp;</span>
-        <span *ngFor="let detail of skill.details" style="color: darkgrey">{{detail}}&nbsp;</span>
-    </h3>
-    <h3 class="medium-text helvetica">View More Details
-        <a class="orange-underline-anchor" [routerLink]="['/apps']">here</a>.
-    </h3>
+        <h3 class="helvetica small-text" *ngFor="let skill of data.iosSkills" style="padding: 0; margin: 0.2%">
+            <span>{{skill.name}}&nbsp;&nbsp;</span>
+            <span style="color: darkgrey">{{skill.details.join(", ")}}&nbsp;</span>
+        </h3>
+        <h3 class="medium-text helvetica">View More Details
+            <a class="orange-underline-anchor" [routerLink]="['/apps']">here</a>.
+        </h3>
+    </div>
+</div>
+
+<div id="web-skills">
+    <div class="width-container">
+        <h1 class="medium-large-text helvetica">Web Design? I'm good at that too.</h1>
+        <h3 class="small-text helvetica">I have experience using these frameworks:</h3>
+
+        <div id="web-scroll-master">
+            <div class="web-skills-scroll" *ngFor="let webSkill of webSkillsFormatted">
+                <h3 class="theme-color small-text helvetica">{{webSkill.category}}</h3>
+                <div style="width: 100px" *ngFor="let skill of webSkill.details">
+                    <img width="100px" height="100px" src="{{skill.imageUrl}}">
+                    <h3 class="extra-small-text helvetica" style="text-align: center">{{skill.text}}</h3>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="small-text helvetica">In fact, this website is programmed with Angular.</h3>
+    </div>
 </div>
 
 <app-footer [showTopBorder]="true"></app-footer>
