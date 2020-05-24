@@ -89,14 +89,27 @@ $resume-light-grey: rgb(244, 244, 244);
     padding: 3%;
 }
 
+.dot {
+    height: 30px;
+    width: 30px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.line {
+    width: auto;
+    height: 2px;
+    border-bottom: 1px solid black;
+    position: absolute;
+}
+
 #resume-card {
-    padding: 1% 3%;
-    background-color: $resume-light-grey;
-    width: 55%;
-    margin: 0 5% 3% 0;
-    border-radius: 20px;
+    padding: 1% 0;
+    width: 60%;
+    margin: 0 0 3% 0;
     white-space: normal;
-    box-shadow: 5px 10px 8px rgb(230, 230, 230);
+    //box-shadow: 5px 10px 8px rgb(230, 230, 230);
 }
 
 #resume-card-left {
@@ -104,6 +117,23 @@ $resume-light-grey: rgb(244, 244, 244);
     margin-right: 5%;
 }
 
+#resume-card-mid {
+    width: 52%;
+}
+
 #resume-card-right {
-    width: 60%;
+    width: 8%;
+}
+
+hr {
+    margin-top: 13px;
+    border: none;
+    height: 3px;
+    color: black;
+    background-color: black;
+    flex-grow: 1;
+}
+
+#time-line {
+    width: 78%;
 }

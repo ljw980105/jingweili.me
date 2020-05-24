@@ -61,22 +61,27 @@
 </div>
 
 <div id="experiences" class="width-container">
-    <h1 class="medium-large-text helvetica">Here's My Work Experience.</h1>
+    <h1 class="medium-large-text helvetica">Here's My Work Experience. (It Scrolls)</h1>
     <div class="horizontal-scroll-outer">
         <div id="resume-card" class="horizontal-scroll-inner" *ngFor="let experience of experiences">
+            <div style="display: flex; margin-bottom: 3%">
+                <span class="dot"></span>
+                <span class="small-text mohave">&nbsp;&nbsp;{{experience.time | uppercase}}&nbsp;</span>
+                <div id="time-line" class="ml-auto"><hr/></div>
+            </div>
             <div style="display: flex">
                 <div id="resume-card-left">
-                    <img width="100%"  src="{{experience.imageLink}}">
+                    <img width="100%" src="{{experience.imageLink}}">
                     <h3 class="small-text helvetica">{{experience.position}}</h3>
                     <h3 class="extra-small-text helvetica-normal">💼&nbsp;{{experience.company}}</h3>
-                    <h3 class="extra-small-text helvetica-normal">🕒&nbsp;{{experience.time}}</h3>
                 </div>
-                <div id="resume-card-right">
+                <div id="resume-card-mid">
                     <h3 class="extra-small-text helvetica-normal"
                         *ngFor="let expEntry of experience.accomplishments"
                         [innerHTML]="expEntry"
                     ></h3>
                 </div>
+                <div id="resume-card-right"></div>
             </div>
         </div>
     </div>

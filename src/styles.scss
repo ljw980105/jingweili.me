@@ -56,6 +56,9 @@ html, body {
     font-weight: normal;
 }
 
+.mohave {
+    font-family: Mohave, sans-serif;
+}
 
 .center_img  { /*THE AMAZING CODE THAT CENTERS THE GODDAMN IMAGE*/ }
 
@@ -77,7 +80,7 @@ html, body {
         color: black;
     }
     &:hover {
-        color: orangered;
+        color: orange;
     }
 }
 
@@ -100,5 +103,13 @@ html, body {
 
 .horizontal-scroll-inner {
     display: inline-block;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
 }
 

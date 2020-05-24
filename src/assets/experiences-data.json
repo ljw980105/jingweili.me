@@ -14,7 +14,7 @@
     {
         "imageLink": "assets/images/apps/BeatslyticsIcon.png",
         "position": "Independent iOS Developer",
-        "time": "2018 - Present",
+        "time": "2018 - Now",
         "company": "Self Employed",
         "accomplishments": [
             "Designed and programmed an iOS App with an Apple Watch counterpart, <a class=\"orange-underline-anchor\" href=\"https://apps.apple.com/us/app/beatslytics/id1403202526\" target=\"_blank\">Beatslytics</a>, and published it on the App Store. The app enables the user to rediscover their music with relevant analytics information about their music library.",
@@ -22,6 +22,16 @@
             "Designed & Implemented a database schema to store analytics information on device, using the CoreData persistence framework from Apple.",
             "Developed a fully functional music player as a subset of features offered by Beatslytics, with the MediaPlayer framework.",
             "Gained familiarity with using iTunes Connect to publish an app to the App Store."
+        ]
+    },
+    {
+        "imageLink": "assets/images/resume/ruIcon.png",
+        "position": "Graphic Designer",
+        "time": "2017 - 2020",
+        "company": "Rensselaer Union",
+        "accomplishments": [
+           "Apply graphic design skills in creating logos, posters, brochures, and other designs using Adobe Illustrator, Adobe InDesign and Adobe Photoshop.",
+            "Networked with clubs & organizations to accommodate for special graphic design needs."
         ]
     },
     {
@@ -34,5 +44,18 @@
             "Designed and implemented new features, new UI elements and carried out bug fixes while collaborating closely with a full-scale Scrum team."
         ],
         "special": "for apps"
+    },
+    {
+        "imageLink": "assets/images/apps/3DVisualizerIcon.png",
+        "position": "iOS Developer",
+        "time": "Spring 2018",
+        "company": "RPI CSDT",
+        "accomplishments": [
+            "Worked as an undergraduate researcher to develop iOS apps for viewing 3D models in a classroom setting, using cutting-edge technologies involving Augmented Reality.",
+            "Adopted core iOS frameworks such as SceneKit & Model I/O for 3D model viewing, and ARKit for the augmented reality experience.",
+            "Created a networking layer to interact with REST APIs with URLSession and Alamofire.",
+            "Designed UI and UX for the app from scratch.",
+            "Used CocoaPods to integrate third-party libraries into the app. For example, The app utilized Alamofire to fetch 3D models from the CSDT API. Fetched models are then visualized with AR."
+        ]
     }
 ]
