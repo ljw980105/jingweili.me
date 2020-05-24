@@ -4,4 +4,5 @@ export class Experience {
     time: string;
     company: string;
     accomplishments: string[];
+    special: string;
 }

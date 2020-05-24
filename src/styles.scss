@@ -51,6 +51,12 @@ html, body {
     font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
 
+.helvetica-normal {
+    font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+    font-weight: normal;
+}
+
+
 .center_img  { /*THE AMAZING CODE THAT CENTERS THE GODDAMN IMAGE*/ }
 
 .center_img img  {
@@ -85,5 +91,14 @@ html, body {
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: dimgray;
+}
+
+.horizontal-scroll-outer {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.horizontal-scroll-inner {
+    display: inline-block;
 }
 

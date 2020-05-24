@@ -44,10 +44,12 @@
         <h1 class="medium-large-text helvetica">Web Design? I'm good at that too.</h1>
         <h3 class="small-text helvetica">I have experience using these frameworks:</h3>
 
-        <div id="web-scroll-master">
-            <div class="web-skills-scroll" *ngFor="let webSkill of webSkillsFormatted">
+        <div class="horizontal-scroll-outer">
+            <div class="web-skills-scroll horizontal-scroll-outer horizontal-scroll-inner"
+                 *ngFor="let webSkill of webSkillsFormatted"
+            >
                 <h3 class="theme-color small-text helvetica">{{webSkill.category}}</h3>
-                <div style="width: 100px" *ngFor="let skill of webSkill.details">
+                <div class="horizontal-scroll-inner" style="width: 100px" *ngFor="let skill of webSkill.details">
                     <img width="100px" height="100px" src="{{skill.imageUrl}}">
                     <h3 class="extra-small-text helvetica" style="text-align: center">{{skill.text}}</h3>
                 </div>
@@ -55,6 +57,28 @@
         </div>
 
         <h3 class="small-text helvetica">In fact, this website is programmed with Angular.</h3>
+    </div>
+</div>
+
+<div id="experiences" class="width-container">
+    <h1 class="medium-large-text helvetica">Here's My Work Experience.</h1>
+    <div class="horizontal-scroll-outer">
+        <div id="resume-card" class="horizontal-scroll-inner" *ngFor="let experience of experiences">
+            <div style="display: flex">
+                <div id="resume-card-left">
+                    <img width="100%"  src="{{experience.imageLink}}">
+                    <h3 class="small-text helvetica">{{experience.position}}</h3>
+                    <h3 class="extra-small-text helvetica-normal">💼&nbsp;{{experience.company}}</h3>
+                    <h3 class="extra-small-text helvetica-normal">🕒&nbsp;{{experience.time}}</h3>
+                </div>
+                <div id="resume-card-right">
+                    <h3 class="extra-small-text helvetica-normal"
+                        *ngFor="let expEntry of experience.accomplishments"
+                        [innerHTML]="expEntry"
+                    ></h3>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

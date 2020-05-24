@@ -4,6 +4,7 @@ import {AppsPageData} from '../models/AppsPageData';
 import {HttpClient} from '@angular/common/http';
 import {BeatslyticsData} from '../models/BeatslyticsData';
 import {ResumeData} from '../models/ResumeData';
+import {Experience} from '../models/Experience';
 
 @Injectable({
     providedIn: 'root'
@@ -23,6 +24,10 @@ export class ApiService {
 
     getResumeData(): Observable<ResumeData> {
         return this.http.get<ResumeData>('../../assets/resume-data.json');
+    }
+
+    getExperiencesData(): Observable<Experience[]> {
+        return this.http.get<Experience[]>('../../assets/experiences-data.json');
     }
 
 }

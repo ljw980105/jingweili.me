@@ -4,6 +4,7 @@ import {ApiService} from '../../services/api.service';
 import {AppOrSkill} from '../../models/AppOrSkill';
 import {sliceIntoTuplesOfTwoFrom} from '../../models/Global';
 import {Experience} from '../../models/Experience';
+import {forkJoin} from 'rxjs';
 
 @Component({
     selector: 'app-apps',
@@ -20,8 +21,10 @@ export class AppsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.apiService.getAppsPageData()
-            .subscribe(result => {
+        forkJoin([
+            this.apiService.getAppsPageData(),
+            this.apiService.getExperiencesData()
+        ]).subscribe(([result, experiences]) => {
                 const temp = result.apps;
                 const temp2 = result.skills;
                 if (temp.length % 2 === 1) {
@@ -32,7 +35,7 @@ export class AppsComponent implements OnInit {
                 }
                 this.apps = sliceIntoTuplesOfTwoFrom(temp);
                 this.skills = sliceIntoTuplesOfTwoFrom(temp2);
-                this.experiences = result.experiences;
+                this.experiences = experiences.filter(exp => exp.special === 'for apps');
             });
     }
 
