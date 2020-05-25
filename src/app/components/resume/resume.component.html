@@ -61,8 +61,11 @@
 </div>
 
 <div id="experiences" class="width-container">
-    <h1 class="medium-large-text helvetica">Here's My Work Experience. (It Scrolls)</h1>
-    <div class="horizontal-scroll-outer">
+    <h1 class="medium-large-text helvetica">Here's My Work Experience.</h1>
+    <div class="horizontal-scroll-outer" inViewport (inViewportAction)="resumeInViewport($event)">
+        <div *ngIf="showResumeTutorial">
+            <ng-lottie [options]="options" width="100%" class="overlay"></ng-lottie>
+        </div>
         <div id="resume-card" class="horizontal-scroll-inner" *ngFor="let experience of experiences">
             <div style="display: flex; margin-bottom: 3%">
                 <span class="dot"></span>

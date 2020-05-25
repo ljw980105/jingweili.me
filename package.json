@@ -21,6 +21,9 @@
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
     "@nicky-lenaers/ngx-scroll-to": "^9.0.0",
+    "lottie-web": "^5.6.10",
+    "ng-in-viewport": "^6.1.0",
+    "ngx-lottie": "^6.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.11.2",
     "zone.js": "~0.10.2"

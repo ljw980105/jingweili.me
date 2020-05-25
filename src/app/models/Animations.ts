@@ -16,14 +16,27 @@ export const shrinkOrExpand = trigger('shrinkOrExpand', [
     ]),
     transition('expanded => shrinked', [
         animate('0.3s ease-in-out')
-    ]),
+    ])
 ]);
 
 export const addAnimation = trigger('addAnimation', [
     transition(':enter', [
         style({ transform: 'scale(0.5)', opacity: 0 }),  // initial
-        animate('0.5s cubic-bezier(.8, -0.6, 0.2, 1.5)',
-            style({ transform: 'scale(1)', opacity: 1 }))  // final
+        animate(
+            '0.5s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+            style({ transform: 'scale(1)', opacity: 1 })
+        )  // final
+    ])
+]);
+
+export const fadeOut = trigger('fadeOut', [
+    state('out', style({opacity: '0'})),
+    state('in', style({opacity: '1'})),
+    transition('in => out', [
+        animate('0.3s ease-in-out')
+    ]),
+    transition('out => in', [
+        animate('0.3s ease-in-out')
     ])
 ]);
 

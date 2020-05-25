@@ -109,7 +109,6 @@ $resume-light-grey: rgb(244, 244, 244);
     width: 60%;
     margin: 0 0 3% 0;
     white-space: normal;
-    //box-shadow: 5px 10px 8px rgb(230, 230, 230);
 }
 
 #resume-card-left {
@@ -136,4 +135,10 @@ hr {
 
 #time-line {
     width: 78%;
+}
+
+.overlay {
+    position: absolute;
+    left: 40%;
+    background: radial-gradient(circle, rgba(255,255,255,1) 39%, rgba(255,255,255,0) 95%);
 }
