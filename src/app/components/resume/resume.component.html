@@ -60,6 +60,37 @@
     </div>
 </div>
 
+<div style="background-color: black">
+    <div class="width-container" style="padding: 3% 0;">
+        <h1 class="medium-large-text helvetica" style="color: white">Graphic Design is My Passion, too.</h1>
+        <div id="graphics">
+            <div id="graphics-left">
+                <h3 class="medium-text helvetica-normal">I had been a graphic designer <br/> for Rensselaer Union for</h3>
+                <img width="200px" src="assets/images/resume/3-point-5.png">
+                <h3 class="medium-text helvetica-normal">years.</h3>
+                <br>
+                <h3 class="medium-text helvetica"> Here are my Skill Sets:</h3>
+                <div id="graphics-skills">
+                    <div *ngFor="let graphicSkill of data.graphicSkills">
+                        <h3 class="helvetica">{{graphicSkill.name}}</h3>
+                        <hr style="background-color: lightgrey; height: 1px">
+                        <h3 style="color: lightgrey"
+                           class="helvetica-normal"
+                           *ngFor="let entry of graphicSkill.details"
+                        >{{entry}}</h3>
+                    </div>
+                </div>
+                <h3 class="medium-text helvetica"> View My Portfolio Here</h3>
+            </div>
+            <br>
+            <div id="graphics-right">
+                <img width="100%" src="assets/images/resume/graphic-decoration.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div id="experiences" class="width-container">
     <h1 class="medium-large-text helvetica">Here's My Work Experience.</h1>
     <div class="horizontal-scroll-outer" inViewport (inViewportAction)="resumeInViewport($event)">

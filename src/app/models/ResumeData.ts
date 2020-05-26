@@ -9,6 +9,7 @@ export class ResumeData {
     webSkillsFrontend: TextAndImage[];
     webSkillsBackend: TextAndImage[];
     webSkillsGeneral: TextAndImage[];
+    graphicSkills: GenericFeature[];
 }
 
 export class WebSkill {

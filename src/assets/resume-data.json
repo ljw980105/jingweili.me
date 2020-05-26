@@ -83,5 +83,17 @@
             "imageUrl": "assets/images/apps/RxIcon.png",
             "text": "RxJS"
         }
+    ],
+    "graphicSkills": [
+        {
+            "name": "Design",
+            "details": [ "Illustrator", "InDesign", "Photoshop", "Lightroom", "Affinity Suite" ]
+        }, {
+            "name": "UI/UX",
+            "details": [ "Adobe XD", "Storyboarding", "User Research", "Usability Testing" ]
+        }, {
+            "name": "Motion Graphics",
+            "details": [ "After Effects" ]
+        }
     ]
 }
