@@ -46,7 +46,9 @@ html, body {
     width: 100%;
     text-align: center;
 }
-
+/////////////////////
+////// FONTS ///////
+////////////////////
 .helvetica {
     font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
@@ -59,6 +61,14 @@ html, body {
 .mohave {
     font-family: Mohave, sans-serif;
 }
+
+.menlo {
+    font-family: Menlo, "Courier New", sans-serif;
+}
+
+/////////////////////
+//// END FONTS //////
+/////////////////////
 
 .center_img  { /*THE AMAZING CODE THAT CENTERS THE GODDAMN IMAGE*/ }
 
@@ -113,3 +123,17 @@ html, body {
     margin-right: auto;
 }
 
+.theme-button {
+    background-color: dimgrey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    letter-spacing: 2px;
+    font-family: Mohave, sans-serif;
+}

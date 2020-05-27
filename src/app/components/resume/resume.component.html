@@ -1,6 +1,19 @@
 <app-navbar></app-navbar>
 
-<div id="logo-meaning"></div>
+<div id="logo-meaning" class="width-container">
+    <h1 class="theme-color large-text helvetica">What Does My Logo Mean?</h1>
+    <div id="logo-dual" style="margin-top: 10%">
+        <div style="width: 35%; margin: -5% 20% 0 0">
+            <img src="assets/images/resume/logo-objc.png" width="100%" height="100%">
+        </div>
+        <div style="width: 45%">
+            <img src="assets/images/resume/objc-example.png" width="100%" height="60%">
+            <h3 class="helvetica medium-text theme-color">
+                <span class="menlo"> - () </span>
+                is a signature syntax in Objective-C. </h3>
+        </div>
+    </div>
+</div>
 
 <div id="ios-showoff" class="width-container">
     <h3 class="medium-text helvetica">Objective-C can only mean one thing -</h3>
@@ -62,7 +75,7 @@
 
 <div style="background-color: black">
     <div class="width-container" style="padding: 3% 0;">
-        <h1 class="medium-large-text helvetica" style="color: white">Graphic Design is My Passion, too.</h1>
+        <h1 class="medium-large-text helvetica" style="color: white">Graphic Design is my passion, too.</h1>
         <div id="graphics">
             <div id="graphics-left">
                 <h3 class="medium-text helvetica-normal">I had been a graphic designer <br/> for Rensselaer Union for</h3>
@@ -92,7 +105,7 @@
 
 
 <div id="experiences" class="width-container">
-    <h1 class="medium-large-text helvetica">Here's My Work Experience.</h1>
+    <h1 class="medium-large-text helvetica">Work experience is up next:</h1>
     <div class="horizontal-scroll-outer" inViewport (inViewportAction)="resumeInViewport($event)">
         <div *ngIf="showResumeTutorial">
             <ng-lottie [options]="options" width="100%" class="overlay"></ng-lottie>
@@ -118,6 +131,27 @@
                 <div id="resume-card-right"></div>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="education" >
+    <div class="width-container">
+        <h1 class="medium-large-text helvetica">Here are my education details:</h1>
+        <div class="edu-styles">
+            <img src="assets/images/resume/rpi_seal.jpg">
+            <div>
+                <h1 class="medium-text helvetica">Rensselaer Polytechnic Institute</h1>
+                <h3 class="small-text helvetica text-padding">2016 - 2020</h3>
+                <h3 class="extra-small-text helvetica-normal text-padding">B.S. Computer Science</h3>
+                <h3 class="extra-small-text helvetica-normal text-padding">B.S. Computer and Systems Engineering</h3>
+            </div>
+        </div>
+        <div>
+            <h1 style="margin-top: 3%" class="medium-text helvetica">My Resume and CV:</h1>
+            <a style="margin-right: 2%" class="theme-button zoom-fx" href="{{data.resumeURL}}">RESUME</a>
+            <a class="theme-button zoom-fx" href="{{data.cvURL}}">CV</a>
+        </div>
+
     </div>
 </div>
 
