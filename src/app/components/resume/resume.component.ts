@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ResumeData, WebSkill} from '../../models/ResumeData';
 import {Title} from '@angular/platform-browser';
-import {forkJoin, of, Subject} from 'rxjs';
+import {forkJoin, Observable, of, Subject} from 'rxjs';
 import {Experience} from '../../models/Experience';
 import {delay, elementAt, mergeMap} from 'rxjs/operators';
 import {AnimationOptions} from 'ngx-lottie';
@@ -19,7 +19,9 @@ export class ResumeComponent implements OnInit {
     webSkillsFormatted: WebSkill[] = [];
     experiences: Experience[];
     resumeInVP = new Subject<Event>();
-    showResumeTutorial = true;
+    webSkillsInVP = new Subject<Event>();
+    showResumeTutorial = false;
+    showWebSkillsTutorial = true;
 
     options: AnimationOptions = {
         path: 'assets/animations/swipe-hint-animation.json',
@@ -41,18 +43,34 @@ export class ResumeComponent implements OnInit {
                 this.experiences = experiences;
             });
 
-        this.resumeInVP
-            .pipe(elementAt(1))
-            .pipe(mergeMap((e) => {
-                this.showResumeTutorial = true;
-                return of(e);
-            }))
-            .pipe(delay(2000))
-            .subscribe(() => this.showResumeTutorial = false);
+        this.tutorialSequence(
+            this.resumeInVP,
+            () => this.showResumeTutorial = true,
+            () => this.showResumeTutorial = false);
+
+        this.tutorialSequence(
+            this.webSkillsInVP,
+            () => this.showWebSkillsTutorial = true,
+            () => this.showWebSkillsTutorial = false);
     }
 
     resumeInViewport(event: Event) {
         this.resumeInVP.next(event);
+    }
+
+    webSkillsInViewport(event: Event) {
+        this.webSkillsInVP.next(event);
+    }
+
+    tutorialSequence(observable: Observable<Event>, beforeDelay: () => void, afterDelay: () => void) {
+        observable
+            .pipe(elementAt(1))
+            .pipe(mergeMap((e) => {
+                beforeDelay();
+                return of(e);
+            }))
+            .pipe(delay(2000))
+            .subscribe(afterDelay);
     }
 
 }

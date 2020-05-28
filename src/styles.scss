@@ -77,10 +77,11 @@ html, body {
     margin: 0 auto;
 }
 
-.zoom-fx {}
-.zoom-fx:hover {
-    transition: all 0.3s ease-in-out;
-    transform:scale(1.1,1.1);
+.zoom-fx {
+    &:hover {
+        transition: all 0.3s ease-in-out;
+        transform:scale(1.1,1.1);
+    }
 }
 
 .orange-underline-anchor {

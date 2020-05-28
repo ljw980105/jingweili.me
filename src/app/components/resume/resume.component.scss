@@ -1,6 +1,11 @@
 $resume-orange: rgb(255, 157, 0);
 $resume-light-grey: rgb(244, 244, 244);
 
+@mixin vertical-padding($amount) {
+    padding-top: $amount;
+    padding-bottom: $amount;
+}
+
 .large-text {
     font-size: 80px;
 }
@@ -21,21 +26,31 @@ $resume-light-grey: rgb(244, 244, 244);
     font-size: 18px;
 }
 
-
 .theme-color {
     color: $resume-orange;
 }
 
 #logo-meaning {
-    padding: 5% 0;
+    @include vertical-padding(5%);
+}
+
+#stats-showoff {
+    display: flex;
 }
 
 #logo-dual {
     display: flex;
+    div:nth-child(1) {
+        width: 35%;
+        margin: -5% 20% 0 0;
+    }
+    div:nth-child(2) {
+        width: 45%;
+    }
 }
 
 #ios-showoff {
-    padding: 3% 0;
+    @include vertical-padding(3%);
 }
 
 #stats-col-1, #stats-col-2 {
@@ -86,7 +101,7 @@ $resume-light-grey: rgb(244, 244, 244);
 }
 
 #experiences {
-    padding: 3%;
+    @include vertical-padding(3%);
 }
 
 .dot {
@@ -106,14 +121,16 @@ $resume-light-grey: rgb(244, 244, 244);
 
 #resume-card {
     padding: 1% 0;
-    width: 60%;
+    width: 820px;
     margin: 0 0 3% 0;
     white-space: normal;
+    vertical-align: top;
 }
 
 #resume-card-left {
     width: 35%;
     margin-right: 5%;
+    display: block;
 }
 
 #resume-card-mid {
@@ -122,6 +139,10 @@ $resume-light-grey: rgb(244, 244, 244);
 
 #resume-card-right {
     width: 8%;
+}
+
+#resume-card-container, #resume-card-container-left {
+    display: flex;
 }
 
 hr {
@@ -140,7 +161,7 @@ hr {
 .overlay {
     position: absolute;
     left: 40%;
-    background: radial-gradient(circle, rgba(255,255,255,1) 39%, rgba(255,255,255,0) 95%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 95%);
 }
 
 #graphics {
@@ -169,14 +190,14 @@ hr {
 }
 
 #education {
-    padding: 3%;
+    @include vertical-padding(3%);
     background-color: $resume-light-grey;
 }
 
 .edu-styles {
     display: flex;
-    background-color: rgba(14,23,68,0.07);
-    box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+    background-color: rgba(14, 23, 68, 0.07);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
     div {
         padding: 1% 3%;
     }
@@ -190,7 +211,147 @@ hr {
     }
 }
 
+.resume-cv-styles {
+    @include vertical-padding(3%);
+}
+
 .text-padding {
     padding: 4px 0;
     margin: 0;
 }
+
+@media screen and (max-width: 1450px) {
+    #logo-dual {
+        div:nth-child(1) {
+            width: 35%;
+            margin-right: 8%;
+        }
+        div:nth-child(2) {
+            width: 57%;
+        }
+    }
+    #resume-card {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .large-text { font-size: 60px; }
+    .medium-large-text { font-size: 35px; }
+    .medium-text { font-size: 25px; }
+    .width-container { padding: 0 6%; }
+    #time-line { width: 60%; }
+}
+
+@media screen and (max-width: 1000px) {
+    #ios-skills {
+        display: block;
+    }
+    #ios-graphic {
+        background: none;
+    }
+    #ios-content {
+        width: 100%;
+    }
+    #resume-card {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #graphics {
+        display: block;
+    }
+    #graphics-left, #graphics-right {
+        width: 100%;
+    }
+    .large-text { font-size: 50px; }
+    .medium-large-text { font-size: 30px; }
+    .medium-text { font-size: 20px; }
+    .small-text { font-size: 20px; }
+    #resume-card-container {
+        display: block;
+        width: 90%;
+    }
+    #resume-card-right {
+        width: 5%;
+    }
+    #resume-card {
+        width: 480px;
+    }
+    #time-line {
+        width: 65%;
+    }
+    #resume-card-left, #resume-card-mid {
+        width: 100%;
+        margin-right: 0;
+    }
+    #resume-card-left {
+        display: flex;
+        img {
+            width: 150px;
+            height: 150px;
+            margin-right: 10px;
+        }
+        h3 {
+            margin: 0;
+            padding: 4px 0 0 0;
+        }
+    }
+    #resume-card-container-left {
+        display: block;
+    }
+    .extra-small-text {
+        font-size: 16px;
+    }
+    #logo-dual {
+        display: block;
+        div:nth-child(1) {
+            width: 100%;
+            margin: -5% 0 0 0;
+        }
+        div:nth-child(2) {
+            width: 100%;
+        }
+    }
+    .large-text {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    #resume-card {
+        width: 95%;
+    }
+    .edu-styles {
+        display: block;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        div {
+            padding: 6%;
+        }
+    }
+    .resume-cv-styles {
+        @include vertical-padding(6%);
+    }
+
+}
+
+@media screen and (max-width: 481px) {
+    #time-line {
+        width: 50%;
+    }
+    #stats-showoff {
+        display: block;
+    }
+    #stats-col-1, #stats-col-2, #stats-col-3 {
+        width: 100%;
+        h3 {
+            margin-top: 25px;
+        }
+    }
+}
+
+
