@@ -37,8 +37,8 @@ html, body {
     width: 50%;
 }
 
+// also need to specify a width
 .center-div-horizontally {
-    width: 50%;
     margin: 0 auto;
 }
 
@@ -46,10 +46,29 @@ html, body {
     width: 100%;
     text-align: center;
 }
-
+/////////////////////
+////// FONTS ///////
+////////////////////
 .helvetica {
     font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
+
+.helvetica-normal {
+    font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+    font-weight: normal;
+}
+
+.mohave {
+    font-family: Mohave, sans-serif;
+}
+
+.menlo {
+    font-family: Menlo, "Courier New", sans-serif;
+}
+
+/////////////////////
+//// END FONTS //////
+/////////////////////
 
 .center_img  { /*THE AMAZING CODE THAT CENTERS THE GODDAMN IMAGE*/ }
 
@@ -58,10 +77,11 @@ html, body {
     margin: 0 auto;
 }
 
-.zoom-fx {}
-.zoom-fx:hover {
-    transition: all 0.3s ease-in-out;
-    transform:scale(1.1,1.1);
+.zoom-fx {
+    &:hover {
+        transition: all 0.3s ease-in-out;
+        transform:scale(1.1,1.1);
+    }
 }
 
 .orange-underline-anchor {
@@ -71,7 +91,50 @@ html, body {
         color: black;
     }
     &:hover {
-        color: orangered;
+        color: orange;
     }
 }
 
+.underline {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: dimgray;
+}
+
+.overline {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: dimgray;
+}
+
+.horizontal-scroll-outer {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.horizontal-scroll-inner {
+    display: inline-block;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.theme-button {
+    background-color: dimgrey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    letter-spacing: 2px;
+    font-family: Mohave, sans-serif;
+}

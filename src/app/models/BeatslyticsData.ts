@@ -1,3 +1,5 @@
+import {GenericFeature} from './GenericFeature';
+
 export class BeatslyticsData {
     metaAppStoreName: string;
     metaAppStoreContent: string;
@@ -11,7 +13,3 @@ export class BeatslyticsData {
     credits: GenericFeature;
 }
 
-export class GenericFeature {
-    name: string;
-    details: string[];
-}

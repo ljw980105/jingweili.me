@@ -82,28 +82,5 @@
             "name": "Music Streaming",
             "description":"I've built two music streaming apps that either access the user's music library to play music or pull data from the Apple Music API to browse and play the latest addition from any artists."
         }
-    ],
-    "experiences": [
-        {
-            "imageLink": "assets/images/apps/DkIcon.png",
-            "position": "Software Engineering Intern",
-            "time": "Summer 2019",
-            "company": "DraftKings, Inc",
-            "accomplishments": [
-                "Developed iOS & Android frameworks to scan the barcodes in driver’s licenses to report metadata for identification purposes.",
-                "Combined the above Android & iOS frameworks into a Xamarin.Forms library and developed tutorials on doing such, which enabled DraftKings’ Xamarin team to leverage the power of native mobile libraries.",
-                "Added new features to DraftKings’ iOS app’s login flow using the VIPER architecture to improve user experiences. "
-            ]
-        },
-        {
-            "imageLink": "assets/images/apps/ModMedIcon.png",
-            "position": "Mobile Software Engineering Intern",
-            "time": "Summer 2018",
-            "company": "Modernizing Medicine",
-            "accomplishments": [
-                "Worked as an iOS developer to maintain three apps from Modernizing Medicine: PocketEMA, Telehealth and Kiosk, with Swift and Objective-C. These apps directly improve the lives of more than 160 million patients.",
-                "Designed and implemented new features, new UI elements and carried out bug fixes while collaborating closely with a full-scale Scrum team."
-            ]
-        }
     ]
 }

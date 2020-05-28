@@ -1,0 +1,165 @@
+<app-navbar></app-navbar>
+
+<div id="logo-meaning" class="width-container">
+    <h1 class="theme-color large-text helvetica">What Does My Logo Mean?</h1>
+    <div id="logo-dual" style="margin-top: 10%">
+        <div>
+            <img src="assets/images/resume/logo-objc.png" width="100%">
+        </div>
+        <div>
+            <img src="assets/images/resume/objc-example.png" width="100%" height="60%">
+            <h3 class="helvetica medium-text theme-color">
+                <span class="menlo"> - () </span> is a signature syntax in ObjectiveC.
+            </h3>
+        </div>
+    </div>
+</div>
+
+<div id="ios-showoff" class="width-container">
+    <h3 class="medium-text helvetica">Objective-C can only mean one thing -</h3>
+    <h1 class="theme-color helvetica large-text">I'm a Kick-ass iOS Developer.</h1>
+    <div id="stats-showoff">
+        <div id="stats-col-1" class="flex">
+            <h1 class="large-text helvetica theme-color">{{data.appsWorkedOn}}</h1>
+            <h3 class="medium-text helvetica">apps <br> worked on</h3>
+        </div>
+        <div id="stats-col-2" class="flex">
+            <h1 class="large-text helvetica theme-color">{{data.commercialAppsWorkedOn}}</h1>
+            <h3 class="medium-text helvetica">commercial apps <br> worked on</h3>
+        </div>
+        <div id="stats-col-3" class="flex">
+            <h1 class="large-text helvetica theme-color">{{data.appsPublished}}</h1>
+            <h3 class="medium-text helvetica">apps published <br> on App Store</h3>
+        </div>
+    </div>
+</div>
+
+<div id="ios-skills" class="width-container">
+    <div id="ios-graphic" ></div>
+    <div id="ios-content">
+        <h3 class="medium-text helvetica">And I'm experienced in these areas of iOS Dev: </h3>
+        <h1 class="medium-text helvetica" style="margin-bottom: 5px">Languages:
+            <span class="theme-color">Swift&nbsp;</span>
+            <span style="color: dodgerblue">Objective-C</span>
+        </h1>
+        <h3 class="helvetica small-text" *ngFor="let skill of data.iosSkills" style="padding: 0; margin: 0.2%">
+            <span>{{skill.name}}&nbsp;&nbsp;</span>
+            <span style="color: darkgrey">{{skill.details.join(", ")}}&nbsp;</span>
+        </h3>
+        <h3 class="medium-text helvetica">View More Details
+            <a class="orange-underline-anchor" [routerLink]="['/apps']">here</a>.
+        </h3>
+    </div>
+</div>
+
+<div id="web-skills">
+    <div class="width-container">
+        <h1 class="medium-large-text helvetica">Web Design? I'm good at that too.</h1>
+        <h3 class="small-text helvetica">I have experience using these frameworks:</h3>
+
+        <div class="horizontal-scroll-outer" inViewport (inViewportAction)="webSkillsInViewport($event)">
+            <div *ngIf="showWebSkillsTutorial">
+                <ng-lottie [options]="options" width="100%" class="overlay"></ng-lottie>
+            </div>
+            <div class="web-skills-scroll horizontal-scroll-outer horizontal-scroll-inner"
+                 *ngFor="let webSkill of webSkillsFormatted"
+            >
+                <h3 class="theme-color small-text helvetica">{{webSkill.category}}</h3>
+                <div class="horizontal-scroll-inner" style="width: 100px" *ngFor="let skill of webSkill.details">
+                    <img width="100px" height="100px" src="{{skill.imageUrl}}">
+                    <h3 class="extra-small-text helvetica" style="text-align: center">{{skill.text}}</h3>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="small-text helvetica">In fact, this website is programmed with Angular.</h3>
+    </div>
+</div>
+
+<div style="background-color: black">
+    <div class="width-container" style="padding-top: 3%; padding-bottom: 3%">
+        <h1 class="medium-large-text helvetica" style="color: white">Graphic Design is my passion, too.</h1>
+        <div id="graphics">
+            <div id="graphics-left">
+                <h3 class="medium-text helvetica-normal">I had been a graphic designer <br/> for Rensselaer Union for</h3>
+                <img width="200px" src="assets/images/resume/3-point-5.png">
+                <h3 class="medium-text helvetica-normal">years.</h3>
+                <br>
+                <h3 class="medium-text helvetica"> Here are my Skill Sets:</h3>
+                <div id="graphics-skills">
+                    <div *ngFor="let graphicSkill of data.graphicSkills">
+                        <h3 class="helvetica extra-small-text">{{graphicSkill.name}}</h3>
+                        <hr style="background-color: lightgrey; height: 1px">
+                        <h3 style="color: lightgrey"
+                           class="helvetica-normal extra-small-text"
+                           *ngFor="let entry of graphicSkill.details"
+                        >{{entry}}</h3>
+                    </div>
+                </div>
+                <h3 class="medium-text helvetica"> View My Portfolio Here</h3>
+            </div>
+            <br>
+            <div id="graphics-right">
+                <img width="100%" src="assets/images/resume/graphic-decoration.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="experiences" class="width-container">
+    <h1 class="medium-large-text helvetica">Work experience is up next:</h1>
+    <div class="horizontal-scroll-outer" inViewport (inViewportAction)="resumeInViewport($event)">
+        <div *ngIf="showResumeTutorial">
+            <ng-lottie [options]="options" width="100%" class="overlay"></ng-lottie>
+        </div>
+        <div id="resume-card" class="horizontal-scroll-inner" *ngFor="let experience of experiences">
+            <div style="display: flex; margin-bottom: 3%">
+                <span class="dot"></span>
+                <span class="small-text mohave">&nbsp;&nbsp;{{experience.time | uppercase}}&nbsp;</span>
+                <div id="time-line" class="ml-auto"><hr/></div>
+            </div>
+            <div id="resume-card-container">
+                <div id="resume-card-container-left">
+                    <div id="resume-card-left">
+                        <img width="100%" src="{{experience.imageLink}}">
+                        <div>
+                            <h3 class="small-text helvetica">{{experience.position}}</h3>
+                            <h3 class="extra-small-text helvetica-normal">💼&nbsp;{{experience.company}}</h3>
+                        </div>
+                    </div>
+                    <div id="resume-card-mid">
+                        <h3 class="extra-small-text helvetica-normal"
+                            *ngFor="let expEntry of experience.accomplishments"
+                            [innerHTML]="expEntry"
+                        ></h3>
+                    </div>
+                </div>
+                <div id="resume-card-right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="education" >
+    <div class="width-container">
+        <h1 class="medium-large-text helvetica">Here are my education details:</h1>
+        <div class="edu-styles">
+            <img src="assets/images/resume/rpi_seal.jpg">
+            <div>
+                <h1 class="medium-text helvetica">Rensselaer Polytechnic Institute</h1>
+                <h3 class="small-text helvetica text-padding">2016 - 2020</h3>
+                <h3 class="extra-small-text helvetica-normal text-padding">B.S. Computer Science</h3>
+                <h3 class="extra-small-text helvetica-normal text-padding">B.S. Computer and Systems Engineering</h3>
+            </div>
+        </div>
+        <div class="resume-cv-styles">
+            <h1 class="medium-text helvetica">My Resume and CV:</h1>
+            <a style="margin-right: 2%" class="theme-button zoom-fx" href="{{data.resumeURL}}">RESUME</a>
+            <a class="theme-button zoom-fx" href="{{data.cvURL}}">CV</a>
+        </div>
+
+    </div>
+</div>
+
+<app-footer [showTopBorder]="true"></app-footer>

@@ -1,0 +1,101 @@
+{
+    "appsWorkedOn": 11,
+    "commercialAppsWorkedOn": 4,
+    "appsPublished": 2,
+    "iosSkills": [
+        {
+            "name": "\uD83D\uDCF1 User Interface",
+            "details": ["UIKit", "SnapKit"]
+        }, {
+            "name": "\uD83D\uDCA5 Animations",
+            "details": ["Core Animation", "Lottie"]
+        }, {
+            "name": "\uD83D\uDCF6 Networking",
+            "details": ["Alamofire", "URLSession", "AFNetworking"]
+        }, {
+            "name": "\uD83E\uDDCA 3D & AR",
+            "details": ["Model I/O", "SceneKit", "ARKit"]
+        }, {
+            "name": "\uD83C\uDFB8 Music",
+            "details": ["MediaPlayer", "Apple Music API", "Music Kit"]
+        }, {
+            "name": "\uD83D\uDD29 Hardware",
+            "details": ["Core Bluetooth"]
+        }, {
+            "name": "\uD83D\uDD2E Async Programming",
+            "details": ["RxSwift", "Combine", "PromiseKit"]
+        }, {
+            "name": "\uD83D\uDCCD Maps",
+            "details": ["MapKit", "MapKit-JS", "Core Location"]
+        }, {
+            "name": "\uD83D\uDEE2️ Databases",
+            "details": ["Core Data"]
+        }, {
+            "name": "⌚ Apple Watch",
+            "details": ["WatchKit", "WatchConnectivity"]
+        }, {
+            "name": "\uD83D\uDCE6 Package Management",
+            "details": ["CocoaPods", "Carthage", "Swift PM"]
+        } ,{
+            "name": "\uD83E\uDD37 Other",
+            "details": ["LocalAuthentication", "Core Motion"]
+        }
+    ],
+
+    "webSkillsFrontend": [
+        {
+            "imageUrl": "assets/images/resume/htmlIcon.png",
+            "text": "HTML"
+        }, {
+            "imageUrl": "assets/images/resume/cssIcon.png",
+            "text": "CSS"
+        }, {
+            "imageUrl": "assets/images/resume/sassIcon.png",
+            "text": "Sass"
+        }, {
+            "imageUrl": "assets/images/resume/jqueryIcon.png",
+            "text": "jQuery"
+        }, {
+            "imageUrl": "assets/images/resume/angularIcon.png",
+            "text": "Angular"
+        },  {
+            "imageUrl": "assets/images/resume/bootstrapIcon.png",
+            "text": "Bootstrap"
+        }
+    ],
+    "webSkillsBackend": [
+        {
+            "imageUrl": "assets/images/resume/nodeIcon.png",
+            "text": "NodeJS"
+        }, {
+            "imageUrl": "assets/images/resume/vaporIcon.png",
+            "text": "Vapor"
+        }
+    ],
+    "webSkillsGeneral": [
+        {
+            "imageUrl": "assets/images/resume/jsIcon.png",
+            "text": "Javascript"
+        }, {
+            "imageUrl": "assets/images/resume/tsIcon.png",
+            "text": "TypeScript"
+        }, {
+            "imageUrl": "assets/images/apps/RxIcon.png",
+            "text": "RxJS"
+        }
+    ],
+    "graphicSkills": [
+        {
+            "name": "Design",
+            "details": [ "Illustrator", "InDesign", "Photoshop", "Lightroom", "Affinity Suite" ]
+        }, {
+            "name": "UI/UX",
+            "details": [ "Adobe XD", "Storyboarding", "User Research", "Usability Testing" ]
+        }, {
+            "name": "Motion Graphics",
+            "details": [ "After Effects" ]
+        }
+    ],
+    "resumeURL": "assets/files/Beatslytics%20License%20Agreement.pdf",
+    "cvURL": "assets/files/Beatslytics%20License%20Agreement.pdf"
+}

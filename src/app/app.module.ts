@@ -7,14 +7,21 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HomeComponent} from './components/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { PcSetupComponent } from './minor-components/pc-setup/pc-setup.component';
+import {PcSetupComponent} from './minor-components/pc-setup/pc-setup.component';
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
-import { AboutComponent } from './minor-components/about/about.component';
-import { ContactsComponent } from './minor-components/contacts/contacts.component';
-import { AppsComponent } from './components/apps/apps.component';
-import { DualAppComponent } from './minor-components/dual-app/dual-app.component';
+import {AboutComponent} from './minor-components/about/about.component';
+import {ContactsComponent} from './minor-components/contacts/contacts.component';
+import {AppsComponent} from './components/apps/apps.component';
+import {DualAppComponent} from './minor-components/dual-app/dual-app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { BeatslyticsComponent } from './components/beatslytics/beatslytics.component';
+import {BeatslyticsComponent} from './components/beatslytics/beatslytics.component';
+import {ResumeComponent} from './components/resume/resume.component';
+import {InViewportModule} from 'ng-in-viewport';
+import {LottieModule} from 'ngx-lottie';
+
+export function playerFactory() {
+    return import('lottie-web');
+}
 
 @NgModule({
     declarations: [
@@ -27,14 +34,17 @@ import { BeatslyticsComponent } from './components/beatslytics/beatslytics.compo
         ContactsComponent,
         AppsComponent,
         DualAppComponent,
-        BeatslyticsComponent
+        BeatslyticsComponent,
+        ResumeComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        ScrollToModule.forRoot()
+        ScrollToModule.forRoot(),
+        InViewportModule,
+        LottieModule.forRoot({player: playerFactory})
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,3 +1,8 @@
+@mixin logo-size {
+    width: 120px;
+    height: 85px;
+}
+
 /*4 THE FOOTER*/
 @keyframes bounce {
     0% {transform: scale(1.0);}
@@ -100,8 +105,7 @@
     /*margin-top: 2%;*/
     display: block;
     margin: 0 auto;
-    width: 80px;
-    height: 80px;
+    @include logo-size;
 }
 
 
@@ -118,8 +122,7 @@
 }
 
 #mobile_logo {
-    width: 80px;
-    height: 80px;
+    @include logo-size;
     filter: invert(100);
     display: block;
     margin: 2% auto 0 auto;
@@ -158,8 +161,7 @@
     }
 
     #mobile_logo img {
-        width: 80px;
-        height: 80px;
+        @include logo-size;
     }
 }
 
