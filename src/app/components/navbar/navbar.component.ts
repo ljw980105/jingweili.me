@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {shrinkOrExpand} from '../../models/Animations';
 
 @Component({
@@ -10,12 +10,15 @@ import {shrinkOrExpand} from '../../models/Animations';
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+    @Input() theme = 'dark';
+    darkThemed: boolean;
     expanded = false;
 
     constructor() {
     }
 
     ngOnInit(): void {
+        this.darkThemed = this.theme === 'dark';
     }
 
     toggleExpansion() {

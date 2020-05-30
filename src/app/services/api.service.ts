@@ -12,7 +12,7 @@ import {FileLocation} from '../models/FileLocation';
     providedIn: 'root'
 })
 export class ApiService {
-    public readonly apiRoot = 'http://localhost:8080/';
+    public readonly apiRoot = 'http://api.jingweili.me/';
 
     constructor(private http: HttpClient) {
     }

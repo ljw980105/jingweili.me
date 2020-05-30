@@ -4,6 +4,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AppsComponent} from './components/apps/apps.component';
 import {BeatslyticsComponent} from './components/beatslytics/beatslytics.component';
 import {ResumeComponent} from './components/resume/resume.component';
+import {GraphicDesignComponent} from './components/graphic-design/graphic-design.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
     {path: 'apps', component: AppsComponent},
     {path: 'beatslytics', component: BeatslyticsComponent},
     {path: 'resume', component: ResumeComponent},
+    {path: 'graphic-design', component: GraphicDesignComponent},
     {
         path: 'admin',
         loadChildren: () => import('./admin-panel/admin-panel-components.module').then(m => m.AdminPanelComponentsModule)

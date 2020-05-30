@@ -1,14 +1,14 @@
-<div id="nav" class="menu-wrap">
+<div id="nav" class="menu-wrap" [ngClass]="{'dark-nav': darkThemed, 'light-nav': !darkThemed}">
     <nav class="menu">
         <ul class="clearfix">
             <li><a [routerLink]="['/']">HOME</a></li>
             <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">ABOUT</a></li>
             <li><a [routerLink]="['/resume']">RESUME</a></li>
             <li><a [routerLink]="['/apps']">APPS</a></li>
-            <li><a href="Graphic Design.html">GRAPHIC DESIGN</a></li>
+            <li><a [routerLink]="['/graphic-design']">GRAPHIC DESIGN</a></li>
             <li>
                 <a id="nav_proj" href="Projects.html">PROJECTS</a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" [ngClass]="{'dark-dropdown': darkThemed, 'light-dropdown': !darkThemed}">
                     <li><a href="Projects.html">All</a></li>
                     <li><a href="proj_frc.html">FIRST Robotics</a></li>
                     <li><a [routerLink]="['/beatslytics']">Beatslytics</a></li>
@@ -21,41 +21,41 @@
     </nav>
 </div>
 
-<div id="top_mobile_nav">
-    <img id="navicon" src="assets/images/navbar/navicon.png" height="50px" width="50px" (click)="toggleExpansion()">
+<div id="top_mobile_nav" [ngClass]="{'dark-top-mobile-nav': darkThemed, 'light-top-mobile-nav': !darkThemed}">
+    <img src="assets/images/navbar/navicon.png" (click)="toggleExpansion()">
 </div>
 
 <header style="height: 50%" [@shrinkOrExpand]="expanded ? 'expanded' : 'shrinked'">
-    <nav id="mobile_nav">
+    <nav id="mobile_nav" [ngClass]="{'dark-mobile-nav': darkThemed, 'light-mobile-nav': !darkThemed}">
         <div class="horizScrollDiv" style="margin-left: 20px">
-            <a [routerLink]="['/']"><img src="assets/images/navbar/home.png" height="70" width="70"></a>
+            <a [routerLink]="['/']"><img src="assets/images/navbar/home.png"></a>
             <li><a [routerLink]="['/']">HOME</a></li>
         </div>
         <div class="horizScrollDiv">
             <a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">
-                <img src="assets/images/navbar/aboutIcon.png" height="70" width="70">
+                <img src="assets/images/navbar/aboutIcon.png">
             </a>
             <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">ABOUT</a></li>
         </div>
         <div class="horizScrollDiv">
-            <a [routerLink]="['/resume']"><img src="assets/images/navbar/resumelogo.png" height="70" width="70"></a>
+            <a [routerLink]="['/resume']"><img src="assets/images/navbar/resumelogo.png"></a>
             <li><a [routerLink]="['/resume']">RESUME</a></li>
         </div>
         <div class="horizScrollDiv">
-            <a [routerLink]="['/apps']"><img src="assets/images/navbar/apps.png" height="70" width="70"></a>
+            <a [routerLink]="['/apps']"><img src="assets/images/navbar/apps.png"></a>
             <li><a [routerLink]="['/apps']">APPS</a></li>
         </div>
         <div class="horizScrollDiv">
-            <a href="Graphic Design.html"><img src="assets/images/navbar/splashIcon.png" height="70" width="70"></a>
-            <li><a href="Graphic Design.html">GRAPHIC DESIGN</a></li>
+            <a [routerLink]="['/graphic-design']"><img src="assets/images/navbar/splashIcon.png"></a>
+            <li><a [routerLink]="['/graphic-design']">GRAPHIC DESIGN</a></li>
         </div>
         <div class="horizScrollDiv">
-            <a href="Projects.html"><img src="assets/images/navbar/gearIcon.png" height="70" width="70"></a>
+            <a href="Projects.html"><img src="assets/images/navbar/gearIcon.png"></a>
             <li><a href="Projects.html">PROJECTS</a></li>
         </div>
         <div class="horizScrollDiv" style="margin-right: 20px">
             <a [routerLink]="['/']" [queryParams]="{scrollToId: 'contacts'}">
-                <img src="assets/images/navbar/phone.png" height="70" width="70">
+                <img src="assets/images/navbar/phone.png">
             </a>
             <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'contacts'}">CONTACT</a></li>
         </div>

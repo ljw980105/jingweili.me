@@ -19,6 +19,7 @@ import {ResumeComponent} from './components/resume/resume.component';
 import {InViewportModule} from 'ng-in-viewport';
 import {LottieModule} from 'ngx-lottie';
 import {FileUploadModule} from 'ng2-file-upload';
+import { GraphicDesignComponent } from './components/graphic-design/graphic-design.component';
 
 export function playerFactory() {
     return import('lottie-web');
@@ -36,7 +37,8 @@ export function playerFactory() {
         AppsComponent,
         DualAppComponent,
         BeatslyticsComponent,
-        ResumeComponent
+        ResumeComponent,
+        GraphicDesignComponent
     ],
     imports: [
         BrowserModule,
