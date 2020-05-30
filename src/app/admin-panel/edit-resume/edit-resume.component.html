@@ -1,0 +1,14 @@
+<h3 class="helvetica">Resume</h3>
+<h4 class="helvetica-normal" style="color: dimgray">{{resumeExists ? "Resume Already Uploaded" : "Resume not Uploaded"}}</h4>
+
+<div>
+    <input type="file" accept=".pdf" name="resume" (change)="uploadResume($event)">
+</div>
+
+<h3 class="helvetica">CV</h3>
+<h4 class="helvetica-normal" style="color: dimgray">{{cvExists ? "CV Already Uploaded" : "CV not Uploaded"}}</h4>
+
+<div>
+    <input type="file" accept=".pdf" name="cv" (change)="uploadCV($event)">
+</div>
+

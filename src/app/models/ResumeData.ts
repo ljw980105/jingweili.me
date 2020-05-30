@@ -10,8 +10,6 @@ export class ResumeData {
     webSkillsBackend: TextAndImage[];
     webSkillsGeneral: TextAndImage[];
     graphicSkills: GenericFeature[];
-    resumeURL: string;
-    cvURL: string;
 }
 
 export class WebSkill {

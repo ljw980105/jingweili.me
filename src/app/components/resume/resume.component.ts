@@ -22,6 +22,8 @@ export class ResumeComponent implements OnInit {
     webSkillsInVP = new Subject<Event>();
     showResumeTutorial = false;
     showWebSkillsTutorial = true;
+    resumeURL: string;
+    cvURL: string;
 
     options: AnimationOptions = {
         path: 'assets/animations/swipe-hint-animation.json',
@@ -32,11 +34,11 @@ export class ResumeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        forkJoin([
-            this.apiService.getResumeData(),
-            this.apiService.getExperiencesData()
-        ]).subscribe(([data, experiences]) => {
+        this.apiService.getResumeData()
+            .subscribe(([data, resume, cv, experiences]) => {
                 this.data = data;
+                this.resumeURL = `${this.apiService.apiRoot}${resume.url}`;
+                this.cvURL = `${this.apiService.apiRoot}${cv.url}`;
                 this.webSkillsFormatted.push(new WebSkill('Frontend', data.webSkillsFrontend));
                 this.webSkillsFormatted.push(new WebSkill('Backend', data.webSkillsBackend));
                 this.webSkillsFormatted.push(new WebSkill('General', data.webSkillsGeneral));

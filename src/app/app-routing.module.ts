@@ -10,7 +10,11 @@ const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'apps', component: AppsComponent},
     {path: 'beatslytics', component: BeatslyticsComponent},
-    {path: 'resume', component: ResumeComponent}
+    {path: 'resume', component: ResumeComponent},
+    {
+        path: 'admin',
+        loadChildren: () => import('./admin-panel/admin-panel-components.module').then(m => m.AdminPanelComponentsModule)
+    }
 ];
 
 @NgModule({
