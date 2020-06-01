@@ -21,7 +21,10 @@
     </nav>
 </div>
 
-<div id="top_mobile_nav" [ngClass]="{'dark-top-mobile-nav': darkThemed, 'light-top-mobile-nav': !darkThemed}">
+<div id="top_mobile_nav"
+     [ngClass]="{'dark-top-mobile-nav': darkThemed, 'light-top-mobile-nav': !darkThemed}"
+     [ngStyle]="{'border-bottom': bottomBorderStyle}"
+>
     <img src="assets/images/navbar/navicon.png" (click)="toggleExpansion()">
 </div>
 

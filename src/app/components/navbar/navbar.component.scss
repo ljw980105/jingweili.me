@@ -42,8 +42,7 @@
     font-weight: 300;
 }
 
-#nav a:hover { color: orange;}
-#nav a:focus { color: orange;}
+#nav a:hover, #nav a:focus { color: orange; }
 
 .center_text {
     text-align: center;

@@ -1,3 +1,40 @@
-<app-navbar [theme]="'light'"></app-navbar>
+<app-navbar [theme]="'light'" [showBottomBorderInMobile]="true"></app-navbar>
+
+<div id="behance-link">
+    <a class="helvetica orange-underline-anchor" href="https://www.behance.net/MrProLi" target="_blank">View My Behance Profile</a>
+</div>
+<div id="graphics-wrapper-desktop">
+    <div id="project-navigation">
+        <h1 class="mohave"
+            *ngFor="let project of projects; let i=index"
+            (mouseenter)="hoveredOnIndex(i)"
+            [ngStyle]="{'color': i === hoveredIndex ? 'orange' : 'dimgrey'}"
+        >{{project.name | uppercase}}</h1>
+    </div>
+
+    <div id="project-display" [ngStyle]="{'background-image': imageURLToShow}">
+        <div id="project-info">
+            <h3 class="helvetica-normal">{{projects[hoveredIndex].description}}</h3>
+            <a style="margin-top: 20px"
+               class="helvetica graphic-anchor-style"
+               target="_blank"
+               href="{{projects[hoveredIndex].projectURL}}"
+            >View More</a>
+        </div>
+    </div>
+</div>
+
+<div id="graphics-wrapper-mobile">
+    <div style="margin-bottom: 40px" *ngFor="let project of projects">
+        <img src="{{project.imageURLSquare}}" width="100%">
+        <h1 style="margin: 15px 0 0 0; padding: 0" class="mohave">{{project.name | uppercase}}</h1>
+        <h3 class="helvetica-normal">{{project.description}}</h3>
+        <a style="margin-top: 20px"
+           class="helvetica graphic-anchor-style"
+           target="_blank"
+           href="{{project.projectURL}}"
+        >View More</a>
+    </div>
+</div>
 
 <app-footer [showTopBorder]="true" [theme]="'light'"></app-footer>

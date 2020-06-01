@@ -39,10 +39,10 @@ export class ApiService {
         return this.http.get<Experience[]>('../../assets/experiences-data.json');
     }
 
-    uploadFileTo(endpoint: string, fileToUpload: File): Observable<any> {
+    uploadFileTo(endpoint: string, fileToUpload: File): Observable<ServerResponse> {
         const formData: FormData = new FormData();
         formData.append('file', fileToUpload);
-        return this.http.post<any>(endpoint, formData);
+        return this.http.post<ServerResponse>(endpoint, formData);
     }
 
     /////////////////
