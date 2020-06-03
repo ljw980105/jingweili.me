@@ -95,6 +95,17 @@ html, body {
     }
 }
 
+.orange-underline-anchor-light {
+    text-decoration: underline;
+    transition: all .1s ease-in;
+    &:visited, &:link {
+        color: white;
+    }
+    &:hover {
+        color: orange;
+    }
+}
+
 .underline {
     border-bottom-style: solid;
     border-bottom-width: 1px;
