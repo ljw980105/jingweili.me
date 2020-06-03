@@ -26,7 +26,7 @@
 
 <div id="graphics-wrapper-mobile">
     <div style="margin-bottom: 40px" *ngFor="let project of projects">
-        <img src="{{project.imageURLSquare}}" width="100%">
+        <img src="{{this.apiService.fileURL(project.imageURLSquare)}}" width="100%">
         <h1 style="margin: 15px 0 0 0; padding: 0" class="mohave">{{project.name | uppercase}}</h1>
         <h3 class="helvetica-normal">{{project.description}}</h3>
         <a style="margin-top: 20px"

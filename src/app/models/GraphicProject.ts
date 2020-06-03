@@ -5,6 +5,7 @@ export class GraphicProject {
         public description: string,
         public imageURLRectangle: string,
         public imageURLSquare: string,
-        public projectURL: string) {
+        public projectURL: string,
+        public id: number = null) {
     }
 }

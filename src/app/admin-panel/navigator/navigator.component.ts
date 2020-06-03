@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-navigator',
@@ -7,8 +8,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavigatorComponent implements OnInit {
     editingResume = false;
+    editingGraphicDesign = false;
 
-    constructor() {
+    constructor(private titleService: Title) {
+        this.titleService.setTitle('Admin Panel');
     }
 
     ngOnInit(): void {
@@ -16,6 +19,12 @@ export class NavigatorComponent implements OnInit {
 
     editResume() {
         this.editingResume = !this.editingResume;
+        this.editingGraphicDesign = false;
+    }
+
+    editGraphicDesign() {
+        this.editingResume = false;
+        this.editingGraphicDesign = !this.editingGraphicDesign;
     }
 
 }

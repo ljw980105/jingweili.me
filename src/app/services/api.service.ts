@@ -7,12 +7,14 @@ import {ResumeData} from '../models/ResumeData';
 import {Experience} from '../models/Experience';
 import {ServerResponse} from '../models/ServerResponse';
 import {FileLocation} from '../models/FileLocation';
+import {GraphicProject} from '../models/GraphicProject';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
-    public readonly apiRoot = 'http://api.jingweili.me/';
+    // public readonly apiRoot = 'http://api.jingweili.me/';
+    public readonly apiRoot = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) {
     }
@@ -39,12 +41,6 @@ export class ApiService {
         return this.http.get<Experience[]>('../../assets/experiences-data.json');
     }
 
-    uploadFileTo(endpoint: string, fileToUpload: File): Observable<ServerResponse> {
-        const formData: FormData = new FormData();
-        formData.append('file', fileToUpload);
-        return this.http.post<ServerResponse>(endpoint, formData);
-    }
-
     /////////////////
     // RESUME + CV //
     /////////////////
@@ -66,7 +62,36 @@ export class ApiService {
     }
 
     /////////////////
+    /// GRAPHICS ////
     /////////////////
-    /////////////////
+    getGraphicsProjects(): Observable<GraphicProject[]> {
+        return this.http.get<GraphicProject[]>(`${this.apiRoot}api/get-graphic-projects`);
+    }
 
+    addGraphicProject(project: GraphicProject): Observable<ServerResponse> {
+        return this.http.post<ServerResponse>(`${this.apiRoot}api/add-graphic-project`, project);
+    }
+
+    deleteGraphicsProject(project: GraphicProject): Observable<ServerResponse> {
+        return this.http.delete<ServerResponse>(`${this.apiRoot}api/delete-graphic-project/${project.id}`);
+    }
+
+
+    /////////////////
+    ///// FILES /////
+    /////////////////
+    uploadGenericFile(file: File): Observable<ServerResponse> {
+        return this.uploadFileTo(`${this.apiRoot}api/upload-file`, file);
+    }
+
+    public fileURL(name: string): string {
+        return `${this.apiRoot}${name}`;
+    }
+
+    private uploadFileTo(endpoint: string, fileToUpload: File): Observable<ServerResponse> {
+        const formData: FormData = new FormData();
+        formData.append('file', fileToUpload);
+        formData.append('name', fileToUpload.name);
+        return this.http.post<ServerResponse>(endpoint, formData);
+    }
 }
