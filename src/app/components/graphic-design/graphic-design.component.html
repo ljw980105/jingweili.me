@@ -1,5 +1,7 @@
 <app-navbar [theme]="'light'" [showBottomBorderInMobile]="true"></app-navbar>
 
+<div *ngIf="dataReady">
+
 <div id="behance-link">
     <a class="helvetica orange-underline-anchor" href="https://www.behance.net/MrProLi" target="_blank">View My Behance Profile</a>
 </div>
@@ -35,6 +37,8 @@
            href="{{project.projectURL}}"
         >View More</a>
     </div>
+</div>
+
 </div>
 
 <app-footer [showTopBorder]="true" [theme]="'light'"></app-footer>

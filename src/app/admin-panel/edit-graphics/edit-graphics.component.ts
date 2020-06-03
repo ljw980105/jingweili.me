@@ -58,4 +58,8 @@ export class EditGraphicsComponent implements OnInit {
             .subscribe(() => this.graphicProjects = this.apiService.getGraphicsProjects());
     }
 
+    nameLength(): number {
+        return this.name?.length ?? 0;
+    }
+
 }

@@ -6,17 +6,20 @@
             *ngIf="(graphicProjects | async).length === 0"
         >No Projects Found</h4>
         <div *ngFor="let project of graphicProjects | async" id="single-graphic-project">
-            <img width="70px" height="70px" src="{{this.apiService.fileURL(project.imageURLSquare)}}">
+            <img width="70px"
+                 style="margin-right: 10px"
+                 src="{{this.apiService.fileURL(project.imageURLSquare)}}">
             <div style="width: 280px">
                 <h4 class="helvetica">{{project.name}}</h4>
                 <h5 class="helvetica-normal">{{project.description}}</h5>
             </div>
-            <img class="trash" width="20px" height="20px" src="assets/images/admin/trash.png" (click)="deleteProject(project)">
+            <img class="trash ml-auto" width="20px" height="20px" src="assets/images/admin/trash.png" (click)="deleteProject(project)">
         </div>
     </div>
     <div id="add-project">
         <h3 class="helvetica">Add Project</h3>
         <label class="helvetica-normal">Name</label>
+        <p class="helvetica-normal p-non-button">{{19 - nameLength()}} characters remaining</p>
         <input placeholder="name" type="text" [(ngModel)]="name">
 
         <label>
@@ -27,12 +30,19 @@
         <label class="helvetica-normal vertical-spacing">Project URL</label>
         <input placeholder="url" type="text" [(ngModel)]="url">
 
-        <label class="helvetica-normal vertical-spacing-button">Rectangle Image</label>
+        <label class="helvetica-normal vertical-spacing-button">
+            Rectangle Image
+            <span><p class="helvetica-normal p-button">Preferred Resolution 1400x788</p></span>
+        </label>
         <div>
             <input type="file" accept=".png,.jpg,.jpeg" (change)="uploadRecImage($event)">
         </div>
 
-        <label class="helvetica-normal vertical-spacing-button">Square Image</label>
+        <label class="helvetica-normal vertical-spacing-button">
+            Square Image
+            <span><p class="helvetica-normal p-button">Aspect Ratio should be 1:1</p></span>
+        </label>
+
         <div>
             <input type="file" accept=".png,.jpg,.jpeg" (change)="uploadSquareImage($event)">
         </div>

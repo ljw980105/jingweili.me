@@ -3,6 +3,7 @@ import {GraphicProject} from '../../models/GraphicProject';
 import {Title} from '@angular/platform-browser';
 import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 import {ApiService} from '../../services/api.service';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-graphic-design',
@@ -15,6 +16,7 @@ export class GraphicDesignComponent implements OnInit {
     hoveredIndex = 0;
     widthObserver: WidthBreakpointObserver;
     showRectangleImage = false;
+    dataReady = false;
 
     constructor(private titleService: Title, public apiService: ApiService) {
         this.titleService.setTitle('Graphic Design');
@@ -22,19 +24,24 @@ export class GraphicDesignComponent implements OnInit {
 
     ngOnInit(): void {
         this.apiService.getGraphicsProjects()
-            .subscribe(projects => this.projects = projects);
-        this.widthObserver = new WidthBreakpointObserver(1000);
-        this.showRectangleImage = window.innerWidth > 1000;
-        this.imageURLToShow = this.imageURLFrom(0);
+            .subscribe(projects => {
+                this.projects = projects;
+                this.dataReady = true;
 
-        this.widthObserver.moreThanWidth.subscribe(() => {
-            this.showRectangleImage = true;
-            this.imageURLToShow = this.imageURLFrom(this.hoveredIndex);
-        });
-        this.widthObserver.lessThanWidth.subscribe(() => {
-            this.showRectangleImage = false;
-            this.imageURLToShow = this.imageURLFrom(this.hoveredIndex);
-        });
+                this.widthObserver = new WidthBreakpointObserver(1000);
+                this.showRectangleImage = window.innerWidth > 1000;
+                this.imageURLToShow = this.imageURLFrom(0);
+
+                this.widthObserver.moreThanWidth.subscribe(() => {
+                    this.showRectangleImage = true;
+                    this.imageURLToShow = this.imageURLFrom(this.hoveredIndex);
+                });
+                this.widthObserver.lessThanWidth.subscribe(() => {
+                    this.showRectangleImage = false;
+                    this.imageURLToShow = this.imageURLFrom(this.hoveredIndex);
+                });
+            });
+
     }
 
     hoveredOnIndex(index: number) {

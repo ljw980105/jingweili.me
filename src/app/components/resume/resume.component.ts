@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ResumeData, WebSkill} from '../../models/ResumeData';
 import {Title} from '@angular/platform-browser';
-import {forkJoin, Observable, of, Subject} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {Experience} from '../../models/Experience';
 import {delay, elementAt, mergeMap} from 'rxjs/operators';
 import {AnimationOptions} from 'ngx-lottie';
@@ -37,7 +37,7 @@ export class ResumeComponent implements OnInit {
         this.apiService.getResumeData()
             .subscribe(([data, resume, cv, experiences]) => {
                 this.data = data;
-                this.resumeURL = `${this.apiService.apiRoot}${resume.url}`;
+                this.resumeURL = this.apiService.fileURL(resume.url);
                 this.cvURL = `${this.apiService.apiRoot}${cv.url}`;
                 this.webSkillsFormatted.push(new WebSkill('Frontend', data.webSkillsFrontend));
                 this.webSkillsFormatted.push(new WebSkill('Backend', data.webSkillsBackend));
