@@ -13,8 +13,8 @@ import {GraphicProject} from '../models/GraphicProject';
     providedIn: 'root'
 })
 export class ApiService {
-    // public readonly apiRoot = 'http://api.jingweili.me/';
-    public readonly apiRoot = 'http://localhost:8080/';
+    public readonly apiRoot = 'http://api.jingweili.me/';
+    // public readonly apiRoot = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) {
     }

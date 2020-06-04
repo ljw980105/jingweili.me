@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div id="login">
+    <h2 class="helvetica">Login</h2>
+    <label class="helvetica-normal">Enter Passcode</label>
+    <div style="margin-top: 10px">
+        <label style="width: 97%;">
+            <input placeholder="passcode" type="password" [(ngModel)]="passcode">
+        </label>
+    </div>
+
+    <div style="margin-top: 20px">
+        <button (click)="login()">Login to Admin</button>
+    </div>
+</div>
+
+<app-footer [showTopBorder]="true"></app-footer>

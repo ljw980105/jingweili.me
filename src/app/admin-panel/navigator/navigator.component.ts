@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 
 @Component({
@@ -6,7 +6,7 @@ import {Title} from '@angular/platform-browser';
     templateUrl: './navigator.component.html',
     styleUrls: ['./navigator.component.scss']
 })
-export class NavigatorComponent implements OnInit {
+export class NavigatorComponent implements OnInit, OnDestroy {
     editingResume = false;
     editingGraphicDesign = false;
 
@@ -25,6 +25,10 @@ export class NavigatorComponent implements OnInit {
     editGraphicDesign() {
         this.editingResume = false;
         this.editingGraphicDesign = !this.editingGraphicDesign;
+    }
+
+    ngOnDestroy() {
+
     }
 
 }
