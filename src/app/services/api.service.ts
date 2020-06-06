@@ -1,20 +1,23 @@
 import {Injectable} from '@angular/core';
-import {forkJoin, Observable} from 'rxjs';
+import {forkJoin, Observable, of} from 'rxjs';
 import {AppsPageData} from '../models/AppsPageData';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BeatslyticsData} from '../models/BeatslyticsData';
 import {ResumeData} from '../models/ResumeData';
 import {Experience} from '../models/Experience';
 import {ServerResponse} from '../models/ServerResponse';
 import {FileLocation} from '../models/FileLocation';
 import {GraphicProject} from '../models/GraphicProject';
+import {Password} from '../models/authentication/Password';
+import {Token} from '../models/authentication/Token';
+import {mergeMap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
-    public readonly apiRoot = 'http://api.jingweili.me/';
-    // public readonly apiRoot = 'http://localhost:8080/';
+    // public readonly apiRoot = 'http://api.jingweili.me/';
+    public readonly apiRoot = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) {
     }
@@ -69,11 +72,11 @@ export class ApiService {
     }
 
     addGraphicProject(project: GraphicProject): Observable<ServerResponse> {
-        return this.http.post<ServerResponse>(`${this.apiRoot}api/add-graphic-project`, project);
+        return this.http.post<ServerResponse>(`${this.apiRoot}api/add-graphic-project`, project, this.authHeaders());
     }
 
     deleteGraphicsProject(project: GraphicProject): Observable<ServerResponse> {
-        return this.http.delete<ServerResponse>(`${this.apiRoot}api/delete-graphic-project/${project.id}`);
+        return this.http.delete<ServerResponse>(`${this.apiRoot}api/delete-graphic-project/${project.id}`, this.authHeaders());
     }
 
 
@@ -92,6 +95,27 @@ export class ApiService {
         const formData: FormData = new FormData();
         formData.append('file', fileToUpload);
         formData.append('name', fileToUpload.name);
-        return this.http.post<ServerResponse>(endpoint, formData);
+        return this.http.post<ServerResponse>(endpoint, formData, this.authHeaders());
+    }
+
+    //// login ////
+    loginWithPassword(password: string): Observable<any> {
+        return this.http.post<Token>(`${this.apiRoot}api/login`, new Password(password))
+            .pipe(mergeMap((token) => {
+                localStorage.setItem('token', token.token);
+                return of('');
+            }));
+    }
+
+    logOut(): Observable<ServerResponse> {
+        return this.http.get<ServerResponse>(`${this.apiRoot}api/logout`);
+    }
+
+    private authHeaders() {
+        return {
+            headers: new HttpHeaders({
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            })
+        };
     }
 }

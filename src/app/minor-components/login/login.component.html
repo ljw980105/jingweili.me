@@ -7,6 +7,7 @@
         <label style="width: 97%;">
             <input placeholder="passcode" type="password" [(ngModel)]="passcode">
         </label>
+        <p class="helvetica" style="color: red" *ngIf="errorDescription !== null">{{errorDescription}}</p>
     </div>
 
     <div style="margin-top: 20px">
