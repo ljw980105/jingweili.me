@@ -19,6 +19,8 @@ import {ResumeComponent} from './components/resume/resume.component';
 import {InViewportModule} from 'ng-in-viewport';
 import {LottieModule} from 'ngx-lottie';
 import { GraphicDesignComponent } from './components/graphic-design/graphic-design.component';
+import { LoginComponent } from './minor-components/login/login.component';
+import {FormsModule} from '@angular/forms';
 
 export function playerFactory() {
     return import('lottie-web');
@@ -37,7 +39,8 @@ export function playerFactory() {
         DualAppComponent,
         BeatslyticsComponent,
         ResumeComponent,
-        GraphicDesignComponent
+        GraphicDesignComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -46,7 +49,8 @@ export function playerFactory() {
         BrowserAnimationsModule,
         ScrollToModule.forRoot(),
         InViewportModule,
-        LottieModule.forRoot({player: playerFactory})
+        LottieModule.forRoot({player: playerFactory}),
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

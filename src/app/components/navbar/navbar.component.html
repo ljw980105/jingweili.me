@@ -7,16 +7,19 @@
             <li><a [routerLink]="['/apps']">APPS</a></li>
             <li><a [routerLink]="['/graphic-design']">GRAPHIC DESIGN</a></li>
             <li>
-                <a id="nav_proj" href="Projects.html">PROJECTS</a>
-                <ul class="sub-menu" [ngClass]="{'dark-dropdown': darkThemed, 'light-dropdown': !darkThemed}">
-                    <li><a href="Projects.html">All</a></li>
-                    <li><a href="proj_frc.html">FIRST Robotics</a></li>
-                    <li><a [routerLink]="['/beatslytics']">Beatslytics</a></li>
-                    <li><a href="Litec.html">EmbeddedControl</a></li>
-                    <li><a href="https://github.com/CSDTs/3D_Visualizer/tree/3D-Visualizer-iOS">3D Visualizer</a></li>
-                </ul>
+                <div class="dropdown">
+                    <a class="dropbtn" href="Projects.html">PROJECTS</a>
+                    <div class="dropdown-content" [ngClass]="{'dark-dropdown': darkThemed, 'light-dropdown': !darkThemed}">
+                        <a href="Projects.html">All</a>
+                        <a href="proj_frc.html">FIRST Robotics</a>
+                        <a [routerLink]="['/beatslytics']">Beatslytics</a>
+                        <a href="Litec.html">Embedded Control</a>
+                        <a href="https://github.com/CSDTs/3D_Visualizer/tree/3D-Visualizer-iOS">3D Visualizer</a>
+                    </div>
+                </div>
             </li>
             <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'contacts'}">CONTACT</a></li>
+            <li><a [routerLink]="['/login']">LOGIN</a></li>
         </ul>
     </nav>
 </div>
