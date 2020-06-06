@@ -1,5 +1,6 @@
-#nav ul {
-    display:inline;
+@mixin font-style {
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-weight: 300;
 }
 
 #nav {
@@ -11,6 +12,12 @@
     left: 0;
     top: 0;
     width: 100%;
+    display: block;
+    clear: both;
+
+    ul {
+        display:inline;
+    }
 }
 
 .dark-nav {
@@ -38,8 +45,7 @@
     display: inline;
     padding: 15px 10px;
     text-decoration: none;
-    font-family: -apple-system, BlinkMacSystemFont,"Roboto", sans-serif;
-    font-weight: 300;
+    @include font-style;
 }
 
 #nav a:hover, #nav a:focus {
@@ -48,14 +54,6 @@
 
 .center_text {
     text-align: center;
-}
-
-
-/*For drop-down menu*/
-
-.clearfix:after {
-    display:block;
-    clear:both;
 }
 
 /*----- Menu Outline -----*/
@@ -68,79 +66,78 @@
     text-align: center;
     width:100%;
     margin: 0 auto;
-}
+    li {
+        margin: 0;
+        list-style: none;
+        font-family: 'serif';
+    }
+    a {
+        transition: all linear 0.15s;
+    }
 
-.menu li {
-    margin: 0;
-    list-style: none;
-    font-family: 'serif';
-}
+    & li:hover > a, & .current-item > a {
+        text-decoration:none;
+    }
 
-.menu a {
-    transition:all linear 0.15s;
-}
+    /*----- Top Level -----*/
+    & > ul > li {
+        display:inline-block;
+        position:relative;
+        & > a {
+            padding:10px 40px;
+            display:inline-block;
+        }
+    }
+    & > ul > li:hover > a, & > ul > .current-item > a {
+        background:#2e2728;
+    }
 
-.menu li:hover > a, .menu .current-item > a {
-    text-decoration:none;
-}
-
-
-/*----- Top Level -----*/
-.menu > ul > li {
-    display:inline-block;
-    position:relative;
-}
-
-.menu > ul > li > a {
-    padding:10px 40px;
-    display:inline-block;
-}
-
-.menu > ul > li:hover > a, .menu > ul > .current-item > a {
-    background:#2e2728;
-}
-
-/*----- Bottom Level -----*/
-.menu li:hover .sub-menu {
-    z-index:1;
-    opacity:0.95;
 }
 
 .dark-dropdown {
-    background: #2e2728;
+    background-color: rgba(46, 39, 40, 0.95);
 }
 
 .light-dropdown {
-    background: rgb(240, 240, 240);
+    background-color: rgba(240, 240, 240, 0.95);
 }
 
-.sub-menu {
-    margin-top: 10%;
-    text-align: left;
-    width:150%;
-    padding:5px 30px;
-    position:absolute;
-    top:120%;
-    left:0px;
-    z-index:-1;
-    opacity:0;
-    transition:opacity linear 0.15s;
-    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
-
-    & li {
-        display:block;
-        font-size:16px;
-
-        & a {
-            margin-left: -25%;
-            padding:10px 30px;
-            display:block;
-            text-decoration: none;
-            font-family: -apple-system, BlinkMacSystemFont,"Roboto", sans-serif;
-            font-weight: 300;
-        }
+/* The dropdown container */
+.dropdown {
+    .dropbtn {
+        padding: 15px 10px;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        color: white;
+        @include font-style;
     }
+}
 
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 220px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: 0;
+    margin-top: 12%;
+    /* Links inside the dropdown */
+    a {
+        float: none;
+        color: black;
+        padding: 13px 20px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        @include font-style;
+    }
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /*MEDIA QUERIES FOR THE MOBILE NAV BAR*/
@@ -239,8 +236,7 @@
         }
 
         & div li a:link, & div li a:visited{
-            font-family: -apple-system, BlinkMacSystemFont,"Roboto", sans-serif;
-            font-weight: 300;
+            @include font-style;
             text-decoration: none;
             font-size: 12px;
             transition: all linear 0.15s;
@@ -253,4 +249,3 @@
         margin-right: 16px;
     }
 }
-
