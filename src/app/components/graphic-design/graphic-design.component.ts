@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GraphicProject} from '../../models/GraphicProject';
+import {GraphicProject} from '../../models/pure-models/GraphicProject';
 import {Title} from '@angular/platform-browser';
 import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 import {ApiService} from '../../services/api.service';

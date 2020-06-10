@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AppOrSkill} from '../../models/AppOrSkill';
+import {AppOrSkill} from '../../models/pure-models/AppOrSkill';
 
 @Component({
     selector: 'app-dual-app',

@@ -1,0 +1,37 @@
+
+<div *ngIf="dataReady">
+    <h3 class="helvetica">About</h3>
+    <div class="flex" id="about">
+        <div class="left-half">
+            <p class="p-button helvetica">Profile Image</p>
+            <img width="200px" src="{{(imgUrl)}}">
+            <div style="margin-top: 15px">
+                <input type="file" accept=".png,.jpg,.jpeg" (change)="uploadProfileImage($event)">
+            </div>
+        </div>
+
+        <div class="right-half">
+            <p class="p-button helvetica">Edit Content</p>
+            <label>
+                <textarea class="helvetica-normal" [(ngModel)]="aboutContent">{{aboutContent}}</textarea>
+            </label>
+            <button style="margin-top: 15px" (click)="uploadAboutInfo()">Update About Info</button>
+        </div>
+    </div>
+
+    <h3 class="helvetica">PC Setup</h3>
+    <div class="flex">
+        <div class="left-half">
+            <p class="helvetica-normal" *ngFor="let pcSetup of pcSetups">{{pcSetup.partDetail}}</p>
+        </div>
+
+        <div class="right-half" id="pc-setup">
+            <label>
+                <textarea class="helvetica-normal" [(ngModel)]="pcSetupContent">JSON</textarea>
+            </label>
+
+            <button style="margin-top: 15px" (click)="updatePCSetups()">Update</button>
+        </div>
+    </div>
+
+</div>

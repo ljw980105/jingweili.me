@@ -1,23 +1,25 @@
 import {Injectable} from '@angular/core';
-import {forkJoin, Observable, of} from 'rxjs';
-import {AppsPageData} from '../models/AppsPageData';
+import {forkJoin, Observable, of, throwError} from 'rxjs';
+import {AppsPageData} from '../models/pure-models/AppsPageData';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BeatslyticsData} from '../models/BeatslyticsData';
-import {ResumeData} from '../models/ResumeData';
-import {Experience} from '../models/Experience';
-import {ServerResponse} from '../models/ServerResponse';
-import {FileLocation} from '../models/FileLocation';
-import {GraphicProject} from '../models/GraphicProject';
+import {BeatslyticsData} from '../models/pure-models/BeatslyticsData';
+import {ResumeData} from '../models/pure-models/ResumeData';
+import {Experience} from '../models/pure-models/Experience';
+import {ServerResponse} from '../models/pure-models/ServerResponse';
+import {FileLocation} from '../models/pure-models/FileLocation';
+import {GraphicProject} from '../models/pure-models/GraphicProject';
 import {Password} from '../models/authentication/Password';
 import {Token} from '../models/authentication/Token';
-import {mergeMap} from 'rxjs/operators';
+import {catchError, map, mergeMap} from 'rxjs/operators';
+import {AboutInfo} from '../models/pure-models/AboutInfo';
+import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
-    public readonly apiRoot = 'http://api.jingweili.me/';
-    // public readonly apiRoot = 'http://localhost:8080/';
+    // public readonly apiRoot = 'http://api.jingweili.me/';
+    public readonly apiRoot = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) {
     }
@@ -109,6 +111,34 @@ export class ApiService {
 
     logOut(): Observable<ServerResponse> {
         return this.http.get<ServerResponse>(`${this.apiRoot}api/logout`);
+    }
+
+    // About
+    getAboutData(): Observable<AboutInfo> {
+        return this.http.get<AboutInfo[]>(`${this.apiRoot}api/about-info`)
+            .pipe(mergeMap(infos =>
+                infos.length !== 0
+                    ? of(infos[0])
+                    : throwError('No About Info Found')))
+            .pipe(catchError(() => {
+                return of(new AboutInfo(
+                    'No About Info Exists',
+                    'xxxxx'));
+                }
+            ));
+    }
+
+    addAboutData(data: AboutInfo): Observable<ServerResponse> {
+        return this.http.post<ServerResponse>(`${this.apiRoot}api/about-info`, data, this.authHeaders());
+    }
+
+    // pc
+    getPCSetups(): Observable<PCSetupEntry[]> {
+        return this.http.get<PCSetupEntry[]>(`${this.apiRoot}api/pc-setup`);
+    }
+
+    addPCSetups(data: string): Observable<ServerResponse> {
+        return this.http.post<ServerResponse>(`${this.apiRoot}api/pc-setup`, JSON.parse(data), this.authHeaders());
     }
 
     private authHeaders() {

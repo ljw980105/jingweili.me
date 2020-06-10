@@ -1,17 +1,3 @@
-#add-project {
-    width: 400px;
-}
-
-input[type=text] {
-    width: 100%;
-    padding: 8px 8px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
 .resizable {
     resize: both;
     overflow: auto;
@@ -23,29 +9,13 @@ textarea {
     padding: 10px;
 }
 
-label, textarea, input {
-    display: inline-block;
-}
-
-.vertical-spacing {
-    margin: 10px 0 5px 0;
-}
-
-.vertical-spacing-button {
-    margin: 10px 0;
-}
-
-#existing-graphics-projects {
-    width: 380px;
-    margin-right: 50px;
-}
-
 #single-graphic-project {
     background-color: rgb(240, 240, 240);
     padding: 10px 15px;
     border-radius: 10px;
     display: flex;
     margin-bottom: 10px;
+    height: 70px;
 
     h5, h4 {
         margin: 5px 0;
@@ -64,12 +34,3 @@ p {
     font-size: 14px;
 }
 
-.p-non-button {
-    margin: 0;
-    padding: 5px 0 0 0;
-}
-
-.p-button {
-    margin: 0;
-    padding: 7px 0 0 0;
-}

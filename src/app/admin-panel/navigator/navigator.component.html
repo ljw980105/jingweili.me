@@ -3,10 +3,12 @@
         <img src="assets/images/footer/logo2020White.png" width="120px">
         <div><h3 class="helvetica anchor-style" (click)="editResume()">Resume</h3></div>
         <div><h3 class="helvetica anchor-style" (click)="editGraphicDesign()">Graphic Design</h3></div>
+        <div><h3 class="helvetica anchor-style" (click)="editHome()">Home</h3></div>
         <div><h3 class="helvetica button-style anchor-style" [routerLink]="['/']">Log out</h3></div>
     </div>
     <div id="editing-panels">
         <app-edit-resume *ngIf="editingResume"></app-edit-resume>
         <app-edit-graphics *ngIf="editingGraphicDesign"></app-edit-graphics>
+        <app-edit-home *ngIf="editingHome"></app-edit-home>
     </div>
 </div>

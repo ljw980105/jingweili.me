@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {ResumeData, WebSkill} from '../../models/ResumeData';
+import {ResumeData, WebSkill} from '../../models/pure-models/ResumeData';
 import {Title} from '@angular/platform-browser';
 import {Observable, of, Subject} from 'rxjs';
-import {Experience} from '../../models/Experience';
+import {Experience} from '../../models/pure-models/Experience';
 import {delay, elementAt, mergeMap} from 'rxjs/operators';
 import {AnimationOptions} from 'ngx-lottie';
 import {fadeOut} from '../../models/Animations';
