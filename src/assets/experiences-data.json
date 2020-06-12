@@ -6,7 +6,7 @@
         "company": "DraftKings, Inc",
         "accomplishments": [
             "Developed iOS & Android frameworks to scan the barcodes in driver’s licenses to report metadata for identification purposes.",
-            "Combined the above Android & iOS frameworks into a Xamarin.Forms library and developed tutorials on doing such, which enabled DraftKings’ Xamarin team to leverage the power of native mobile libraries.",
+            "Combined the above Android & iOS frameworks into a <span class=\"menlo\">Xamarin.Forms</span> library and developed tutorials on doing such, which enabled DraftKings’ Xamarin team to leverage the power of native mobile libraries.",
             "Added new features to DraftKings’ iOS app’s login flow using the VIPER architecture to improve user experiences. "
         ],
         "special": "for apps"
@@ -27,7 +27,7 @@
     {
         "imageLink": "assets/images/resume/ruIcon.png",
         "position": "Graphic Designer",
-        "time": "2017 - 2020",
+        "time": "Jan 2017 - Apr 2020",
         "company": "Rensselaer Union",
         "accomplishments": [
            "Apply graphic design skills in creating logos, posters, brochures, and other designs using Adobe Illustrator, Adobe InDesign and Adobe Photoshop.",

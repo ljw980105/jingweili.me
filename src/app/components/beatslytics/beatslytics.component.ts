@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
 import {ApiService} from '../../services/api.service';
-import {BeatslyticsData} from '../../models/BeatslyticsData';
+import {BeatslyticsData} from '../../models/pure-models/BeatslyticsData';
 
 @Component({
     selector: 'app-beatslytics',

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {ResumeData, WebSkill} from '../../models/ResumeData';
+import {ResumeData, WebSkill} from '../../models/pure-models/ResumeData';
 import {Title} from '@angular/platform-browser';
 import {Observable, of, Subject} from 'rxjs';
-import {Experience} from '../../models/Experience';
+import {Experience} from '../../models/pure-models/Experience';
 import {delay, elementAt, mergeMap} from 'rxjs/operators';
 import {AnimationOptions} from 'ngx-lottie';
 import {fadeOut} from '../../models/Animations';
@@ -18,9 +18,7 @@ export class ResumeComponent implements OnInit {
     data: ResumeData;
     webSkillsFormatted: WebSkill[] = [];
     experiences: Experience[];
-    resumeInVP = new Subject<Event>();
     webSkillsInVP = new Subject<Event>();
-    showResumeTutorial = false;
     showWebSkillsTutorial = true;
     resumeURL: string;
     cvURL: string;
@@ -46,18 +44,9 @@ export class ResumeComponent implements OnInit {
             });
 
         this.tutorialSequence(
-            this.resumeInVP,
-            () => this.showResumeTutorial = true,
-            () => this.showResumeTutorial = false);
-
-        this.tutorialSequence(
             this.webSkillsInVP,
             () => this.showWebSkillsTutorial = true,
             () => this.showWebSkillsTutorial = false);
-    }
-
-    resumeInViewport(event: Event) {
-        this.resumeInVP.next(event);
     }
 
     webSkillsInViewport(event: Event) {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {GraphicProject} from '../../models/GraphicProject';
+import {GraphicProject} from '../../models/pure-models/GraphicProject';
 import {Observable} from 'rxjs';
 
 @Component({

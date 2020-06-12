@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {ApiService} from '../../services/api.service';
-import {AppOrSkill} from '../../models/AppOrSkill';
+import {AppOrSkill} from '../../models/pure-models/AppOrSkill';
 import {sliceIntoTuplesOfTwoFrom} from '../../models/Global';
-import {Experience} from '../../models/Experience';
+import {Experience} from '../../models/pure-models/Experience';
 import {forkJoin} from 'rxjs';
 
 @Component({

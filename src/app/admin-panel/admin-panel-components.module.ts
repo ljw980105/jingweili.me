@@ -5,12 +5,14 @@ import {NavigatorComponent} from './navigator/navigator.component';
 import {EditResumeComponent} from './edit-resume/edit-resume.component';
 import { EditGraphicsComponent } from './edit-graphics/edit-graphics.component';
 import {FormsModule} from '@angular/forms';
+import { EditHomeComponent } from './edit-home/edit-home.component';
 
 @NgModule({
     declarations: [
         NavigatorComponent,
         EditResumeComponent,
-        EditGraphicsComponent
+        EditGraphicsComponent,
+        EditHomeComponent
     ],
     imports: [
         CommonModule,

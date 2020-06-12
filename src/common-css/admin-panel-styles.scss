@@ -1,0 +1,41 @@
+input[type=text] {
+    width: 100%;
+    padding: 8px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.p-non-button {
+    margin: 0;
+    padding: 5px 0 0 0;
+}
+
+.p-button {
+    margin: 0;
+    padding: 7px 0 0 0;
+}
+
+label, textarea, input {
+    display: inline-block;
+}
+
+.vertical-spacing {
+    margin: 10px 0 5px 0;
+}
+
+.vertical-spacing-button {
+    margin: 10px 0;
+}
+
+.left-half {
+    width: 380px;
+    margin-right: 50px;
+}
+
+.right-half {
+    width: 400px;
+}
+

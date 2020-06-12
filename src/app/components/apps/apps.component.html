@@ -20,7 +20,7 @@
         <div>
             <h2> {{exp.position}}</h2>
             <h3> {{exp.time}}&nbsp;@&nbsp;{{exp.company}}</h3>
-            <h4 *ngFor="let accomplishment of exp.accomplishments">{{accomplishment}}</h4>
+            <h4 *ngFor="let accomplishment of exp.accomplishments" [innerHTML]="accomplishment"></h4>
         </div>
     </div>
 </div>

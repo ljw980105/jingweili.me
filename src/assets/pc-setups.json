@@ -1,0 +1,57 @@
+[
+    {
+        "partName": "CPU",
+        "partDetail": "Intel Core i7-9700K @ 4.6GHZ",
+        "partPurchaseLink": "https://amzn.to/2xKitvu"
+    },
+    {
+        "partName": "GPU",
+        "partDetail": "RTX 2060 Super, MSI Ventus OC Edition",
+        "partPurchaseLink": "https://amzn.to/2YG6bPL"
+    },
+    {
+        "partName": "Motherboard",
+        "partDetail": "Gigabyte B360 HD3",
+        "partPurchaseLink": "https://amzn.to/2SIfA5o"
+    },
+    {
+        "partName": "SSD",
+        "partDetail": "WD Blue SN500 500GB",
+        "partPurchaseLink": "https://amz.run/3Bf2"
+    },
+    {
+        "partName": "CPU Cooler",
+        "partDetail": "Corsair Hydro H60 AIO",
+        "partPurchaseLink": "https://amz.run/3Bf5"
+    },
+    {
+        "partName": "PSU",
+        "partDetail": "EVGA Supernova 750 G3",
+        "partPurchaseLink": "https://amzn.to/37ryUJR"
+    },
+    {
+        "partName": "RAM",
+        "partDetail": "Corsair Vengeance LPX White 16GB",
+        "partPurchaseLink": "https://amz.run/3Bf6"
+    },
+    {
+        "partName": "Case",
+        "partDetail": "ThermalTake V200 RGB Edition",
+        "partPurchaseLink": "https://amz.run/3Bf7"
+    },
+    {
+        "partName": "HDD",
+        "partDetail": "WD Blue 4TB",
+        "partPurchaseLink": "https://amz.run/3BPS"
+    },
+    {
+        "partName": "HDD",
+        "partDetail": "Toshiba MQ01ABD100 1TB",
+        "partPurchaseLink": "https://amz.run/3Bf8"
+    },
+    {
+        "partName": "RGB Fans",
+        "partDetail": "DEEP COOL RF120 x 3",
+        "partPurchaseLink": "https://amz.run/3Bf9"
+    }
+]
