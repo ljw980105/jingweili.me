@@ -150,3 +150,24 @@ html, body {
     letter-spacing: 2px;
     font-family: Mohave, sans-serif;
 }
+
+/// Predefined font sizes
+.large-text { font-size: 80px; }
+.medium-large-text { font-size: 40px; }
+.medium-text { font-size: 30px; }
+.small-text { font-size: 25px; }
+.extra-small-text { font-size: 18px; }
+
+@media screen and (max-width: 1200px) {
+    .large-text { font-size: 60px; }
+    .medium-large-text { font-size: 35px; }
+    .medium-text { font-size: 25px; }
+}
+
+@media screen and (max-width: 800px) {
+    .large-text { font-size: 40px; }
+    .medium-large-text { font-size: 30px; }
+    .medium-text { font-size: 20px; }
+    .small-text { font-size: 20px; }
+    .extra-small-text {font-size: 16px;}
+}

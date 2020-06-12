@@ -18,9 +18,7 @@ export class ResumeComponent implements OnInit {
     data: ResumeData;
     webSkillsFormatted: WebSkill[] = [];
     experiences: Experience[];
-    resumeInVP = new Subject<Event>();
     webSkillsInVP = new Subject<Event>();
-    showResumeTutorial = false;
     showWebSkillsTutorial = true;
     resumeURL: string;
     cvURL: string;
@@ -46,18 +44,9 @@ export class ResumeComponent implements OnInit {
             });
 
         this.tutorialSequence(
-            this.resumeInVP,
-            () => this.showResumeTutorial = true,
-            () => this.showResumeTutorial = false);
-
-        this.tutorialSequence(
             this.webSkillsInVP,
             () => this.showWebSkillsTutorial = true,
             () => this.showWebSkillsTutorial = false);
-    }
-
-    resumeInViewport(event: Event) {
-        this.resumeInVP.next(event);
     }
 
     webSkillsInViewport(event: Event) {

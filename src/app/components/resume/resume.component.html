@@ -46,7 +46,7 @@
             <span>{{skill.name}}&nbsp;&nbsp;</span>
             <span style="color: darkgrey">{{skill.details.join(", ")}}&nbsp;</span>
         </h3>
-        <h3 class="medium-text helvetica">View More Details
+        <h3 class="medium-text helvetica">View more details
             <a class="orange-underline-anchor" [routerLink]="['/apps']">here</a>.
         </h3>
     </div>
@@ -85,7 +85,7 @@
                 <img width="200px" src="assets/images/resume/3-point-5.png">
                 <h3 class="medium-text helvetica-normal">years.</h3>
                 <br>
-                <h3 class="medium-text helvetica"> Here are my Skill Sets:</h3>
+                <h3 class="medium-text helvetica"> Here are my skill sets:</h3>
                 <div id="graphics-skills">
                     <div *ngFor="let graphicSkill of data.graphicSkills">
                         <h3 class="helvetica extra-small-text">{{graphicSkill.name}}</h3>
@@ -96,7 +96,7 @@
                         >{{entry}}</h3>
                     </div>
                 </div>
-                <h3 class="medium-text helvetica"> View My Portfolio
+                <h3 class="medium-text helvetica"> View my portfolio
                     <a [routerLink]="['/graphic-design']" class="orange-underline-anchor-light">here</a> .
                 </h3>
             </div>
@@ -111,36 +111,7 @@
 
 <div id="experiences" class="width-container">
     <h1 class="medium-large-text helvetica">Work experience is up next:</h1>
-    <div class="horizontal-scroll-outer" inViewport (inViewportAction)="resumeInViewport($event)">
-        <div *ngIf="showResumeTutorial">
-            <ng-lottie [options]="options" width="100%" class="overlay"></ng-lottie>
-        </div>
-        <div id="resume-card" class="horizontal-scroll-inner" *ngFor="let experience of experiences">
-            <div style="display: flex; margin-bottom: 3%">
-                <span class="dot"></span>
-                <span class="small-text mohave">&nbsp;&nbsp;{{experience.time | uppercase}}&nbsp;</span>
-                <div id="time-line" class="ml-auto"><hr/></div>
-            </div>
-            <div id="resume-card-container">
-                <div id="resume-card-container-left">
-                    <div id="resume-card-left">
-                        <img width="100%" src="{{experience.imageLink}}">
-                        <div>
-                            <h3 class="small-text helvetica">{{experience.position}}</h3>
-                            <h3 class="extra-small-text helvetica-normal">💼&nbsp;{{experience.company}}</h3>
-                        </div>
-                    </div>
-                    <div id="resume-card-mid">
-                        <h3 class="extra-small-text helvetica-normal"
-                            *ngFor="let expEntry of experience.accomplishments"
-                            [innerHTML]="expEntry"
-                        ></h3>
-                    </div>
-                </div>
-                <div id="resume-card-right"></div>
-            </div>
-        </div>
-    </div>
+    <app-timeline-block [experiences]="experiences"></app-timeline-block>
 </div>
 
 <div id="education" >

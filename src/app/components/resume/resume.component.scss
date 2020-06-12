@@ -6,26 +6,6 @@ $resume-light-grey: rgb(244, 244, 244);
     padding-bottom: $amount;
 }
 
-.large-text {
-    font-size: 80px;
-}
-
-.medium-large-text {
-    font-size: 40px;
-}
-
-.medium-text {
-    font-size: 30px;
-}
-
-.small-text {
-    font-size: 25px;
-}
-
-.extra-small-text {
-    font-size: 18px;
-}
-
 .theme-color {
     color: $resume-orange;
 }
@@ -102,6 +82,9 @@ $resume-light-grey: rgb(244, 244, 244);
 
 #experiences {
     @include vertical-padding(3%);
+}
+app-timeline-block {
+    margin-top: 100px;
 }
 
 .dot {
@@ -236,9 +219,6 @@ hr {
 }
 
 @media screen and (max-width: 1200px) {
-    .large-text { font-size: 60px; }
-    .medium-large-text { font-size: 35px; }
-    .medium-text { font-size: 25px; }
     .width-container { padding: 0 6%; }
     #time-line { width: 60%; }
 }
@@ -265,10 +245,6 @@ hr {
     #graphics-left, #graphics-right {
         width: 100%;
     }
-    .large-text { font-size: 50px; }
-    .medium-large-text { font-size: 30px; }
-    .medium-text { font-size: 20px; }
-    .small-text { font-size: 20px; }
     #resume-card-container {
         display: block;
         width: 90%;
@@ -313,9 +289,6 @@ hr {
         div:nth-child(2) {
             width: 100%;
         }
-    }
-    .large-text {
-        font-size: 40px;
     }
 }
 
