@@ -19,6 +19,19 @@ export const shrinkOrExpand = trigger('shrinkOrExpand', [
     ])
 ]);
 
+export const rotate45Degrees = trigger('rotate45Degrees', [
+    state('default', style({
+        transform: 'rotate(0)',
+        'transform-origin': 'center'
+    })),
+    state('rotated', style({
+        transform: 'rotate(45deg)',
+        'transform-origin': 'center'
+    })),
+    transition('rotated => default', animate('300ms ease-out')),
+    transition('default => rotated', animate('300ms ease-in'))
+]);
+
 export const addAnimation = trigger('addAnimation', [
     transition(':enter', [
         style({ transform: 'scale(0.5)', opacity: 0 }),  // initial

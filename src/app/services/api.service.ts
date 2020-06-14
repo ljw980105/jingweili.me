@@ -10,7 +10,7 @@ import {FileLocation} from '../models/pure-models/FileLocation';
 import {GraphicProject} from '../models/pure-models/GraphicProject';
 import {Password} from '../models/authentication/Password';
 import {Token} from '../models/authentication/Token';
-import {catchError, map, mergeMap} from 'rxjs/operators';
+import {catchError, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
@@ -92,6 +92,10 @@ export class ApiService {
     /////////////////
     uploadGenericFile(file: File): Observable<ServerResponse> {
         return this.uploadFileTo(`${this.apiRoot}api/upload-file`, file);
+    }
+
+    uploadMultipleFiles(files: File[]): Observable<ServerResponse[]> {
+        return forkJoin(files.map(file => this.uploadGenericFile(file)));
     }
 
     public fileURL(name: string): string {

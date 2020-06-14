@@ -51,7 +51,7 @@
         "time": "Spring 2018",
         "company": "RPI CSDT",
         "accomplishments": [
-            "Worked as an undergraduate researcher to develop iOS apps for viewing 3D models in a classroom setting, using cutting-edge technologies involving Augmented Reality.",
+            "Worked as an undergraduate researcher to develop iOS apps for viewing 3D models in a classroom setting, using cutting-edge technologies involving <strong>Augmented Reality</strong>.",
             "Adopted core iOS frameworks such as SceneKit & Model I/O for 3D model viewing, and ARKit for the augmented reality experience.",
             "Created a networking layer to interact with REST APIs with URLSession and Alamofire.",
             "Designed UI and UX for the app from scratch.",

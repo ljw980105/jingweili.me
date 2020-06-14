@@ -15,7 +15,7 @@
                 "url": "https://rpiadc.com/"
             }
         ],
-        "technologies": ["Swift", "Arduino", "iOS App", "Core Bluetooth"]
+        "technologies": ["Swift", "Arduino", "iOS App", "Core Bluetooth", "RxSwift"]
     },
     {
         "imageUrl": "assets/images/home/website-bg.jpg",

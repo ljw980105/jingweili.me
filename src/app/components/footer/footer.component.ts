@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit} from '@angular/core';
-import {shrinkOrExpand} from '../../models/Animations';
+import {rotate45Degrees, shrinkOrExpand} from '../../models/Animations';
 import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 
 @Component({
     selector: 'app-footer',
-    animations: [shrinkOrExpand],
+    animations: [shrinkOrExpand, rotate45Degrees],
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss']
 })
@@ -85,12 +85,5 @@ export class FooterComponent implements OnInit, AfterViewInit {
         this.projectsExpanded = expand;
         this.designsExpanded = expand;
         this.socialsExpanded = expand;
-    }
-
-    plugMinusFromBool(bool: boolean) {
-        if (this.minimizedVersionShown) {
-            return bool ? '- ' : '+ ';
-        }
-        return '';
     }
 }
