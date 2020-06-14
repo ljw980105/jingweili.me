@@ -1,0 +1,103 @@
+#project-bg {
+    background-image: url("~src/assets/images/projects/projects-typography.svg");
+    padding: 27% 0;
+    background-size: 60%;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#projects-container {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+#projects-column-1 {
+    margin-left: auto;
+    width: 45%;
+    margin-right: 50px;
+}
+
+#projects-column-2 {
+    width: 45%;
+    margin-right: auto;
+}
+
+.single-project {
+    padding: 3%;
+    background-color: rgb(240, 240, 240);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+    margin-right: 0;
+}
+
+@mixin tag-style-shared {
+    border: none;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    font-family: Helvetica, sans-serif;
+    margin-right: 10px;
+}
+
+.main-tag {
+    @include tag-style-shared;
+    background-color: orange;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.secondary-tag {
+    @include tag-style-shared;
+    background-color: rgba(255, 131, 0, 0.4);
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.standard-text-spacing {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.standard-text-spacing-bottom {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+@media only screen and (max-width: 800px) {
+    #projects-container {
+        display: block;
+        padding: 0 7%;
+    }
+    #projects-column-1, #projects-column-2 {
+        width: 90%;
+    }
+    #projects-column-1 {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .single-project {
+        padding: 5%;
+    }
+    #project-bg {
+        background-size: 75%;
+        padding: 35% 0;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    #project-bg {
+        background-image: url("~src/assets/images/projects/projects-typography-mobile.svg");
+        padding: 64% 0;
+        background-size: 100%;
+        width: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+

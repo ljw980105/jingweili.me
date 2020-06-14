@@ -7,6 +7,7 @@ import {ResumeComponent} from './components/resume/resume.component';
 import {GraphicDesignComponent} from './components/graphic-design/graphic-design.component';
 import {LoginComponent} from './minor-components/login/login.component';
 import {AuthGuardService} from './services/auth-guard.service';
+import {ProjectsComponent} from './components/projects/projects.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: 'resume', component: ResumeComponent},
     {path: 'graphic-design', component: GraphicDesignComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'projects', component: ProjectsComponent},
     {
         path: 'admin',
         loadChildren: () => import('./admin-panel/admin-panel-components.module').then(m => m.AdminPanelComponentsModule),

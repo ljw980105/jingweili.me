@@ -13,6 +13,7 @@ import {Token} from '../models/authentication/Token';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
+import {Project} from '../models/pure-models/Project';
 
 @Injectable({
     providedIn: 'root'
@@ -44,6 +45,10 @@ export class ApiService {
 
     getExperiencesData(): Observable<Experience[]> {
         return this.http.get<Experience[]>('../../assets/experiences-data.json');
+    }
+
+    getProjectsData(): Observable<Project[]> {
+        return this.http.get<Project[]>('../../assets/projects-data.json');
     }
 
     /////////////////

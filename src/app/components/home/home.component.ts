@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
 import {Subject} from 'rxjs';
 import {delay, filter} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 
 @Component({
@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
     constructor(
         private scrollToService: ScrollToService,
         private router: ActivatedRoute,
-        private titleService: Title) {
+        private titleService: Title,
+        private route: Router) {
         titleService.setTitle('Hi, I\'m Jing');
     }
 
@@ -64,6 +65,10 @@ export class HomeComponent implements OnInit {
             target: id
         };
         this.scrollToService.scrollTo(config);
+    }
+
+    navigateTo(url: string) {
+        this.route.navigateByUrl(url);
     }
 
 }

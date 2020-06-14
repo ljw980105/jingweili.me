@@ -31,7 +31,7 @@
                         <h4>{{plugMinusFromBool(projectsExpanded)}}Projects</h4>
                     </li>
                     <div class="slideContents" [@shrinkOrExpand]="projectsExpanded ? 'expanded' : 'shrinked'">
-                        <li><a href="Projects.html">All Projects</a></li>
+                        <li><a [routerLink]="['/projects']">All Projects</a></li>
                         <li><a href="Games.html">2048 Game</a></li>
                         <li><a [routerLink]="['/apps']">Apps</a></li>
                         <li><a [routerLink]="['/beatslytics']">Beatslytics</a></li>
