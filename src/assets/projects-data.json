@@ -1,6 +1,6 @@
 [
     {
-        "imageUrl": "assets/images/home/website-bg.jpg",
+        "imageUrl": "fullness-tracker-icon.jpg",
         "name": "Automatic Door Control",
         "description": "An open source iOS app to help disabled students open and close accessible doors.",
         "links": [
@@ -18,7 +18,7 @@
         "technologies": ["Swift", "Arduino", "iOS App", "Core Bluetooth", "RxSwift"]
     },
     {
-        "imageUrl": "assets/images/home/website-bg.jpg",
+        "imageUrl": "fullness-tracker-icon.jpg",
         "name": "RGB Controller",
         "description": "A iOS app to control the RGB Lighting of RGB Fans on a Desktop PC via Bluetooth, plus Arduino hardware to directly control the LEDs",
         "links": [

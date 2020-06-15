@@ -16,7 +16,7 @@ export class ProjectsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.apiService.getProjectsData()
+        this.apiService.getProjects()
             .subscribe((projects) => {
                 const mid = projects.length / 2;
                 this.projectsFirstColumn = projects.slice(0, mid);

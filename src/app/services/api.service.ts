@@ -47,10 +47,6 @@ export class ApiService {
         return this.http.get<Experience[]>('../../assets/experiences-data.json');
     }
 
-    getProjectsData(): Observable<Project[]> {
-        return this.http.get<Project[]>('../../assets/projects-data.json');
-    }
-
     /////////////////
     // RESUME + CV //
     /////////////////
@@ -148,6 +144,15 @@ export class ApiService {
 
     addPCSetups(data: string): Observable<ServerResponse> {
         return this.http.post<ServerResponse>(`${this.apiRoot}api/pc-setup`, JSON.parse(data), this.authHeaders());
+    }
+
+    // Projects
+    addProjects(data: string): Observable<ServerResponse> {
+        return this.http.post<ServerResponse>(`${this.apiRoot}api/projects`, JSON.parse(data), this.authHeaders());
+    }
+
+    getProjects(): Observable<Project[]> {
+        return this.http.get<Project[]>(`${this.apiRoot}api/projects`);
     }
 
     private authHeaders() {

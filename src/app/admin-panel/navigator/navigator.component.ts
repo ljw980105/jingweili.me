@@ -11,6 +11,7 @@ export class NavigatorComponent implements OnInit, OnDestroy {
     editingResume = false;
     editingGraphicDesign = false;
     editingHome = false;
+    editingProjects = false;
 
     constructor(private titleService: Title, private apiService: ApiService) {
         this.titleService.setTitle('Admin Panel');
@@ -22,18 +23,22 @@ export class NavigatorComponent implements OnInit, OnDestroy {
     editResume() {
         this.editingResume = !this.editingResume;
         this.editingGraphicDesign = false;
-        this.editingHome = false;
+        this.editingHome = this.editingProjects = false;
     }
 
     editGraphicDesign() {
-        this.editingResume = false;
         this.editingGraphicDesign = !this.editingGraphicDesign;
-        this.editingHome = false;
+        this.editingHome = this.editingResume = this.editingProjects = false;
     }
 
     editHome() {
         this.editingHome = !this.editingHome;
-        this.editingResume = this.editingGraphicDesign = false;
+        this.editingResume = this.editingGraphicDesign = this.editingProjects = false;
+    }
+
+    editProjects() {
+        this.editingProjects = ! this.editingProjects;
+        this.editingResume = this.editingGraphicDesign = this.editingHome = false;
     }
 
     ngOnDestroy() {
