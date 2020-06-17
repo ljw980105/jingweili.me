@@ -1,6 +1,7 @@
 @import "fonts";
 @import "common-css/width-container";
 @import "common-css/admin-panel-styles";
+@import "~highlight.js/styles/atelier-cave-light.css";
 
 /*For selection color*/
 ::-moz-selection { /* Code for Firefox */
@@ -51,11 +52,11 @@ html, body {
 ////// FONTS ///////
 ////////////////////
 .helvetica {
-    font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+    font-family: Helvetica, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
 
 .helvetica-normal {
-    font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+    font-family: Helvetica, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
     font-weight: normal;
 }
 

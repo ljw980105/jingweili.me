@@ -8,9 +8,9 @@
             <li><a [routerLink]="['/graphic-design']">GRAPHIC DESIGN</a></li>
             <li>
                 <div class="dropdown">
-                    <a class="dropbtn" href="Projects.html">PROJECTS</a>
+                    <a class="dropbtn" [routerLink]="['/projects']">PROJECTS</a>
                     <div class="dropdown-content" [ngClass]="{'dark-dropdown': darkThemed, 'light-dropdown': !darkThemed}">
-                        <a href="Projects.html">All</a>
+                        <a [routerLink]="['/projects']">All</a>
                         <a href="proj_frc.html">FIRST Robotics</a>
                         <a [routerLink]="['/beatslytics']">Beatslytics</a>
                         <a href="Litec.html">Embedded Control</a>

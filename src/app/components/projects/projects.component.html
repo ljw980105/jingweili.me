@@ -1,0 +1,38 @@
+<app-navbar [theme]="'dark'"></app-navbar>
+
+<div id="project-bg">
+
+</div>
+
+<div id="projects-container" class="width-container" *ngIf="dataReady">
+    <div id="projects-column-1" class="single-project" *ngFor="let project of projectsFirstColumn">
+        <img width="100%" src="{{this.apiService.fileURL(project.imageUrl)}}">
+        <h2 class="helvetica standard-text-spacing">{{project.name}}</h2>
+        <h4 class="helvetica-normal standard-text-spacing">{{project.description}}</h4>
+        <div style="display: inline-block">
+            <a class="main-tag zoom-fx" target="_blank" *ngFor="let link of project.links" href="{{link.url}}">{{link.name}}</a>
+        </div>
+        <h4 class="helvetica-normal standard-text-spacing-bottom">Technologies:</h4>
+        <div style="display: inline-block">
+            <h5 class="secondary-tag" *ngFor="let tech of project.technologies">{{tech}}</h5>
+        </div>
+    </div>
+
+    <div id="projects-column-2" class="single-project" *ngFor="let project of projectsSecondColumn">
+        <img width="100%" src="{{this.apiService.fileURL(project.imageUrl)}}">
+        <h2 class="helvetica standard-text-spacing">{{project.name}}</h2>
+        <h4 class="helvetica-normal standard-text-spacing">{{project.description}}</h4>
+        <div style="display: inline-block">
+            <a class="main-tag zoom-fx" target="_blank" *ngFor="let link of project.links" href="{{link.url}}">{{link.name}}</a>
+        </div>
+        <h4 class="helvetica-normal standard-text-spacing-bottom">Technologies:</h4>
+        <div style="display: inline-block">
+            <h5 class="secondary-tag" *ngFor="let tech of project.technologies">{{tech}}</h5>
+        </div>
+    </div>
+</div>
+
+<app-footer [showTopBorder]="true"></app-footer>
+
+
+

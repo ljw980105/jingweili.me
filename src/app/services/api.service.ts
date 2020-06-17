@@ -10,9 +10,10 @@ import {FileLocation} from '../models/pure-models/FileLocation';
 import {GraphicProject} from '../models/pure-models/GraphicProject';
 import {Password} from '../models/authentication/Password';
 import {Token} from '../models/authentication/Token';
-import {catchError, map, mergeMap} from 'rxjs/operators';
+import {catchError, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
+import {Project} from '../models/pure-models/Project';
 
 @Injectable({
     providedIn: 'root'
@@ -89,6 +90,10 @@ export class ApiService {
         return this.uploadFileTo(`${this.apiRoot}api/upload-file`, file);
     }
 
+    uploadMultipleFiles(files: File[]): Observable<ServerResponse[]> {
+        return forkJoin(files.map(file => this.uploadGenericFile(file)));
+    }
+
     public fileURL(name: string): string {
         return `${this.apiRoot}${name}`;
     }
@@ -139,6 +144,15 @@ export class ApiService {
 
     addPCSetups(data: string): Observable<ServerResponse> {
         return this.http.post<ServerResponse>(`${this.apiRoot}api/pc-setup`, JSON.parse(data), this.authHeaders());
+    }
+
+    // Projects
+    addProjects(data: string): Observable<ServerResponse> {
+        return this.http.post<ServerResponse>(`${this.apiRoot}api/projects`, JSON.parse(data), this.authHeaders());
+    }
+
+    getProjects(): Observable<Project[]> {
+        return this.http.get<Project[]>(`${this.apiRoot}api/projects`);
     }
 
     private authHeaders() {

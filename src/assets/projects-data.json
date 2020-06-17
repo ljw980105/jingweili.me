@@ -1,0 +1,35 @@
+[
+    {
+        "imageUrl": "fullness-tracker-icon.jpg",
+        "name": "Automatic Door Control",
+        "description": "An open source iOS app to help disabled students open and close accessible doors.",
+        "links": [
+            {
+                "name": "Watch Video",
+                "url": "https://www.youtube.com/watch?v=_ar0LT4DYQM&feature=emb_title"
+            }, {
+                "name": "Download App",
+                "url": "https://apps.apple.com/us/app/automatic-door-control/id1500529300"
+            }, {
+                "name": "Visit Website",
+                "url": "https://rpiadc.com/"
+            }
+        ],
+        "technologies": ["Swift", "Arduino", "iOS App", "Core Bluetooth", "RxSwift"]
+    },
+    {
+        "imageUrl": "fullness-tracker-icon.jpg",
+        "name": "RGB Controller",
+        "description": "A iOS app to control the RGB Lighting of RGB Fans on a Desktop PC via Bluetooth, plus Arduino hardware to directly control the LEDs",
+        "links": [
+            {
+                "name": "iOS App",
+                "url": "https://github.com/ljw980105/RGBFanController-iOS"
+            }, {
+                "name": "Arduino Hardware",
+                "url": "https://github.com/ljw980105/RGBFanControllerArduino"
+            }
+        ],
+        "technologies": ["Swift", "Arduino", "iOS App", "Core Bluetooth", "Microcontroller"]
+    }
+]

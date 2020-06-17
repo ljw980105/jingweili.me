@@ -130,6 +130,20 @@
     visibility: hidden;
 }
 
+// rotations on + and x
+.rotation {
+    display: flex;
+    h4 {
+        margin: 0 0 6px 0;
+        padding: 0;
+    }
+}
+
+// add a space to the left
+.left-space {
+    margin-left: 0.5em;
+}
+
 @media only screen and (max-width: 1150px) {
     #footerx{
         width: 90%;
@@ -195,7 +209,7 @@
         margin-bottom: 10%;
     }
 
-    #navigation ul li h4, #projects_footer ul li h4, #social_media_footer ul li h4, #graphics_footer ul li h4{
+    #navigation ul li h4, #projects_footer ul li h4, #social_media_footer ul li h4, #graphics_footer ul li h4, .rotation h4{
         cursor: pointer;
         font-weight: normal;
         line-height: 60%;

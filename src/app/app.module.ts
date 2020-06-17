@@ -22,6 +22,7 @@ import { GraphicDesignComponent } from './components/graphic-design/graphic-desi
 import { LoginComponent } from './minor-components/login/login.component';
 import {FormsModule} from '@angular/forms';
 import { TimelineBlockComponent } from './minor-components/timeline-block/timeline-block.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 export function playerFactory() {
     return import('lottie-web');
@@ -42,7 +43,8 @@ export function playerFactory() {
         ResumeComponent,
         GraphicDesignComponent,
         LoginComponent,
-        TimelineBlockComponent
+        TimelineBlockComponent,
+        ProjectsComponent
     ],
     imports: [
         BrowserModule,
