@@ -21,10 +21,7 @@
         <label>
             <textarea class="menlo" [(ngModel)]="projectsData"></textarea>
         </label>
-        <div class="flex">
-            <button class="helvetica vertical-spacing-button" (click)="uploadProjects()">Upload</button>
-            <ng-lottie [options]="uploadFilesOptions" width="60px" height="60px" *ngIf="uploadingProjects"></ng-lottie>
-        </div>
+        <button class="helvetica vertical-spacing-button" (click)="uploadProjects()">Upload</button>
         <h3 class="helvetica">Upload Images</h3>
         <p class="helvetica" style="margin: 10px 0">Recommended Aspect Ratio: 3:2</p>
         <div class="flex">

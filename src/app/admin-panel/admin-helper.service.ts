@@ -1,0 +1,33 @@
+import {Injectable} from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {Observable} from 'rxjs';
+import {ActivityIndicatorComponent} from './activity-indicator/activity-indicator.component';
+import {DialogSize} from './admin-panel-common';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class AdminHelperService {
+
+    constructor(private matDialog: MatDialog) {
+    }
+
+    showActivityIndicatorWithObservable(
+        argument: Observable<any>,
+        size: DialogSize = DialogSize.dialog,
+        disableClose = true) {
+        const dialogConfig = new MatDialogConfig();
+        // The user can't close the dialog by clicking outside its body
+        dialogConfig.disableClose = disableClose;
+        dialogConfig.id = 'modal-component';
+        dialogConfig.height = size.split(', ')[0];
+        dialogConfig.width = size.split(', ')[1];
+        dialogConfig.data = argument;
+        // https://material.angular.io/components/dialog/overview
+        const modalDialog = this.matDialog.open(ActivityIndicatorComponent, dialogConfig);
+        modalDialog.afterClosed()
+            .subscribe(() => {});
+    }
+
+
+}

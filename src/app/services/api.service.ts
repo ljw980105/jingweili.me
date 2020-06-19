@@ -19,7 +19,7 @@ import {Project} from '../models/pure-models/Project';
     providedIn: 'root'
 })
 export class ApiService {
-    // public readonly apiRoot = 'http://api.jingweili.me/';
+    // public readonly apiRoot = 'https://api.jingweili.me/';
     public readonly apiRoot = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) {

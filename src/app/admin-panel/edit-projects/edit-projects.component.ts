@@ -4,6 +4,8 @@ import {multipleFilesFromEvent} from '../../models/Global';
 import {AnimationOptions} from 'ngx-lottie';
 import {Project} from '../../models/pure-models/Project';
 import {saveAs} from 'file-saver';
+import {Observable, of, throwError} from 'rxjs';
+import {AdminHelperService} from '../admin-helper.service';
 
 @Component({
     selector: 'app-edit-projects',
@@ -38,7 +40,7 @@ export class EditProjectsComponent implements OnInit {
         path: 'assets/animations/loading.json'
     };
 
-    constructor(public apiService: ApiService) {
+    constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
 
     ngOnInit(): void {
@@ -50,10 +52,11 @@ export class EditProjectsComponent implements OnInit {
 
     uploadFiles(event: any) {
         const files = multipleFilesFromEvent(event);
-        this.uploadingFiles = true;
-        this.apiService.uploadMultipleFiles(files)
-            .subscribe(() => this.uploadingFiles = false,
-                () => this.uploadingFiles = false);
+        this.helperService.showActivityIndicatorWithObservable(this.apiService.uploadMultipleFiles(files));
+    }
+
+    error(): Observable<any> {
+        return throwError(Error('Error'));
     }
 
     uploadProjects() {
