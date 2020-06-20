@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {multipleFilesFromEvent} from '../../models/Global';
-import {AnimationOptions} from 'ngx-lottie';
 import {Project} from '../../models/pure-models/Project';
 import {saveAs} from 'file-saver';
-import {Observable, of, throwError} from 'rxjs';
 import {AdminHelperService} from '../admin-helper.service';
 
 @Component({
@@ -31,14 +29,8 @@ export class EditProjectsComponent implements OnInit {
         ...
     ]
     `;
-    uploadingFiles = false;
-    uploadingProjects = false;
     projectsData: string;
     projects: Project[];
-
-    uploadFilesOptions: AnimationOptions = {
-        path: 'assets/animations/loading.json'
-    };
 
     constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
@@ -55,15 +47,8 @@ export class EditProjectsComponent implements OnInit {
         this.helperService.showActivityIndicatorWithObservable(this.apiService.uploadMultipleFiles(files));
     }
 
-    error(): Observable<any> {
-        return throwError(Error('Error'));
-    }
-
     uploadProjects() {
-        this.uploadingProjects = true;
-        this.apiService.addProjects(this.projectsData)
-            .subscribe(() =>  this.uploadingProjects = false,
-                () => this.uploadingProjects = false);
+        this.helperService.showActivityIndicatorWithObservable(this.apiService.addProjects(this.projectsData));
     }
 
     exportJSON() {

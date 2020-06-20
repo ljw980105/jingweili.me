@@ -4,6 +4,7 @@ import {AboutInfo} from '../../models/pure-models/AboutInfo';
 import {forkJoin, Observable} from 'rxjs';
 import {ServerResponse} from '../../models/pure-models/ServerResponse';
 import {PCSetupEntry} from '../../models/pure-models/PCSetupEntry';
+import {AdminHelperService} from '../admin-helper.service';
 
 @Component({
     selector: 'app-edit-home',
@@ -18,7 +19,7 @@ export class EditHomeComponent implements OnInit {
     pcSetups: PCSetupEntry[] = [];
     pcSetupContent = '';
 
-    constructor(private apiService: ApiService) {
+    constructor(private apiService: ApiService, private helperService: AdminHelperService) {
     }
 
     ngOnInit(): void {
@@ -47,16 +48,17 @@ export class EditHomeComponent implements OnInit {
     }
 
     uploadAboutInfo() {
-        this.apiService.addAboutData(new AboutInfo(this.aboutContent, this.profileImgName))
-            .subscribe((info) => {
-                console.log(info);
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.addAboutData(new AboutInfo(this.aboutContent, this.profileImgName)),
+            () => {
+                console.log('done');
                 this.imgUrl = this.apiService.fileURL(this.profileImgName);
-            });
+            }
+        );
     }
 
     updatePCSetups() {
-        this.apiService.addPCSetups(this.pcSetupContent)
-            .subscribe(res => console.log(res));
+        this.helperService.showActivityIndicatorWithObservable(this.apiService.addPCSetups(this.pcSetupContent));
     }
 
 }

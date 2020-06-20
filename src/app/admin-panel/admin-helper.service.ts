@@ -12,8 +12,10 @@ export class AdminHelperService {
     constructor(private matDialog: MatDialog) {
     }
 
+    // Shows an activity indicator popup while the observable sequence is executed.
     showActivityIndicatorWithObservable(
         argument: Observable<any>,
+        completion: () => void = () => {},
         size: DialogSize = DialogSize.dialog,
         disableClose = true) {
         const dialogConfig = new MatDialogConfig();
@@ -26,7 +28,7 @@ export class AdminHelperService {
         // https://material.angular.io/components/dialog/overview
         const modalDialog = this.matDialog.open(ActivityIndicatorComponent, dialogConfig);
         modalDialog.afterClosed()
-            .subscribe(() => {});
+            .subscribe(completion);
     }
 
 

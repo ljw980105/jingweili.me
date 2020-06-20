@@ -14,6 +14,7 @@ import {catchError, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
+import {tryCatchWithObservable} from '../models/Global';
 
 @Injectable({
     providedIn: 'root'
@@ -143,12 +144,18 @@ export class ApiService {
     }
 
     addPCSetups(data: string): Observable<ServerResponse> {
-        return this.http.post<ServerResponse>(`${this.apiRoot}api/pc-setup`, JSON.parse(data), this.authHeaders());
+        return tryCatchWithObservable(
+            () => JSON.parse(data),
+            (json) => this.http.post<ServerResponse>(`${this.apiRoot}api/pc-setup`, json, this.authHeaders())
+        );
     }
 
     // Projects
     addProjects(data: string): Observable<ServerResponse> {
-        return this.http.post<ServerResponse>(`${this.apiRoot}api/projects`, JSON.parse(data), this.authHeaders());
+        return tryCatchWithObservable(
+            () => JSON.parse(data),
+            (json) => this.http.post<ServerResponse>(`${this.apiRoot}api/projects`, json, this.authHeaders())
+        );
     }
 
     getProjects(): Observable<Project[]> {

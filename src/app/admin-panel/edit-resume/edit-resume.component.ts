@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {forkJoin} from 'rxjs';
+import {AdminHelperService} from '../admin-helper.service';
 
 @Component({
     selector: 'app-edit-resume',
@@ -11,7 +12,7 @@ export class EditResumeComponent implements OnInit {
     resumeExists = false;
     cvExists = false;
 
-    constructor(private apiService: ApiService) {
+    constructor(private apiService: ApiService, private helperService: AdminHelperService) {
     }
 
     ngOnInit(): void {
@@ -24,14 +25,16 @@ export class EditResumeComponent implements OnInit {
 
     uploadResume(event: any) {
         const files = event.target.files as FileList;
-        this.apiService.uploadResume(files.item(0))
-            .subscribe((x) => console.log(x));
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.uploadResume(files.item(0))
+        );
     }
 
     uploadCV(event: any) {
         const files = event.target.files as FileList;
-        this.apiService.uploadCV(files.item(0))
-            .subscribe((x) => console.log(x));
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.uploadCV(files.item(0))
+        );
     }
 
 }
