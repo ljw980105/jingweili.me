@@ -12,6 +12,7 @@ import {LottieModule} from 'ngx-lottie';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { ActivityIndicatorComponent } from './activity-indicator/activity-indicator.component';
 import {AdminHelperService} from './admin-helper.service';
+import { BatchFileUploaderComponent } from './batch-file-uploader/batch-file-uploader.component';
 
 export function getHighlightLanguages() {
     return {
@@ -31,7 +32,8 @@ export function playerFactory() {
         EditGraphicsComponent,
         EditHomeComponent,
         EditProjectsComponent,
-        ActivityIndicatorComponent
+        ActivityIndicatorComponent,
+        BatchFileUploaderComponent
     ],
     imports: [
         CommonModule,

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Experience} from '../../models/pure-models/Experience';
+import {ApiService} from '../../services/api.service';
 
 @Component({
     selector: 'app-timeline-block',
@@ -9,7 +10,7 @@ import {Experience} from '../../models/pure-models/Experience';
 export class TimelineBlockComponent implements OnInit {
     @Input() experiences: Experience[] = [];
 
-    constructor() {
+    constructor(public apiService: ApiService) {
     }
 
     ngOnInit(): void {

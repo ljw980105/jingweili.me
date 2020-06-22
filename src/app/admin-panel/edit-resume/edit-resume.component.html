@@ -1,14 +1,60 @@
-<h3 class="helvetica">Resume</h3>
-<h4 class="helvetica-normal" style="color: dimgray">{{resumeExists ? "Resume Already Uploaded" : "Resume not Uploaded"}}</h4>
+<div class="flex">
+    <div class="left-half">
+<!--        Resumes-->
+        <h3 class="helvetica">Resume</h3>
+        <h4 class="helvetica-normal" style="color: dimgray">{{resumeExists ? "Resume Already Uploaded" : "Resume not Uploaded"}}</h4>
 
-<div>
-    <input type="file" accept=".pdf" name="resume" (change)="uploadResume($event)">
+        <div>
+            <input type="file" accept=".pdf" name="resume" (change)="uploadResume($event)">
+        </div>
+    </div>
+
+    <div class="right-half">
+        <h3 class="helvetica">CV</h3>
+        <h4 class="helvetica-normal" style="color: dimgray">{{cvExists ? "CV Already Uploaded" : "CV not Uploaded"}}</h4>
+
+        <div>
+            <input type="file" accept=".pdf" name="cv" (change)="uploadCV($event)">
+        </div>
+
+    </div>
 </div>
 
-<h3 class="helvetica">CV</h3>
-<h4 class="helvetica-normal" style="color: dimgray">{{cvExists ? "CV Already Uploaded" : "CV not Uploaded"}}</h4>
+<hr>
 
-<div>
-    <input type="file" accept=".pdf" name="cv" (change)="uploadCV($event)">
+<div class="flex">
+    <div class="left-half">
+        <!--        Experience JSON Spec-->
+        <h3 class="helvetica">JSON Spec:</h3>
+        <div class="menlo">
+            <pre>
+                <code [highlight]="jsonSpec"></code>
+            </pre>
+        </div>
+
+        <h3 class="helvetica">Current Experiences</h3>
+
+        <div *ngFor="let exp of experiences | async" class="single-project">
+            <img src="{{this.apiService.fileURL(exp.imageLink)}}">
+            <div style="width: 280px">
+                <h4 class="helvetica">{{exp.position}}</h4>
+                <h5 class="helvetica-normal">{{exp.company}}</h5>
+                <h5 class="helvetica-normal">{{exp.time}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="right-half">
+        <!--        Experience Textarea-->
+        <h3 class="helvetica">Enter JSON</h3>
+        <textarea [(ngModel)]="experienceString"></textarea>
+        <button (click)="uploadExperiences()">Submit</button>
+
+        <!--        Upload files-->
+        <app-batch-file-uploader
+            [title]="'Upload Experience Images'"
+            [instruction]="'Aspect Ratio should be 1:1'"
+        ></app-batch-file-uploader>
+    </div>
 </div>
+
 
