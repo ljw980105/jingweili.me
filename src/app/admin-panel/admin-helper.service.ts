@@ -3,6 +3,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Observable} from 'rxjs';
 import {ActivityIndicatorComponent} from './activity-indicator/activity-indicator.component';
 import {DialogSize} from './admin-panel-common';
+import {saveAs} from 'file-saver';
 
 @Injectable({
     providedIn: 'root'
@@ -29,6 +30,11 @@ export class AdminHelperService {
         const modalDialog = this.matDialog.open(ActivityIndicatorComponent, dialogConfig);
         modalDialog.afterClosed()
             .subscribe(completion);
+    }
+
+    exportASJSONWithData(data: any, filename: string) {
+        const blob = new Blob([JSON.stringify(data)], {type: 'text/plain;charset=utf-8'});
+        saveAs(blob, filename);
     }
 
 

@@ -1,7 +1,7 @@
 
 <div *ngIf="dataReady">
-    <h3 class="helvetica">About</h3>
-    <div class="flex" id="about">
+    <h2 class="mohave admin-header">ABOUT</h2>
+    <div class="flex admin-section" id="about">
         <div class="left-half">
             <p class="p-button helvetica">Profile Image</p>
             <img width="200px" src="{{(imgUrl)}}">
@@ -13,21 +13,22 @@
         <div class="right-half">
             <p class="p-button helvetica">Edit Content</p>
             <label>
-                <textarea class="helvetica-normal" [(ngModel)]="aboutContent">{{aboutContent}}</textarea>
+                <textarea class="helvetica-normal admin-textarea" [(ngModel)]="aboutContent">{{aboutContent}}</textarea>
             </label>
             <button style="margin-top: 15px" (click)="uploadAboutInfo()">Update About Info</button>
         </div>
     </div>
 
-    <h3 class="helvetica">PC Setup</h3>
-    <div class="flex">
+    <h3 class="mohave admin-header">PC SETUP</h3>
+    <div class="flex admin-section">
         <div class="left-half">
             <p class="helvetica-normal" *ngFor="let pcSetup of pcSetups">{{pcSetup.partDetail}}</p>
+            <button (click)="exportPCAsJSON()">Export as JSON</button>
         </div>
 
         <div class="right-half" id="pc-setup">
             <label>
-                <textarea class="helvetica-normal" [(ngModel)]="pcSetupContent">JSON</textarea>
+                <textarea class="helvetica-norma admin-textarea" [(ngModel)]="pcSetupContent">JSON</textarea>
             </label>
 
             <button style="margin-top: 15px" (click)="updatePCSetups()">Update</button>

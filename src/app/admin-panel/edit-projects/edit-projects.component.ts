@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {multipleFilesFromEvent} from '../../models/Global';
 import {Project} from '../../models/pure-models/Project';
-import {saveAs} from 'file-saver';
 import {AdminHelperService} from '../admin-helper.service';
 
 @Component({
@@ -52,9 +51,7 @@ export class EditProjectsComponent implements OnInit {
     }
 
     exportJSON() {
-        const string = JSON.stringify(this.projects);
-        const blob = new Blob([string], {type: 'text/plain;charset=utf-8'});
-        saveAs(blob, 'projects.json');
+        this.helperService.exportASJSONWithData(this.projects, 'projects.json');
     }
 
 }

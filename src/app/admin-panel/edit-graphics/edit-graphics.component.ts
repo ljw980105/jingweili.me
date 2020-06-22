@@ -62,4 +62,11 @@ export class EditGraphicsComponent implements OnInit {
         return this.name?.length ?? 0;
     }
 
+    exportJSON() {
+        this.apiService.getGraphicsProjects()
+            .subscribe((projects) => {
+                this.helperService.exportASJSONWithData(projects, 'graphics-projects.json');
+            });
+    }
+
 }

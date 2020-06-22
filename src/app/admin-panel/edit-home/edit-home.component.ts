@@ -61,4 +61,8 @@ export class EditHomeComponent implements OnInit {
         this.helperService.showActivityIndicatorWithObservable(this.apiService.addPCSetups(this.pcSetupContent));
     }
 
+    exportPCAsJSON() {
+        this.helperService.exportASJSONWithData(this.pcSetups, 'pcSetups.json');
+    }
+
 }

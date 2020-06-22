@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {forkJoin, Observable} from 'rxjs';
+import {forkJoin} from 'rxjs';
 import {AdminHelperService} from '../admin-helper.service';
 import {Experience} from '../../models/pure-models/Experience';
 
@@ -13,7 +13,7 @@ export class EditResumeComponent implements OnInit {
     resumeExists = false;
     cvExists = false;
     experienceString = '';
-    experiences: Observable<Experience[]>;
+    experiences: Experience[];
     jsonSpec = `
         [
             {
@@ -32,11 +32,11 @@ export class EditResumeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.experiences = this.apiService.getExperiencesData();
-        forkJoin([this.apiService.getResume(), this.apiService.getCV()])
-            .subscribe(([resume, cv]) => {
+        forkJoin([this.apiService.getResume(), this.apiService.getCV(), this.apiService.getExperiencesData()])
+            .subscribe(([resume, cv, exp]) => {
                 this.resumeExists = resume.exists;
                 this.cvExists = cv.exists;
+                this.experiences = exp;
             });
     }
 
@@ -56,9 +56,12 @@ export class EditResumeComponent implements OnInit {
 
     uploadExperiences() {
         this.helperService.showActivityIndicatorWithObservable(
-            this.apiService.addExperiences(this.experienceString),
-            () => this.experiences = this.apiService.getExperiencesData()
+            this.apiService.addExperiences(this.experienceString)
         );
+    }
+
+    exportExperiencesAsJSON() {
+        this.helperService.exportASJSONWithData(this.experiences, 'experiences.json');
     }
 
 }

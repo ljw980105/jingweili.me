@@ -11,6 +11,7 @@ import {multipleFilesFromEvent} from '../../models/Global';
 export class BatchFileUploaderComponent implements OnInit {
     @Input() title: string;
     @Input() instruction: string;
+    @Input() fileTypes: string[] = ['.png', '.jpg', '.jpeg', '.gif'];
 
     constructor(private apiService: ApiService, private helperService: AdminHelperService) {
     }
