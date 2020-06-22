@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {forkJoin} from 'rxjs';
+import {AdminHelperService} from '../admin-helper.service';
+import {Experience} from '../../models/pure-models/Experience';
 
 @Component({
     selector: 'app-edit-resume',
@@ -10,28 +12,56 @@ import {forkJoin} from 'rxjs';
 export class EditResumeComponent implements OnInit {
     resumeExists = false;
     cvExists = false;
+    experienceString = '';
+    experiences: Experience[];
+    jsonSpec = `
+        [
+            {
+                imageLink: string;
+                position: string;
+                time: string;
+                company: string;
+                accomplishments: string[];
+                special: string;
+            },
+            ...
+        ]
+    `;
 
-    constructor(private apiService: ApiService) {
+    constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
 
     ngOnInit(): void {
-        forkJoin([this.apiService.getResume(), this.apiService.getCV()])
-            .subscribe(([resume, cv]) => {
+        forkJoin([this.apiService.getResume(), this.apiService.getCV(), this.apiService.getExperiencesData()])
+            .subscribe(([resume, cv, exp]) => {
                 this.resumeExists = resume.exists;
                 this.cvExists = cv.exists;
+                this.experiences = exp;
             });
     }
 
     uploadResume(event: any) {
         const files = event.target.files as FileList;
-        this.apiService.uploadResume(files.item(0))
-            .subscribe((x) => console.log(x));
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.uploadResume(files.item(0))
+        );
     }
 
     uploadCV(event: any) {
         const files = event.target.files as FileList;
-        this.apiService.uploadCV(files.item(0))
-            .subscribe((x) => console.log(x));
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.uploadCV(files.item(0))
+        );
+    }
+
+    uploadExperiences() {
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.addExperiences(this.experienceString)
+        );
+    }
+
+    exportExperiencesAsJSON() {
+        this.helperService.exportASJSONWithData(this.experiences, 'experiences.json');
     }
 
 }

@@ -9,6 +9,10 @@ import { EditHomeComponent } from './edit-home/edit-home.component';
 import { EditProjectsComponent } from './edit-projects/edit-projects.component';
 import {HighlightModule, HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {LottieModule} from 'ngx-lottie';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { ActivityIndicatorComponent } from './activity-indicator/activity-indicator.component';
+import {AdminHelperService} from './admin-helper.service';
+import { BatchFileUploaderComponent } from './batch-file-uploader/batch-file-uploader.component';
 
 export function getHighlightLanguages() {
     return {
@@ -27,14 +31,17 @@ export function playerFactory() {
         EditResumeComponent,
         EditGraphicsComponent,
         EditHomeComponent,
-        EditProjectsComponent
+        EditProjectsComponent,
+        ActivityIndicatorComponent,
+        BatchFileUploaderComponent
     ],
     imports: [
         CommonModule,
         AdminPanelComponentsRoutingModule,
         FormsModule,
         HighlightModule,
-        LottieModule.forRoot({player: playerFactory})
+        LottieModule.forRoot({player: playerFactory}),
+        MatDialogModule
     ],
     providers: [
         {
@@ -42,7 +49,16 @@ export function playerFactory() {
             useValue: {
                 languages: getHighlightLanguages()
             }
-        }
+        },
+        {
+            provide: MatDialogRef,
+            useValue: {}
+        },
+        {
+            provide: MAT_DIALOG_DATA,
+            useValue: {}
+        },
+        AdminHelperService
     ]
 })
 export class AdminPanelComponentsModule {

@@ -16,7 +16,7 @@
 
 <div id="experience" class="width-container">
     <div class="experience-style" *ngFor="let exp of experiences">
-        <img width="200" height="200" src="{{exp.imageLink}}">
+        <img width="200" height="200" src="{{apiService.fileURL(exp.imageLink)}}">
         <div>
             <h2> {{exp.position}}</h2>
             <h3> {{exp.time}}&nbsp;@&nbsp;{{exp.company}}</h3>

@@ -19,21 +19,13 @@
         </div>
         <h3 class="helvetica">Enter JSON</h3>
         <label>
-            <textarea class="menlo" [(ngModel)]="projectsData"></textarea>
+            <textarea class="menlo admin-textarea" [(ngModel)]="projectsData"></textarea>
         </label>
-        <div class="flex">
-            <button class="helvetica vertical-spacing-button" (click)="uploadProjects()">Upload</button>
-            <ng-lottie [options]="uploadFilesOptions" width="60px" height="60px" *ngIf="uploadingProjects"></ng-lottie>
-        </div>
-        <h3 class="helvetica">Upload Images</h3>
-        <p class="helvetica" style="margin: 10px 0">Recommended Aspect Ratio: 3:2</p>
-        <div class="flex">
-            <input type="file" accept=".png,.jpg,.jpeg,.gif" multiple
-                   (change)="uploadFiles($event)">
-            <div class="activity-indicator">
-                <ng-lottie [options]="uploadFilesOptions" width="60px" height="60px" *ngIf="uploadingFiles"></ng-lottie>
-            </div>
-        </div>
+        <button class="helvetica vertical-spacing-button" (click)="uploadProjects()">Upload</button>
+        <app-batch-file-uploader
+            [title]="'Upload Images'"
+            [instruction]="'Recommended Aspect Ratio: 3:2'"
+        ></app-batch-file-uploader>
 
     </div>
 </div>

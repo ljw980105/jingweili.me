@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {multipleFilesFromEvent} from '../../models/Global';
-import {AnimationOptions} from 'ngx-lottie';
 import {Project} from '../../models/pure-models/Project';
-import {saveAs} from 'file-saver';
+import {AdminHelperService} from '../admin-helper.service';
 
 @Component({
     selector: 'app-edit-projects',
@@ -29,16 +28,10 @@ export class EditProjectsComponent implements OnInit {
         ...
     ]
     `;
-    uploadingFiles = false;
-    uploadingProjects = false;
     projectsData: string;
     projects: Project[];
 
-    uploadFilesOptions: AnimationOptions = {
-        path: 'assets/animations/loading.json'
-    };
-
-    constructor(public apiService: ApiService) {
+    constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
 
     ngOnInit(): void {
@@ -50,23 +43,15 @@ export class EditProjectsComponent implements OnInit {
 
     uploadFiles(event: any) {
         const files = multipleFilesFromEvent(event);
-        this.uploadingFiles = true;
-        this.apiService.uploadMultipleFiles(files)
-            .subscribe(() => this.uploadingFiles = false,
-                () => this.uploadingFiles = false);
+        this.helperService.showActivityIndicatorWithObservable(this.apiService.uploadMultipleFiles(files));
     }
 
     uploadProjects() {
-        this.uploadingProjects = true;
-        this.apiService.addProjects(this.projectsData)
-            .subscribe(() =>  this.uploadingProjects = false,
-                () => this.uploadingProjects = false);
+        this.helperService.showActivityIndicatorWithObservable(this.apiService.addProjects(this.projectsData));
     }
 
     exportJSON() {
-        const string = JSON.stringify(this.projects);
-        const blob = new Blob([string], {type: 'text/plain;charset=utf-8'});
-        saveAs(blob, 'projects.json');
+        this.helperService.exportASJSONWithData(this.projects, 'projects.json');
     }
 
 }

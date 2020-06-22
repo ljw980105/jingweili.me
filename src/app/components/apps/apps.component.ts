@@ -16,7 +16,7 @@ export class AppsComponent implements OnInit {
     skills: [AppOrSkill, AppOrSkill][];
     experiences: Experience[];
 
-    constructor(private titleService: Title, private apiService: ApiService) {
+    constructor(private titleService: Title, public apiService: ApiService) {
         this.titleService.setTitle('Apps');
     }
 

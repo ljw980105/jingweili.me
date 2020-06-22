@@ -15,6 +15,7 @@
             </div>
             <img class="trash ml-auto" width="20px" height="20px" src="assets/images/admin/trash.png" (click)="deleteProject(project)">
         </div>
+        <button (click)="exportJSON()">Export as JSON</button>
     </div>
     <div class="right-half">
         <h3 class="helvetica">Add Project</h3>
@@ -24,7 +25,7 @@
 
         <label>
             <label class="helvetica-normal vertical-spacing">Description</label>
-            <textarea class="helvetica-normal" placeholder="Description" [(ngModel)]="description"></textarea>
+            <textarea class="helvetica-normal admin-textarea" placeholder="Description" [(ngModel)]="description"></textarea>
         </label>
 
         <label class="helvetica-normal vertical-spacing">Project URL</label>

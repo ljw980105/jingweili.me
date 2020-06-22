@@ -2,6 +2,7 @@
 @import "common-css/width-container";
 @import "common-css/admin-panel-styles";
 @import "~highlight.js/styles/atelier-cave-light.css";
+@import "common-css/material-theme";
 
 /*For selection color*/
 ::-moz-selection { /* Code for Firefox */
@@ -135,6 +136,11 @@ html, body {
 
 .mr-auto {
     margin-right: auto;
+}
+
+.minimal-top-spacing {
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .theme-button {

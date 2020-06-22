@@ -12,5 +12,11 @@
         <app-edit-graphics *ngIf="editingGraphicDesign"></app-edit-graphics>
         <app-edit-home *ngIf="editingHome"></app-edit-home>
         <app-edit-projects *ngIf="editingProjects"></app-edit-projects>
+        <div id="navigator-default" *ngIf="showDefaults">
+            <div id="navigator-animation" class="ml-auto mr-auto">
+                <ng-lottie width="200px" height="200px" [options]="options"></ng-lottie>
+                <h3 class="helvetica">Pick Something from the Left </h3>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,14 +1,63 @@
-<h3 class="helvetica">Resume</h3>
-<h4 class="helvetica-normal" style="color: dimgray">{{resumeExists ? "Resume Already Uploaded" : "Resume not Uploaded"}}</h4>
+<h2 class="admin-header mohave">RESUME & CV</h2>
 
-<div>
-    <input type="file" accept=".pdf" name="resume" (change)="uploadResume($event)">
+<div class="flex admin-section">
+    <div class="left-half">
+<!--        Resumes-->
+        <h3 class="helvetica minimal-top-spacing">Resume</h3>
+        <h4 class="helvetica-normal" style="color: dimgray">{{resumeExists ? "Resume Already Uploaded" : "Resume not Uploaded"}}</h4>
+
+        <div>
+            <input type="file" accept=".pdf" name="resume" (change)="uploadResume($event)">
+        </div>
+    </div>
+
+    <div class="right-half">
+        <h3 class="helvetica minimal-top-spacing">CV</h3>
+        <h4 class="helvetica-normal" style="color: dimgray">{{cvExists ? "CV Already Uploaded" : "CV not Uploaded"}}</h4>
+
+        <div>
+            <input type="file" accept=".pdf" name="cv" (change)="uploadCV($event)">
+        </div>
+
+    </div>
 </div>
 
-<h3 class="helvetica">CV</h3>
-<h4 class="helvetica-normal" style="color: dimgray">{{cvExists ? "CV Already Uploaded" : "CV not Uploaded"}}</h4>
+<h2 class="admin-header mohave">EXPERIENCES</h2>
 
-<div>
-    <input type="file" accept=".pdf" name="cv" (change)="uploadCV($event)">
+<div class="flex admin-section">
+    <div class="left-half">
+        <!--        Experience JSON Spec-->
+        <h3 class="helvetica minimal-top-spacing">JSON Spec:</h3>
+        <div class="menlo">
+            <pre>
+                <code [highlight]="jsonSpec"></code>
+            </pre>
+        </div>
+
+        <h3 class="helvetica minimal-top-spacing">Current Experiences</h3>
+
+        <div *ngFor="let exp of experiences" class="single-project">
+            <img src="{{this.apiService.fileURL(exp.imageLink)}}">
+            <div style="width: 280px">
+                <h4 class="helvetica">{{exp.position}}</h4>
+                <h5 class="helvetica-normal">{{exp.company}}</h5>
+                <h5 class="helvetica-normal">{{exp.time}}</h5>
+            </div>
+        </div>
+        <button (click)="exportExperiencesAsJSON()">Export as JSON</button>
+    </div>
+    <div class="right-half">
+        <!--        Experience Textarea-->
+        <h3 class="helvetica minimal-top-spacing">Enter JSON</h3>
+        <textarea class="admin-textarea" [(ngModel)]="experienceString"></textarea>
+        <button (click)="uploadExperiences()">Submit</button>
+
+        <!--        Upload files-->
+        <app-batch-file-uploader
+            [title]="'Upload Experience Images'"
+            [instruction]="'Aspect Ratio should be 1:1'"
+        ></app-batch-file-uploader>
+    </div>
 </div>
+
 

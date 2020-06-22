@@ -1,6 +1,6 @@
 <div id="timeline-wrapper" *ngFor="let experience of experiences; let i=index">
     <div id="exp-left">
-        <img width="80%" src="{{experience.imageLink}}">
+        <img width="80%" src="{{apiService.fileURL(experience.imageLink)}}">
         <div id="position-company">
             <h3 class="small-text helvetica" style="margin-top: 10px">{{experience.position}}</h3>
             <h3 class="extra-small-text helvetica-normal"

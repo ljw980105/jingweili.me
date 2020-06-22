@@ -1,6 +1,6 @@
 [
     {
-        "imageLink": "assets/images/apps/DkIcon.png",
+        "imageLink": "DkIcon.png",
         "position": "Software Engineering Intern",
         "time": "Summer 2019",
         "company": "DraftKings, Inc",
@@ -12,7 +12,7 @@
         "special": "for apps"
     },
     {
-        "imageLink": "assets/images/apps/BeatslyticsIcon.png",
+        "imageLink": "BeatslyticsIcon.png",
         "position": "Independent iOS Developer",
         "time": "2018 - Now",
         "company": "Self Employed",
@@ -25,7 +25,7 @@
         ]
     },
     {
-        "imageLink": "assets/images/resume/ruIcon.png",
+        "imageLink": "ruIcon.png",
         "position": "Graphic Designer",
         "time": "Jan 2017 - Apr 2020",
         "company": "Rensselaer Union",
@@ -35,7 +35,7 @@
         ]
     },
     {
-        "imageLink": "assets/images/apps/ModMedIcon.png",
+        "imageLink": "ModMedIcon.png",
         "position": "Mobile Software Engineering Intern",
         "time": "Summer 2018",
         "company": "Modernizing Medicine",
@@ -46,7 +46,7 @@
         "special": "for apps"
     },
     {
-        "imageLink": "assets/images/apps/3DVisualizerIcon.png",
+        "imageLink": "3DVisualizerIcon.png",
         "position": "iOS Developer",
         "time": "Spring 2018",
         "company": "RPI CSDT",

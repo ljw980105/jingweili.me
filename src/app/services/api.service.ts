@@ -14,12 +14,13 @@ import {catchError, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
+import {tryCatchWithObservable} from '../models/Global';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
-    // public readonly apiRoot = 'http://api.jingweili.me/';
+    // public readonly apiRoot = 'https://api.jingweili.me/';
     public readonly apiRoot = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) {
@@ -43,8 +44,16 @@ export class ApiService {
         ]);
     }
 
+    /////////////////
+    // EXPERIENCES //
+    /////////////////
+    addExperiences(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/experiences`, data);
+    }
+
+
     getExperiencesData(): Observable<Experience[]> {
-        return this.http.get<Experience[]>('../../assets/experiences-data.json');
+        return this.http.get<Experience[]>(`${this.apiRoot}api/experiences`);
     }
 
     /////////////////
@@ -128,7 +137,7 @@ export class ApiService {
             .pipe(catchError(() => {
                 return of(new AboutInfo(
                     'No About Info Exists',
-                    'xxxxx'));
+                    ''));
                 }
             ));
     }
@@ -143,12 +152,12 @@ export class ApiService {
     }
 
     addPCSetups(data: string): Observable<ServerResponse> {
-        return this.http.post<ServerResponse>(`${this.apiRoot}api/pc-setup`, JSON.parse(data), this.authHeaders());
+        return this.addJSONToEndPoint(`${this.apiRoot}api/pc-setup`, data);
     }
 
     // Projects
     addProjects(data: string): Observable<ServerResponse> {
-        return this.http.post<ServerResponse>(`${this.apiRoot}api/projects`, JSON.parse(data), this.authHeaders());
+        return this.addJSONToEndPoint(`${this.apiRoot}api/projects`, data);
     }
 
     getProjects(): Observable<Project[]> {
@@ -161,5 +170,12 @@ export class ApiService {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             })
         };
+    }
+
+    private addJSONToEndPoint(endpoint: string, data: string): Observable<ServerResponse> {
+        return tryCatchWithObservable(
+            () => JSON.parse(data),
+            (json) => this.http.post<ServerResponse>(endpoint, json, this.authHeaders())
+        );
     }
 }

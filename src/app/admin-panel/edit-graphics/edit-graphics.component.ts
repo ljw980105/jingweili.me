@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {GraphicProject} from '../../models/pure-models/GraphicProject';
 import {Observable} from 'rxjs';
+import {AdminHelperService} from '../admin-helper.service';
 
 @Component({
     selector: 'app-edit-graphics',
@@ -16,7 +17,7 @@ export class EditGraphicsComponent implements OnInit {
     url: string;
     graphicProjects: Observable<GraphicProject[]>;
 
-    constructor(public apiService: ApiService) {
+    constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
 
     ngOnInit(): void {
@@ -34,8 +35,7 @@ export class EditGraphicsComponent implements OnInit {
     uploadFile(event: any, fileCallback: (file: File) => void) {
         const files = event.target.files as FileList;
         fileCallback(files.item(0));
-        this.apiService.uploadGenericFile(files.item(0))
-            .subscribe((x) => console.log(x));
+        this.helperService.showActivityIndicatorWithObservable(this.apiService.uploadGenericFile(files.item(0)));
     }
 
     submitProject() {
@@ -60,6 +60,13 @@ export class EditGraphicsComponent implements OnInit {
 
     nameLength(): number {
         return this.name?.length ?? 0;
+    }
+
+    exportJSON() {
+        this.apiService.getGraphicsProjects()
+            .subscribe((projects) => {
+                this.helperService.exportASJSONWithData(projects, 'graphics-projects.json');
+            });
     }
 
 }
