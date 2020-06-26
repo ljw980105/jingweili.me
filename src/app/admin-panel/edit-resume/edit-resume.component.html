@@ -30,7 +30,7 @@
         <h3 class="helvetica minimal-top-spacing">JSON Spec:</h3>
         <div class="menlo">
             <pre>
-                <code [highlight]="jsonSpec"></code>
+                <code [highlight]="experienceJsonSpec"></code>
             </pre>
         </div>
 
@@ -60,4 +60,56 @@
     </div>
 </div>
 
+<h2 class="admin-header mohave">REMAINING RESUME DATA</h2>
+
+<div class="flex admin-section">
+    <div class="left-half">
+        <h3 class="helvetica minimal-top-spacing">Existing Data</h3>
+        <p class="helvetica-normal p-non-button">Apps Published: {{resumeData.appsPublished}}</p>
+        <p class="helvetica-normal p-non-button">Apps Worked on: {{resumeData.appsWorkedOn}}</p>
+        <p class="helvetica-normal p-non-button">Commercial Apps Worked On: {{resumeData.commercialAppsWorkedOn}}</p>
+
+        <h3 class="helvetica-normal italic">iOS Skills</h3>
+        <p class="helvetica-normal">{{genericSkillsParsed(resumeData.iosSkills)}}</p>
+
+        <h3 class="helvetica-normal italic">Web Skills</h3>
+        <p class="helvetica-normal">
+            <span class="helvetica-normal" style="color: orange">Generic</span>
+            {{textAndImagesParsed(resumeData.webSkillsGeneral)}}
+        </p>
+        <p class="helvetica-normal">
+            <span class="helvetica-normal" style="color: orange">Frontend</span>
+            {{textAndImagesParsed(resumeData.webSkillsFrontend)}}
+        </p>
+        <p class="helvetica-normal">
+            <span class="helvetica-normal" style="color: orange">Backend</span>
+            {{textAndImagesParsed(resumeData.webSkillsBackend)}}
+        </p>
+
+        <h3 class="helvetica-normal italic">Graphics Skills</h3>
+        <div *ngFor="let graphicSkill of resumeData.graphicSkills">
+            <p class="helvetica-normal">
+                <span style="color: orange" class="helvetica-normal">{{graphicSkill.name}}</span>
+                {{graphicSkill.details.join(', ')}}</p>
+        </div>
+        <button (click)="exportRemainingAsJSON()">Export as JSON</button>
+    </div>
+
+    <div class="right-half">
+        <div class="menlo">
+            <pre>
+                <code [highlight]="remainingJsonSpec"></code>
+            </pre>
+        </div>
+
+        <h3 class="helvetica minimal-top-spacing">Enter JSON</h3>
+        <textarea class="admin-textarea" [(ngModel)]="remainingResumeDataString"></textarea>
+        <button (click)="uploadRemainingResumeData()">Submit</button>
+
+        <app-batch-file-uploader
+            [title]="'Upload Images'"
+            [instruction]="'Aspect Ratio should be 1:1'"
+        ></app-batch-file-uploader>
+    </div>
+</div>
 

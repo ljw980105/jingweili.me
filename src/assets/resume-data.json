@@ -44,43 +44,43 @@
 
     "webSkillsFrontend": [
         {
-            "imageUrl": "assets/images/resume/htmlIcon.png",
+            "imageUrl": "htmlIcon.png",
             "text": "HTML"
         }, {
-            "imageUrl": "assets/images/resume/cssIcon.png",
+            "imageUrl": "cssIcon.png",
             "text": "CSS"
         }, {
-            "imageUrl": "assets/images/resume/sassIcon.png",
+            "imageUrl": "sassIcon.png",
             "text": "Sass"
         }, {
-            "imageUrl": "assets/images/resume/jqueryIcon.png",
+            "imageUrl": "jqueryIcon.png",
             "text": "jQuery"
         }, {
-            "imageUrl": "assets/images/resume/angularIcon.png",
+            "imageUrl": "angularIcon.png",
             "text": "Angular"
         },  {
-            "imageUrl": "assets/images/resume/bootstrapIcon.png",
+            "imageUrl": "bootstrapIcon.png",
             "text": "Bootstrap"
         }
     ],
     "webSkillsBackend": [
         {
-            "imageUrl": "assets/images/resume/nodeIcon.png",
+            "imageUrl": "nodeIcon.png",
             "text": "NodeJS"
         }, {
-            "imageUrl": "assets/images/resume/vaporIcon.png",
+            "imageUrl": "vaporIcon.png",
             "text": "Vapor"
         }
     ],
     "webSkillsGeneral": [
         {
-            "imageUrl": "assets/images/resume/jsIcon.png",
+            "imageUrl": "jsIcon.png",
             "text": "Javascript"
         }, {
-            "imageUrl": "assets/images/resume/tsIcon.png",
+            "imageUrl": "tsIcon.png",
             "text": "TypeScript"
         }, {
-            "imageUrl": "assets/images/apps/RxIcon.png",
+            "imageUrl": "RxIcon2.png",
             "text": "RxJS"
         }
     ],

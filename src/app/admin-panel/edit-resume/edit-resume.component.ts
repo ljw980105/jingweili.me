@@ -3,6 +3,9 @@ import {ApiService} from '../../services/api.service';
 import {forkJoin} from 'rxjs';
 import {AdminHelperService} from '../admin-helper.service';
 import {Experience} from '../../models/pure-models/Experience';
+import {ResumeData} from '../../models/pure-models/ResumeData';
+import {GenericFeature} from '../../models/pure-models/GenericFeature';
+import {TextAndImage} from '../../models/pure-models/TextAndImage';
 
 @Component({
     selector: 'app-edit-resume',
@@ -14,7 +17,9 @@ export class EditResumeComponent implements OnInit {
     cvExists = false;
     experienceString = '';
     experiences: Experience[];
-    jsonSpec = `
+    remainingResumeDataString = '';
+    resumeData: ResumeData;
+    experienceJsonSpec = `
         [
             {
                 imageLink: string;
@@ -27,16 +32,56 @@ export class EditResumeComponent implements OnInit {
             ...
         ]
     `;
+    remainingJsonSpec = `
+        appsWorkedOn: number;
+        commercialAppsWorkedOn: number;
+        appsPublished: number;
+        iosSkills: [
+            {
+                name: string;
+                details: string[];
+            }, ...
+        ];
+        webSkillsFrontend: [
+            {
+                imageUrl: string;
+                text: string;
+            }, ...
+        ];
+        webSkillsBackend: [
+            {
+                imageUrl: string;
+                text: string;
+            }, ...
+        ];
+        webSkillsGeneral: [
+            {
+                imageUrl: string;
+                text: string;
+            }, ...
+        ];
+        graphicSkills: [
+            {
+                name: string;
+                details: string[];
+            }, ...
+        ];
+    `;
 
     constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
 
     ngOnInit(): void {
-        forkJoin([this.apiService.getResume(), this.apiService.getCV(), this.apiService.getExperiencesData()])
-            .subscribe(([resume, cv, exp]) => {
+        forkJoin([
+            this.apiService.getResume(),
+            this.apiService.getCV(),
+            this.apiService.getExperiencesData(),
+            this.apiService.getRemainingResumeData()])
+            .subscribe(([resume, cv, exp, resumeData]) => {
                 this.resumeExists = resume.exists;
                 this.cvExists = cv.exists;
                 this.experiences = exp;
+                this.resumeData = resumeData;
             });
     }
 
@@ -62,6 +107,24 @@ export class EditResumeComponent implements OnInit {
 
     exportExperiencesAsJSON() {
         this.helperService.exportASJSONWithData(this.experiences, 'experiences.json');
+    }
+
+    uploadRemainingResumeData() {
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.uploadResumeData(this.remainingResumeDataString)
+        );
+    }
+
+    genericSkillsParsed(skills: GenericFeature[]): string {
+        return skills.map(s => s.name).join(', ');
+    }
+
+    textAndImagesParsed(skills: TextAndImage[]): string {
+        return skills.map(s => s.text).join(', ');
+    }
+
+    exportRemainingAsJSON() {
+        this.helperService.exportASJSONWithData(this.resumeData, 'resume-data.json');
     }
 
 }
