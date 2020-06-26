@@ -66,7 +66,7 @@
             >
                 <h3 class="theme-color small-text helvetica">{{webSkill.category}}</h3>
                 <div class="horizontal-scroll-inner" style="width: 100px" *ngFor="let skill of webSkill.details">
-                    <img width="100px" height="100px" src="{{skill.imageUrl}}">
+                    <img width="100px" height="100px" src="{{apiService.fileURL(skill.imageUrl)}}">
                     <h3 class="extra-small-text helvetica" style="text-align: center">{{skill.text}}</h3>
                 </div>
             </div>

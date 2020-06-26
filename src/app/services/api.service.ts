@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, isDevMode} from '@angular/core';
 import {forkJoin, Observable, of, throwError} from 'rxjs';
 import {AppsPageData} from '../models/pure-models/AppsPageData';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -20,10 +20,10 @@ import {tryCatchWithObservable} from '../models/Global';
     providedIn: 'root'
 })
 export class ApiService {
-    // public readonly apiRoot = 'https://api.jingweili.me/';
-    public readonly apiRoot = 'http://localhost:8080/';
+    public readonly apiRoot: string;
 
     constructor(private http: HttpClient) {
+        this.apiRoot = isDevMode() ? 'http://localhost:8080/' : 'https://api.jingweili.me/';
     }
 
     getAppsPageData(): Observable<AppsPageData> {
@@ -32,16 +32,6 @@ export class ApiService {
 
     getBeatslyticsData(): Observable<BeatslyticsData> {
         return this.http.get<BeatslyticsData>('../../assets/beatslytics-data.json');
-    }
-
-    // order of data: ResumeData, resume, cv, experiences
-    getResumeData(): Observable<[ResumeData, FileLocation, FileLocation, Experience[]]> {
-        return forkJoin([
-            this.http.get<ResumeData>('../../assets/resume-data.json'),
-            this.getResume(),
-            this.getCV(),
-            this.getExperiencesData()
-        ]);
     }
 
     /////////////////
@@ -60,6 +50,16 @@ export class ApiService {
     // RESUME + CV //
     /////////////////
 
+    // order of data: ResumeData, resume, cv, experiences
+    getResumeData(): Observable<[ResumeData, FileLocation, FileLocation, Experience[]]> {
+        return forkJoin([
+            this.getRemainingResumeData(),
+            this.getResume(),
+            this.getCV(),
+            this.getExperiencesData()
+        ]);
+    }
+
     uploadResume(resume: File): Observable<ServerResponse> {
        return this.uploadFileTo(`${this.apiRoot}api/upload-resume`, resume);
     }
@@ -72,8 +72,18 @@ export class ApiService {
         return this.http.get<FileLocation>(`${this.apiRoot}api/cv`);
     }
 
+    // the pdf resume
     getResume(): Observable<FileLocation> {
         return this.http.get<FileLocation>(`${this.apiRoot}api/resume`);
+    }
+
+    uploadResumeData(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/resume-data`, data);
+    }
+
+    // the data on the resume webpage
+    getRemainingResumeData(): Observable<ResumeData> {
+        return this.http.get<ResumeData>(`${this.apiRoot}api/resume-data`);
     }
 
     /////////////////
@@ -104,7 +114,7 @@ export class ApiService {
     }
 
     public fileURL(name: string): string {
-        return `${this.apiRoot}${name}`;
+        return `${this.apiRoot}resources/${name}`;
     }
 
     private uploadFileTo(endpoint: string, fileToUpload: File): Observable<ServerResponse> {

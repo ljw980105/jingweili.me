@@ -27,7 +27,7 @@ export class ResumeComponent implements OnInit {
         path: 'assets/animations/swipe-hint-animation.json',
     };
 
-    constructor(private apiService: ApiService, private titleService: Title) {
+    constructor(public apiService: ApiService, private titleService: Title) {
         titleService.setTitle('Resume');
     }
 
@@ -36,7 +36,7 @@ export class ResumeComponent implements OnInit {
             .subscribe(([data, resume, cv, experiences]) => {
                 this.data = data;
                 this.resumeURL = this.apiService.fileURL(resume.url);
-                this.cvURL = `${this.apiService.apiRoot}${cv.url}`;
+                this.cvURL = this.apiService.fileURL(cv.url);
                 this.webSkillsFormatted.push(new WebSkill('Frontend', data.webSkillsFrontend));
                 this.webSkillsFormatted.push(new WebSkill('Backend', data.webSkillsBackend));
                 this.webSkillsFormatted.push(new WebSkill('General', data.webSkillsGeneral));
