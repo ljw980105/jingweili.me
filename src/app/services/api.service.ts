@@ -26,8 +26,16 @@ export class ApiService {
         this.apiRoot = isDevMode() ? 'http://localhost:8080/' : 'https://api.jingweili.me/';
     }
 
+    ////////////////
+    ///// APPS /////
+    ////////////////
+
+    uploadAppsData(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/apps`, data);
+    }
+
     getAppsPageData(): Observable<AppsPageData> {
-        return this.http.get<AppsPageData>('../../assets/appsPageData.json');
+        return this.http.get<AppsPageData>(`${this.apiRoot}api/apps`);
     }
 
     getBeatslyticsData(): Observable<BeatslyticsData> {

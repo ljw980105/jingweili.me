@@ -1,7 +1,7 @@
 <div id="dual-app-wrapper">
 
     <div id="item-1" class="app">
-        <img width="200px" height="200px" src="{{app1.imageLink}}">
+        <img width="200px" height="200px" src="{{apiService.fileURL(app1.imageLink)}}">
         <h2>{{app1.name}}</h2>
         <p [innerHTML]="app1.description"></p>
         <p><strong>{{app1.description2}}</strong></p>
@@ -11,7 +11,7 @@
     </div>
 
     <div id="item-2" class="app" *ngIf="app2 != null">
-        <img width="200px" height="200px" src="{{app2.imageLink}}">
+        <img width="200px" height="200px" src="{{apiService.fileURL(app2.imageLink)}}">
         <h2>{{app2.name}}</h2>
         <p [innerHTML]="app2.description"></p>
         <p><strong>{{app2.description2}}</strong></p>

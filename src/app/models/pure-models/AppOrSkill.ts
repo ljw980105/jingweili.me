@@ -12,9 +12,11 @@ export class AppOrSkill {
         public imageLink: string,
         public name: string,
         public description: string,
+        public useRouterLink: boolean,
         public description2?: string,
         public linkTitle?: string,
-        public link?: string) {
+        public link?: string,
+        public id: number = null) {
 
     }
 }
