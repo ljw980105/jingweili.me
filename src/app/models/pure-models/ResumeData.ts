@@ -2,14 +2,17 @@ import {GenericFeature} from './GenericFeature';
 import {TextAndImage} from './TextAndImage';
 
 export class ResumeData {
-    appsWorkedOn: number;
-    commercialAppsWorkedOn: number;
-    appsPublished: number;
-    iosSkills: GenericFeature[];
-    webSkillsFrontend: TextAndImage[];
-    webSkillsBackend: TextAndImage[];
-    webSkillsGeneral: TextAndImage[];
-    graphicSkills: GenericFeature[];
+    constructor(
+        public appsWorkedOn: number,
+        public commercialAppsWorkedOn: number,
+        public appsPublished: number,
+        public iosSkills: GenericFeature[],
+        public webSkillsFrontend: TextAndImage[],
+        public webSkillsBackend: TextAndImage[],
+        public webSkillsGeneral: TextAndImage[],
+        public graphicSkills: GenericFeature[],
+    ) {
+    }
 }
 
 export class WebSkill {
