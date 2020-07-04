@@ -11,5 +11,6 @@ export class BeatslyticsData {
     license_agreement_url: string;
     privacy_policy_url: string;
     credits: GenericFeature;
+    id?: number;
 }
 

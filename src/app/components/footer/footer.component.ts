@@ -1,6 +1,9 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit} from '@angular/core';
 import {rotate45Degrees, shrinkOrExpand} from '../../models/Animations';
 import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
+import {NameAndURL} from '../../models/pure-models/NameAndURL';
+import {ApiService} from '../../services/api.service';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-footer',
@@ -27,7 +30,10 @@ export class FooterComponent implements OnInit, AfterViewInit {
     logoInvertAmount: string;
     primaryFontColor: string;
 
-    constructor(private elementRef: ElementRef) {
+    simplifiedProjects: Observable<NameAndURL[]>;
+    simplifiedGraphics: Observable<NameAndURL[]>;
+
+    constructor(private elementRef: ElementRef, private apiService: ApiService) {
         this.year = `${(new Date()).getFullYear()}`;
     }
 
@@ -43,6 +49,8 @@ export class FooterComponent implements OnInit, AfterViewInit {
             this.logoInvertAmount = 'invert(100)';
         }
 
+        this.simplifiedGraphics = this.apiService.getSimplifiedGraphicsProjects();
+        this.simplifiedProjects = this.apiService.getSimplifiedProjects();
 
         this.widthObservable = new WidthBreakpointObserver(500);
 

@@ -12,6 +12,7 @@ import {AppsPageData} from '../../models/pure-models/AppsPageData';
 export class EditAppsComponent implements OnInit {
     fileTypes: string[] = ['.png', '.jpg', '.jpeg', '.gif', '.svg'];
     appsDataString = '';
+    beatslyticsDataString = '';
     existingAppsData: Observable<AppsPageData>;
     appsJSONSpec = `
         {
@@ -35,6 +36,26 @@ export class EditAppsComponent implements OnInit {
             ]
         }
     `;
+    beatslyticsJSONSpec = `{
+        metaAppStoreName: string,
+        metaAppStoreContent: string,
+        headline: string,
+        intro: string,
+        appStore: string,
+        features: [
+            {
+                name: string,
+                details: string[]
+            }, ...
+        ],
+        support: string,
+        license_agreement_url: string,
+        privacy_policy_url: string,
+        credits: {
+            name: string,
+            details: string[]
+        }
+    }`;
 
     constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
@@ -46,6 +67,12 @@ export class EditAppsComponent implements OnInit {
     submitApps() {
         this.helperService.showActivityIndicatorWithObservable(
             this.apiService.uploadAppsData(this.appsDataString)
+        );
+    }
+
+    submitBeatslyticsData() {
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.uploadBeatslyticsData(this.beatslyticsDataString)
         );
     }
 

@@ -1,4 +1,4 @@
-<h3 class="mohave admin-header minimal-top-spacing">APPS</h3>
+<h3 class="mohave admin-header">APPS</h3>
 <div class="flex admin-section">
     <div class="left-half">
         <h3 class="helvetica minimal-top-spacing">Apps</h3>
@@ -38,5 +38,22 @@
             [fileTypes]="fileTypes"
         ></app-batch-file-uploader>
 
+    </div>
+</div>
+
+<h3 class="mohave admin-header">BEATSLYTICS</h3>
+<div class="flex admin-section">
+    <div class="left-half">
+        <h3 class="helvetica minimal-top-spacing">JSON Spec</h3>
+        <div class="menlo">
+            <pre>
+                <code [highlight]="beatslyticsJSONSpec"></code>
+            </pre>
+        </div>
+    </div>
+    <div class="right-half">
+        <h3 class="helvetica minimal-top-spacing">Enter JSON</h3>
+        <textarea class="admin-textarea" [(ngModel)]="beatslyticsDataString"></textarea>
+        <button (click)="submitBeatslyticsData()">Submit</button>
     </div>
 </div>
