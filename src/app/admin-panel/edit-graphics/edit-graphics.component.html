@@ -18,36 +18,64 @@
         <button (click)="exportJSON()">Export as JSON</button>
     </div>
     <div class="right-half">
-        <h3 class="helvetica">Add Project</h3>
-        <label class="helvetica-normal">Name</label>
-        <p class="helvetica-normal p-non-button">{{19 - nameLength()}} characters remaining</p>
-        <input placeholder="name" type="text" [(ngModel)]="name">
-
-        <label>
-            <label class="helvetica-normal vertical-spacing">Description</label>
-            <textarea class="helvetica-normal admin-textarea" placeholder="Description" [(ngModel)]="description"></textarea>
-        </label>
-
-        <label class="helvetica-normal vertical-spacing">Project URL</label>
-        <input placeholder="url" type="text" [(ngModel)]="url">
-
-        <label class="helvetica-normal vertical-spacing-button">
-            Rectangle Image
-            <span><p class="helvetica-normal p-button">Preferred Resolution 1400x788</p></span>
-        </label>
         <div>
-            <input type="file" accept=".png,.jpg,.jpeg" (change)="uploadRecImage($event)">
+            <h3 class="minimal-top-spacing helvetica">Add Projects via JSON</h3>
+            <h4 class="helvetica-normal">JSON Spec</h4>
+            <div>
+                <pre class="minimal-top-spacing">
+                    <code [highlight]="jsonSpec"></code>
+                </pre>
+            </div>
+
+            <h3 class="minimal-top-spacing helvetica">Enter JSON</h3>
+            <textarea class="admin-textarea" [(ngModel)]="textAreaContents"></textarea>
+            <button (click)="submitViaJSON()">Submit</button>
         </div>
-
-        <label class="helvetica-normal vertical-spacing-button">
-            Square Image
-            <span><p class="helvetica-normal p-button">Aspect Ratio should be 1:1</p></span>
-        </label>
-
-        <div>
-            <input type="file" accept=".png,.jpg,.jpeg" (change)="uploadSquareImage($event)">
+        <div style="margin-bottom: 20px">
+            <div class="flex">
+                <div>
+                    <h3 class="helvetica"
+                        style="cursor: pointer"
+                        (click)="toggleManualAdd()"
+                    >Add Project One by One</h3>
+                </div>
+                <div class="ml-auto" [@rotate45Degrees]="manualAddExpanded ? 'rotated' : 'default'">
+                    <h3 class="helvetica" style="cursor: pointer" (click)="toggleManualAdd()">+</h3>
+                </div>
+            </div>
+            <hr style="margin-top: -5px">
         </div>
+        <div *ngIf="manualAddExpanded" [@shrinkOrExpand]="manualAddExpanded ? 'expanded' : 'shrinked'">
+            <label class="helvetica-normal">Name</label>
+            <p class="helvetica-normal p-non-button">{{19 - nameLength()}} characters remaining</p>
+            <input placeholder="name" type="text" [(ngModel)]="name">
 
-        <button style="margin-top: 40px" (click)="submitProject()">Submit</button>
+            <label>
+                <label class="helvetica-normal vertical-spacing">Description</label>
+                <textarea class="helvetica-normal admin-textarea" placeholder="Description" [(ngModel)]="description"></textarea>
+            </label>
+
+            <label class="helvetica-normal vertical-spacing">Project URL</label>
+            <input placeholder="url" type="text" [(ngModel)]="url">
+
+            <label class="helvetica-normal vertical-spacing-button">
+                Rectangle Image
+                <span><p class="helvetica-normal p-button">Preferred Resolution 1400x788</p></span>
+            </label>
+            <div>
+                <input type="file" accept=".png,.jpg,.jpeg" (change)="uploadRecImage($event)">
+            </div>
+
+            <label class="helvetica-normal vertical-spacing-button">
+                Square Image
+                <span><p class="helvetica-normal p-button">Aspect Ratio should be 1:1</p></span>
+            </label>
+
+            <div>
+                <input type="file" accept=".png,.jpg,.jpeg" (change)="uploadSquareImage($event)">
+            </div>
+
+            <button style="margin-top: 40px" (click)="submitProject()">Submit</button>
+        </div>
     </div>
 </div>

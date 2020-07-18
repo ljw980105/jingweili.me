@@ -128,6 +128,10 @@ export class ApiService {
             .pipe(catchError(() => of([])));
     }
 
+    addMultipleGraphicProjects(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/multiple-graphics-projects`, data);
+    }
+
 
     /////////////////
     ///// FILES /////
