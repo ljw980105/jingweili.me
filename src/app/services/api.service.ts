@@ -15,6 +15,7 @@ import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
 import {tryCatchWithObservable} from '../models/Global';
+import {NameAndURL} from '../models/pure-models/NameAndURL';
 
 @Injectable({
     providedIn: 'root'
@@ -26,12 +27,27 @@ export class ApiService {
         this.apiRoot = isDevMode() ? 'http://localhost:8080/' : 'https://api.jingweili.me/';
     }
 
+    ////////////////
+    ///// APPS /////
+    ////////////////
+
+    uploadAppsData(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/apps`, data);
+    }
+
     getAppsPageData(): Observable<AppsPageData> {
-        return this.http.get<AppsPageData>('../../assets/appsPageData.json');
+        return this.http.get<AppsPageData>(`${this.apiRoot}api/apps`)
+            .pipe(catchError(() => of(new AppsPageData([], []))));
     }
 
     getBeatslyticsData(): Observable<BeatslyticsData> {
-        return this.http.get<BeatslyticsData>('../../assets/beatslytics-data.json');
+        return this.http.get<BeatslyticsData>(`${this.apiRoot}api/apps/beatslytics`)
+            .pipe(catchError(() => of(new BeatslyticsData('', '', '',
+                '', '', [], '', '', '', null, null))));
+    }
+
+    uploadBeatslyticsData(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/apps/beatslytics`, data);
     }
 
     /////////////////
@@ -43,7 +59,8 @@ export class ApiService {
 
 
     getExperiencesData(): Observable<Experience[]> {
-        return this.http.get<Experience[]>(`${this.apiRoot}api/experiences`);
+        return this.http.get<Experience[]>(`${this.apiRoot}api/experiences`)
+            .pipe(catchError(() => of([])));
     }
 
     /////////////////
@@ -83,14 +100,18 @@ export class ApiService {
 
     // the data on the resume webpage
     getRemainingResumeData(): Observable<ResumeData> {
-        return this.http.get<ResumeData>(`${this.apiRoot}api/resume-data`);
+        return this.http.get<ResumeData>(`${this.apiRoot}api/resume-data`)
+            .pipe(catchError(() => of(
+                new ResumeData(0, 0, 0, [], [], [], [], [])
+            )));
     }
 
     /////////////////
     /// GRAPHICS ////
     /////////////////
     getGraphicsProjects(): Observable<GraphicProject[]> {
-        return this.http.get<GraphicProject[]>(`${this.apiRoot}api/get-graphic-projects`);
+        return this.http.get<GraphicProject[]>(`${this.apiRoot}api/get-graphic-projects`)
+            .pipe(catchError(() => of([])));
     }
 
     addGraphicProject(project: GraphicProject): Observable<ServerResponse> {
@@ -99,6 +120,16 @@ export class ApiService {
 
     deleteGraphicsProject(project: GraphicProject): Observable<ServerResponse> {
         return this.http.delete<ServerResponse>(`${this.apiRoot}api/delete-graphic-project/${project.id}`, this.authHeaders());
+    }
+
+    getSimplifiedGraphicsProjects(limit: number = 4): Observable<NameAndURL[]> {
+        const limitStr = limit !== null ? `?limit=${limit}` : '';
+        return this.http.get<NameAndURL[]>(`${this.apiRoot}api/get-graphic-projects/simplified${limitStr}`)
+            .pipe(catchError(() => of([])));
+    }
+
+    addMultipleGraphicProjects(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/multiple-graphics-projects`, data);
     }
 
 
@@ -158,7 +189,8 @@ export class ApiService {
 
     // pc
     getPCSetups(): Observable<PCSetupEntry[]> {
-        return this.http.get<PCSetupEntry[]>(`${this.apiRoot}api/pc-setup`);
+        return this.http.get<PCSetupEntry[]>(`${this.apiRoot}api/pc-setup`)
+            .pipe(catchError(() => of([])));
     }
 
     addPCSetups(data: string): Observable<ServerResponse> {
@@ -171,7 +203,14 @@ export class ApiService {
     }
 
     getProjects(): Observable<Project[]> {
-        return this.http.get<Project[]>(`${this.apiRoot}api/projects`);
+        return this.http.get<Project[]>(`${this.apiRoot}api/projects`)
+            .pipe(catchError(() => of([])));
+    }
+
+    getSimplifiedProjects(limit: number = 5): Observable<NameAndURL[]> {
+        const limitStr = limit !== null ? `?limit=${limit}` : '';
+        return this.http.get<NameAndURL[]>(`${this.apiRoot}api/projects/simplified${limitStr}`)
+            .pipe(catchError(() => of([])));
     }
 
     private authHeaders() {

@@ -13,6 +13,7 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/
 import { ActivityIndicatorComponent } from './activity-indicator/activity-indicator.component';
 import {AdminHelperService} from './admin-helper.service';
 import { BatchFileUploaderComponent } from './batch-file-uploader/batch-file-uploader.component';
+import { EditAppsComponent } from './edit-apps/edit-apps.component';
 
 export function getHighlightLanguages() {
     return {
@@ -33,7 +34,8 @@ export function playerFactory() {
         EditHomeComponent,
         EditProjectsComponent,
         ActivityIndicatorComponent,
-        BatchFileUploaderComponent
+        BatchFileUploaderComponent,
+        EditAppsComponent
     ],
     imports: [
         CommonModule,

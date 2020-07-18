@@ -13,6 +13,7 @@ export class NavigatorComponent implements OnInit, OnDestroy {
     editingGraphicDesign = false;
     editingHome = false;
     editingProjects = false;
+    editingApps = false;
     showDefaults = true;
 
     constructor(private titleService: Title, private apiService: ApiService) {
@@ -28,27 +29,32 @@ export class NavigatorComponent implements OnInit, OnDestroy {
 
     editResume() {
         this.editingResume = !this.editingResume;
-        this.editingGraphicDesign = false;
-        this.editingHome = this.editingProjects = false;
+        this.editingGraphicDesign = this.editingHome = this.editingProjects = this.editingApps = false;
         this.showDefaults = !this.editingResume;
     }
 
     editGraphicDesign() {
         this.editingGraphicDesign = !this.editingGraphicDesign;
-        this.editingHome = this.editingResume = this.editingProjects = false;
+        this.editingHome = this.editingResume = this.editingProjects = this.editingApps = false;
         this.showDefaults = !this.editingGraphicDesign;
     }
 
     editHome() {
         this.editingHome = !this.editingHome;
-        this.editingResume = this.editingGraphicDesign = this.editingProjects = false;
+        this.editingResume = this.editingGraphicDesign = this.editingProjects = this.editingApps = false;
         this.showDefaults = !this.editingHome;
     }
 
     editProjects() {
         this.editingProjects = ! this.editingProjects;
-        this.editingResume = this.editingGraphicDesign = this.editingHome = false;
+        this.editingResume = this.editingGraphicDesign = this.editingHome = this.editingApps = false;
         this.showDefaults = !this.editingProjects;
+    }
+
+    editApps() {
+        this.editingApps = !this.editingApps;
+        this.showDefaults = !this.editingApps;
+        this.editingResume = this.editingGraphicDesign = this.editingHome = this.editingProjects = false;
     }
 
     ngOnDestroy() {

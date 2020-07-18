@@ -11,10 +11,7 @@
                     <a class="dropbtn" [routerLink]="['/projects']">PROJECTS</a>
                     <div class="dropdown-content" [ngClass]="{'dark-dropdown': darkThemed, 'light-dropdown': !darkThemed}">
                         <a [routerLink]="['/projects']">All</a>
-                        <a href="proj_frc.html">FIRST Robotics</a>
-                        <a [routerLink]="['/beatslytics']">Beatslytics</a>
-                        <a href="Litec.html">Embedded Control</a>
-                        <a href="https://github.com/CSDTs/3D_Visualizer/tree/3D-Visualizer-iOS">3D Visualizer</a>
+                        <a *ngFor="let project of simplifiedProjects | async" href="{{project.url}}">{{project.name}}</a>
                     </div>
                 </div>
             </li>
@@ -56,8 +53,8 @@
             <li><a [routerLink]="['/graphic-design']">GRAPHIC DESIGN</a></li>
         </div>
         <div class="horizScrollDiv">
-            <a href="Projects.html"><img src="assets/images/navbar/gearIcon.png"></a>
-            <li><a href="Projects.html">PROJECTS</a></li>
+            <a [routerLink]="['/projects']"><img src="assets/images/navbar/gearIcon.png"></a>
+            <li><a [routerLink]="['/projects']">PROJECTS</a></li>
         </div>
         <div class="horizScrollDiv" style="margin-right: 20px">
             <a [routerLink]="['/']" [queryParams]="{scrollToId: 'contacts'}">

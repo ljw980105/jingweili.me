@@ -66,3 +66,22 @@ label, textarea, input {
     box-sizing: border-box;
 }
 
+.admin-single-project {
+    background-color: rgb(240, 240, 240);
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 10px;
+
+    h5, h4 {
+        margin: 5px 0;
+        padding: 0;
+    }
+
+    img {
+        width: 70px;
+        height: 70px;
+        margin-right: 10px
+    }
+}
+

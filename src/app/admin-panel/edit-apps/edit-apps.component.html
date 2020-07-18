@@ -1,0 +1,59 @@
+<h3 class="mohave admin-header">APPS</h3>
+<div class="flex admin-section">
+    <div class="left-half">
+        <h3 class="helvetica minimal-top-spacing">Apps</h3>
+        <div class="admin-single-project" *ngFor="let app of (existingAppsData | async).apps">
+            <img src="{{this.apiService.fileURL(app.imageLink)}}">
+            <div style="width: 280px">
+                <h4 class="helvetica">{{app.name}}</h4>
+                <h5 class="helvetica-normal">{{app.description.substring(0, 90)}}...</h5>
+            </div>
+        </div>
+
+        <h3 class="helvetica minimal-top-spacing">Skills</h3>
+        <div class="admin-single-project" *ngFor="let skill of (existingAppsData | async).skills">
+            <img src="{{this.apiService.fileURL(skill.imageLink)}}">
+            <div style="width: 280px">
+                <h4 class="helvetica">{{skill.name}}</h4>
+                <h5 class="helvetica-normal">{{skill.description.substring(0, 90)}}...</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-half">
+        <h3 class="helvetica minimal-top-spacing">JSON Spec:</h3>
+        <div class="menlo">
+            <pre>
+                <code [highlight]="appsJSONSpec"></code>
+            </pre>
+        </div>
+
+        <h3 class="helvetica minimal-top-spacing">Enter JSON</h3>
+        <textarea class="admin-textarea" [(ngModel)]="appsDataString"></textarea>
+        <button (click)="submitApps()">Submit</button>
+
+        <app-batch-file-uploader
+            [title]="'Upload Images'"
+            [instruction]="'Aspect Ratio 1:1'"
+            [fileTypes]="fileTypes"
+        ></app-batch-file-uploader>
+
+    </div>
+</div>
+
+<h3 class="mohave admin-header">BEATSLYTICS</h3>
+<div class="flex admin-section">
+    <div class="left-half">
+        <h3 class="helvetica minimal-top-spacing">JSON Spec</h3>
+        <div class="menlo">
+            <pre>
+                <code [highlight]="beatslyticsJSONSpec"></code>
+            </pre>
+        </div>
+    </div>
+    <div class="right-half">
+        <h3 class="helvetica minimal-top-spacing">Enter JSON</h3>
+        <textarea class="admin-textarea" [(ngModel)]="beatslyticsDataString"></textarea>
+        <button (click)="submitBeatslyticsData()">Submit</button>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="flex">
     <div class="left-half">
         <h3 class="helvetica">Existing Projects</h3>
-        <div *ngFor="let project of projects" class="single-project">
+        <div *ngFor="let project of projects" class="admin-single-project">
             <img src="{{this.apiService.fileURL(project.imageUrl)}}">
             <div style="width: 280px">
                 <h4 class="helvetica">{{project.name}}</h4>

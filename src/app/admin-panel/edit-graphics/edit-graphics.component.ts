@@ -3,10 +3,12 @@ import {ApiService} from '../../services/api.service';
 import {GraphicProject} from '../../models/pure-models/GraphicProject';
 import {Observable} from 'rxjs';
 import {AdminHelperService} from '../admin-helper.service';
+import {rotate45Degrees, shrinkOrExpand} from '../../models/Animations';
 
 @Component({
     selector: 'app-edit-graphics',
     templateUrl: './edit-graphics.component.html',
+    animations: [rotate45Degrees, shrinkOrExpand],
     styleUrls: ['./edit-graphics.component.scss']
 })
 export class EditGraphicsComponent implements OnInit {
@@ -16,6 +18,19 @@ export class EditGraphicsComponent implements OnInit {
     description: string;
     url: string;
     graphicProjects: Observable<GraphicProject[]>;
+    jsonSpec = `
+        [
+          {
+            "imageURLRectangle": string,
+            "imageURLSquare": string,
+            "name": string,
+            "description": string,
+            "projectURL": string
+          }, ...
+        ]
+    `;
+    manualAddExpanded = false;
+    textAreaContents = '';
 
     constructor(public apiService: ApiService, private helperService: AdminHelperService) {
     }
@@ -67,6 +82,16 @@ export class EditGraphicsComponent implements OnInit {
             .subscribe((projects) => {
                 this.helperService.exportASJSONWithData(projects, 'graphics-projects.json');
             });
+    }
+
+    toggleManualAdd() {
+        this.manualAddExpanded = !this.manualAddExpanded;
+    }
+
+    submitViaJSON() {
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.addMultipleGraphicProjects(this.textAreaContents)
+        );
     }
 
 }

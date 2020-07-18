@@ -22,7 +22,7 @@
     <h3 class="mohave admin-header">PC SETUP</h3>
     <div class="flex admin-section">
         <div class="left-half">
-            <p class="helvetica-normal" *ngFor="let pcSetup of pcSetups">{{pcSetup.partDetail}}</p>
+            <p class="helvetica-normal" *ngFor="let pcSetup of pcSetups">{{pcSetup.partName}}: {{pcSetup.partDetail}}</p>
             <button (click)="exportPCAsJSON()">Export as JSON</button>
         </div>
 

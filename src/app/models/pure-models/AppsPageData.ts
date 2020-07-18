@@ -1,6 +1,9 @@
 import {AppOrSkill} from './AppOrSkill';
 
 export class AppsPageData {
-    apps: AppOrSkill[];
-    skills: AppOrSkill[];
+    constructor(
+        public apps: AppOrSkill[],
+        public skills: AppOrSkill[]
+    ) {
+    }
 }
