@@ -30,6 +30,11 @@
             <h3 class="minimal-top-spacing helvetica">Enter JSON</h3>
             <textarea class="admin-textarea" [(ngModel)]="textAreaContents"></textarea>
             <button (click)="submitViaJSON()">Submit</button>
+
+            <app-batch-file-uploader
+                [title]="'Submit Images'"
+                [instruction]="'Rectangle Image: Preferred Resolution 1400x788 \n\n Squared Image: Aspect Ratio 1:1'"
+            ></app-batch-file-uploader>
         </div>
         <div style="margin-bottom: 20px">
             <div class="flex">
