@@ -1,6 +1,16 @@
 [
     {
         "imageLink": "DkIcon.png",
+        "position": "Software Engineer",
+        "time": "Jul 2020 - Now",
+        "company": "DraftKings, Inc",
+        "accomplishments": [
+            "iOS Engineer @ DraftKings. More details coming soon"
+        ],
+        "special": "for apps"
+    },
+    {
+        "imageLink": "DkIcon.png",
         "position": "Software Engineering Intern",
         "time": "Summer 2019",
         "company": "DraftKings, Inc",
