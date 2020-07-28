@@ -1,6 +1,6 @@
 [
     {
-        "imageUrl": "fullness-tracker-icon.jpg",
+        "imageUrl": "adcBg.jpg",
         "name": "Automatic Door Control",
         "description": "An open source iOS app to help disabled students open and close accessible doors.",
         "links": [
@@ -18,9 +18,9 @@
         "technologies": ["Swift", "Arduino", "iOS App", "Core Bluetooth", "RxSwift"]
     },
     {
-        "imageUrl": "fullness-tracker-icon.jpg",
+        "imageUrl": "adcBg.jpg",
         "name": "RGB Controller",
-        "description": "A iOS app to control the RGB Lighting of RGB Fans on a Desktop PC via Bluetooth, plus Arduino hardware to directly control the LEDs",
+        "description": "An iOS app to control the RGB Lighting of RGB Fans on a Desktop PC via Bluetooth, plus Arduino hardware to directly control the LEDs",
         "links": [
             {
                 "name": "iOS App",
@@ -31,5 +31,49 @@
             }
         ],
         "technologies": ["Swift", "Arduino", "iOS App", "Core Bluetooth", "Microcontroller"]
+    },
+    {
+        "imageUrl": "assignatoBg.jpg",
+        "name": "Assignato",
+        "description": "An Angular web app to simplify the process of scheduling for college registrars",
+        "links": [
+            {
+                "name": "GitHub",
+                "url": "https://github.com/ljw980105/Assignato"
+            }
+        ],
+        "technologies": ["Angular", "TypeScript", "RxJS", "Bootstrap"]
+    },
+    {
+        "imageUrl": "beatslyticsBg.jpg",
+        "name": "Beatslytics",
+        "description": "Designed and programmed an iOS App with an Apple Watch counterpart, Beatslytics, and published it on the App Store. The app enables the user to rediscover their music with relevant analytics information about their music library.",
+        "links": [
+            {
+                "name": "See More",
+                "url": "/beatslytics"
+            },
+            {
+                "name": "Download",
+                "url": "https://itunes.apple.com/us/app/beatslytics/id1403202526?mt=8"
+            }
+        ],
+        "technologies": ["iOS App", "Xcode", "Media Player", "Apple Watch"]
+    },
+    {
+        "imageUrl": "jingweilime-bg.jpg",
+        "name": "jingweili.me",
+        "description": "Complete rewrite of my old personal website which consists of an Angular frontend and a server side Swift Backend done using Vapor.",
+        "links": [
+            {
+                "name": "Frontend",
+                "url": "https://github.com/ljw980105/jingweili.me"
+            },
+            {
+                "name": "Backend",
+                "url": "https://github.com/ljw980105/jingweili.me-backend"
+            }
+        ],
+        "technologies": ["Server Side Swift", "Vapor", "Angular", "TypeScript", "RxJS"]
     }
 ]
