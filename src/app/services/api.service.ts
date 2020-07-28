@@ -24,7 +24,7 @@ export class ApiService {
     public readonly apiRoot: string;
 
     constructor(private http: HttpClient) {
-        this.apiRoot = isDevMode() ? 'http://localhost:8080/' : 'https://api.jingweili.me/';
+        this.apiRoot = isDevMode() ? 'http://localhost:8080/' : 'https://jingweili.me/';
     }
 
     ////////////////
