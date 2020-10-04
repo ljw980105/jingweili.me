@@ -135,10 +135,10 @@
     </div>
 </div>
 
-<app-pc-setup id="pc-setup" *ngIf="showPCSetup"></app-pc-setup>
+<app-pc-setup id="pc-setup" (closeComponent)="togglePCSetup()" *ngIf="showPCSetup"></app-pc-setup>
 
-<app-about id="about" *ngIf="showAboutPage"></app-about>
+<app-about id="about" (closeComponent)="toggleAboutPage()" *ngIf="showAboutPage"></app-about>
 
-<app-contacts id="contacts" *ngIf="showContacts"></app-contacts>
+<app-contacts id="contacts" (closeComponent)="toggleContactsPage()" *ngIf="showContacts"></app-contacts>
 
 <app-footer [showTopBorder]="false"></app-footer>

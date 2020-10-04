@@ -1,4 +1,7 @@
-<div class="additional-components round-corner width-container" @addAnimation *ngIf="dataReady">
+<div class="additional-components round-corner width-container corner-display-container"
+     @addAnimation
+     *ngIf="dataReady"
+>
     <h1 class="helvetica">My PC Setup</h1>
 
     <table class="helvetica">
@@ -13,5 +16,9 @@
             <th><a class="orange-underline-anchor" href="{{entry.partPurchaseLink}}" target="_blank">Link</a></th>
         </tr>
     </table>
+
+    <div class="top-right-icon x-icon" (click)="exit()">
+        <p>&#10005;</p>
+    </div>
 
 </div>

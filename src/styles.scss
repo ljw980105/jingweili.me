@@ -158,6 +158,33 @@ html, body {
     font-family: Mohave, sans-serif;
 }
 
+.top-right-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.corner-display-container {
+    position: relative;
+}
+
+.x-icon {
+    width: 30px;
+    height: 1px;
+    padding: 14.5px 0;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    p {
+        padding: 0;
+        color: rgb(242, 242, 242);
+        font-weight: bold;
+        text-align: center;
+        //line-height: 25px;
+        margin-top: -10px;
+    }
+}
+
 .italic {
     font-style: italic;
 }
