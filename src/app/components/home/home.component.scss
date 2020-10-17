@@ -50,10 +50,9 @@ body {
 
 #main {
     width: 50%;
-    /*max-width: 50%;*/
     margin-right: 60%;
     margin-top: 8%;
-    margin-left: 18%;
+    margin-left: 5%;
 
     h1, h2, h4 {
         color: white;
@@ -297,6 +296,8 @@ body {
 @media only screen and (max-width: 1200px) {
     #main {
         margin-top: $typical-margin;
+        margin-left: 13%;
+        width: 60%;
     }
 
     #gfx{

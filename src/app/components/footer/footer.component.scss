@@ -45,15 +45,17 @@
 #footerx{
     display: flex;
     margin-top: 2%;
-    width:70%;
-    margin-left: 15%;
-}
+    width: 100%;
 
+    h4 {
+        font-size: 17px;
+        font-family: sans-serif;
+        margin-bottom: 6px;
+    }
 
-#footerx h4 {
-    font-size: 17px;
-    font-family: sans-serif;
-    margin-bottom: 6px;
+    ul {
+        list-style: none;
+    }
 }
 
 /*h4 must be a direct descendant of footer */
@@ -63,7 +65,7 @@
     margin-bottom: 30px;
 }
 
-#footer_container{
+#footer_container {
     background-color: transparent;
     display: flex;
     margin-bottom: 0;
@@ -74,7 +76,7 @@
     display: flex;
 }
 
-#personal_logo{
+#personal_logo {
     margin-top: 20px;
     width: 20%;
     cursor: pointer;
@@ -97,12 +99,7 @@
     width: 50%;
 }
 
-#footerx ul {
-    list-style: none;
-}
-
 #personal_logo img{
-    /*margin-top: 2%;*/
     display: block;
     margin: 0 auto;
     @include logo-size;
@@ -144,14 +141,6 @@
     margin-left: 0.5em;
 }
 
-@media only screen and (max-width: 1150px) {
-    #footerx{
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-}
-
 @media only screen and (max-width: 750px) {
     #footer_container{
         display: block;
@@ -176,13 +165,6 @@
 
     #mobile_logo img {
         @include logo-size;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    #footerx{
-        width: 100%;
-        margin-left: 0;
     }
 }
 
