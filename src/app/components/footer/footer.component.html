@@ -1,7 +1,8 @@
 <div id="footer_container"
      [ngStyle]="{'border-top': topBorderStyle}"
 >
-    <div id="footerx">
+<!--    width container can cause issues when minimized. Hence only enable it when non-minimized -->
+    <div id="footerx" [ngClass]="{'width-container': !minimizedVersionShown}">
         <div id="personal_logo" [routerLink]="['/']">
             <img
                 style="margin-top: 18px"
@@ -18,7 +19,7 @@
                         </div>
                         <div [ngClass]="{'left-space': minimizedVersionShown}"><h4>Pages</h4></div>
                     </div>
-                    <div class="slideContents" [@shrinkOrExpand]="pagesExpanded ? 'expanded' : 'shrinked'">
+                    <div [@shrinkOrExpand]="pagesExpanded ? 'expanded' : 'shrinked'">
                         <li><a [routerLink]="['/']">Home</a></li>
                         <li><a [routerLink]="['/']" [queryParams]="{scrollToId: 'about'}">About</a></li>
                         <li><a [routerLink]="['/resume']">Resume</a></li>
@@ -36,7 +37,7 @@
                         </div>
                         <div [ngClass]="{'left-space': minimizedVersionShown}"><h4>Projects</h4></div>
                     </div>
-                    <div class="slideContents" [@shrinkOrExpand]="projectsExpanded ? 'expanded' : 'shrinked'">
+                    <div [@shrinkOrExpand]="projectsExpanded ? 'expanded' : 'shrinked'">
                         <li><a [routerLink]="['/projects']">All Projects</a></li>
                         <li *ngFor="let project of simplifiedProjects | async">
                             <a href="{{project.url}}">{{project.name}}</a>
@@ -54,7 +55,7 @@
                         </div>
                         <div [ngClass]="{'left-space': minimizedVersionShown}"><h4>Designs</h4></div>
                     </div>
-                    <div class="slideContents" [@shrinkOrExpand]="designsExpanded? 'expanded' : 'shrinked'">
+                    <div [@shrinkOrExpand]="designsExpanded? 'expanded' : 'shrinked'">
                         <li *ngFor="let graphic of simplifiedGraphics | async">
                             <a href="{{graphic.url}}">{{graphic.name}}</a>
                         </li>
@@ -71,7 +72,7 @@
                         </div>
                         <div [ngClass]="{'left-space': minimizedVersionShown}"><h4>Social</h4></div>
                     </div>
-                    <div class="slideContents" [@shrinkOrExpand]="socialsExpanded ? 'expanded' : 'shrinked'">
+                    <div [@shrinkOrExpand]="socialsExpanded ? 'expanded' : 'shrinked'">
                         <li><a href="https://www.facebook.com/li.jingwei.94">Facebook</a></li>
                         <li><a href="https://www.instagram.com/ljw980105">Instagram</a></li>
                         <li><a href="https://www.linkedin.com/in/jingweili2/">LinkedIn</a></li>
