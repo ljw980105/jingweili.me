@@ -79,9 +79,12 @@ label, textarea, input {
     }
 
     img {
-        width: 70px;
-        height: 70px;
         margin-right: 10px
     }
+}
+
+.admin-aspect-ratio-img {
+    max-width: 70px;
+    max-height: 70px;
 }
 

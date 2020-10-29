@@ -6,9 +6,10 @@
             *ngIf="(graphicProjects | async).length === 0"
         >No Projects Found</h4>
         <div *ngFor="let project of graphicProjects | async" id="single-graphic-project">
-            <img width="70px"
-                 style="margin-right: 10px"
-                 src="{{this.apiService.fileURL(project.imageURLSquare)}}">
+            <img style="margin-right: 10px"
+                 src="{{this.apiService.fileURL(project.imageURLSquare)}}"
+                 class="admin-aspect-ratio-img"
+            >
             <div style="width: 280px">
                 <h4 class="helvetica">{{project.name}}</h4>
                 <h5 class="helvetica-normal">{{project.description}}</h5>
