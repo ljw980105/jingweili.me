@@ -2,7 +2,7 @@
     <div class="left-half">
         <h3 class="helvetica">Existing Projects</h3>
         <div *ngFor="let project of projects" class="admin-single-project">
-            <img src="{{this.apiService.fileURL(project.imageUrl)}}">
+            <img class="project-img-size" src="{{this.apiService.fileURL(project.imageUrl)}}">
             <div style="width: 280px">
                 <h4 class="helvetica">{{project.name}}</h4>
                 <h5 class="helvetica-normal">{{project.description}}</h5>

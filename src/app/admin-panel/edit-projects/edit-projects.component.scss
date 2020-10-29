@@ -12,6 +12,12 @@ code {
     width: 450px;
 }
 
+// b/c the images are 1200x800
+.project-img-size {
+    width: 72px;
+    height: 47px;
+}
+
 @media only screen and (max-width: 1570px) {
     textarea {
         width: 450px;
