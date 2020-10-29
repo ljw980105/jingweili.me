@@ -37,7 +37,7 @@
         <h3 class="helvetica minimal-top-spacing">Current Experiences</h3>
 
         <div *ngFor="let exp of experiences" class="admin-single-project">
-            <img src="{{this.apiService.fileURL(exp.imageLink)}}">
+            <img class="admin-aspect-ratio-img" src="{{this.apiService.fileURL(exp.imageLink)}}">
             <div style="width: 280px">
                 <h4 class="helvetica">{{exp.position}}</h4>
                 <h5 class="helvetica-normal">{{exp.company}}</h5>
