@@ -1,0 +1,15 @@
+td, th {
+    text-align: left;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(255, 242, 220);
+}
+
+a {
+    &:link, &:visited, &:hover {
+        color: orangered;
+        text-decoration: none;
+    }
+}

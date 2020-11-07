@@ -1,0 +1,29 @@
+<h2 class="admin-header mohave">FILES</h2>
+
+<div class="flex admin-section">
+    <table>
+        <tr>
+            <th class="helvetica">Name</th>
+            <th class="helvetica">Type</th>
+            <th class="helvetica">Created at</th>
+            <th class="helvetica">Size{{spacing}}</th>
+            <th class="helvetica">Actions</th>
+        </tr>
+        <tr *ngFor="let file of files | async">
+            <th class="helvetica-normal">{{file.name}}</th>
+            <th class="helvetica-normal">{{file.type}}</th>
+            <th class="helvetica-normal">{{file.createdDate | date: 'shortDate'}}</th>
+            <th class="helvetica-normal">{{file.fileSize | bytes}}{{spacing}}</th>
+            <th class="helvetica-normal">
+                <a href="{{this.apiService.fileURL(file.name)}}" target="_blank">View</a>
+            </th>
+            <th class="helvetica-normal">
+                Replace
+            </th>
+            <th class="helvetica-normal">
+                Delete
+            </th>
+        </tr>
+    </table>
+
+</div>

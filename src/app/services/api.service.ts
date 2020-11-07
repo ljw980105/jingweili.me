@@ -16,6 +16,7 @@ import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
 import {tryCatchWithObservable} from '../models/Global';
 import {NameAndURL} from '../models/pure-models/NameAndURL';
+import {FileToBrowse} from '../models/pure-models/FileToBrowse';
 
 @Injectable({
     providedIn: 'root'
@@ -142,6 +143,10 @@ export class ApiService {
 
     uploadMultipleFiles(files: File[]): Observable<ServerResponse[]> {
         return forkJoin(files.map(file => this.uploadGenericFile(file)));
+    }
+
+    getFilesToBrowse(): Observable<FileToBrowse[]> {
+        return this.http.get<FileToBrowse[]>(`${this.apiRoot}api/browse-files`, this.authHeaders());
     }
 
     public fileURL(name: string): string {

@@ -6,6 +6,7 @@
         <div><h3 class="helvetica anchor-style" (click)="editHome()">Home</h3></div>
         <div><h3 class="helvetica anchor-style" (click)="editProjects()">Projects</h3></div>
         <div><h3 class="helvetica anchor-style" (click)="editApps()">Apps</h3></div>
+        <div><h3 class="helvetica anchor-style" (click)="showFileEditor()">Browse Files</h3></div>
         <div><h3 class="helvetica button-style anchor-style" [routerLink]="['/']">Log out</h3></div>
     </div>
     <div id="editing-panels">
@@ -14,6 +15,7 @@
         <app-edit-home *ngIf="editingHome"></app-edit-home>
         <app-edit-projects *ngIf="editingProjects"></app-edit-projects>
         <app-edit-apps *ngIf="editingApps"></app-edit-apps>
+        <app-file-browser *ngIf="showingFileEditor"></app-file-browser>
         <div id="navigator-default" *ngIf="showDefaults">
             <div id="navigator-animation" class="ml-auto mr-auto">
                 <ng-lottie width="200px" height="200px" [options]="options"></ng-lottie>
