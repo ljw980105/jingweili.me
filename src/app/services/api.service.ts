@@ -137,26 +137,33 @@ export class ApiService {
     /////////////////
     ///// FILES /////
     /////////////////
-    uploadGenericFile(file: File): Observable<ServerResponse> {
-        return this.uploadFileTo(`${this.apiRoot}api/upload-file`, file);
+    uploadGenericFile(file: File, customName: string = null): Observable<ServerResponse> {
+        return this.uploadFileTo(`${this.apiRoot}api/upload-file`, file, customName);
     }
 
     uploadMultipleFiles(files: File[]): Observable<ServerResponse[]> {
         return forkJoin(files.map(file => this.uploadGenericFile(file)));
     }
 
-    getFilesToBrowse(): Observable<FileToBrowse[]> {
-        return this.http.get<FileToBrowse[]>(`${this.apiRoot}api/browse-files`, this.authHeaders());
+    getFilesToBrowseAt(directory: string): Observable<FileToBrowse[]> {
+        return this.http
+            .get<FileToBrowse[]>(`${this.apiRoot}api/browse-files?directory=${directory}`, this.authHeaders())
+            .pipe(catchError((e) => of([new FileToBrowse(`No files available. Error: ${e.message}`)])));
+    }
+
+    deleteFile(file: FileToBrowse, directory: string): Observable<ServerResponse> {
+        return this.http
+            .post<ServerResponse>(`${this.apiRoot}api/delete-files?directory=${directory}`, file, this.authHeaders());
     }
 
     public fileURL(name: string): string {
         return `${this.apiRoot}resources/${name}`;
     }
 
-    private uploadFileTo(endpoint: string, fileToUpload: File): Observable<ServerResponse> {
+    private uploadFileTo(endpoint: string, fileToUpload: File, customName: string = null): Observable<ServerResponse> {
         const formData: FormData = new FormData();
         formData.append('file', fileToUpload);
-        formData.append('name', fileToUpload.name);
+        formData.append('name', customName != null ? customName : fileToUpload.name);
         return this.http.post<ServerResponse>(endpoint, formData, this.authHeaders());
     }
 

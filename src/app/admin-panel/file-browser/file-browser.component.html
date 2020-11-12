@@ -1,7 +1,12 @@
-<h2 class="admin-header mohave">FILES</h2>
+<div class="flex">
+    <h2 class="admin-header mohave">FILES</h2>
+    <select class="ml-auto helvetica" [(ngModel)]="currentDirectory" (change)="refresh()">
+        <option *ngFor="let directory of directories">{{directory}}</option>
+    </select>
+</div>
 
-<div class="flex admin-section">
-    <table>
+<div class="flex">
+    <table class="admin-section">
         <tr>
             <th class="helvetica">Name</th>
             <th class="helvetica">Type</th>
@@ -9,7 +14,7 @@
             <th class="helvetica">Size{{spacing}}</th>
             <th class="helvetica">Actions</th>
         </tr>
-        <tr *ngFor="let file of files | async">
+        <tr *ngFor="let file of files">
             <th class="helvetica-normal">{{file.name}}</th>
             <th class="helvetica-normal">{{file.type}}</th>
             <th class="helvetica-normal">{{file.createdDate | date: 'shortDate'}}</th>
@@ -18,12 +23,23 @@
                 <a href="{{this.apiService.fileURL(file.name)}}" target="_blank">View</a>
             </th>
             <th class="helvetica-normal">
-                Replace
+                <label
+                    class="helvetica-normal file-browser-button-style"
+                    for="file-browser-replace"
+                    (click)="addFileName(file.name)"
+                >Replace</label>
+                <input type="file" id="file-browser-replace" (change)="uploadFile($event)">
             </th>
-            <th class="helvetica-normal">
+            <th class="helvetica-normal file-browser-button-style" (click)="deleteFile(file)">
                 Delete
             </th>
         </tr>
     </table>
+
+    <app-batch-file-uploader
+        style="margin-left: 30px; height: 80px;"
+        class="admin-section"
+        [instruction]="'upload files here'"
+    ></app-batch-file-uploader>
 
 </div>

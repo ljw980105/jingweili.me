@@ -13,3 +13,22 @@ a {
         text-decoration: none;
     }
 }
+
+@mixin file-browser-hide-button {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+#file-browser-replace{
+    @include file-browser-hide-button;
+}
+
+.file-browser-button-style {
+    color: orangered;
+    cursor: pointer;
+}
+
+select {
+    height: 50px;
+}
