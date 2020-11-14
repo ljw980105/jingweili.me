@@ -19,8 +19,8 @@
             <th class="helvetica-normal">{{file.type}}</th>
             <th class="helvetica-normal">{{file.createdDate | date: 'shortDate'}}</th>
             <th class="helvetica-normal">{{file.fileSize | bytes}}{{spacing}}</th>
-            <th class="helvetica-normal">
-                <a href="{{this.apiService.fileURL(file.name)}}" target="_blank">View</a>
+            <th class="helvetica-normal file-browser-button-style" (click)="openFileNamed(file.name)">
+                View
             </th>
             <th class="helvetica-normal">
                 <label
@@ -39,7 +39,10 @@
     <app-batch-file-uploader
         style="margin-left: 30px; height: 80px;"
         class="admin-section"
-        [instruction]="'upload files here'"
+        [instruction]="'Upload Files Here'"
+        [fileTypes]="[]"
+        [directory]="currentDirectory"
+        (uploadCompleted)="refresh()"
     ></app-batch-file-uploader>
 
 </div>

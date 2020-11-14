@@ -59,4 +59,12 @@ export class FileBrowserComponent implements OnInit {
     refresh() {
         this.refresher.next('');
     }
+
+    openFileNamed(name: string) {
+        this.apiService.streamFileNamed(name, this.currentDirectory)
+            .subscribe((file) => {
+                const fileURL = URL.createObjectURL(file);
+                window.open(fileURL, '_blank');
+            });
+    }
 }

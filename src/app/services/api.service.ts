@@ -10,7 +10,7 @@ import {FileLocation} from '../models/pure-models/FileLocation';
 import {GraphicProject} from '../models/pure-models/GraphicProject';
 import {Password} from '../models/authentication/Password';
 import {Token} from '../models/authentication/Token';
-import {catchError, mergeMap} from 'rxjs/operators';
+import {catchError, map, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
@@ -137,12 +137,15 @@ export class ApiService {
     /////////////////
     ///// FILES /////
     /////////////////
-    uploadGenericFile(file: File, customName: string = null): Observable<ServerResponse> {
-        return this.uploadFileTo(`${this.apiRoot}api/upload-file`, file, customName);
+    uploadGenericFile(
+        file: File,
+        customName: string = null,
+        toDirectory: string = 'public'): Observable<ServerResponse> {
+        return this.uploadFileTo(`${this.apiRoot}api/upload-file?directory=${toDirectory}`, file, customName);
     }
 
-    uploadMultipleFiles(files: File[]): Observable<ServerResponse[]> {
-        return forkJoin(files.map(file => this.uploadGenericFile(file)));
+    uploadMultipleFiles(files: File[], toDirectory: string = 'public'): Observable<ServerResponse[]> {
+        return forkJoin(files.map(file => this.uploadGenericFile(file, null, toDirectory)));
     }
 
     getFilesToBrowseAt(directory: string): Observable<FileToBrowse[]> {
@@ -158,6 +161,13 @@ export class ApiService {
 
     public fileURL(name: string): string {
         return `${this.apiRoot}resources/${name}`;
+    }
+
+    public streamFileNamed(name: string, directory: string): Observable<Blob> {
+        let props = this.authHeaders();
+        props['responseType'] = 'blob';
+        return this.http
+            .get<Blob>(`${this.apiRoot}api/stream-file?name=${name}&directory=${directory}`, props);
     }
 
     private uploadFileTo(endpoint: string, fileToUpload: File, customName: string = null): Observable<ServerResponse> {

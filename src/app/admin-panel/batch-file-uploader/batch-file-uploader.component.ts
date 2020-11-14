@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {AdminHelperService} from '../admin-helper.service';
 import {multipleFilesFromEvent} from '../../models/Global';
@@ -12,6 +12,8 @@ export class BatchFileUploaderComponent implements OnInit {
     @Input() title: string;
     @Input() instruction: string;
     @Input() fileTypes: string[] = ['.png', '.jpg', '.jpeg', '.gif'];
+    @Input() directory = 'public';
+    @Output() uploadCompleted: EventEmitter<any> = new EventEmitter();
 
     constructor(private apiService: ApiService, private helperService: AdminHelperService) {
     }
@@ -21,7 +23,10 @@ export class BatchFileUploaderComponent implements OnInit {
 
     uploadFiles(event: any) {
         const files = multipleFilesFromEvent(event);
-        this.helperService.showActivityIndicatorWithObservable(this.apiService.uploadMultipleFiles(files));
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.uploadMultipleFiles(files, this.directory),
+            () => this.uploadCompleted.emit()
+        );
     }
 
 }
