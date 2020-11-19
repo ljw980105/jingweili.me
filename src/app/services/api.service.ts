@@ -17,6 +17,7 @@ import {Project} from '../models/pure-models/Project';
 import {tryCatchWithObservable} from '../models/Global';
 import {NameAndURL} from '../models/pure-models/NameAndURL';
 import {FileToBrowse} from '../models/pure-models/FileToBrowse';
+import {DirectoryInfo} from '../models/files/DirectoryInfo';
 
 @Injectable({
     providedIn: 'root'
@@ -157,6 +158,10 @@ export class ApiService {
     deleteFile(file: FileToBrowse, directory: string): Observable<ServerResponse> {
         return this.http
             .post<ServerResponse>(`${this.apiRoot}api/delete-files?directory=${directory}`, file, this.authHeaders());
+    }
+
+    getDirectoryInfoAt(directory: string): Observable<DirectoryInfo> {
+        return this.http.get<DirectoryInfo>(`${this.apiRoot}api/directory-info?directory=${directory}`, this.authHeaders());
     }
 
     public fileURL(name: string): string {

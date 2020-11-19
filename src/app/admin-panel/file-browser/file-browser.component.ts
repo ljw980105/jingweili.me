@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {Subject, zip} from 'rxjs';
 import {FileToBrowse} from '../../models/pure-models/FileToBrowse';
 import {AdminHelperService} from '../admin-helper.service';
-import {mergeMap} from 'rxjs/operators';
+import {FileBrowserViewModel} from './FileBrowserViewModel';
+import {first} from 'rxjs/operators';
 
 @Component({
     selector: 'app-file-browser',
@@ -11,60 +11,38 @@ import {mergeMap} from 'rxjs/operators';
     styleUrls: ['./file-browser.component.scss']
 })
 export class FileBrowserComponent implements OnInit {
-    files: FileToBrowse[] = [];
-    spacing = '      ';
-    pendingFile = new Subject<File>();
-    pendingFileName = new Subject<string>();
-    refresher = new Subject<any>();
-
-    directories = ['public', 'private'];
-    currentDirectory = this.directories[0];
+    viewModel: FileBrowserViewModel;
+    sortingTable: {[key: string]: [boolean, boolean]} = {};
 
     constructor(public apiService: ApiService, private helperService: AdminHelperService) {
+        this.viewModel = new FileBrowserViewModel(apiService, helperService);
     }
 
     ngOnInit(): void {
-        zip(this.pendingFile, this.pendingFileName)
-            .subscribe(([file, name]) => {
-                this.helperService.showActivityIndicatorWithObservable(
-                    this.apiService.uploadGenericFile(file, name),
-                    () => this.refresh()
-                );
+        this.viewModel.sortingTable
+            .subscribe((table) => {
+                this.sortingTable = table;
             });
 
-        this.refresher
-            .pipe(mergeMap(() => this.apiService.getFilesToBrowseAt(this.currentDirectory)))
-            .subscribe((files) => this.files = files);
-
         this.refresh();
-    }
 
-    uploadFile(event: any) {
-        const files = event.target.files as FileList;
-        const firstFile = files.item(0);
-        this.pendingFile.next(firstFile);
-    }
-
-    addFileName(name: string) {
-        this.pendingFileName.next(name);
+        this.viewModel.fileFirstRefreshed
+            .subscribe(() => this.sortFilesBy('name'));
     }
 
     deleteFile(file: FileToBrowse) {
-        this.helperService.showActivityIndicatorWithObservable(
-            this.apiService.deleteFile(file, this.currentDirectory),
-            () => this.refresh()
-        );
+        this.viewModel.deleteFile(file, () => this.refresh());
     }
 
     refresh() {
-        this.refresher.next('');
+        this.viewModel.refresh();
     }
 
     openFileNamed(name: string) {
-        this.apiService.streamFileNamed(name, this.currentDirectory)
-            .subscribe((file) => {
-                const fileURL = URL.createObjectURL(file);
-                window.open(fileURL, '_blank');
-            });
+        this.viewModel.openFileNamed(name);
+    }
+
+    sortFilesBy(key: string) {
+        this.viewModel.sortBy(key);
     }
 }

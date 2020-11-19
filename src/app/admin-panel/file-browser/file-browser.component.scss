@@ -29,6 +29,20 @@ a {
     cursor: pointer;
 }
 
-select {
-    height: 50px;
+.file-browser-header {
+    font-size: 12px;
+    color: #aaaaaa;
+    padding: 0;
+    margin: 2px 0 6px 0;
+    letter-spacing: 1px;
+}
+
+.file-browser-clickable {
+    th {
+        cursor: pointer;
+    }
+    img {
+        width: 15px;
+        height: 10.3px;
+    }
 }
