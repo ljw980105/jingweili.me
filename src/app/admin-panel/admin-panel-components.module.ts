@@ -14,6 +14,8 @@ import { ActivityIndicatorComponent } from './activity-indicator/activity-indica
 import {AdminHelperService} from './admin-helper.service';
 import { BatchFileUploaderComponent } from './batch-file-uploader/batch-file-uploader.component';
 import { EditAppsComponent } from './edit-apps/edit-apps.component';
+import { FileBrowserComponent } from './file-browser/file-browser.component';
+import {NgBytesPipeModule} from 'angular-pipes';
 
 export function getHighlightLanguages() {
     return {
@@ -35,7 +37,8 @@ export function playerFactory() {
         EditProjectsComponent,
         ActivityIndicatorComponent,
         BatchFileUploaderComponent,
-        EditAppsComponent
+        EditAppsComponent,
+        FileBrowserComponent
     ],
     imports: [
         CommonModule,
@@ -43,7 +46,8 @@ export function playerFactory() {
         FormsModule,
         HighlightModule,
         LottieModule.forRoot({player: playerFactory}),
-        MatDialogModule
+        MatDialogModule,
+        NgBytesPipeModule
     ],
     providers: [
         {

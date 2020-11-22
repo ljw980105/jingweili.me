@@ -10,12 +10,14 @@ import {FileLocation} from '../models/pure-models/FileLocation';
 import {GraphicProject} from '../models/pure-models/GraphicProject';
 import {Password} from '../models/authentication/Password';
 import {Token} from '../models/authentication/Token';
-import {catchError, mergeMap} from 'rxjs/operators';
+import {catchError, map, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
 import {tryCatchWithObservable} from '../models/Global';
 import {NameAndURL} from '../models/pure-models/NameAndURL';
+import {FileToBrowse} from '../models/pure-models/FileToBrowse';
+import {DirectoryInfo} from '../models/files/DirectoryInfo';
 
 @Injectable({
     providedIn: 'root'
@@ -136,22 +138,47 @@ export class ApiService {
     /////////////////
     ///// FILES /////
     /////////////////
-    uploadGenericFile(file: File): Observable<ServerResponse> {
-        return this.uploadFileTo(`${this.apiRoot}api/upload-file`, file);
+    uploadGenericFile(
+        file: File,
+        customName: string = null,
+        toDirectory: string = 'public'): Observable<ServerResponse> {
+        return this.uploadFileTo(`${this.apiRoot}api/upload-file?directory=${toDirectory}`, file, customName);
     }
 
-    uploadMultipleFiles(files: File[]): Observable<ServerResponse[]> {
-        return forkJoin(files.map(file => this.uploadGenericFile(file)));
+    uploadMultipleFiles(files: File[], toDirectory: string = 'public'): Observable<ServerResponse[]> {
+        return forkJoin(files.map(file => this.uploadGenericFile(file, null, toDirectory)));
+    }
+
+    getFilesToBrowseAt(directory: string): Observable<FileToBrowse[]> {
+        return this.http
+            .get<FileToBrowse[]>(`${this.apiRoot}api/browse-files?directory=${directory}`, this.authHeaders())
+            .pipe(catchError((e) => of([new FileToBrowse(`No files available. Error: ${e.message}`)])));
+    }
+
+    deleteFile(file: FileToBrowse, directory: string): Observable<ServerResponse> {
+        return this.http
+            .post<ServerResponse>(`${this.apiRoot}api/delete-files?directory=${directory}`, file, this.authHeaders());
+    }
+
+    getDirectoryInfoAt(directory: string): Observable<DirectoryInfo> {
+        return this.http.get<DirectoryInfo>(`${this.apiRoot}api/directory-info?directory=${directory}`, this.authHeaders());
     }
 
     public fileURL(name: string): string {
         return `${this.apiRoot}resources/${name}`;
     }
 
-    private uploadFileTo(endpoint: string, fileToUpload: File): Observable<ServerResponse> {
+    public streamFileNamed(name: string, directory: string): Observable<Blob> {
+        let props = this.authHeaders();
+        props['responseType'] = 'blob';
+        return this.http
+            .get<Blob>(`${this.apiRoot}api/stream-file?name=${name}&directory=${directory}`, props);
+    }
+
+    private uploadFileTo(endpoint: string, fileToUpload: File, customName: string = null): Observable<ServerResponse> {
         const formData: FormData = new FormData();
         formData.append('file', fileToUpload);
-        formData.append('name', fileToUpload.name);
+        formData.append('name', customName != null ? customName : fileToUpload.name);
         return this.http.post<ServerResponse>(endpoint, formData, this.authHeaders());
     }
 

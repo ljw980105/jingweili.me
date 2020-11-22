@@ -1,0 +1,48 @@
+td, th {
+    text-align: left;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(255, 242, 220);
+}
+
+a {
+    &:link, &:visited, &:hover {
+        color: orangered;
+        text-decoration: none;
+    }
+}
+
+@mixin file-browser-hide-button {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+#file-browser-replace{
+    @include file-browser-hide-button;
+}
+
+.file-browser-button-style {
+    color: orangered;
+    cursor: pointer;
+}
+
+.file-browser-header {
+    font-size: 12px;
+    color: #aaaaaa;
+    padding: 0;
+    margin: 2px 0 6px 0;
+    letter-spacing: 1px;
+}
+
+.file-browser-clickable {
+    th {
+        cursor: pointer;
+    }
+    img {
+        width: 15px;
+        height: 10.3px;
+    }
+}
