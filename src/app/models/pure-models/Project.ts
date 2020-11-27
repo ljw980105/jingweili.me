@@ -5,7 +5,7 @@ export class Project {
         public description: string,
         public links: ProjectLink[],
         public technologies: string[],
-        public id: number = null
+        public id: string = null
     ) {
     }
 }

@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {GraphicProject} from '../../models/pure-models/GraphicProject';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {AdminHelperService} from '../admin-helper.service';
 import {rotate45Degrees, shrinkOrExpand} from '../../models/Animations';
+import {mergeMap} from 'rxjs/operators';
 
 @Component({
     selector: 'app-edit-graphics',
@@ -17,7 +18,8 @@ export class EditGraphicsComponent implements OnInit {
     name: string;
     description: string;
     url: string;
-    graphicProjects: Observable<GraphicProject[]>;
+    graphicProjects: GraphicProject[] = [];
+    refresher = new Subject<any>();
     jsonSpec = `
         [
           {
@@ -36,7 +38,12 @@ export class EditGraphicsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.graphicProjects = this.apiService.getGraphicsProjects();
+        this.refresher
+            .pipe(mergeMap(() => this.apiService.getGraphicsProjects()))
+            .subscribe((projects) => {
+                this.graphicProjects = projects;
+            });
+        this.refresher.next('');
     }
 
     uploadSquareImage(event: any) {
@@ -64,13 +71,14 @@ export class EditGraphicsComponent implements OnInit {
             )
         ).subscribe(() => {
             this.name = this.description = this.squareImageName = this.rectangleImageName = this.url = '';
-            this.graphicProjects = this.apiService.getGraphicsProjects();
+            this.refreshProjects();
         });
     }
 
     deleteProject(project: GraphicProject) {
-        this.apiService.deleteGraphicsProject(project)
-            .subscribe(() => this.graphicProjects = this.apiService.getGraphicsProjects());
+        this.helperService.showActivityIndicatorWithObservable(
+            this.apiService.deleteGraphicsProject(project),
+            () => this.refreshProjects());
     }
 
     nameLength(): number {
@@ -78,10 +86,7 @@ export class EditGraphicsComponent implements OnInit {
     }
 
     exportJSON() {
-        this.apiService.getGraphicsProjects()
-            .subscribe((projects) => {
-                this.helperService.exportASJSONWithData(projects, 'graphics-projects.json');
-            });
+        this.helperService.exportASJSONWithData(this.graphicProjects, 'graphics-projects.json');
     }
 
     toggleManualAdd() {
@@ -90,8 +95,13 @@ export class EditGraphicsComponent implements OnInit {
 
     submitViaJSON() {
         this.helperService.showActivityIndicatorWithObservable(
-            this.apiService.addMultipleGraphicProjects(this.textAreaContents)
+            this.apiService.addMultipleGraphicProjects(this.textAreaContents),
+            () => this.refreshProjects()
         );
+    }
+
+    refreshProjects() {
+        this.refresher.next('');
     }
 
 }

@@ -6,6 +6,6 @@ export class GraphicProject {
         public imageURLRectangle: string,
         public imageURLSquare: string,
         public projectURL: string,
-        public id: number = null) {
+        public id: string = null) {
     }
 }

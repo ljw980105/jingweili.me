@@ -74,7 +74,6 @@ export class NavigatorComponent implements OnInit, OnDestroy {
     }
 
     logOut() {
-        localStorage.removeItem('token');
         this.apiService.logOut()
             .subscribe(() => {});
     }

@@ -76,4 +76,16 @@ export class EditAppsComponent implements OnInit {
         );
     }
 
+    exportAppsJSON() {
+        this.apiService.getAppsPageData()
+            .subscribe((data) => this.helperService.exportASJSONWithData(data, 'AppsPageData.json'));
+
+    }
+
+    exportBeatslyticsJSON() {
+        this.apiService.getBeatslyticsData()
+            .subscribe((data) => this.helperService.exportASJSONWithData(data, 'BeatslyticsData.json'));
+
+    }
+
 }
