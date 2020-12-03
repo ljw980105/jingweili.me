@@ -18,6 +18,8 @@
                 <h5 class="helvetica-normal">{{skill.description.substring(0, 90)}}...</h5>
             </div>
         </div>
+
+        <button (click)="exportAppsJSON()">Export as JSON</button>
     </div>
 
     <div class="right-half">
@@ -50,6 +52,7 @@
                 <code [highlight]="beatslyticsJSONSpec"></code>
             </pre>
         </div>
+        <button (click)="exportBeatslyticsJSON()">Export as JSON</button>
     </div>
     <div class="right-half">
         <h3 class="helvetica minimal-top-spacing">Enter JSON</h3>

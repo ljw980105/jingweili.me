@@ -1,0 +1,30 @@
+[
+    {
+        "description": "The very first graphic design project I've done for RPI Union. The design went on to represent the 2000+ person RPI cohort.",
+        "imageURLRectangle": "2021-logo-many.jpg",
+        "imageURLSquare": "2021-logo-single.png",
+        "name": "Class of 2021 Logos",
+        "projectURL": "https://www.behance.net/gallery/52343049/RPI-Class-of-2021-Sticker-Design"
+    },
+    {
+        "description": "This 2016 project captured my aspirations for 2026 with deadly precision.",
+        "imageURLRectangle": "time-capsule-rectangle.png",
+        "imageURLSquare": "time-capsule-square.png",
+        "name": "Time Capsule",
+        "projectURL": "https://www.behance.net/gallery/47281675/2026-Time-Capsule"
+    },
+    {
+        "description": "Originally a design project pitched by a friend, the project quickly became one of my finest creations.",
+        "imageURLRectangle": "cavemann-rectangle.jpg",
+        "imageURLSquare": "cavemann-square.jpg",
+        "name": "Cavemann Posters",
+        "projectURL": "https://www.behance.net/gallery/101301351/Cavemann-Posters"
+    },
+    {
+        "description": "Food waste is a very serious issue in many countries. With a simple poster series like this one, we can raise awareness of food waste in an efficient way.",
+        "imageURLRectangle": "food-waste-rectangle.jpg",
+        "imageURLSquare": "food-waste-square.jpg",
+        "name": "Food Waste",
+        "projectURL": "https://www.behance.net/gallery/101303111/Food-Waste-Poster-Series"
+    }
+]

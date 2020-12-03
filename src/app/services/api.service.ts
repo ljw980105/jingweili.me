@@ -10,7 +10,7 @@ import {FileLocation} from '../models/pure-models/FileLocation';
 import {GraphicProject} from '../models/pure-models/GraphicProject';
 import {Password} from '../models/authentication/Password';
 import {Token} from '../models/authentication/Token';
-import {catchError, map, mergeMap} from 'rxjs/operators';
+import {catchError, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
@@ -192,7 +192,12 @@ export class ApiService {
     }
 
     logOut(): Observable<ServerResponse> {
-        return this.http.get<ServerResponse>(`${this.apiRoot}api/logout`);
+        return this.http
+            .get<ServerResponse>(`${this.apiRoot}api/logout`, this.authHeaders())
+            .pipe(mergeMap((res) => {
+                localStorage.removeItem('token');
+                return of(res);
+            }));
     }
 
     // About

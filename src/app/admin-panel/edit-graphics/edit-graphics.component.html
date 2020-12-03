@@ -3,9 +3,9 @@
         <h3 class="helvetica">Existing Projects</h3>
         <h4 class="helvetica-normal"
             style="color: dimgray"
-            *ngIf="(graphicProjects | async).length === 0"
+            *ngIf="graphicProjects.length === 0"
         >No Projects Found</h4>
-        <div *ngFor="let project of graphicProjects | async" id="single-graphic-project">
+        <div *ngFor="let project of graphicProjects" id="single-graphic-project">
             <img style="margin-right: 10px"
                  src="{{this.apiService.fileURL(project.imageURLSquare)}}"
                  class="admin-aspect-ratio-img"
