@@ -7,7 +7,8 @@
         "accomplishments": [
             "iOS engineer supporting the critically acclaimed DraftKings iOS app."
         ],
-        "special": "for apps"
+        "special": "for apps",
+        "order": 5
     },
     {
         "imageLink": "DkIcon.png",
@@ -19,7 +20,8 @@
             "Combined the above Android & iOS frameworks into a <span class=\"menlo\">Xamarin.Forms</span> library and developed tutorials on doing such, which enabled DraftKings’ Xamarin team to leverage the power of native mobile libraries.",
             "Added new features to DraftKings’ iOS app’s login flow using the VIPER architecture to improve user experiences. "
         ],
-        "special": "for apps"
+        "special": "for apps",
+        "order": 4
     },
     {
         "imageLink": "BeatslyticsIcon.png",
@@ -32,7 +34,8 @@
             "Designed & Implemented a database schema to store analytics information on device, using the CoreData persistence framework from Apple.",
             "Developed a fully functional music player as a subset of features offered by Beatslytics, with the MediaPlayer framework.",
             "Gained familiarity with using iTunes Connect to publish an app to the App Store."
-        ]
+        ],
+        "order": 3
     },
     {
         "imageLink": "ruIcon.png",
@@ -42,7 +45,8 @@
         "accomplishments": [
            "Apply graphic design skills in creating logos, posters, brochures, and other designs using Adobe Illustrator, Adobe InDesign and Adobe Photoshop.",
             "Networked with clubs & organizations to accommodate for special graphic design needs."
-        ]
+        ],
+        "order": 2
     },
     {
         "imageLink": "ModMedIcon.png",
@@ -53,7 +57,8 @@
             "Worked as an iOS developer to maintain three apps from Modernizing Medicine: PocketEMA, Telehealth and Kiosk, with Swift and Objective-C. These apps directly improve the lives of more than 160 million patients.",
             "Designed and implemented new features, new UI elements and carried out bug fixes while collaborating closely with a full-scale Scrum team."
         ],
-        "special": "for apps"
+        "special": "for apps",
+        "order": 1
     },
     {
         "imageLink": "3DVisualizerIcon.png",
@@ -66,6 +71,7 @@
             "Created a networking layer to interact with REST APIs with URLSession and Alamofire.",
             "Designed UI and UX for the app from scratch.",
             "Used CocoaPods to integrate third-party libraries into the app. For example, The app utilized Alamofire to fetch 3D models from the CSDT API. Fetched models are then visualized with AR."
-        ]
+        ],
+        "order": 0
     }
 ]
