@@ -10,7 +10,7 @@ import {FileLocation} from '../models/pure-models/FileLocation';
 import {GraphicProject} from '../models/pure-models/GraphicProject';
 import {Password} from '../models/authentication/Password';
 import {Token} from '../models/authentication/Token';
-import {catchError, mergeMap} from 'rxjs/operators';
+import {catchError, map, mergeMap} from 'rxjs/operators';
 import {AboutInfo} from '../models/pure-models/AboutInfo';
 import {PCSetupEntry} from '../models/pure-models/PCSetupEntry';
 import {Project} from '../models/pure-models/Project';
@@ -62,6 +62,10 @@ export class ApiService {
 
     getExperiencesData(): Observable<Experience[]> {
         return this.http.get<Experience[]>(`${this.apiRoot}api/experiences`)
+            .pipe(map((exp) => {
+                exp.sort((a, b) => b.order - a.order);
+                return exp;
+            }))
             .pipe(catchError(() => of([])));
     }
 
@@ -104,7 +108,8 @@ export class ApiService {
     getRemainingResumeData(): Observable<ResumeData> {
         return this.http.get<ResumeData>(`${this.apiRoot}api/resume-data`)
             .pipe(catchError(() => of(
-                new ResumeData(0, 0, 0, [], [], [], [], [])
+                new ResumeData(0, 0, 0, [],
+                    [], [], [], [])
             )));
     }
 

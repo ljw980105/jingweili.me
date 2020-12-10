@@ -1,5 +1,7 @@
+$right-width: 450px;
+
 textarea {
-    width: 800px;
+    width: $right-width;
     height: 250px;
 }
 
@@ -9,7 +11,7 @@ textarea {
 
 code {
     margin: 0;
-    width: 450px;
+    width: $right-width;
 }
 
 // b/c the images are 1200x800

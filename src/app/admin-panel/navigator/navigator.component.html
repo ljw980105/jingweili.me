@@ -1,26 +1,20 @@
 <div style="display: flex">
     <div id="navigator">
         <img src="assets/images/footer/logo2020White.png" width="120px">
-        <div><h3 class="helvetica anchor-style" (click)="editResume()">Resume</h3></div>
-        <div><h3 class="helvetica anchor-style" (click)="editGraphicDesign()">Graphic Design</h3></div>
-        <div><h3 class="helvetica anchor-style" (click)="editHome()">Home</h3></div>
-        <div><h3 class="helvetica anchor-style" (click)="editProjects()">Projects</h3></div>
-        <div><h3 class="helvetica anchor-style" (click)="editApps()">Apps</h3></div>
-        <div><h3 class="helvetica anchor-style" (click)="showFileEditor()">Browse Files</h3></div>
+        <div><a class="helvetica anchor-style" [routerLink]="['edit-resume']" [routerLinkActive]="'active'">Resume</a></div>
+        <div><a class="helvetica anchor-style" [routerLink]="['edit-graphics']" [routerLinkActive]="'active'">Graphic Design</a></div>
+        <div><a class="helvetica anchor-style" [routerLink]="['edit-home']" [routerLinkActive]="'active'">Home</a></div>
+        <div><a class="helvetica anchor-style" [routerLink]="['edit-projects']" [routerLinkActive]="'active'">Projects</a></div>
+        <div><a class="helvetica anchor-style" [routerLink]="['edit-apps']" [routerLinkActive]="'active'">Apps</a></div>
+        <div><a class="helvetica anchor-style" [routerLink]="['browse-files']" [routerLinkActive]="'active'"> Browse Files</a></div>
         <div><h3 class="helvetica button-style anchor-style" [routerLink]="['/']">Log out</h3></div>
     </div>
-    <div id="editing-panels">
-        <app-edit-resume *ngIf="editingResume"></app-edit-resume>
-        <app-edit-graphics *ngIf="editingGraphicDesign"></app-edit-graphics>
-        <app-edit-home *ngIf="editingHome"></app-edit-home>
-        <app-edit-projects *ngIf="editingProjects"></app-edit-projects>
-        <app-edit-apps *ngIf="editingApps"></app-edit-apps>
-        <app-file-browser *ngIf="showingFileEditor"></app-file-browser>
-        <div id="navigator-default" *ngIf="showDefaults">
-            <div id="navigator-animation" class="ml-auto mr-auto">
-                <ng-lottie width="200px" height="200px" [options]="options"></ng-lottie>
-                <h3 class="helvetica">Pick Something from the Left </h3>
-            </div>
+    <div id="editing-panels" [ngClass]="{'navigator-full-width': showAnimatedHint}">
+        <div id="navigator-animation"  *ngIf="showAnimatedHint">
+            <ng-lottie width="200px" height="200px" [options]="options"></ng-lottie>
+            <h3 class="helvetica">Pick Something from the Left </h3>
         </div>
+        <router-outlet (activate)="routerActivated()" (deactivate)="routerDeactivated()"></router-outlet>
+
     </div>
 </div>
