@@ -10,6 +10,7 @@ import {AnimationOptions} from 'ngx-lottie';
 })
 export class NavigatorComponent implements OnInit, OnDestroy {
     showAnimatedHint = true;
+    highlights = [false, false, false, false, false, false];
 
     constructor(private titleService: Title, private apiService: ApiService) {
         this.titleService.setTitle('Admin Panel');
@@ -37,6 +38,14 @@ export class NavigatorComponent implements OnInit, OnDestroy {
 
     routerDeactivated() {
         this.showAnimatedHint = true;
+    }
+
+    highlightHyperlinkWithIndex(index: number) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.highlights.length; i ++) {
+            this.highlights[i] = i === index;
+        }
+
     }
 
 }

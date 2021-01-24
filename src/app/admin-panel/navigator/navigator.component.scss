@@ -16,6 +16,7 @@
         a {
             font-size: 18px;
             font-weight: bold;
+            padding: 0 10px;
         }
     }
 
@@ -49,6 +50,11 @@
 
 #navigator-default {
     width: 800px;
+}
+
+.highlighted {
+    background-color: #333333;
+    border-radius: 10px;
 }
 
 #navigator-animation {

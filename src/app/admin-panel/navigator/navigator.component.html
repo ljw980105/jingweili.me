@@ -1,12 +1,47 @@
 <div style="display: flex">
     <div id="navigator">
         <img src="assets/images/footer/logo2020White.png" width="120px">
-        <div><a class="helvetica anchor-style" [routerLink]="['edit-resume']" [routerLinkActive]="'active'">Resume</a></div>
-        <div><a class="helvetica anchor-style" [routerLink]="['edit-graphics']" [routerLinkActive]="'active'">Graphic Design</a></div>
-        <div><a class="helvetica anchor-style" [routerLink]="['edit-home']" [routerLinkActive]="'active'">Home</a></div>
-        <div><a class="helvetica anchor-style" [routerLink]="['edit-projects']" [routerLinkActive]="'active'">Projects</a></div>
-        <div><a class="helvetica anchor-style" [routerLink]="['edit-apps']" [routerLinkActive]="'active'">Apps</a></div>
-        <div><a class="helvetica anchor-style" [routerLink]="['browse-files']" [routerLinkActive]="'active'"> Browse Files</a></div>
+        <div [ngClass]="{'highlighted': highlights[0]}">
+            <a (click)="highlightHyperlinkWithIndex(0)"
+                class="helvetica anchor-style"
+                [routerLink]="['edit-resume']"
+                [routerLinkActive]="'active'">Resume
+            </a>
+        </div>
+        <div [ngClass]="{'highlighted': highlights[1]}">
+            <a (click)="highlightHyperlinkWithIndex(1)"
+               class="helvetica anchor-style"
+               [routerLink]="['edit-graphics']"
+                [routerLinkActive]="'active'">Graphic Design
+            </a>
+        </div>
+        <div [ngClass]="{'highlighted': highlights[2]}">
+            <a (click)="highlightHyperlinkWithIndex(2)"
+               class="helvetica anchor-style"
+               [routerLink]="['edit-home']"
+               [routerLinkActive]="'active'">Home
+            </a>
+        </div>
+        <div [ngClass]="{'highlighted': highlights[3]}">
+            <a (click)="highlightHyperlinkWithIndex(3)"
+               class="helvetica anchor-style"
+               [routerLink]="['edit-projects']"
+               [routerLinkActive]="'active'">Projects
+            </a>
+        </div>
+        <div [ngClass]="{'highlighted': highlights[4]}">
+            <a (click)="highlightHyperlinkWithIndex(4)"
+               class="helvetica anchor-style"
+               [routerLink]="['edit-apps']"
+               [routerLinkActive]="'active'">Apps
+            </a>
+        </div>
+        <div [ngClass]="{'highlighted': highlights[5]}">
+            <a (click)="highlightHyperlinkWithIndex(5)"
+               class="helvetica anchor-style"
+               [routerLink]="['browse-files']"
+               [routerLinkActive]="'active'"> Browse Files</a>
+        </div>
         <div><h3 class="helvetica button-style anchor-style" [routerLink]="['/']">Log out</h3></div>
     </div>
     <div id="editing-panels" [ngClass]="{'navigator-full-width': showAnimatedHint}">
