@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DualAppComponent } from './dual-app.component';
 
@@ -6,7 +6,7 @@ describe('DualAppComponent', () => {
   let component: DualAppComponent;
   let fixture: ComponentFixture<DualAppComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DualAppComponent ]
     })

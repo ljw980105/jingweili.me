@@ -52,7 +52,10 @@
             <th class="helvetica">Actions</th>
         </tr>
         <tr *ngFor="let file of this.viewModel.files">
-            <th class="helvetica-normal">{{file.name}}</th>
+            <th class="helvetica-normal flex">
+                <img class="file-browser-icon" src="{{imageNameFor(file)}}">
+                &nbsp;&nbsp;{{file.name}}
+            </th>
             <th class="helvetica-normal">{{file.type}}</th>
             <th class="helvetica-normal">{{file.createdDate | date: 'shortDate'}}</th>
             <th class="helvetica-normal">{{file.fileSize | bytes}}</th>
