@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {ApiService} from '../../services/api.service';
 import {AnimationOptions} from 'ngx-lottie';
+import {last} from 'rxjs/operators';
 
 @Component({
     selector: 'app-navigator',
@@ -10,7 +11,14 @@ import {AnimationOptions} from 'ngx-lottie';
 })
 export class NavigatorComponent implements OnInit, OnDestroy {
     showAnimatedHint = true;
-    highlights = [false, false, false, false, false, false];
+    highlights: {[key: string]: boolean} = {
+        'edit-resume': false,
+        'edit-graphics': false,
+        'edit-home': false,
+        'edit-projects': false,
+        'edit-apps': false,
+        'browse-files': false
+    };
 
     constructor(private titleService: Title, private apiService: ApiService) {
         this.titleService.setTitle('Admin Panel');
@@ -21,6 +29,12 @@ export class NavigatorComponent implements OnInit, OnDestroy {
     };
 
     ngOnInit(): void {
+        // highlight a navigator link if applicable
+        const segments = window.location.href.split('/');
+        const lastComponent = segments[segments.length - 1];
+        if (lastComponent in this.highlights) {
+            this.highlights[lastComponent] = true;
+        }
     }
 
     ngOnDestroy() {
@@ -40,12 +54,9 @@ export class NavigatorComponent implements OnInit, OnDestroy {
         this.showAnimatedHint = true;
     }
 
-    highlightHyperlinkWithIndex(index: number) {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.highlights.length; i ++) {
-            this.highlights[i] = i === index;
-        }
-
+    highlightComponent(component: string) {
+        Object.keys(this.highlights).forEach(v => this.highlights[v] = false);
+        this.highlights[component] = true;
     }
 
 }

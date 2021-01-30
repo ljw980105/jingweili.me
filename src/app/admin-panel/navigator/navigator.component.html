@@ -1,43 +1,43 @@
 <div style="display: flex">
     <div id="navigator">
         <img src="assets/images/footer/logo2020White.png" width="120px">
-        <div [ngClass]="{'highlighted': highlights[0]}">
-            <a (click)="highlightHyperlinkWithIndex(0)"
+        <div [ngClass]="{'highlighted': highlights['edit-resume']}">
+            <a (click)="highlightComponent('edit-resume')"
                 class="helvetica anchor-style"
                 [routerLink]="['edit-resume']"
                 [routerLinkActive]="'active'">Resume
             </a>
         </div>
-        <div [ngClass]="{'highlighted': highlights[1]}">
-            <a (click)="highlightHyperlinkWithIndex(1)"
+        <div [ngClass]="{'highlighted': highlights['edit-graphics']}">
+            <a (click)="highlightComponent('edit-graphics')"
                class="helvetica anchor-style"
                [routerLink]="['edit-graphics']"
                 [routerLinkActive]="'active'">Graphic Design
             </a>
         </div>
-        <div [ngClass]="{'highlighted': highlights[2]}">
-            <a (click)="highlightHyperlinkWithIndex(2)"
+        <div [ngClass]="{'highlighted': highlights['edit-home']}">
+            <a (click)="highlightComponent('edit-home')"
                class="helvetica anchor-style"
                [routerLink]="['edit-home']"
                [routerLinkActive]="'active'">Home
             </a>
         </div>
-        <div [ngClass]="{'highlighted': highlights[3]}">
-            <a (click)="highlightHyperlinkWithIndex(3)"
+        <div [ngClass]="{'highlighted': highlights['edit-projects']}">
+            <a (click)="highlightComponent('edit-projects')"
                class="helvetica anchor-style"
                [routerLink]="['edit-projects']"
                [routerLinkActive]="'active'">Projects
             </a>
         </div>
-        <div [ngClass]="{'highlighted': highlights[4]}">
-            <a (click)="highlightHyperlinkWithIndex(4)"
+        <div [ngClass]="{'highlighted': highlights['edit-apps']}">
+            <a (click)="highlightComponent('edit-apps')"
                class="helvetica anchor-style"
                [routerLink]="['edit-apps']"
                [routerLinkActive]="'active'">Apps
             </a>
         </div>
-        <div [ngClass]="{'highlighted': highlights[5]}">
-            <a (click)="highlightHyperlinkWithIndex(5)"
+        <div [ngClass]="{'highlighted': highlights['browse-files']}">
+            <a (click)="highlightComponent('browse-files')"
                class="helvetica anchor-style"
                [routerLink]="['browse-files']"
                [routerLinkActive]="'active'"> Browse Files</a>

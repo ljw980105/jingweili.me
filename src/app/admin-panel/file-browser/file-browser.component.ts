@@ -45,4 +45,8 @@ export class FileBrowserComponent implements OnInit {
     sortFilesBy(key: string) {
         this.viewModel.sortBy(key);
     }
+
+    imageNameFor(file: FileToBrowse): string {
+        return this.viewModel.imageNameFor(file.type);
+    }
 }

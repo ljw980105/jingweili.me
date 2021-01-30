@@ -20,7 +20,6 @@ export class FileBrowserViewModel {
         this.getSortingTable('created', true)
     );
 
-
     constructor(private apiService: ApiService, private helperService: AdminHelperService) {
         this.fileRefreshed = this.refresher
             .pipe(mergeMap(() => zip(
@@ -113,5 +112,16 @@ export class FileBrowserViewModel {
                 const fileURL = URL.createObjectURL(file);
                 window.open(fileURL, '_blank');
             });
+    }
+
+    imageNameFor(extension: string): string {
+        const imageExtensions = ['png', 'jpg', 'jpeg', 'gif'];
+        const root = 'assets/images/admin/';
+        if (extension === 'pdf') {
+            return root + 'pdfIcon.png';
+        } else if (imageExtensions.includes(extension)) {
+            return root + 'imageIcon.png';
+        }
+        return root + 'otherImageIcon.png';
     }
 }
