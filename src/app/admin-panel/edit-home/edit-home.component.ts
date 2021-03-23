@@ -5,6 +5,7 @@ import {forkJoin, Observable} from 'rxjs';
 import {ServerResponse} from '../../models/pure-models/ServerResponse';
 import {PCSetupEntry} from '../../models/pure-models/PCSetupEntry';
 import {AdminHelperService} from '../admin-helper.service';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-edit-home',
@@ -24,6 +25,7 @@ export class EditHomeComponent implements OnInit {
 
     ngOnInit(): void {
         forkJoin([this.apiService.getAboutData(), this.apiService.getPCSetups()])
+            .pipe(take(1))
             .subscribe(([about, pcSetups]) => {
                 console.log(about);
                 this.aboutContent = about.content;
@@ -44,14 +46,14 @@ export class EditHomeComponent implements OnInit {
     uploadFile(event: any, fileCallback: (file: File) => void): Observable<ServerResponse> {
         const files = event.target.files as FileList;
         fileCallback(files.item(0));
-        return this.apiService.uploadGenericFile(files.item(0));
+        return this.apiService.uploadGenericFile(files.item(0))
+            .pipe(take(1));
     }
 
     uploadAboutInfo() {
         this.helperService.showActivityIndicatorWithObservable(
             this.apiService.addAboutData(new AboutInfo(this.aboutContent, this.profileImgName)),
             () => {
-                console.log('done');
                 this.imgUrl = this.apiService.fileURL(this.profileImgName);
             }
         );

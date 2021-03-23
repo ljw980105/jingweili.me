@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {ApiService} from '../../services/api.service';
 import {AnimationOptions} from 'ngx-lottie';
-import {last} from 'rxjs/operators';
 
 @Component({
     selector: 'app-navigator',

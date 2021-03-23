@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {AdminHelperService} from '../admin-helper.service';
 import {multipleFilesFromEvent} from '../../models/Global';
+import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
 
 @Component({
     selector: 'app-batch-file-uploader',

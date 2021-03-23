@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {AdminHelperService} from '../admin-helper.service';
 import {Observable} from 'rxjs';
 import {AppsPageData} from '../../models/pure-models/AppsPageData';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-edit-apps',
@@ -78,12 +79,14 @@ export class EditAppsComponent implements OnInit {
 
     exportAppsJSON() {
         this.apiService.getAppsPageData()
+            .pipe(take(1))
             .subscribe((data) => this.helperService.exportASJSONWithData(data, 'AppsPageData.json'));
 
     }
 
     exportBeatslyticsJSON() {
         this.apiService.getBeatslyticsData()
+            .pipe(take(1))
             .subscribe((data) => this.helperService.exportASJSONWithData(data, 'BeatslyticsData.json'));
 
     }

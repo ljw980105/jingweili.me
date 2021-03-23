@@ -4,7 +4,7 @@ import {Subject} from 'rxjs';
 import {delay, filter, take, takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
-import {MemoryManagerComponent} from '../../minor-components/memory-manager/memory-manager.component';
+import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
 
 @Component({
     selector: 'app-home',

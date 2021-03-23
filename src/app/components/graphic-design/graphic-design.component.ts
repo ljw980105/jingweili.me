@@ -4,7 +4,7 @@ import {Title} from '@angular/platform-browser';
 import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 import {ApiService} from '../../services/api.service';
 import {take, takeUntil} from 'rxjs/operators';
-import {MemoryManagerComponent} from '../../minor-components/memory-manager/memory-manager.component';
+import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
 
 @Component({
     selector: 'app-graphic-design',
