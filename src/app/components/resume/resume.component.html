@@ -18,7 +18,7 @@
 <div id="ios-showoff" class="width-container">
     <h3 class="medium-text helvetica">Objective-C can only mean one thing -</h3>
     <h1 class="theme-color helvetica large-text">I'm a Kick-ass iOS Developer.</h1>
-    <div id="stats-showoff">
+    <div id="stats-showoff" *ngIf="data">
         <div id="stats-col-1" class="flex">
             <h1 class="large-text helvetica theme-color">{{data.appsWorkedOn}}</h1>
             <h3 class="medium-text helvetica">apps <br> worked on</h3>
@@ -42,10 +42,12 @@
             <span class="theme-color">Swift&nbsp;</span>
             <span style="color: dodgerblue">Objective-C</span>
         </h1>
-        <h3 class="helvetica small-text" *ngFor="let skill of data.iosSkills" style="padding: 0; margin: 0.2%">
-            <span>{{skill.name}}&nbsp;&nbsp;</span>
-            <span style="color: darkgrey">{{skill.details.join(", ")}}&nbsp;</span>
-        </h3>
+        <div *ngIf="data">
+            <h3 class="helvetica small-text"  *ngFor="let skill of data.iosSkills" style="padding: 0; margin: 0.2%">
+                <span>{{skill.name}}&nbsp;&nbsp;</span>
+                <span style="color: darkgrey">{{skill.details.join(", ")}}&nbsp;</span>
+            </h3>
+        </div>
         <h3 class="medium-text helvetica">View more details
             <a class="orange-underline-anchor" [routerLink]="['/apps']">here</a>.
         </h3>
@@ -86,7 +88,7 @@
                 <h3 class="medium-text helvetica-normal">years.</h3>
                 <br>
                 <h3 class="medium-text helvetica"> Here are my skill sets:</h3>
-                <div id="graphics-skills">
+                <div id="graphics-skills" *ngIf="data">
                     <div *ngFor="let graphicSkill of data.graphicSkills">
                         <h3 class="helvetica extra-small-text">{{graphicSkill.name}}</h3>
                         <hr style="background-color: lightgrey; height: 1px">

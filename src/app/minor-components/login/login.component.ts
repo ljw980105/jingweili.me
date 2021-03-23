@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {Router} from '@angular/router';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.apiService.loginWithPassword(this.passcode)
+            .pipe(take(1))
             .subscribe(() => {
                 this.router.navigateByUrl('/admin');
             }, (error: Error) => {

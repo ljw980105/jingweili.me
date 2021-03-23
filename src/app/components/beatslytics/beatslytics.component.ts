@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
 import {ApiService} from '../../services/api.service';
 import {BeatslyticsData} from '../../models/pure-models/BeatslyticsData';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-beatslytics',
@@ -21,6 +22,7 @@ export class BeatslyticsComponent implements OnInit {
 
     ngOnInit(): void {
         this.apiService.getBeatslyticsData()
+            .pipe(take(1))
             .subscribe(data => {
                 this.data = data;
                 this.metaService.addTag({

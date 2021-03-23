@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
 import {Subject} from 'rxjs';
-import {delay, filter} from 'rxjs/operators';
+import {delay, filter, take, takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {MemoryManagerComponent} from '../../minor-components/memory-manager/memory-manager.component';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends MemoryManagerComponent implements OnInit {
     adcAppDownloadLink = 'https://apps.apple.com/us/app/automatic-door-control/id1500529300';
     adcWebsite = 'https://rpiadc.com';
     scrollToSubject: Subject<[boolean, string]> = new Subject();
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
         private router: ActivatedRoute,
         private titleService: Title,
         private route: Router) {
+        super();
         titleService.setTitle('Hi, I\'m Jing');
     }
 
@@ -31,14 +33,17 @@ export class HomeComponent implements OnInit {
         this.scrollToSubject
             .pipe(filter(([scroll, id]) => scroll))
             .pipe(delay(50)) // need to delay to make sure components are added to DOM
+            .pipe(takeUntil(this.unsubscribe$))
             .subscribe(([scroll, id]) => this.scrollTo(id));
 
         this.router.queryParams
             .pipe(filter(params => params.scrollToId === 'contacts'))
+            .pipe(take(1))
             .subscribe(() => this.toggleContactsPage());
 
         this.router.queryParams
             .pipe(filter(params => params.scrollToId === 'about'))
+            .pipe(take(1))
             .subscribe(() => this.toggleAboutPage());
     }
 

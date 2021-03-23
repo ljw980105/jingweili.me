@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from '../../models/pure-models/Project';
 import {ApiService} from '../../services/api.service';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-projects',
@@ -17,6 +18,7 @@ export class ProjectsComponent implements OnInit {
 
     ngOnInit(): void {
         this.apiService.getProjects()
+            .pipe(take(1))
             .subscribe((projects) => {
                 const mid = Math.ceil(projects.length / 2.0);
                 this.projectsFirstColumn = projects.slice(0, mid);
