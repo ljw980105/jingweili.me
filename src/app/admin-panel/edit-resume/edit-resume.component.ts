@@ -6,6 +6,7 @@ import {Experience} from '../../models/pure-models/Experience';
 import {ResumeData} from '../../models/pure-models/ResumeData';
 import {GenericFeature} from '../../models/pure-models/GenericFeature';
 import {TextAndImage} from '../../models/pure-models/TextAndImage';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-edit-resume',
@@ -76,7 +77,9 @@ export class EditResumeComponent implements OnInit {
             this.apiService.getResume(),
             this.apiService.getCV(),
             this.apiService.getExperiencesData(),
-            this.apiService.getRemainingResumeData()])
+            this.apiService.getRemainingResumeData()]
+        )
+            .pipe(take(1))
             .subscribe(([resume, cv, exp, resumeData]) => {
                 this.resumeExists = resume.exists;
                 this.cvExists = cv.exists;

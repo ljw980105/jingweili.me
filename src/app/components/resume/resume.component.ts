@@ -4,7 +4,7 @@ import {ResumeData, WebSkill} from '../../models/pure-models/ResumeData';
 import {Title} from '@angular/platform-browser';
 import {Observable, of, Subject} from 'rxjs';
 import {Experience} from '../../models/pure-models/Experience';
-import {delay, elementAt, mergeMap} from 'rxjs/operators';
+import {delay, elementAt, mergeMap, take} from 'rxjs/operators';
 import {AnimationOptions} from 'ngx-lottie';
 import {fadeOut} from '../../models/Animations';
 
@@ -15,7 +15,7 @@ import {fadeOut} from '../../models/Animations';
     styleUrls: ['./resume.component.scss']
 })
 export class ResumeComponent implements OnInit {
-    data: ResumeData;
+    data: ResumeData = null;
     webSkillsFormatted: WebSkill[] = [];
     experiences: Experience[];
     webSkillsInVP = new Subject<Event>();
@@ -33,6 +33,7 @@ export class ResumeComponent implements OnInit {
 
     ngOnInit(): void {
         this.apiService.getResumeData()
+            .pipe(take(1))
             .subscribe(([data, resume, cv, experiences]) => {
                 this.data = data;
                 this.resumeURL = this.apiService.fileURL(resume.url);
@@ -46,7 +47,8 @@ export class ResumeComponent implements OnInit {
         this.tutorialSequence(
             this.webSkillsInVP,
             () => this.showWebSkillsTutorial = true,
-            () => this.showWebSkillsTutorial = false);
+            () => this.showWebSkillsTutorial = false
+        );
     }
 
     webSkillsInViewport(event: Event) {
@@ -61,6 +63,7 @@ export class ResumeComponent implements OnInit {
                 return of(e);
             }))
             .pipe(delay(2000))
+            .pipe(take(1))
             .subscribe(afterDelay);
     }
 

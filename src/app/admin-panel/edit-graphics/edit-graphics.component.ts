@@ -4,7 +4,8 @@ import {GraphicProject} from '../../models/pure-models/GraphicProject';
 import {Observable, Subject} from 'rxjs';
 import {AdminHelperService} from '../admin-helper.service';
 import {rotate45Degrees, shrinkOrExpand} from '../../models/Animations';
-import {mergeMap} from 'rxjs/operators';
+import {mergeMap, take, takeUntil} from 'rxjs/operators';
+import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
 
 @Component({
     selector: 'app-edit-graphics',
@@ -12,7 +13,7 @@ import {mergeMap} from 'rxjs/operators';
     animations: [rotate45Degrees, shrinkOrExpand],
     styleUrls: ['./edit-graphics.component.scss']
 })
-export class EditGraphicsComponent implements OnInit {
+export class EditGraphicsComponent extends MemoryManagerComponent implements OnInit {
     rectangleImageName: string;
     squareImageName: string;
     name: string;
@@ -35,11 +36,13 @@ export class EditGraphicsComponent implements OnInit {
     textAreaContents = '';
 
     constructor(public apiService: ApiService, private helperService: AdminHelperService) {
+        super();
     }
 
     ngOnInit(): void {
         this.refresher
             .pipe(mergeMap(() => this.apiService.getGraphicsProjects()))
+            .pipe(takeUntil(this.unsubscribe$))
             .subscribe((projects) => {
                 this.graphicProjects = projects;
             });
@@ -69,7 +72,9 @@ export class EditGraphicsComponent implements OnInit {
                 this.squareImageName,
                 this.url
             )
-        ).subscribe(() => {
+        )
+            .pipe(take(1))
+            .subscribe(() => {
             this.name = this.description = this.squareImageName = this.rectangleImageName = this.url = '';
             this.refreshProjects();
         });

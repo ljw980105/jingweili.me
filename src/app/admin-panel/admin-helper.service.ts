@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {ActivityIndicatorComponent} from './activity-indicator/activity-indicator.component';
 import {DialogSize} from './admin-panel-common';
 import {saveAs} from 'file-saver';
+import {take} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +19,8 @@ export class AdminHelperService {
         argument: Observable<any>,
         completion: () => void = () => {},
         size: DialogSize = DialogSize.dialog,
-        disableClose = true) {
+        disableClose = true
+    ) {
         const dialogConfig = new MatDialogConfig();
         // The user can't close the dialog by clicking outside its body
         dialogConfig.disableClose = disableClose;
@@ -29,6 +31,7 @@ export class AdminHelperService {
         // https://material.angular.io/components/dialog/overview
         const modalDialog = this.matDialog.open(ActivityIndicatorComponent, dialogConfig);
         modalDialog.afterClosed()
+            .pipe(take(1))
             .subscribe(completion);
     }
 

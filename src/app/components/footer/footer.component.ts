@@ -4,6 +4,8 @@ import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 import {NameAndURL} from '../../models/pure-models/NameAndURL';
 import {ApiService} from '../../services/api.service';
 import {Observable} from 'rxjs';
+import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'app-footer',
@@ -12,7 +14,7 @@ import {Observable} from 'rxjs';
     styleUrls: ['./footer.component.scss']
 })
 
-export class FooterComponent implements OnInit, AfterViewInit {
+export class FooterComponent extends MemoryManagerComponent implements OnInit, AfterViewInit {
     @Input() showTopBorder: boolean;
     @Input() theme = 'light';
 
@@ -34,6 +36,7 @@ export class FooterComponent implements OnInit, AfterViewInit {
     simplifiedGraphics: Observable<NameAndURL[]>;
 
     constructor(private elementRef: ElementRef, private apiService: ApiService) {
+        super();
         this.year = `${(new Date()).getFullYear()}`;
     }
 
@@ -60,12 +63,14 @@ export class FooterComponent implements OnInit, AfterViewInit {
         }
 
         this.widthObservable.lessThanWidth
+            .pipe(takeUntil(this.unsubscribe$))
             .subscribe(() => {
                 this.minimizedVersionShown = true;
                 this.expandEverything(false);
             });
 
         this.widthObservable.moreThanWidth
+            .pipe(takeUntil(this.unsubscribe$))
             .subscribe(() => {
                 this.minimizedVersionShown = false;
                 this.expandEverything(true);

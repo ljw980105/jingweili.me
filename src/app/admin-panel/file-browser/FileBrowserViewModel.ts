@@ -1,7 +1,7 @@
 import {FileToBrowse} from '../../models/pure-models/FileToBrowse';
-import {BehaviorSubject, Observable, Subject, zip} from 'rxjs';
+import {BehaviorSubject, Observable, Subject, Subscription, zip} from 'rxjs';
 import {DirectoryInfo} from '../../models/files/DirectoryInfo';
-import {first, mergeMap, share} from 'rxjs/operators';
+import {first, mergeMap, share, take, takeUntil} from 'rxjs/operators';
 import {ApiService} from '../../services/api.service';
 import {AdminHelperService} from '../admin-helper.service';
 
@@ -11,8 +11,9 @@ export class FileBrowserViewModel {
     refresher = new Subject<any>();
     directories = ['public', 'private'];
     currentDirectory = this.directories[0];
-    private fileRefreshed: Observable<[FileToBrowse[], DirectoryInfo]>;
     fileFirstRefreshed: Observable<[FileToBrowse[], DirectoryInfo]>;
+    private fileRefreshed: Observable<[FileToBrowse[], DirectoryInfo]>;
+    private unsubscribe$: Subject<void> = new Subject();
 
     // keys: one of [name, created, size, type]
     // values: (activated: bool, order: bool)
@@ -28,12 +29,14 @@ export class FileBrowserViewModel {
             )))
             .pipe(share());
 
-        this.fileRefreshed.subscribe(([files, info]) => {
+        this.fileRefreshed
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(([files, info]) => {
                 this.files = files;
                 this.directoryInfo = info;
             });
 
-        this.fileFirstRefreshed = this.fileRefreshed.pipe(first());
+        this.fileFirstRefreshed = this.fileRefreshed.pipe(take(1));
     }
 
     ascendingSortMethods: { [key: string]: (file1: FileToBrowse, file2: FileToBrowse) => number} = {
@@ -106,8 +109,8 @@ export class FileBrowserViewModel {
         );
     }
 
-    openFileNamed(name: string) {
-        this.apiService.streamFileNamed(name, this.currentDirectory)
+    openFileNamed(name: string): Subscription {
+        return this.apiService.streamFileNamed(name, this.currentDirectory)
             .subscribe((file) => {
                 const fileURL = URL.createObjectURL(file);
                 window.open(fileURL, '_blank');
@@ -123,5 +126,10 @@ export class FileBrowserViewModel {
             return root + 'imageIcon.png';
         }
         return root + 'otherImageIcon.png';
+    }
+
+    deallocate() {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }

@@ -16,6 +16,7 @@ import { BatchFileUploaderComponent } from './batch-file-uploader/batch-file-upl
 import { EditAppsComponent } from './edit-apps/edit-apps.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component';
 import {NgBytesPipeModule} from 'angular-pipes';
+import {SharedModule} from '../shared/shared.module';
 
 export function getHighlightLanguages() {
     return {
@@ -26,7 +27,6 @@ export function getHighlightLanguages() {
 export function playerFactory() {
     return import('lottie-web');
 }
-
 
 @NgModule({
     declarations: [
@@ -47,7 +47,8 @@ export function playerFactory() {
         HighlightModule,
         LottieModule.forRoot({player: playerFactory}),
         MatDialogModule,
-        NgBytesPipeModule
+        NgBytesPipeModule,
+        SharedModule
     ],
     providers: [
         {

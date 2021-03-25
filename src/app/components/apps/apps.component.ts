@@ -5,6 +5,7 @@ import {AppOrSkill} from '../../models/pure-models/AppOrSkill';
 import {sliceIntoTuplesOfTwoFrom} from '../../models/Global';
 import {Experience} from '../../models/pure-models/Experience';
 import {forkJoin} from 'rxjs';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-apps',
@@ -24,7 +25,9 @@ export class AppsComponent implements OnInit {
         forkJoin([
             this.apiService.getAppsPageData(),
             this.apiService.getExperiencesData()
-        ]).subscribe(([result, experiences]) => {
+        ])
+            .pipe(take(1))
+            .subscribe(([result, experiences]) => {
                 const temp = result.apps;
                 const temp2 = result.skills;
                 if (temp.length % 2 === 1) {

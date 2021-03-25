@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {AnimationOptions} from 'ngx-lottie';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Observable, of} from 'rxjs';
-import {catchError, delay, filter, mergeMap, share} from 'rxjs/operators';
+import {catchError, delay, filter, mergeMap, share, take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-activity-indicator',
@@ -34,6 +34,7 @@ export class ActivityIndicatorComponent implements OnInit {
 
         shared
             .pipe(filter((s) => s !== 'Failed'))
+            .pipe(take(1))
             .subscribe(() => this.dialog.close());
 
         shared
@@ -45,6 +46,7 @@ export class ActivityIndicatorComponent implements OnInit {
                 return of(s);
             }))
             .pipe(delay(3000))
+            .pipe(take(1))
             .subscribe(() => this.dialog.close());
 
     }

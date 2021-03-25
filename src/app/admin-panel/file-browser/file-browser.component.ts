@@ -1,25 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {FileToBrowse} from '../../models/pure-models/FileToBrowse';
 import {AdminHelperService} from '../admin-helper.service';
 import {FileBrowserViewModel} from './FileBrowserViewModel';
-import {first} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
+import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
 
 @Component({
     selector: 'app-file-browser',
     templateUrl: './file-browser.component.html',
     styleUrls: ['./file-browser.component.scss']
 })
-export class FileBrowserComponent implements OnInit {
+export class FileBrowserComponent extends MemoryManagerComponent implements OnInit, OnDestroy {
     viewModel: FileBrowserViewModel;
     sortingTable: {[key: string]: [boolean, boolean]} = {};
 
-    constructor(public apiService: ApiService, private helperService: AdminHelperService) {
+    constructor(public apiService: ApiService, helperService: AdminHelperService) {
+        super();
         this.viewModel = new FileBrowserViewModel(apiService, helperService);
     }
 
     ngOnInit(): void {
         this.viewModel.sortingTable
+            .pipe(takeUntil(this.unsubscribe$))
             .subscribe((table) => {
                 this.sortingTable = table;
             });
@@ -28,6 +31,11 @@ export class FileBrowserComponent implements OnInit {
 
         this.viewModel.fileFirstRefreshed
             .subscribe(() => this.sortFilesBy('name'));
+    }
+
+    ngOnDestroy() {
+        super.ngOnDestroy();
+        this.viewModel.deallocate();
     }
 
     deleteFile(file: FileToBrowse) {

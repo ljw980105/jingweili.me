@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -23,6 +22,7 @@ import { LoginComponent } from './minor-components/login/login.component';
 import {FormsModule} from '@angular/forms';
 import { TimelineBlockComponent } from './minor-components/timeline-block/timeline-block.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import {SharedModule} from './shared/shared.module';
 
 export function playerFactory() {
     return import('lottie-web');
@@ -44,7 +44,7 @@ export function playerFactory() {
         GraphicDesignComponent,
         LoginComponent,
         TimelineBlockComponent,
-        ProjectsComponent
+        ProjectsComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,7 +54,8 @@ export function playerFactory() {
         ScrollToModule.forRoot(),
         InViewportModule,
         LottieModule.forRoot({player: playerFactory}),
-        FormsModule
+        FormsModule,
+        SharedModule
     ],
     providers: [],
     bootstrap: [AppComponent]
