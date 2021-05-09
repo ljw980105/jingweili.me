@@ -36,7 +36,10 @@
         }, {
             "name": "\uD83D\uDCE6 Package Management",
             "details": ["CocoaPods", "Carthage", "Swift PM"]
-        } ,{
+        }, {
+            "name": "\uD83D\uDCA7 Server Side Swift",
+            "details": ["Vapor"]
+        }, {
             "name": "\uD83E\uDD37 Other",
             "details": ["LocalAuthentication", "Core Motion"]
         }

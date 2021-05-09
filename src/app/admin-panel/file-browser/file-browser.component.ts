@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {FileToBrowse} from '../../models/pure-models/FileToBrowse';
 import {AdminHelperService} from '../admin-helper.service';
@@ -11,7 +11,9 @@ import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager
     templateUrl: './file-browser.component.html',
     styleUrls: ['./file-browser.component.scss']
 })
-export class FileBrowserComponent extends MemoryManagerComponent implements OnInit, OnDestroy {
+export class FileBrowserComponent extends MemoryManagerComponent implements OnInit, OnDestroy, AfterViewInit {
+    @ViewChild('searchBar') searchBar: ElementRef;
+    searchBarText: string;
     viewModel: FileBrowserViewModel;
     sortingTable: {[key: string]: [boolean, boolean]} = {};
 
@@ -38,11 +40,16 @@ export class FileBrowserComponent extends MemoryManagerComponent implements OnIn
         this.viewModel.deallocate();
     }
 
+    ngAfterViewInit() {
+        this.viewModel.filterBySearchBarText(this.searchBar, this.unsubscribe$);
+    }
+
     deleteFile(file: FileToBrowse) {
         this.viewModel.deleteFile(file, () => this.refresh());
     }
 
     refresh() {
+        this.clearSearchBar();
         this.viewModel.refresh();
     }
 
@@ -56,5 +63,10 @@ export class FileBrowserComponent extends MemoryManagerComponent implements OnIn
 
     imageNameFor(file: FileToBrowse): string {
         return this.viewModel.imageNameFor(file.type);
+    }
+
+    clearSearchBar() {
+        this.viewModel.resetToOriginalFiles();
+        this.searchBarText = '';
     }
 }

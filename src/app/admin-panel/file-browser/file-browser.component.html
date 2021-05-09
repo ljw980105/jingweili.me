@@ -15,62 +15,69 @@
 </div>
 
 <div class="flex">
-    <table class="admin-section">
-        <tr class="file-browser-clickable">
-            <th class="helvetica" (click)="sortFilesBy('name')">
+    <div class="admin-section">
+        <div class="flex file-browser-search-bar">
+            <input #searchBar [(ngModel)]="searchBarText" type="text" placeholder="Search Files">
+            <button class="admin-button" (click)="clearSearchBar()">Clear</button>
+        </div>
+
+        <table class="file-browser-table">
+            <tr class="file-browser-clickable">
+                <th class="helvetica" (click)="sortFilesBy('name')">
                 <span class="flex">
                     <p class="clear-text-paddings">Name&nbsp;&nbsp;&nbsp;</p>
                     <img class="ml-auto"
                          *ngIf="sortingTable['name'][0]"
                          src="assets/images/admin/{{sortingTable['name'][1] ? 'up-caret.png' : 'down-caret.png'}}">
                 </span>
-            </th>
-            <th class="helvetica" (click)="sortFilesBy('type')">
+                </th>
+                <th class="helvetica" (click)="sortFilesBy('type')">
                 <span class="flex">
                     <p class="clear-text-paddings">Type&nbsp;&nbsp;&nbsp;</p>
                     <img class="ml-auto"
                          *ngIf="sortingTable['type'][0]"
                          src="assets/images/admin/{{sortingTable['type'][1] ? 'up-caret.png' : 'down-caret.png'}}">
                 </span>
-            </th>
-            <th class="helvetica" (click)="sortFilesBy('created')">
+                </th>
+                <th class="helvetica" (click)="sortFilesBy('created')">
                 <span class="flex">
                     <p class="clear-text-paddings">Created at &nbsp;&nbsp;&nbsp;</p>
                     <img class="ml-auto"
                          *ngIf="sortingTable['created'][0]"
                          src="assets/images/admin/{{sortingTable['created'][1] ? 'up-caret.png' : 'down-caret.png'}}">
                 </span>
-            </th>
-            <th class="helvetica" (click)="sortFilesBy('size')">
+                </th>
+                <th class="helvetica" (click)="sortFilesBy('size')">
                 <span class="flex">
                     <p class="clear-text-paddings">Size&nbsp;&nbsp;&nbsp;</p>
                     <img class="ml-auto"
                          *ngIf="sortingTable['size'][0]"
                          src="assets/images/admin/{{sortingTable['size'][1] ? 'up-caret.png' : 'down-caret.png'}}">
                 </span>
-            </th>
-            <th class="helvetica">Actions</th>
-        </tr>
-        <tr *ngFor="let file of this.viewModel.files">
-            <th class="helvetica-normal flex">
-                <img class="file-browser-icon" src="{{imageNameFor(file)}}">
-                &nbsp;&nbsp;{{file.name}}
-            </th>
-            <th class="helvetica-normal">{{file.type}}</th>
-            <th class="helvetica-normal">{{file.createdDate | date: 'shortDate'}}</th>
-            <th class="helvetica-normal">{{file.fileSize | bytes}}</th>
-            <th class="helvetica-normal file-browser-button-style"
-                (click)="openFileNamed(file.name)"
-                *ngIf="this.viewModel.currentDirectory === 'private'"
-            >View</th>
-            <th class="helvetica-normal file-browser-button-style" *ngIf="this.viewModel.currentDirectory === 'public'">
-                <a href="{{apiService.fileURL(file.name)}}" target="_blank">View</a>
-            </th>
-            <th class="helvetica-normal file-browser-button-style" (click)="deleteFile(file)">
-                Delete
-            </th>
-        </tr>
-    </table>
+                </th>
+                <th class="helvetica">Actions</th>
+            </tr>
+            <tr *ngFor="let file of this.viewModel.files">
+                <th class="helvetica-normal flex">
+                    <img class="file-browser-icon" src="{{imageNameFor(file)}}">
+                    &nbsp;&nbsp;{{file.name}}
+                </th>
+                <th class="helvetica-normal">{{file.type}}</th>
+                <th class="helvetica-normal">{{file.createdDate | date: 'shortDate'}}</th>
+                <th class="helvetica-normal">{{file.fileSize | bytes}}</th>
+                <th class="helvetica-normal file-browser-button-style"
+                    (click)="openFileNamed(file.name)"
+                    *ngIf="this.viewModel.currentDirectory === 'private'"
+                >View</th>
+                <th class="helvetica-normal file-browser-button-style" *ngIf="this.viewModel.currentDirectory === 'public'">
+                    <a href="{{apiService.fileURL(file.name)}}" target="_blank">View</a>
+                </th>
+                <th class="helvetica-normal file-browser-button-style" (click)="deleteFile(file)">
+                    Delete
+                </th>
+            </tr>
+        </table>
+    </div>
 
     <app-batch-file-uploader
         style="margin-left: 30px; height: 80px;"
