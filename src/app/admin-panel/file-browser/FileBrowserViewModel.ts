@@ -1,12 +1,14 @@
 import {FileToBrowse} from '../../models/pure-models/FileToBrowse';
-import {BehaviorSubject, Observable, Subject, Subscription, zip} from 'rxjs';
+import {BehaviorSubject, fromEvent, Observable, Subject, Subscription, zip} from 'rxjs';
 import {DirectoryInfo} from '../../models/files/DirectoryInfo';
-import {first, mergeMap, share, take, takeUntil} from 'rxjs/operators';
+import {map, mergeMap, share, take, takeUntil} from 'rxjs/operators';
 import {ApiService} from '../../services/api.service';
 import {AdminHelperService} from '../admin-helper.service';
+import {ElementRef} from '@angular/core';
 
 export class FileBrowserViewModel {
     files: FileToBrowse[] = [];
+    originalFiles: FileToBrowse[] = [];
     directoryInfo = new DirectoryInfo();
     refresher = new Subject<any>();
     directories = ['public', 'private'];
@@ -33,6 +35,7 @@ export class FileBrowserViewModel {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(([files, info]) => {
                 this.files = files;
+                this.originalFiles = files;
                 this.directoryInfo = info;
             });
 
@@ -131,5 +134,24 @@ export class FileBrowserViewModel {
     deallocate() {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
+    }
+
+    filterBySearchBarText(target: ElementRef, $unsubscribe: Subject<void>): Subscription {
+        return fromEvent<KeyboardEvent>(target.nativeElement, 'keyup')
+            .pipe(map(x => (x.currentTarget as HTMLInputElement).value))
+            .pipe(takeUntil($unsubscribe))
+            .subscribe((val) => {
+                if (val.length === 0) {
+                    this.resetToOriginalFiles();
+                } else {
+                    this.files = this.originalFiles.filter(
+                        (file) => file.name.toLowerCase().includes(val.toLowerCase())
+                    );
+                }
+            });
+    }
+
+    resetToOriginalFiles() {
+        this.files = this.originalFiles;
     }
 }
