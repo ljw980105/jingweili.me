@@ -23,6 +23,8 @@ import {FormsModule} from '@angular/forms';
 import { TimelineBlockComponent } from './minor-components/timeline-block/timeline-block.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import {SharedModule} from './shared/shared.module';
+import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
+import {environment} from '../environments/environment.prod';
 
 export function playerFactory() {
     return import('lottie-web');
@@ -54,6 +56,7 @@ export function playerFactory() {
         ScrollToModule.forRoot(),
         InViewportModule,
         LottieModule.forRoot({player: playerFactory}),
+        NgxGoogleAnalyticsModule.forRoot(environment.GOOGLE_ANALYTICS_KEY),
         FormsModule,
         SharedModule
     ],

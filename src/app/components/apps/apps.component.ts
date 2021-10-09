@@ -6,6 +6,7 @@ import {sliceIntoTuplesOfTwoFrom} from '../../models/Global';
 import {Experience} from '../../models/pure-models/Experience';
 import {forkJoin} from 'rxjs';
 import {take} from 'rxjs/operators';
+import {GoogleAnalyticsService} from 'ngx-google-analytics';
 
 @Component({
     selector: 'app-apps',
@@ -17,7 +18,11 @@ export class AppsComponent implements OnInit {
     skills: [AppOrSkill, AppOrSkill][];
     experiences: Experience[];
 
-    constructor(private titleService: Title, public apiService: ApiService) {
+    constructor(
+        private titleService: Title,
+        public apiService: ApiService,
+        private gaService: GoogleAnalyticsService
+    ) {
         this.titleService.setTitle('Apps');
     }
 
@@ -40,6 +45,8 @@ export class AppsComponent implements OnInit {
                 this.skills = sliceIntoTuplesOfTwoFrom(temp2);
                 this.experiences = experiences.filter(exp => exp.special === 'for apps');
             });
+
+        this.gaService.pageView('/apps');
     }
 
 }

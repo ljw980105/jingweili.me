@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Project} from '../../models/pure-models/Project';
 import {ApiService} from '../../services/api.service';
 import {take} from 'rxjs/operators';
+import {GoogleAnalyticsService} from 'ngx-google-analytics';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-projects',
@@ -13,7 +15,12 @@ export class ProjectsComponent implements OnInit {
     projectsFirstColumn: Project[] = [];
     projectsSecondColumn: Project[] = [];
 
-    constructor(public apiService: ApiService) {
+    constructor(
+        public apiService: ApiService,
+        private gaService: GoogleAnalyticsService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle('Projects');
     }
 
     ngOnInit(): void {
@@ -25,5 +32,7 @@ export class ProjectsComponent implements OnInit {
                 this.projectsSecondColumn = projects.slice(mid, projects.length);
                 this.dataReady = true;
             });
+
+        this.gaService.pageView('/projects');
     }
 }

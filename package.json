@@ -2,12 +2,13 @@
   "name": "jingweili-me",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+      "ng": "ng",
+      "start": "ng serve",
+      "build": "ng build",
+      "test": "ng test",
+      "lint": "ng lint",
+      "e2e": "ng e2e",
+      "config": "ts-node ./setenv.ts"
   },
   "private": true,
   "dependencies": {
@@ -24,13 +25,16 @@
     "@angular/router": "~11.1.0",
     "@nicky-lenaers/ngx-scroll-to": "^9.0.0",
     "angular-pipes": "^10.0.0",
+    "dotenv": "^10.0.0",
     "file-saver": "^2.0.2",
     "lottie-web": "^5.6.10",
     "ng-in-viewport": "^6.1.0",
+    "ngx-google-analytics": "^11.2.1",
     "ngx-highlightjs": "^4.1.0-beta",
     "ngx-lottie": "^6.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
+    "yargs": "^17.2.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
