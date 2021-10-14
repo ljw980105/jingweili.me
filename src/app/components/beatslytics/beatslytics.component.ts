@@ -3,6 +3,7 @@ import {Meta, Title} from '@angular/platform-browser';
 import {ApiService} from '../../services/api.service';
 import {BeatslyticsData} from '../../models/pure-models/BeatslyticsData';
 import {take} from 'rxjs/operators';
+import {GoogleAnalyticsService} from 'ngx-google-analytics';
 
 @Component({
     selector: 'app-beatslytics',
@@ -16,7 +17,9 @@ export class BeatslyticsComponent implements OnInit {
     constructor(
         private metaService: Meta,
         private titleSerivce: Title,
-        private apiService: ApiService) {
+        private apiService: ApiService,
+        private gaService: GoogleAnalyticsService
+    ) {
         titleSerivce.setTitle('Beatslytics');
     }
 
@@ -30,6 +33,8 @@ export class BeatslyticsComponent implements OnInit {
                     content: data.metaAppStoreContent
                 }, false);
             });
+
+        this.gaService.pageView('/beatslytics');
     }
 
 }

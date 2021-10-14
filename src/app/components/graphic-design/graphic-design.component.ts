@@ -5,6 +5,7 @@ import {WidthBreakpointObserver} from '../../models/WidthBreakpointObserver';
 import {ApiService} from '../../services/api.service';
 import {take, takeUntil} from 'rxjs/operators';
 import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
+import {GoogleAnalyticsService} from 'ngx-google-analytics';
 
 @Component({
     selector: 'app-graphic-design',
@@ -19,7 +20,11 @@ export class GraphicDesignComponent extends MemoryManagerComponent implements On
     showRectangleImage = false;
     dataReady = false;
 
-    constructor(private titleService: Title, public apiService: ApiService) {
+    constructor(
+        private titleService: Title,
+        public apiService: ApiService,
+        private gaService: GoogleAnalyticsService
+    ) {
         super();
         this.titleService.setTitle('Graphic Design');
     }
@@ -49,6 +54,7 @@ export class GraphicDesignComponent extends MemoryManagerComponent implements On
                     });
             });
 
+        this.gaService.pageView('/graphic-design');
     }
 
     hoveredOnIndex(index: number) {

@@ -5,6 +5,7 @@ import {delay, filter, take, takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
+import {GoogleAnalyticsService} from 'ngx-google-analytics';
 
 @Component({
     selector: 'app-home',
@@ -24,7 +25,9 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit {
         private scrollToService: ScrollToService,
         private router: ActivatedRoute,
         private titleService: Title,
-        private route: Router) {
+        private route: Router,
+        private gaService: GoogleAnalyticsService
+    ) {
         super();
         titleService.setTitle('Hi, I\'m Jing');
     }
@@ -45,6 +48,8 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit {
             .pipe(filter(params => params.scrollToId === 'about'))
             .pipe(take(1))
             .subscribe(() => this.toggleAboutPage());
+
+        this.gaService.pageView('/home');
     }
 
     togglePCSetup() {

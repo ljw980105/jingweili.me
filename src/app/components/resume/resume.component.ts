@@ -7,6 +7,7 @@ import {Experience} from '../../models/pure-models/Experience';
 import {delay, elementAt, mergeMap, take} from 'rxjs/operators';
 import {AnimationOptions} from 'ngx-lottie';
 import {fadeOut} from '../../models/Animations';
+import {GoogleAnalyticsService} from 'ngx-google-analytics';
 
 @Component({
     selector: 'app-resume',
@@ -27,7 +28,11 @@ export class ResumeComponent implements OnInit {
         path: 'assets/animations/swipe-hint-animation.json',
     };
 
-    constructor(public apiService: ApiService, private titleService: Title) {
+    constructor(
+        public apiService: ApiService,
+        private titleService: Title,
+        private gaService: GoogleAnalyticsService
+    ) {
         titleService.setTitle('Resume');
     }
 
@@ -49,6 +54,8 @@ export class ResumeComponent implements OnInit {
             () => this.showWebSkillsTutorial = true,
             () => this.showWebSkillsTutorial = false
         );
+
+        this.gaService.pageView('/resume');
     }
 
     webSkillsInViewport(event: Event) {

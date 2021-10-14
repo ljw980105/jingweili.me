@@ -24,7 +24,8 @@ export function multipleFilesFromEvent(event: any): File[] {
 // Converts the error thrown in tryBlock into an error of the Observable
 export function tryCatchWithObservable<T1, T2>(
     tryBlock: () => T1,
-    observable: (arg: T1) => Observable<T2>): Observable<T2> {
+    observable: (arg: T1) => Observable<T2>
+): Observable<T2> {
     try {
         return observable(tryBlock());
     } catch (error) {
