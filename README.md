@@ -2,7 +2,7 @@
   <img width="400" height="300" src="https://jingweili.me/assets/images/resume/logo-objc.png">
 </p>
 
-[![Build Status](https://travis-ci.org/ljw980105/jingweili.me.svg?branch=master)](https://travis-ci.org/ljw980105/jingweili.me)
+[![Build](https://github.com/ljw980105/jingweili.me/workflows/Build/badge.svg)](https://github.com/ljw980105/jingweili.me/actions)
 
 # Personal Website
 
