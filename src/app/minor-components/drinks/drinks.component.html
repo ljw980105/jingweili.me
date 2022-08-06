@@ -1,0 +1,8 @@
+<div class="width-container">
+    <h1 class="mohave">COCKTAILS</h1>
+
+    <div *ngFor="let cocktail of cocktails">
+        <h2 class="mohave">{{cocktail.name | uppercase}}</h2>
+        <p class="helvetica">{{cocktail.description}}</p>
+    </div>
+</div>

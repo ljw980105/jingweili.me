@@ -8,6 +8,7 @@ import {GraphicDesignComponent} from './components/graphic-design/graphic-design
 import {LoginComponent} from './minor-components/login/login.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {ProjectsComponent} from './components/projects/projects.component';
+import {DrinksComponent} from './minor-components/drinks/drinks.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     {path: 'graphic-design', component: GraphicDesignComponent},
     {path: 'login', component: LoginComponent},
     {path: 'projects', component: ProjectsComponent},
+    {path: 'drinks', component: DrinksComponent},
     {
         path: 'admin',
         loadChildren: () => import('./admin-panel/admin-panel-components.module').then(m => m.AdminPanelComponentsModule),
