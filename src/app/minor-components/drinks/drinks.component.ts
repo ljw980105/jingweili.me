@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NameAndDescription} from '../../models/pure-models/NameAndDescription';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-drinks',
@@ -9,7 +10,7 @@ import {NameAndDescription} from '../../models/pure-models/NameAndDescription';
 export class DrinksComponent implements OnInit {
     cocktails: NameAndDescription[];
 
-    constructor() {
+    constructor(private titleService: Title) {
         this.cocktails = [
             new NameAndDescription(
                 'Aperol Spritz',
@@ -32,18 +33,23 @@ export class DrinksComponent implements OnInit {
                 'Tequila, Lime Juice, Triple Sec'
             ),
             new NameAndDescription(
-                'Rum Cosmopolitan',
-                'Rum, Cranberry Juice, Lime Juice, Triple Sec'
+                'Cosmopolitan',
+                'Citron Vodka, Cranberry Juice, Lime Juice, Triple Sec'
+            ),
+            new NameAndDescription(
+                'Sex on the Beach',
+                'Vodka, Peach Schnapps, Cranberry Juice, Orange Juice'
+            ),
+            new NameAndDescription(
+                'Fuzzy Navel',
+                'Peach Schnapps, Orange Juice'
             ),
             new NameAndDescription(
                 'Aperol Negroni',
                 'Gin, Aperol, Sweet Vermouth'
-            ),
-            new NameAndDescription(
-                'Boulevardier',
-                'Whiskey, Aperol, Sweet Vermouth'
             )
         ];
+        titleService.setTitle('Drinks Menu');
     }
 
     ngOnInit(): void {
