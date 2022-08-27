@@ -25,6 +25,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import {SharedModule} from './shared/shared.module';
 import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
 import {environment} from '../environments/environment.prod';
+import { DrinksComponent } from './minor-components/drinks/drinks.component';
 
 export function playerFactory() {
     return import('lottie-web');
@@ -47,6 +48,7 @@ export function playerFactory() {
         LoginComponent,
         TimelineBlockComponent,
         ProjectsComponent,
+        DrinksComponent,
     ],
     imports: [
         BrowserModule,
