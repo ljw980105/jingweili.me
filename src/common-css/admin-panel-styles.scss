@@ -1,3 +1,5 @@
+$admin-bg-gray: rgb(240, 240, 240);
+
 input[type=text] {
     width: 100%;
     padding: 8px 8px;
@@ -83,7 +85,7 @@ label, textarea, input {
 }
 
 .admin-single-project {
-    background-color: rgb(240, 240, 240);
+    background-color: $admin-bg-gray;
     padding: 10px 15px;
     border-radius: 10px;
     display: flex;

@@ -16,6 +16,7 @@ export class NavigatorComponent implements OnInit, OnDestroy {
         'edit-home': false,
         'edit-projects': false,
         'edit-apps': false,
+        'edit-drinks': false,
         'browse-files': false
     };
 
