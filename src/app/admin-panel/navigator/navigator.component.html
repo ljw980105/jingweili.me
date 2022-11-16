@@ -36,6 +36,12 @@
                [routerLinkActive]="'active'">Apps
             </a>
         </div>
+        <div [ngClass]="{'highlighted': highlights['edit-drinks']}">
+            <a (click)="highlightComponent('edit-drinks')"
+               class="helvetica anchor-style"
+               [routerLink]="['edit-drinks']"
+               [routerLinkActive]="'active'"> Drinks</a>
+        </div>
         <div [ngClass]="{'highlighted': highlights['browse-files']}">
             <a (click)="highlightComponent('browse-files')"
                class="helvetica anchor-style"

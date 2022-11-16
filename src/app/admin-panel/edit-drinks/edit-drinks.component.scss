@@ -1,0 +1,25 @@
+table {
+    margin: 0 0 1% 1%;
+    width: 98%;
+    border-collapse: collapse;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+$tableGray: rgb(240, 240, 240);
+
+th {
+    background-color: $tableGray;
+}
+
+tr:nth-child(odd) {
+    background-color: $tableGray;
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+}

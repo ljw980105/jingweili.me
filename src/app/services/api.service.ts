@@ -18,6 +18,7 @@ import {tryCatchWithObservable} from '../models/Global';
 import {NameAndURL} from '../models/pure-models/NameAndURL';
 import {FileToBrowse} from '../models/pure-models/FileToBrowse';
 import {DirectoryInfo} from '../models/files/DirectoryInfo';
+import {Drinks} from '../models/pure-models/Drinks';
 
 @Injectable({
     providedIn: 'root'
@@ -248,6 +249,16 @@ export class ApiService {
         const limitStr = limit !== null ? `?limit=${limit}` : '';
         return this.http.get<NameAndURL[]>(`${this.apiRoot}api/projects/simplified${limitStr}`)
             .pipe(catchError(() => of([])));
+    }
+
+    // drinks
+    getDrinks(): Observable<Drinks> {
+        return this.http.get<Drinks>(`${this.apiRoot}api/drinks`)
+            .pipe(catchError(() => of(new Drinks([]))));
+    }
+
+    addDrinks(data: string): Observable<ServerResponse> {
+        return this.addJSONToEndPoint(`${this.apiRoot}api/drinks`, data);
     }
 
     private authHeaders() {
