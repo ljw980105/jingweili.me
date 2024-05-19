@@ -15,7 +15,6 @@ import {AdminHelperService} from './admin-helper.service';
 import { BatchFileUploaderComponent } from './batch-file-uploader/batch-file-uploader.component';
 import { EditAppsComponent } from './edit-apps/edit-apps.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component';
-import {NgBytesPipeModule} from 'angular-pipes';
 import {SharedModule} from '../shared/shared.module';
 import { EditDrinksComponent } from './edit-drinks/edit-drinks.component';
 
@@ -49,7 +48,6 @@ export function playerFactory() {
         HighlightModule,
         LottieModule.forRoot({player: playerFactory}),
         MatDialogModule,
-        NgBytesPipeModule,
         SharedModule
     ],
     providers: [
