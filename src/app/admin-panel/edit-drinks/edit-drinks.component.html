@@ -1,0 +1,32 @@
+<h3 class="mohave admin-header">DRINKS</h3>
+
+<div class="admin-section flex">
+    <div class="left-half">
+        <table *ngIf="dataReady" class="helvetica">
+            <tr>
+                <th>Name</th>
+                <th>Ingredients</th>
+            </tr>
+            <tr *ngFor="let drink of drinks">
+                <td>{{drink.name}}</td>
+                <td>{{drink.description}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="right-half">
+        <h3 class="helvetica">JSON Spec</h3>
+        <div>
+                <pre class="minimal-top-spacing">
+                    <code [highlight]="jsonSpec"></code>
+                </pre>
+        </div>
+
+        <div>
+            <h3 class="helvetica">Submit JSON</h3>
+            <label>
+                <textarea class="admin-textarea" [(ngModel)]="textAreaContents"></textarea>
+            </label>
+            <button (click)="submitViaJSON()">Submit</button>
+        </div>
+    </div>
+</div>

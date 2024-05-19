@@ -1,16 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {NameAndDescription} from '../../models/pure-models/NameAndDescription';
 import {Title} from '@angular/platform-browser';
+import {ApiService} from '../../services/api.service';
+import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'app-drinks',
     templateUrl: './drinks.component.html',
     styleUrls: ['./drinks.component.scss']
 })
-export class DrinksComponent implements OnInit {
-    cocktails: NameAndDescription[];
+export class DrinksComponent extends MemoryManagerComponent implements OnInit {
+    cocktails: NameAndDescription[] = [];
 
-    constructor(private titleService: Title) {
+    constructor(private titleService: Title, private apiService: ApiService) {
+        super();
+        /*
         this.cocktails = [
             new NameAndDescription(
                 'Aperol Spritz',
@@ -49,10 +54,16 @@ export class DrinksComponent implements OnInit {
                 'Gin, Aperol, Sweet Vermouth'
             )
         ];
+         */
         titleService.setTitle('Drinks Menu');
     }
 
     ngOnInit(): void {
+        this.apiService.getDrinks()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((drinks) => {
+                this.cocktails = drinks.drinks;
+            });
     }
 
 }

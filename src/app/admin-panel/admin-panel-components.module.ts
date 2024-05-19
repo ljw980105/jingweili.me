@@ -16,6 +16,7 @@ import { BatchFileUploaderComponent } from './batch-file-uploader/batch-file-upl
 import { EditAppsComponent } from './edit-apps/edit-apps.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component';
 import {SharedModule} from '../shared/shared.module';
+import { EditDrinksComponent } from './edit-drinks/edit-drinks.component';
 
 export function getHighlightLanguages() {
     return {
@@ -37,7 +38,8 @@ export function playerFactory() {
         ActivityIndicatorComponent,
         BatchFileUploaderComponent,
         EditAppsComponent,
-        FileBrowserComponent
+        FileBrowserComponent,
+        EditDrinksComponent
     ],
     imports: [
         CommonModule,

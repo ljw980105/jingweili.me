@@ -7,6 +7,7 @@ import {EditProjectsComponent} from './edit-projects/edit-projects.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
 import {EditGraphicsComponent} from './edit-graphics/edit-graphics.component';
 import {EditResumeComponent} from './edit-resume/edit-resume.component';
+import {EditDrinksComponent} from './edit-drinks/edit-drinks.component';
 
 const routes: Routes = [
     {
@@ -18,7 +19,8 @@ const routes: Routes = [
             {path: 'edit-projects', component: EditProjectsComponent},
             {path: 'edit-home', component: EditHomeComponent},
             {path: 'edit-graphics', component: EditGraphicsComponent},
-            {path: 'edit-resume', component: EditResumeComponent}
+            {path: 'edit-resume', component: EditResumeComponent},
+            {path: 'edit-drinks', component: EditDrinksComponent}
         ]
     },
 ];
