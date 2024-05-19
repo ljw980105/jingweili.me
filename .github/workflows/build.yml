@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '20.x'
       - run: npm install -g @angular/cli > /dev/null
-      - run: npm install
+      - run: npm install --legacy-peer-deps
       - run: ng build
 
   build_succeeded_notify:
