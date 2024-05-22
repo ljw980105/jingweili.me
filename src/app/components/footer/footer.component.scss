@@ -3,7 +3,7 @@
     height: 85px;
 }
 
-/*4 THE FOOTER*/
+/*For THE FOOTER*/
 @keyframes bounce {
     0% {transform: scale(1.0);}
     25% {transform: scale(1.1);}
@@ -33,19 +33,26 @@
     animation-fill-mode: forwards;
     -webkit-animation: bounce-leave 0.5s ;
     -webkit-animation-fill-mode: forwards;
-}
 
-#personal_logo:hover{
-    animation: bounce 0.5s ;
-    animation-fill-mode: forwards;
-    -webkit-animation: bounce 0.5s ;
-    -webkit-animation-fill-mode: forwards;
+    img {
+        transform: scale(2.5);
+        @include logo-size;
+    }
+
+    &:hover {
+        animation: bounce 0.5s ;
+        animation-fill-mode: forwards;
+        -webkit-animation: bounce 0.5s ;
+        -webkit-animation-fill-mode: forwards;
+    }
 }
 
 #footerx{
     display: flex;
     margin-top: 2%;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 
     h4 {
         font-size: 17px;
@@ -58,16 +65,30 @@
     }
 }
 
-/*h4 must be a direct descendant of footer */
-#standalone_footer {
-    font-family: Roboto;
-    font-size: 17px;
-    padding-bottom: 30px;
+#copyright-container {
+    h4 {
+        font-family: Helvetica;
+        font-size: 17px;
+        text-align: right;
+    }
 }
+
+.footer-width-container {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#logo-copyright {
+    display: flex;
+    padding: 0 19% 0 19%;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 #footer_container {
     background-color: transparent;
-    display: flex;
     margin-bottom: 0;
 }
 
@@ -98,13 +119,6 @@
 #graphics_footer{
     width: 50%;
 }
-
-#personal_logo img{
-    display: block;
-    margin: 0 auto;
-    @include logo-size;
-}
-
 
 #footerx a:link, #footerx a:visited {
     color: #888888;

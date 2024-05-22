@@ -6,7 +6,7 @@
 
 # Personal Website
 
-This is the personal website for Jing Wei Li, coded using Angular. website url: https://jingweili.me
+This is the personal website for Anderson Li, coded using Angular. website url: https://jingweili.me
 
 ## Website Features
 

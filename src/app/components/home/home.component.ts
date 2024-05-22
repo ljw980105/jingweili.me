@@ -29,7 +29,7 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit {
         private gaService: GoogleAnalyticsService
     ) {
         super();
-        titleService.setTitle('Hi, I\'m Jing');
+        titleService.setTitle('Hi, I\'m Anderson');
     }
 
     ngOnInit(): void {
