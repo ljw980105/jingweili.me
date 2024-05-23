@@ -1,5 +1,6 @@
+<div [ngStyle]="{'border-top': topBorderStyle}"></div>
+
 <div id="footer_container"
-     [ngStyle]="{'border-top': topBorderStyle}"
      [ngClass]="{'footer-width-container': !minimizedVersionShown}"
 >
 <!--    width container can cause issues when minimized. Hence only enable it when non-minimized -->
@@ -79,22 +80,17 @@
         </div>
     </div>
 
-    <div id="mobile_logo">
-        <img [ngStyle]="{'filter': logoInvertAmount}" src="assets/images/footer/logo2020White.png">
-    </div>
-
     <div id="logo-copyright">
         <div id="personal_logo" [routerLink]="['/']">
             <img
                 alt="Anderson Li's Logo"
-                src="assets/images/footer/logo2024.svg"
-                [ngStyle]="{'filter': logoInvertAmount}"
+                src="{{logoUrl}}"
             >
         </div>
         <div id="copyright-container">
             <h4
                 [ngStyle]="{'color': primaryFontColor}"
-            > &copy; Anderson Li 2017-{{year}}.<br/>Proudly Created with Angular</h4>
+            > &copy; Anderson Li 2017-{{year}}<br/>Proudly Created with Angular</h4>
         </div>
     </div>
 </div>

@@ -29,8 +29,8 @@ export class FooterComponent extends MemoryManagerComponent implements OnInit, A
     // color theme
     topBorderStyle: string;
     bgColor: string;
-    logoInvertAmount: string;
     primaryFontColor: string;
+    logoUrl: string;
 
     simplifiedProjects: Observable<NameAndURL[]>;
     simplifiedGraphics: Observable<NameAndURL[]>;
@@ -45,11 +45,11 @@ export class FooterComponent extends MemoryManagerComponent implements OnInit, A
         if (this.theme === 'light') {
             this.bgColor = 'white';
             this.primaryFontColor = 'black';
-            this.logoInvertAmount = 'invert(0)';
+            this.logoUrl = 'assets/images/footer/logo2024.svg';
         } else {
             this.bgColor = 'black';
             this.primaryFontColor = 'white';
-            this.logoInvertAmount = 'invert(100)';
+            this.logoUrl = 'assets/images/footer/logo2024White.svg';
         }
 
         this.simplifiedGraphics = this.apiService.getSimplifiedGraphicsProjects();
