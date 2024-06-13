@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, AfterViewInit, ViewChild} from '@angular/core';
 import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
 import {Subject} from 'rxjs';
 import {delay, filter, take, takeUntil} from 'rxjs/operators';
@@ -12,14 +12,16 @@ import {GoogleAnalyticsService} from 'ngx-google-analytics';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent extends MemoryManagerComponent implements OnInit {
-    adcAppDownloadLink = 'https://apps.apple.com/us/app/automatic-door-control/id1500529300';
-    adcWebsite = 'https://rpiadc.com';
+export class HomeComponent extends MemoryManagerComponent implements OnInit, AfterViewInit {
     scrollToSubject: Subject<[boolean, string]> = new Subject();
 
     showPCSetup = false;
     showAboutPage = false;
     showContacts = false;
+    @ViewChild('topCanvas', {read: ElementRef}) topCanvas: ElementRef;
+    @ViewChild('bottomCanvas', {read: ElementRef}) bottomCanvas: ElementRef;
+    // context1: CanvasRenderingContext2D;
+    fillColor = 'rgb(68,102,176)';
 
     constructor(
         private scrollToService: ScrollToService,
@@ -50,6 +52,43 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit {
             .subscribe(() => this.toggleAboutPage());
 
         this.gaService.pageView('/home');
+    }
+
+    ngAfterViewInit() {
+        this.drawTopCanvas();
+        this.drawBottomCanvas();
+    }
+
+    drawTopCanvas() {
+        const canvas = this.topCanvas.nativeElement;
+        const ctx = canvas.getContext('2d');
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = 20;
+        const width =  ctx.canvas.width;
+        ctx.fillStyle = this.fillColor;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, 20);
+        ctx.lineTo(width, 7);
+        ctx.lineTo(width, 0);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    drawBottomCanvas() {
+        const canvas = this.bottomCanvas.nativeElement;
+        const ctx = canvas.getContext('2d');
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = 20;
+        const width =  ctx.canvas.width;
+        ctx.fillStyle = this.fillColor;
+        ctx.beginPath();
+        ctx.moveTo(0, 13);
+        ctx.lineTo(0, 20);
+        ctx.lineTo(width, 20);
+        ctx.lineTo(width, 0);
+        ctx.closePath();
+        ctx.fill();
     }
 
     togglePCSetup() {

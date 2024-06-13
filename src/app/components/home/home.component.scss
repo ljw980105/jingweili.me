@@ -1,10 +1,12 @@
 $typical-margin: 11px;
 $neutral-card-padding: 25px;
-$single-height: 240px;
+$single-height: 200px;
+$neutral-card-width: 300px;
 $double-height: $single-height * 2 + $typical-margin;
 $custom-grey: rgb(242, 242, 242);
 $adc-red: rgb(245, 58, 41);
-$card-top: 30px;
+$card-top: 0px;
+$custom-blue: rgb(68, 102, 176);
 
 $single-height-mini: 200px;
 $double-height-mini: $single-height-mini * 2 + $typical-margin;
@@ -16,7 +18,7 @@ $double-height-mini: $single-height-mini * 2 + $typical-margin;
 
 @mixin zoom-fx($amount) {
     transition: all 0.3s ease-in-out;
-    transform:scale($amount, $amount);
+    transform: scale($amount, $amount);
 }
 
 @mixin underline($color , $top-bottom) {
@@ -48,51 +50,25 @@ body {
     margin: auto;
 }
 
-#main {
-    width: 50%;
-    margin-right: 60%;
-    margin-top: 8%;
-    margin-left: 5%;
+.typical-margin {
+    margin-right: $typical-margin;
+}
 
-    h1, h2, h4 {
-        color: white;
-    }
+#main {
+    display: flex;
+    justify-content: space-between;
 }
 
 #main-wrapper {
-    padding: 10% 0;
-    background-image: url("~src/assets/images/home/website-bg.jpg");
-    background-size: 100%;
+    padding: 1% 0 3% 0;
 }
 
-#intro {
-    & a {
-        color: white;
-        font-weight: bolder;
-        text-decoration: none;
-        @include underline(white, 35px);
-    }
-
-    & h1 {
-        font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
-        font-weight: bold;
-        font-size: 65px;
-        line-height: 70%;
-    }
-
-    & h2 {
-        font-size: 40px;
-        font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-        font-weight: 300;
-        line-height: 70%;
-    }
-
-    & h4 {
-        margin-top: -1%;
-        font-size: 28px;
-        font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-        font-weight: normal;
-    }
+.main-individual-img {
+    height: 500px;
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 .center_text {
@@ -101,14 +77,10 @@ body {
 }
 
 #social_media {
-    margin-top: 3%;
-    margin-left: -7%;
-
+    width: 230px;
     & a {
-        padding: 0 1.68%;
+        padding: 0 3%;
         & img {
-            filter: invert(100);
-
             &:hover {
                 @include zoom-fx(1.25);
             }
@@ -116,26 +88,26 @@ body {
     }
 }
 
-#gfx {
-    background-image: url("~src/assets/images/home/indexbg1x.jpg");
-    background-size: 150% auto;
-    text-align: center;
-    background-position: 50% 18%;
-    @include round-corner();
+#social_media_container {
+    display: flex;
+    justify-content: flex-end;
 }
 
-#apps {
-    background-image: url("~src/assets/images/apps/AppFolioBg.svg");
-    background-size: 250%;
-    text-align: center;
-    background-position: 20% 100%;
-    margin-bottom: $typical-margin;
-    @include round-corner();
+.column-1 {
+    display: flex;
 }
+
+.column-2 {
+    display: flex;
+}
+
 
 #wrapper {
     display: flex;
     margin-top: $card-top;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .orange-hover-fx {
@@ -164,76 +136,7 @@ body {
     }
 }
 
-#beatslytics {
-    background-image: url("~src/assets/images/beatslytics/Beatslytics-intro2.jpg");
-    background-position-x: -45px;
-    background-size: 140%;
-    text-align: center;
-    margin-bottom: $typical-margin;
-    @include round-corner();
-}
-
-#adc {
-    height: $double-height;
-    background-color: $adc-red;
-    @include round-corner();
-    background-image: url("~src/assets/images/home/adc.png");
-    background-size: 90%;
-    background-position: center top;
-    background-repeat: no-repeat;
-    position: relative;
-    margin-bottom: $typical-margin;
-
-    & a {
-        text-align: center;
-        color: white;
-        font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-        text-decoration: none;
-        &:hover, &:visited {
-           text-decoration: underline;
-        }
-    }
-}
-
-#adc-icons {
-    width: 80%;
-    padding: 0 10%;
-    display: flex;
-    position: absolute;
-    bottom: 30px;
-
-    div {
-        width: 30%;
-    }
-    img {
-        width: 70px;
-        height: 70px;
-    }
-}
-
-#bio {
-    height: $double-height;
-    background-position: center bottom;
-    background-image: url("~src/assets/images/home/jing-frc2017.jpg");
-    background-size: 180%;
-    @include round-corner();
-    position: relative;
-
-    p {
-        cursor: pointer;
-        position: absolute;
-        width: 100%;
-        text-align: center;
-        bottom: 50px;
-    }
-}
-
-#twitter-wrapper {
-    height: $double-height;
-}
-
 .middle-card-margin {
-    margin-top: $typical-margin;
     margin-bottom: $typical-margin;
 }
 
@@ -247,23 +150,28 @@ body {
 }
 
 .neutral-card {
+    width: $neutral-card-width;
     height: $single-height;
     background-color: $custom-grey;
-    margin: $typical-margin 0 0 0;
+    margin: $typical-margin $typical-margin 0 0;
     text-align: left;
     display: flex;
     @include round-corner();
 
     h1 {
-        margin-right: 10px;
+        margin-right: 15px;
         margin-left: auto;
     }
 
     p {
-        clear: both;
-        margin-top: 50px;
+        margin-top: 10px;
         cursor: pointer;
         margin-right: auto;
+        margin-left: 10px;
+    }
+
+    img {
+        width: 100px;
     }
 }
 
@@ -300,21 +208,8 @@ body {
         width: 60%;
     }
 
-    #gfx{
-        margin-right: 0;
-    }
-
-    #beatslytics, #gfx{
-        margin-bottom: 5px;
-    }
-
     .background-card, .neutral-card {
         height: $single-height-mini;
-    }
-
-    #adc, #bio, #twitter-wrapper {
-        height: $double-height-mini;
-        overflow: hidden;
     }
 }
 
@@ -332,15 +227,6 @@ body {
         background-size: 110%;
     }
 
-    #adc-icons {
-        img {
-            width: 50px;
-            height: 50px;
-        }
-        a {
-           font-size: 12px;
-        }
-    }
     #social_media {
         margin-left: -15%;
     }
@@ -350,15 +236,9 @@ body {
     #main {
         margin-top: $typical-margin;
     }
-    #bio {
-        background-size: 260%;
-    }
 }
 
 @media only screen and (max-width: 950px) {
-    #gfx, #beatslytics {
-        background-size: auto 100%;
-    }
     #main-wrapper {
         padding: 7% 0;
     }
@@ -366,10 +246,6 @@ body {
 }
 
 @media only screen and (max-width: 850px) {
-    #adc-icons {
-        width: 90%;
-        padding: 0 5%;
-    }
     #main-wrapper { background-size: 118%; }
 }
 
@@ -394,21 +270,8 @@ body {
         width: 100%;
         margin-right: 0;
     }
-    #gfx, #beatslytics {
-        background-size: 140%;
-    }
     #col-1, #col-2 {
         margin-bottom: $typical-margin;
-    }
-    #adc {
-        background-size: 60%;
-    }
-    #bio {
-        background-size: 180%;
-    }
-    #adc-icons {
-        width: 80%;
-        padding: 0 10%;
     }
     #main-wrapper {
         background-image: url("~src/assets/images/home/website-bg-mobile.jpg");
@@ -418,20 +281,13 @@ body {
         background-repeat: no-repeat;
         background-color: rgb(20, 20, 20);
     }
-    #intro {
-        margin-top: 80%;
-    }
     #twitter-wrapper {
         height: $double-height;
     }
 }
 
 @media only screen and (max-width: 550px){
-    #beatslytics, #gfx, #apps, #resume{
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 0;
-    }
+
 }
 
 @media only screen and (max-width: 500px) {
@@ -441,17 +297,6 @@ body {
         width: 300px;
         /*margin-left: 25%;*/
     }
-
-    #intro h1 {
-        font-size: 50px;
-    }
-
-    #intro h2 {
-        font-size: 35px;
-    }
-    #adc {
-        background-size: 90%;
-    }
     #social_media img {
         width: 40px;
         height: 40px;
@@ -459,12 +304,6 @@ body {
 }
 
 @media only screen and (max-width: 374px) {
-    #intro h1 {
-        font-size: 45px;
-    }
 
-    #intro h2 {
-        font-size: 30px;
-    }
 }
 
