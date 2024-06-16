@@ -2,14 +2,11 @@ $typical-margin: 11px;
 $neutral-card-padding: 25px;
 $single-height: 200px;
 $neutral-card-width: 300px;
-$double-height: $single-height * 2 + $typical-margin;
-$custom-grey: rgb(242, 242, 242);
-$adc-red: rgb(245, 58, 41);
 $card-top: 0px;
+$mobile-top-section-width: 400px;
+$mobile-top-section-width-percentage: 80%;
+$custom-grey: rgb(242, 242, 242);
 $custom-blue: rgb(68, 102, 176);
-
-$single-height-mini: 200px;
-$double-height-mini: $single-height-mini * 2 + $typical-margin;
 
 @mixin round-corner {
     border-radius: 10px 10px 10px 10px;
@@ -46,10 +43,6 @@ $double-height-mini: $single-height-mini * 2 + $typical-margin;
     }
 }
 
-body {
-    margin: auto;
-}
-
 .typical-margin {
     margin-right: $typical-margin;
 }
@@ -69,6 +62,18 @@ body {
     position: relative;
     overflow: hidden;
     object-fit: cover;
+}
+
+#top-canvas {
+    margin-top: 48px;
+}
+
+.main-logo {
+    width: 400px;
+}
+
+.mobile-logo {
+    display: none;
 }
 
 .center_text {
@@ -140,15 +145,6 @@ body {
     margin-bottom: $typical-margin;
 }
 
-.background-card {
-    height: $single-height;
-    display: flex;
-    div {
-        margin: auto;
-        width: 50%;
-    }
-}
-
 .neutral-card {
     width: $neutral-card-width;
     height: $single-height;
@@ -164,6 +160,7 @@ body {
     }
 
     p {
+        font-size: 30px;
         margin-top: 10px;
         cursor: pointer;
         margin-right: auto;
@@ -173,10 +170,6 @@ body {
     img {
         width: 100px;
     }
-}
-
-.emoji {
-    font-size: 70px;
 }
 
 .font-for-emoji {
@@ -194,30 +187,65 @@ body {
     width: 32.67%;
 }
 
-@media only screen and (max-width: 1450px) {
-    #bio {
-        background-size: 200%;
+@media only screen and (max-width: 1580px) {
+    //width container home cards 1580 px
+    .neutral-card {
+        width: 250px;
+        height: 165px;
 
+        img {
+            width: 80px;
+        }
+
+        p {
+            font-size: 25px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1450px) {
+    //width container 1450 px
+    .main-individual-img {
+        height: 400px;
+        width: 300px;
+    }
+
+    .main-logo {
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 1320px) {
+    //width container 1320 px
+    .neutral-card {
+        width: 220px;
+        height: 145px;
     }
 }
 
 @media only screen and (max-width: 1200px) {
     #main {
         margin-top: $typical-margin;
-        margin-left: 13%;
-        width: 60%;
+        margin-left: 5%;
     }
 
-    .background-card, .neutral-card {
-        height: $single-height-mini;
+    #wrapper {
+        display: block;
+    }
+
+    .neutral-card {
+        width: 250px;
+        height: 165px;
+    }
+
+    .column-2 {
+        max-width: 520px;
+        margin: auto;
     }
 }
 
 @media only screen and (max-width: 1100px) {
-    .background-card a, .neutral-card p {
-        font-size: 25px;
-    }
-
     .neutral-card h1 {
         margin-top: 50px;
         font-size: 45px;
@@ -233,8 +261,13 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
-    #main {
-        margin-top: $typical-margin;
+    .main-logo {
+        width: 250px;
+    }
+
+    .main-individual-img {
+        height: 350px;
+        width: 263px;
     }
 }
 
@@ -242,68 +275,90 @@ body {
     #main-wrapper {
         padding: 7% 0;
     }
-
 }
 
-@media only screen and (max-width: 850px) {
-    #main-wrapper { background-size: 118%; }
-}
-
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 890px) {
+    .main-individual-img {
+        height: 300px;
+        width: 225px;
+    }
     #main {
-        margin-top: -20%;
-        text-align: center;
-        max-width: 90%;
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 4%;
     }
-    #social_media {
-        margin-top: $typical-margin;
+}
+
+@media only screen and (max-width: 800px) {
+    .column-1, .column-2 {
+        display: block;
+        width: 70%;
+        margin: auto;
     }
 
-    #wrapper {
+    .column-2 {
+        max-width: none;
+    }
+
+    .neutral-card {
+        width: 100%;
+        height: $single-height;
+        p {
+            font-size: 30px;
+        }
+        img {
+            width: 100px;
+        }
+    }
+
+    .main-logo {
+        display: none;
+    }
+    .mobile-logo {
+        display: block;
+        width: $mobile-top-section-width;
+        margin: 40px auto 0 auto;
+    }
+
+    .main-individual-img {
+        &:nth-child(1) {
+            margin: auto;
+            width: $mobile-top-section-width;
+            height: 500px;
+        }
+        &:nth-child(2) {
+            display: none;
+        }
+    }
+    #social_media_container {
+        width: $mobile-top-section-width;
+    }
+
+    #main {
         display: block;
     }
 
-    #col-1, #col-2, #col-3 {
-        width: 100%;
-        margin-right: 0;
+    #top-canvas {
+        margin: 0;
     }
-    #col-1, #col-2 {
-        margin-bottom: $typical-margin;
-    }
-    #main-wrapper {
-        background-image: url("~src/assets/images/home/website-bg-mobile.jpg");
-        background-size: 100%;
-        background-position: top center;
-        padding: 30% 0 5% 0;
-        background-repeat: no-repeat;
-        background-color: rgb(20, 20, 20);
-    }
-    #twitter-wrapper {
-        height: $double-height;
-    }
-}
-
-@media only screen and (max-width: 550px){
-
 }
 
 @media only screen and (max-width: 500px) {
-    #bg img {
-        display: block;
-        margin: 0 auto;
-        width: 300px;
-        /*margin-left: 25%;*/
+    .main-individual-img {
+        &:nth-child(1) {
+            margin: auto;
+            width: $mobile-top-section-width-percentage;
+            height: 350px;
+        }
     }
-    #social_media img {
-        width: 40px;
-        height: 40px;
+
+    .mobile-logo {
+        width: $mobile-top-section-width-percentage;
+    }
+
+    #social_media_container {
+        width: $mobile-top-section-width-percentage;
+    }
+
+    .column-1, .column-2 {
+        width: 96%;
     }
 }
-
-@media only screen and (max-width: 374px) {
-
-}
-
