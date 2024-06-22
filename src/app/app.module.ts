@@ -9,7 +9,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PcSetupComponent} from './minor-components/pc-setup/pc-setup.component';
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import {AboutComponent} from './minor-components/about/about.component';
-import {ContactsComponent} from './minor-components/contacts/contacts.component';
 import {AppsComponent} from './components/apps/apps.component';
 import {DualAppComponent} from './minor-components/dual-app/dual-app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -39,7 +38,6 @@ export function playerFactory() {
         HomeComponent,
         PcSetupComponent,
         AboutComponent,
-        ContactsComponent,
         AppsComponent,
         DualAppComponent,
         BeatslyticsComponent,

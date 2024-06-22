@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, AfterViewInit, ViewChild} from '@angular/core';
 import {ScrollToConfigOptions, ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
-import {Subject} from 'rxjs';
-import {delay, filter, take, takeUntil} from 'rxjs/operators';
+import {fromEvent, Subject, timer} from 'rxjs';
+import {debounce, delay, filter, map, share, take, takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {MemoryManagerComponent} from '../../shared/memory-manager/memory-manager.component';
@@ -20,7 +20,8 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit, Aft
     showContacts = false;
     @ViewChild('topCanvas', {read: ElementRef}) topCanvas: ElementRef;
     @ViewChild('bottomCanvas', {read: ElementRef}) bottomCanvas: ElementRef;
-    // context1: CanvasRenderingContext2D;
+    topCanvasContext: CanvasRenderingContext2D;
+    bottomCanvasContext: CanvasRenderingContext2D;
     fillColor = 'rgb(68,102,176)';
 
     constructor(
@@ -51,6 +52,10 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit, Aft
             .pipe(take(1))
             .subscribe(() => this.toggleAboutPage());
 
+        fromEvent(window, 'resize')
+            .pipe(debounce(() => timer(500)))
+            .subscribe(() => this.redrawCanvas());
+
         this.gaService.pageView('/home');
     }
 
@@ -62,6 +67,7 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit, Aft
     drawTopCanvas() {
         const canvas = this.topCanvas.nativeElement;
         const ctx = canvas.getContext('2d');
+        this.topCanvasContext = ctx;
         ctx.canvas.width  = window.innerWidth;
         ctx.canvas.height = 20;
         const width =  ctx.canvas.width;
@@ -78,6 +84,7 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit, Aft
     drawBottomCanvas() {
         const canvas = this.bottomCanvas.nativeElement;
         const ctx = canvas.getContext('2d');
+        this.bottomCanvasContext = ctx;
         ctx.canvas.width  = window.innerWidth;
         ctx.canvas.height = 20;
         const width =  ctx.canvas.width;
@@ -89,6 +96,13 @@ export class HomeComponent extends MemoryManagerComponent implements OnInit, Aft
         ctx.lineTo(width, 0);
         ctx.closePath();
         ctx.fill();
+    }
+
+    redrawCanvas() {
+        this.topCanvasContext.clearRect(0, 0, this.topCanvas.nativeElement.width, this.topCanvas.nativeElement.height);
+        this.bottomCanvasContext.clearRect(0, 0, this.bottomCanvas.nativeElement.width, this.bottomCanvas.nativeElement.height);
+        this.drawTopCanvas();
+        this.drawBottomCanvas();
     }
 
     togglePCSetup() {

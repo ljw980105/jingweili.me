@@ -27,9 +27,9 @@ export class EditHomeComponent implements OnInit {
         forkJoin([this.apiService.getAboutData(), this.apiService.getPCSetups()])
             .pipe(take(1))
             .subscribe(([about, pcSetups]) => {
-                console.log(about);
                 this.aboutContent = about.content;
-                this.imgUrl = this.apiService.fileURL(about.imageUrl);
+                this.profileImgName = about.imageUrl;
+                this.imgUrl = this.apiService.fileURL(this.profileImgName);
                 this.pcSetups = pcSetups;
                 this.dataReady = true;
             });
