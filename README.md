@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="400" height="300" src="https://andersonli.net/assets/images/resume/newlogo2024.png">
+  <img width="400" height="96" src="https://andersonli.net/assets/images/resume/newlogo2024.png">
 </p>
 
 [![Build](https://github.com/ljw980105/jingweili.me/workflows/Build/badge.svg)](https://github.com/ljw980105/jingweili.me/actions)
