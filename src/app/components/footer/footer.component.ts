@@ -17,6 +17,7 @@ import {takeUntil} from 'rxjs/operators';
 export class FooterComponent extends MemoryManagerComponent implements OnInit, AfterViewInit {
     @Input() showTopBorder: boolean;
     @Input() theme = 'light';
+    widthBreakpoint = 700;
 
     year: string;
     pagesExpanded = true;
@@ -55,7 +56,7 @@ export class FooterComponent extends MemoryManagerComponent implements OnInit, A
         this.simplifiedGraphics = this.apiService.getSimplifiedGraphicsProjects();
         this.simplifiedProjects = this.apiService.getSimplifiedProjects();
 
-        this.widthObservable = new WidthBreakpointObserver(500);
+        this.widthObservable = new WidthBreakpointObserver(this.widthBreakpoint);
 
         if (window.innerWidth < 500) {
             this.minimizedVersionShown = true;

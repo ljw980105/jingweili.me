@@ -1,6 +1,6 @@
 @mixin logo-size {
-    width: 120px;
-    height: 85px;
+    width: 300px;
+    height: 100px;
 }
 
 /*For THE FOOTER*/
@@ -36,7 +36,6 @@
     -webkit-animation-fill-mode: forwards;
 
     img {
-        transform: scale(2.5);
         @include logo-size;
     }
 
@@ -70,7 +69,7 @@
             color: #888888;
             font-size: 15px;
             text-decoration: none;
-            font-family: Roboto;
+            font-family: Roboto, sans-serif;
         }
 
         &:hover {
@@ -83,7 +82,7 @@
 #logo-copyright {
     margin-top: 20px;
     display: flex;
-    padding: 0 19% 0 19%;
+    padding: 0 19% 5% 12%;
     align-items: center;
     justify-content: space-between;
 }
@@ -165,7 +164,7 @@
 
     #logo-copyright {
         display: block;
-        padding-bottom: 10px;
+        padding: 0 19% 10px 19%;
     }
 
     #copyright-container h4 {
@@ -173,7 +172,7 @@
     }
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 700px){
     #footerx{
         display: block;
     }
@@ -200,5 +199,13 @@
         cursor: pointer;
         font-weight: normal;
         line-height: 60%;
+    }
+}
+
+@media only screen and (max-width: 490px) {
+    #personal_logo {
+        img {
+            width: 100%;
+        }
     }
 }
