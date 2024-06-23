@@ -1,13 +1,12 @@
 $typical-margin: 11px;
 $neutral-card-padding: 25px;
-$single-height: 240px;
-$double-height: $single-height * 2 + $typical-margin;
+$single-height: 200px;
+$neutral-card-width: 300px;
+$card-top: 0px;
+$mobile-top-section-width: 400px;
+$mobile-top-section-width-percentage: 80%;
 $custom-grey: rgb(242, 242, 242);
-$adc-red: rgb(245, 58, 41);
-$card-top: 30px;
-
-$single-height-mini: 200px;
-$double-height-mini: $single-height-mini * 2 + $typical-margin;
+$custom-blue: rgb(68, 102, 176);
 
 @mixin round-corner {
     border-radius: 10px 10px 10px 10px;
@@ -16,7 +15,7 @@ $double-height-mini: $single-height-mini * 2 + $typical-margin;
 
 @mixin zoom-fx($amount) {
     transition: all 0.3s ease-in-out;
-    transform:scale($amount, $amount);
+    transform: scale($amount, $amount);
 }
 
 @mixin underline($color , $top-bottom) {
@@ -44,55 +43,37 @@ $double-height-mini: $single-height-mini * 2 + $typical-margin;
     }
 }
 
-body {
-    margin: auto;
+.typical-margin {
+    margin-right: $typical-margin;
 }
 
 #main {
-    width: 50%;
-    margin-right: 60%;
-    margin-top: 8%;
-    margin-left: 5%;
-
-    h1, h2, h4 {
-        color: white;
-    }
+    display: flex;
+    justify-content: space-between;
 }
 
 #main-wrapper {
-    padding: 10% 0;
-    background-image: url("~src/assets/images/home/website-bg.jpg");
-    background-size: 100%;
+    padding: 1% 0 3% 0;
 }
 
-#intro {
-    & a {
-        color: white;
-        font-weight: bolder;
-        text-decoration: none;
-        @include underline(white, 35px);
-    }
+.main-individual-img {
+    height: 500px;
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+}
 
-    & h1 {
-        font-family: "Helvetica", "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
-        font-weight: bold;
-        font-size: 65px;
-        line-height: 70%;
-    }
+#top-canvas {
+    margin-top: 48px;
+}
 
-    & h2 {
-        font-size: 40px;
-        font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-        font-weight: 300;
-        line-height: 70%;
-    }
+.main-logo {
+    width: 400px;
+}
 
-    & h4 {
-        margin-top: -1%;
-        font-size: 28px;
-        font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-        font-weight: normal;
-    }
+.mobile-logo {
+    display: none;
 }
 
 .center_text {
@@ -101,14 +82,10 @@ body {
 }
 
 #social_media {
-    margin-top: 3%;
-    margin-left: -7%;
-
+    width: 230px;
     & a {
-        padding: 0 1.68%;
+        padding: 0 3%;
         & img {
-            filter: invert(100);
-
             &:hover {
                 @include zoom-fx(1.25);
             }
@@ -116,26 +93,26 @@ body {
     }
 }
 
-#gfx {
-    background-image: url("~src/assets/images/home/indexbg1x.jpg");
-    background-size: 150% auto;
-    text-align: center;
-    background-position: 50% 18%;
-    @include round-corner();
+#social_media_container {
+    display: flex;
+    justify-content: flex-end;
 }
 
-#apps {
-    background-image: url("~src/assets/images/apps/AppFolioBg.svg");
-    background-size: 250%;
-    text-align: center;
-    background-position: 20% 100%;
-    margin-bottom: $typical-margin;
-    @include round-corner();
+.column-1 {
+    display: flex;
 }
+
+.column-2 {
+    display: flex;
+}
+
 
 #wrapper {
     display: flex;
     margin-top: $card-top;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .orange-hover-fx {
@@ -164,111 +141,35 @@ body {
     }
 }
 
-#beatslytics {
-    background-image: url("~src/assets/images/beatslytics/Beatslytics-intro2.jpg");
-    background-position-x: -45px;
-    background-size: 140%;
-    text-align: center;
-    margin-bottom: $typical-margin;
-    @include round-corner();
-}
-
-#adc {
-    height: $double-height;
-    background-color: $adc-red;
-    @include round-corner();
-    background-image: url("~src/assets/images/home/adc.png");
-    background-size: 90%;
-    background-position: center top;
-    background-repeat: no-repeat;
-    position: relative;
-    margin-bottom: $typical-margin;
-
-    & a {
-        text-align: center;
-        color: white;
-        font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-        text-decoration: none;
-        &:hover, &:visited {
-           text-decoration: underline;
-        }
-    }
-}
-
-#adc-icons {
-    width: 80%;
-    padding: 0 10%;
-    display: flex;
-    position: absolute;
-    bottom: 30px;
-
-    div {
-        width: 30%;
-    }
-    img {
-        width: 70px;
-        height: 70px;
-    }
-}
-
-#bio {
-    height: $double-height;
-    background-position: center bottom;
-    background-image: url("~src/assets/images/home/jing-frc2017.jpg");
-    background-size: 180%;
-    @include round-corner();
-    position: relative;
-
-    p {
-        cursor: pointer;
-        position: absolute;
-        width: 100%;
-        text-align: center;
-        bottom: 50px;
-    }
-}
-
-#twitter-wrapper {
-    height: $double-height;
-}
-
 .middle-card-margin {
-    margin-top: $typical-margin;
     margin-bottom: $typical-margin;
-}
-
-.background-card {
-    height: $single-height;
-    display: flex;
-    div {
-        margin: auto;
-        width: 50%;
-    }
 }
 
 .neutral-card {
+    width: $neutral-card-width;
     height: $single-height;
     background-color: $custom-grey;
-    margin: $typical-margin 0 0 0;
+    margin: $typical-margin $typical-margin 0 0;
     text-align: left;
     display: flex;
     @include round-corner();
 
     h1 {
-        margin-right: 10px;
+        margin-right: 15px;
         margin-left: auto;
     }
 
     p {
-        clear: both;
-        margin-top: 50px;
+        font-size: 30px;
+        margin-top: 10px;
         cursor: pointer;
         margin-right: auto;
+        margin-left: 10px;
     }
-}
 
-.emoji {
-    font-size: 70px;
+    img {
+        width: 100px;
+    }
 }
 
 .font-for-emoji {
@@ -286,43 +187,65 @@ body {
     width: 32.67%;
 }
 
-@media only screen and (max-width: 1450px) {
-    #bio {
-        background-size: 200%;
+@media only screen and (max-width: 1580px) {
+    //width container home cards 1580 px
+    .neutral-card {
+        width: 250px;
+        height: 165px;
 
+        img {
+            width: 80px;
+        }
+
+        p {
+            font-size: 25px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1450px) {
+    //width container 1450 px
+    .main-individual-img {
+        height: 400px;
+        width: 300px;
+    }
+
+    .main-logo {
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 1320px) {
+    //width container 1320 px
+    .neutral-card {
+        width: 220px;
+        height: 145px;
     }
 }
 
 @media only screen and (max-width: 1200px) {
     #main {
         margin-top: $typical-margin;
-        margin-left: 13%;
-        width: 60%;
+        margin-left: 5%;
     }
 
-    #gfx{
-        margin-right: 0;
+    #wrapper {
+        display: block;
     }
 
-    #beatslytics, #gfx{
-        margin-bottom: 5px;
+    .neutral-card {
+        width: 250px;
+        height: 165px;
     }
 
-    .background-card, .neutral-card {
-        height: $single-height-mini;
-    }
-
-    #adc, #bio, #twitter-wrapper {
-        height: $double-height-mini;
-        overflow: hidden;
+    .column-2 {
+        max-width: 520px;
+        margin: auto;
     }
 }
 
 @media only screen and (max-width: 1100px) {
-    .background-card a, .neutral-card p {
-        font-size: 25px;
-    }
-
     .neutral-card h1 {
         margin-top: 50px;
         font-size: 45px;
@@ -332,139 +255,110 @@ body {
         background-size: 110%;
     }
 
-    #adc-icons {
-        img {
-            width: 50px;
-            height: 50px;
-        }
-        a {
-           font-size: 12px;
-        }
-    }
     #social_media {
         margin-left: -15%;
     }
 }
 
 @media only screen and (max-width: 1000px) {
-    #main {
-        margin-top: $typical-margin;
+    .main-logo {
+        width: 250px;
     }
-    #bio {
-        background-size: 260%;
+
+    .main-individual-img {
+        height: 350px;
+        width: 263px;
     }
 }
 
 @media only screen and (max-width: 950px) {
-    #gfx, #beatslytics {
-        background-size: auto 100%;
-    }
     #main-wrapper {
         padding: 7% 0;
     }
-
 }
 
-@media only screen and (max-width: 850px) {
-    #adc-icons {
-        width: 90%;
-        padding: 0 5%;
+@media only screen and (max-width: 890px) {
+    .main-individual-img {
+        height: 300px;
+        width: 225px;
     }
-    #main-wrapper { background-size: 118%; }
-}
-
-@media only screen and (max-width: 750px) {
     #main {
-        margin-top: -20%;
-        text-align: center;
-        max-width: 90%;
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 4%;
     }
-    #social_media {
-        margin-top: $typical-margin;
+}
+
+@media only screen and (max-width: 800px) {
+    .column-1, .column-2 {
+        display: block;
+        width: 70%;
+        margin: auto;
     }
 
-    #wrapper {
+    .column-2 {
+        max-width: none;
+    }
+
+    .neutral-card {
+        width: 100%;
+        height: $single-height;
+        p {
+            font-size: 30px;
+        }
+        img {
+            width: 100px;
+        }
+    }
+
+    .main-logo {
+        display: none;
+    }
+    .mobile-logo {
+        display: block;
+        width: $mobile-top-section-width;
+        margin: 40px auto 0 auto;
+    }
+
+    .main-individual-img {
+        &:nth-child(1) {
+            margin: auto;
+            width: $mobile-top-section-width;
+            height: 500px;
+        }
+        &:nth-child(2) {
+            display: none;
+        }
+    }
+    #social_media_container {
+        width: $mobile-top-section-width;
+    }
+
+    #main {
         display: block;
     }
 
-    #col-1, #col-2, #col-3 {
-        width: 100%;
-        margin-right: 0;
-    }
-    #gfx, #beatslytics {
-        background-size: 140%;
-    }
-    #col-1, #col-2 {
-        margin-bottom: $typical-margin;
-    }
-    #adc {
-        background-size: 60%;
-    }
-    #bio {
-        background-size: 180%;
-    }
-    #adc-icons {
-        width: 80%;
-        padding: 0 10%;
-    }
-    #main-wrapper {
-        background-image: url("~src/assets/images/home/website-bg-mobile.jpg");
-        background-size: 100%;
-        background-position: top center;
-        padding: 30% 0 5% 0;
-        background-repeat: no-repeat;
-        background-color: rgb(20, 20, 20);
-    }
-    #intro {
-        margin-top: 80%;
-    }
-    #twitter-wrapper {
-        height: $double-height;
-    }
-}
-
-@media only screen and (max-width: 550px){
-    #beatslytics, #gfx, #apps, #resume{
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 0;
+    #top-canvas {
+        margin: 0;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    #bg img {
-        display: block;
-        margin: 0 auto;
-        width: 300px;
-        /*margin-left: 25%;*/
+    .main-individual-img {
+        &:nth-child(1) {
+            margin: auto;
+            width: $mobile-top-section-width-percentage;
+            height: 350px;
+        }
     }
 
-    #intro h1 {
-        font-size: 50px;
+    .mobile-logo {
+        width: $mobile-top-section-width-percentage;
     }
 
-    #intro h2 {
-        font-size: 35px;
+    #social_media_container {
+        width: $mobile-top-section-width-percentage;
     }
-    #adc {
-        background-size: 90%;
-    }
-    #social_media img {
-        width: 40px;
-        height: 40px;
+
+    .column-1, .column-2 {
+        width: 96%;
     }
 }
-
-@media only screen and (max-width: 374px) {
-    #intro h1 {
-        font-size: 45px;
-    }
-
-    #intro h2 {
-        font-size: 30px;
-    }
-}
-

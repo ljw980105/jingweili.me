@@ -1,144 +1,96 @@
 <app-navbar></app-navbar>
 
-<div id="main-wrapper">
-    <div class="width-container">
-        <div id="main">
-            <div id="intro">
-                <h1>JING WEI LI</h1>
-                <div id="sub-intro">
-                    <h2>iOS Engineer, </h2>
-                    <h2>Graphic Designer, </h2>
-                    <h4>Software Engineer @<a target="_blank" href="https://www.draftkings.com">DraftKings</a></h4>
-                </div>
-            </div>
+<canvas #topCanvas id="top-canvas" height="20"></canvas>
 
-            <div id="social_media">
-                <ul>
-                    <a id="sm1" target="_blank" href="https://www.facebook.com/li.jingwei.94">
-                        <img src="assets/images/home/fb.png" width="50" height="50">
-                    </a>
-                    <a id="sm2" target="_blank" href="https://www.linkedin.com/in/jingweili2/">
-                        <img src="assets/images/home/linkedin.png" width="50" height="50">
-                    </a>
-                    <a id="sm3" target="_blank" href="https://www.youtube.com/channel/UC33WP6-Af8Oy7SGzZm5mxng">
-                        <img src="assets/images/home/yt.png" width="50" height="50">
-                    </a>
-                    <a id="sm4" target="_blank" href="https://www.flickr.com/photos/154270674@N02/">
-                        <img src="assets/images/home/flickr-circle.png" width="50" height="50">
-                    </a>
-                    <a id="sm5" target="_blank" href="https://github.com/ljw980105/">
-                        <img src="assets/images/home/github.png" width="50" height="50">
-                    </a>
-                    <a id="sm6" target="_blank" href="https://stackoverflow.com/users/9132818/jingwei-li">
-                        <img src="assets/images/home/stackoverflow.png" width="50" height="50">
-                    </a>
-                </ul>
-            </div>
+<div id="main-wrapper">
+    <div id="social_media_container" class="width-container">
+        <div id="social_media">
+            <ul>
+                <a target="_blank" href="https://www.facebook.com/li.jingwei.94">
+                    <img src="assets/images/home/facebook_logo.svg" width="25" height="25">
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/andersonli2/">
+                    <img src="assets/images/home/linkedin_logo.svg" width="25" height="25">
+                </a>
+                <a target="_blank" href="https://www.youtube.com/channel/UC33WP6-Af8Oy7SGzZm5mxng">
+                    <img src="assets/images/home/youtube_logo.svg" width="25" height="25">
+                </a>
+                <a target="_blank" href="https://github.com/ljw980105/">
+                    <img src="assets/images/home/github_logo.svg" width="25" height="25">
+                </a>
+                <a target="_blank" href="https://stackoverflow.com/users/9132818/jingwei-li">
+                    <img src="assets/images/home/stackoverflow_logo.svg" width="25" height="25">
+                </a>
+            </ul>
         </div>
+    </div>
+    <div class="width-container" id="main">
+        <img alt="Anderson Li, iOS Engineer" src="assets/images/home/NameGraphic.svg" class="main-logo">
+        <div style="display: flex">
+            <img class="main-individual-img" alt="personal photo" src="assets/images/home/2024-Website-Photo.jpg">
+            <img class="main-individual-img" alt="personal photo" src="assets/images/home/2024-Website-Photo-BW.jpg">
+        </div>
+        <img alt="Anderson Li, iOS Engineer" src="assets/images/home/NameGraphic.svg" class="mobile-logo">
     </div>
 </div>
 
-<div id="wrapper" class="width-container">
-    <div id="col-1">
-        <div id="beatslytics" class="background-card">
-            <div>
-                <a class="large-anchor" [routerLink]="['/beatslytics']">iOS App <br/>Beatslytics</a>
-            </div>
-        </div>
+<canvas #bottomCanvas height="20"></canvas>
 
-        <div class="neutral-card middle-card-margin">
+<div id="wrapper" class="width-container-home-cards">
+    <div class="column-1">
+        <div class="neutral-card">
             <div class="flex center_div">
-                <h1 class="emoji">🖥</h1>
-                <p (click)="togglePCSetup()" class="font-for-emoji clear-text-paddings orange-hover-fx">My PC <br> Specs</p>
+                <img src="assets/images/home/app_icon.svg">
+                <p class="font-for-emoji clear-text-paddings orange-hover-fx"
+                   (click)="navigateTo('apps')"
+                >App <br> Portfolio</p>
             </div>
         </div>
 
-        <div id="gfx" class="middle-card-margin background-card">
-            <div>
-                <a class="large-anchor" [routerLink]="['/graphic-design']">Graphic Design <br>Portfolio</a>
-            </div>
-        </div>
-
-        <div class="neutral-card middle-card-margin">
+        <div class="neutral-card">
             <div class="flex center_div">
-                <h1 class="emoji">📞</h1>
-                <p (click)="toggleContactsPage()" class="font-for-emoji clear-text-paddings orange-hover-fx">Contact <br> Me</p>
+                <img src="assets/images/home/pc_icon.svg">
+                <p class="font-for-emoji clear-text-paddings orange-hover-fx"
+                   (click)="togglePCSetup()"
+                >My PC <br> Specs</p>
+            </div>
+        </div>
+
+        <div class="neutral-card">
+            <div class="flex center_div">
+                <img src="assets/images/home/image_icon.svg">
+                <p class="font-for-emoji clear-text-paddings orange-hover-fx"
+                   (click)="navigateTo('graphic-design')"
+                >Graphic <br> Design</p>
             </div>
         </div>
     </div>
 
-    <div id="col-2">
-
-        <div id="adc">
-            <div id="adc-icons">
-                <div style="width: 28%; margin-right: 8%">
-                    <div style="margin-bottom: 10px; margin-left: 12%">
-                        <img src="assets/images/home/yt.png" style="filter: invert(100)">
-                    </div>
-                    <div>
-                        <a class="center-text-absolute"
-                           href="https://www.youtube.com/watch?v=_ar0LT4DYQM&feature=emb_title"
-                           target="_blank"
-                        >Watch&nbsp;Video</a>
-                    </div>
-                </div>
-
-                <div style="width: 28%; margin-right: 8%">
-                    <div style="margin-bottom: 10px; margin-left: 12%">
-                        <img src="assets/images/home/websiteIcon.png">
-                    </div>
-                    <div>
-                        <a class="center-text-absolute" href="{{adcWebsite}}" target="_blank">Visit&nbsp;Website</a>
-                    </div>
-                </div>
-
-                <div style="width: 28%">
-                    <div style="margin-bottom: 10px; margin-left: 12%">
-                        <img src="assets/images/home/downloadIcon.png">
-                    </div>
-                    <div>
-                        &nbsp;&nbsp;&nbsp;<a class="center-text-absolute" href="{{adcAppDownloadLink}}" target="_blank">Download</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="bio">
-            <p (click)="toggleAboutPage()" class="large-anchor">About Me</p>
-        </div>
-
-    </div>
-
-    <div id="col-3">
-        <div id="apps" class="background-card">
-            <div>
-                <a [routerLink]="['/apps']" class="large-anchor">Apps <br> Portfolio</a>
-            </div>
-        </div>
-
-        <div class="neutral-card center_img">
+    <div class="column-2">
+        <!--        Projects-->
+        <div class="neutral-card">
             <div class="flex center_div">
-                <h1 class="emoji">⚙️</h1>
+                <img src="assets/images/home/project_icon.svg">
                 <p class="font-for-emoji clear-text-paddings orange-hover-fx"
                    (click)="navigateTo('projects')"
                 >My <br> Projects</p>
             </div>
         </div>
 
-        <div id="twitter-wrapper" style="width: 100%; outline: 1px solid gray; border-radius: 15px; margin-top: 10px">
-            <a
-                class="twitter-timeline"
-                data-height="491"
-                href="https://twitter.com/MrProLi?ref_src=twsrc%5Etfw"
-            >Tweets by MrProLi</a>
+        <div class="neutral-card">
+            <div class="flex center_div">
+                <img src="assets/images/home/info_icon.svg">
+                <p class="font-for-emoji clear-text-paddings orange-hover-fx"
+                   (click)="toggleAboutPage()"
+                >About & <br> Contact</p>
+            </div>
         </div>
+
     </div>
 </div>
 
 <app-pc-setup id="pc-setup" (closeComponent)="togglePCSetup()" *ngIf="showPCSetup"></app-pc-setup>
 
 <app-about id="about" (closeComponent)="toggleAboutPage()" *ngIf="showAboutPage"></app-about>
-
-<app-contacts id="contacts" (closeComponent)="toggleContactsPage()" *ngIf="showContacts"></app-contacts>
 
 <app-footer [showTopBorder]="false"></app-footer>

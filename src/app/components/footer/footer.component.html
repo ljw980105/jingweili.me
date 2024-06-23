@@ -1,15 +1,10 @@
+<div [ngStyle]="{'border-top': topBorderStyle}"></div>
+
 <div id="footer_container"
-     [ngStyle]="{'border-top': topBorderStyle}"
+     [ngClass]="{'footer-width-container': !minimizedVersionShown}"
 >
 <!--    width container can cause issues when minimized. Hence only enable it when non-minimized -->
-    <div id="footerx" [ngClass]="{'width-container': !minimizedVersionShown}">
-        <div id="personal_logo" [routerLink]="['/']">
-            <img
-                style="margin-top: 18px"
-                src="assets/images/footer/logo2020.png"
-                [ngStyle]="{'filter': logoInvertAmount}"
-            >
-        </div>
+    <div id="footerx">
         <div id="section1">
             <div id="navigation">
                 <ul>
@@ -75,7 +70,7 @@
                     <div [@shrinkOrExpand]="socialsExpanded ? 'expanded' : 'shrinked'">
                         <li><a href="https://www.facebook.com/li.jingwei.94">Facebook</a></li>
                         <li><a href="https://www.instagram.com/ljw980105">Instagram</a></li>
-                        <li><a href="https://www.linkedin.com/in/jingweili2/">LinkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/in/andersonli2/">LinkedIn</a></li>
                         <li><a href="https://twitter.com/MrProLi">Twitter</a></li>
                         <li><a href="https://www.youtube.com/channel/UC33WP6-Af8Oy7SGzZm5mxng">Youtube</a></li>
                         <li><a href="https://github.com/ljw980105/">GitHub</a></li>
@@ -85,13 +80,17 @@
         </div>
     </div>
 
-    <div id="mobile_logo">
-        <img [ngStyle]="{'filter': logoInvertAmount}" src="assets/images/footer/logo2020White.png">
+    <div id="logo-copyright">
+        <div id="personal_logo" [routerLink]="['/']">
+            <img
+                alt="Anderson Li's Logo"
+                src="{{logoUrl}}"
+            >
+        </div>
+        <div id="copyright-container">
+            <h4
+                [ngStyle]="{'color': primaryFontColor}"
+            > &copy; Anderson Li 2017-{{year}}<br/>Proudly Created with Angular</h4>
+        </div>
     </div>
 </div>
-
-<h4
-    id="standalone_footer"
-    style="text-align: center"
-    [ngStyle]="{'color': primaryFontColor}"
-> &copy; JING WEI LI 2017-{{year}}. Proudly Created with Angular</h4>

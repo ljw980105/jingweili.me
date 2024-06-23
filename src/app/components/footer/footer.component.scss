@@ -1,9 +1,9 @@
 @mixin logo-size {
-    width: 120px;
-    height: 85px;
+    width: 300px;
+    height: 100px;
 }
 
-/*4 THE FOOTER*/
+/*For THE FOOTER*/
 @keyframes bounce {
     0% {transform: scale(1.0);}
     25% {transform: scale(1.1);}
@@ -29,23 +29,30 @@
 }
 
 #personal_logo{
+    cursor: pointer;
     animation: bounce-leave 0.5s ;
     animation-fill-mode: forwards;
     -webkit-animation: bounce-leave 0.5s ;
     -webkit-animation-fill-mode: forwards;
+
+    img {
+        @include logo-size;
+    }
+
+    &:hover {
+        animation: bounce 0.5s ;
+        animation-fill-mode: forwards;
+        -webkit-animation: bounce 0.5s ;
+        -webkit-animation-fill-mode: forwards;
+    }
 }
 
-#personal_logo:hover{
-    animation: bounce 0.5s ;
-    animation-fill-mode: forwards;
-    -webkit-animation: bounce 0.5s ;
-    -webkit-animation-fill-mode: forwards;
-}
-
-#footerx{
+#footerx {
     display: flex;
     margin-top: 2%;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 
     h4 {
         font-size: 17px;
@@ -56,18 +63,47 @@
     ul {
         list-style: none;
     }
+
+    a {
+        &:link, &:visited {
+            color: #888888;
+            font-size: 15px;
+            text-decoration: none;
+            font-family: Roboto, sans-serif;
+        }
+
+        &:hover {
+            transition: all 0.1s ease-in-out;
+            color: orange;
+        }
+    }
 }
 
-/*h4 must be a direct descendant of footer */
-#standalone_footer {
-    font-family: Roboto;
-    font-size: 17px;
-    padding-bottom: 30px;
+#logo-copyright {
+    margin-top: 20px;
+    display: flex;
+    padding: 0 19% 5% 12%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#copyright-container {
+    h4 {
+        font-family: sans-serif;
+        font-weight: 200;
+        font-size: 17px;
+        text-align: right;
+    }
+}
+
+.footer-width-container {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #footer_container {
     background-color: transparent;
-    display: flex;
     margin-bottom: 0;
 }
 
@@ -76,55 +112,21 @@
     display: flex;
 }
 
-#personal_logo {
-    margin-top: 20px;
-    width: 20%;
-    cursor: pointer;
-}
-
-#social_media_footer{
+#social_media_footer {
     width: 50%;
 }
 
-#projects_footer{
+#projects_footer {
     width: 50%;
 }
 
-#navigation{
+#navigation {
     width: 50%;
     display: inline;
 }
 
-#graphics_footer{
+#graphics_footer {
     width: 50%;
-}
-
-#personal_logo img{
-    display: block;
-    margin: 0 auto;
-    @include logo-size;
-}
-
-
-#footerx a:link, #footerx a:visited {
-    color: #888888;
-    font-size: 15px;
-    text-decoration: none;
-    font-family: Roboto;
-}
-
-#footerx a:hover{
-    transition: all 0.1s ease-in-out;
-    color: orange;
-}
-
-#mobile_logo {
-    @include logo-size;
-    filter: invert(100);
-    display: block;
-    margin: 2% auto 0 auto;
-    position: fixed;
-    visibility: hidden;
 }
 
 // rotations on + and x
@@ -149,26 +151,28 @@
         margin-left: 0;
     }
 
-    #section2, #section1{
+    #section2, #section1 {
         width: 50%;
     }
 
-    #personal_logo{
-        width: 0;
-        visibility: hidden;
-        position: fixed;
-    }
-    #mobile_logo{
-        visibility: visible;
-        position: relative;
+    #personal_logo {
+        img {
+            display: block;
+            margin: 0 auto;
+        }
     }
 
-    #mobile_logo img {
-        @include logo-size;
+    #logo-copyright {
+        display: block;
+        padding: 0 19% 10px 19%;
+    }
+
+    #copyright-container h4 {
+        text-align: center;
     }
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 700px){
     #footerx{
         display: block;
     }
@@ -178,16 +182,16 @@
         width: 100%;
     }
 
-    #navigation, #projects_footer, #social_media_footer, #graphics_footer{
+    #navigation, #projects_footer, #social_media_footer, #graphics_footer {
         border-bottom:  1px solid #888888;
         width: 100%;
     }
 
-    #projects_footer{
+    #projects_footer {
         border-top: 1px solid #888888;
     }
 
-    #social_media_footer{
+    #social_media_footer {
         margin-bottom: 10%;
     }
 
@@ -195,5 +199,13 @@
         cursor: pointer;
         font-weight: normal;
         line-height: 60%;
+    }
+}
+
+@media only screen and (max-width: 490px) {
+    #personal_logo {
+        img {
+            width: 100%;
+        }
     }
 }

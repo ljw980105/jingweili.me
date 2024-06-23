@@ -1,22 +1,19 @@
 <app-navbar></app-navbar>
 
-<div id="logo-meaning" class="width-container">
-    <h1 class="theme-color large-text helvetica">What Does My Logo Mean?</h1>
+<div id="top-section" class="width-container">
     <div id="logo-dual" style="margin-top: 10%">
         <div>
-            <img src="assets/images/resume/logo-objc.png" width="100%">
+            <img src="{{apiService.fileURL((aboutContent | async).imageUrl)}}" width="100%">
         </div>
-        <div>
-            <img src="assets/images/resume/objc-example.png" width="100%" height="60%">
-            <h3 class="helvetica medium-text theme-color">
-                <span class="menlo"> - () </span> is a signature syntax in ObjectiveC.
-            </h3>
+        <div class="neutral-card">
+            <h1 class="theme-color medium-large-text helvetica">Welcome!</h1>
+            <h3 class="helvetica-normal small-text"> {{(aboutContent | async).content}}</h3>
         </div>
     </div>
 </div>
 
 <div id="ios-showoff" class="width-container">
-    <h3 class="medium-text helvetica">Objective-C can only mean one thing -</h3>
+    <h3 class="medium-text helvetica">As a result -</h3>
     <h1 class="theme-color helvetica large-text">I'm a Kick-ass iOS Developer.</h1>
     <div id="stats-showoff" *ngIf="data">
         <div id="stats-col-1" class="flex">

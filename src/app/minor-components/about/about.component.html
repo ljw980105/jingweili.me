@@ -4,7 +4,7 @@
     </div>
 
     <div id="intro-text" class="corner-display-container">
-        <h1 class="helvetica">About Me</h1>
+        <h1 class="helvetica">About Me & Contact</h1>
         <p class="helvetica">{{(aboutContent | async).content}}</p>
         <p class="helvetica">View My Resume 📜
             <a class="orange-underline-anchor" [routerLink]="['/resume']">here</a>.
@@ -13,5 +13,12 @@
         <div class="top-right-icon x-icon" (click)="exit()">
             <p>&#10005;</p>
         </div>
+
+        <p class="helvetica">
+            Feel free to contact me @ {{mail}} or click
+            <a class="orange-underline-anchor" href="mailto:{{mail}}">
+                here
+            </a>
+        </p>
     </div>
 </div>
